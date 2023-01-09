@@ -1,3 +1,6 @@
 [submodule "spring-boot-tutorial-course"]
 	path = spring-boot-tutorial-course
 	url = https://github.com/RameshMF/spring-boot-tutorial-course
+[submodule "pacman"]
+	path = pacman
+	url = https://github.com/mumuy/pacman
