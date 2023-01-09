@@ -4,3 +4,6 @@
 [submodule "pacman"]
 	path = pacman
 	url = https://github.com/mumuy/pacman
+[submodule "ouorz-legacy"]
+	path = ouorz-legacy
+	url = https://github.com/HelipengTony/ouorz-legacy
