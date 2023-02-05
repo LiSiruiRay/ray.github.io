@@ -16,18 +16,18 @@
   <meta name="author" content="Sirui Ray Li">
   <meta name="keywords" content="testing3">
   
-    <meta name="description" content="Self built Java Annotation: Format &amp; EssenceAfter learning about annotations built by others, we might wonder if we can also built some annotations by our own. After all, the beauty of learning pr">
+    <meta name="description" content="This is the video version of the tutorial:  # Self built Java Annotation: Format &amp; Essence  After learning about annotations built by others, we might wonder if we can also built some annotations by o">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Self-built Annotation :Format and Essence">
 <meta property="og:url" content="http://slray.com/2023/02/04/Java-Annotation-build-annotations-by-yourself/index.html">
 <meta property="og:site_name" content="Ray&#39;s website">
-<meta property="og:description" content="Self built Java Annotation: Format &amp; EssenceAfter learning about annotations built by others, we might wonder if we can also built some annotations by our own. After all, the beauty of learning pr">
+<meta property="og:description" content="This is the video version of the tutorial:  # Self built Java Annotation: Format &amp; Essence  After learning about annotations built by others, we might wonder if we can also built some annotations by o">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://slray.com/2023/02/04/Java-Annotation-build-annotations-by-yourself/Wikipedia_JAnnotation_MetaAnno.png">
 <meta property="og:image" content="http://slray.com/2023/02/04/Java-Annotation-build-annotations-by-yourself/API_Docu_Annotation.png">
 <meta property="og:image" content="http://slray.com/2023/02/04/Java-Annotation-build-annotations-by-yourself/API_JavaDoc_Anno_Method.png">
 <meta property="article:published_time" content="2023-02-04T05:41:32.000Z">
-<meta property="article:modified_time" content="2023-02-04T06:00:46.706Z">
+<meta property="article:modified_time" content="2023-02-05T09:00:00.847Z">
 <meta property="article:author" content="Sirui Ray Li">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="Java Annotation">
@@ -294,7 +294,11 @@
             
               <div class="markdown-body">
                 
-                <h1><span id="self-built-java-annotation-format-amp-essence">Self built Java Annotation: Format &amp; Essence</span></h1><p>After learning about annotations built by others, we might wonder if we can also built some annotations by our own. After all, the beauty of learning programming is to build your own world.</p>
+                <p>This is the video version of the tutorial:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kdzch2RvTOg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+# Self built Java Annotation: Format & Essence
+
+<p>After learning about annotations built by others, we might wonder if we can also built some annotations by our own. After all, the beauty of learning programming is to build your own world.</p>
 <p>However, we have no idea how to program an annotation ourselves. So what do we do? We simulate. So first let’s see how is the built-in annotation is programed.</p>
 <h1><span id="format-of-annotation">Format of annotation</span></h1><p>We can jump into the source code clicking the <code>@Override</code>while holding <code>⌘command</code>. Here is the source code for <code>@Override</code></p>
 <h2><span id="override"><code>@Override</code></span></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> ......</span><br><span class="hljs-comment"> * @jls 9.6.4.4 @Override</span><br><span class="hljs-comment"> * @since 1.5</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Target(ElementType.METHOD)</span><br><span class="hljs-meta">@Retention(RetentionPolicy.SOURCE)</span><br><span class="hljs-keyword">public</span> <span class="hljs-meta">@interface</span> Override &#123;<br>&#125;<br></code></pre></td></tr></table></figure>
