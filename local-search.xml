@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>Math testing</title>
+    <link href="/2023/02/05/Math-testing/"/>
+    <url>/2023/02/05/Math-testing/</url>
+    
+    <content type="html"><![CDATA[<h1><span id="math-relationship">Math relationship</span></h1><p>When we have $\sqrt{x+c}$ where $c$ is a constent, can we write it as $\sqrt{x}+c$ ?</p><p>Similarly, can we write $\frac{a + c}{b}$ where $c$ is constent as $\frac{a}{b} + c$? we cannot since </p><p>$$<br>\frac{a+c}{b}&#x3D;\frac{a}{b}+\frac{c}{b}<br>$$</p><p>And this $\frac{c}{b}$ is not independent from variable</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Self-built Annotation :Format and Essence</title>
     <link href="/2023/02/04/Java-Annotation-build-annotations-by-yourself/"/>
     <url>/2023/02/04/Java-Annotation-build-annotations-by-yourself/</url>
