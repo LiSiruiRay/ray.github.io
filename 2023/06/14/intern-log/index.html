@@ -1,0 +1,1097 @@
+
+
+<!DOCTYPE html>
+<html lang="en,zh-CN,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/ray.jpg">
+  <link rel="icon" href="/ray.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Sirui Ray Li">
+  <meta name="keywords" content="testing3">
+  
+    <meta name="description" content="This blog is a record for what I learned during my internship at 300K—a quant company. Python pass In Python, the pass keyword is a placeholder statement. It is used when a statement is required synta">
+<meta property="og:type" content="article">
+<meta property="og:title" content="About Daily Learning Summary, Intern">
+<meta property="og:url" content="http://slray.com/2023/06/14/intern-log/index.html">
+<meta property="og:site_name" content="Ray&#39;s website">
+<meta property="og:description" content="This blog is a record for what I learned during my internship at 300K—a quant company. Python pass In Python, the pass keyword is a placeholder statement. It is used when a statement is required synta">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-06-13T17:38:25.000Z">
+<meta property="article:modified_time" content="2023-06-13T17:49:31.663Z">
+<meta property="article:author" content="Sirui Ray Li">
+<meta property="article:tag" content="Tech">
+<meta property="article:tag" content="Intern">
+<meta property="article:tag" content="Intern Log">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Python Grammar">
+<meta property="article:tag" content="Git">
+<meta property="article:tag" content="Git Command">
+<meta property="article:tag" content="Terminal">
+<meta property="article:tag" content="Terminal Command">
+<meta property="article:tag" content="Intern At 300K">
+<meta property="article:tag" content="Learning Log">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>About Daily Learning Summary, Intern - Ray&#39;s website</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"slray.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ray&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="About Daily Learning Summary, Intern"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-06-14 01:38" pubdate>
+          Wednesday, June 14th 2023, 1:38 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          16k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          136 minutes
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          visit: <span id="busuanzi_value_page_pv"></span> times
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">About Daily Learning Summary, Intern</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>This blog is a record for what I learned during my internship at
+300K—a quant company.</p>
+<h1 id="python">Python</h1>
+<h2 id="pass"><code>pass</code></h2>
+<p>In Python, the <code>pass</code> keyword is a
+<strong>placeholder</strong> statement. It is used when a statement is
+required syntactically, but no action needs to be performed.</p>
+<h3 id="example.">Example.</h3>
+<p>Suppose you're designing a new class and you know it needs a
+particular method, but you aren't sure what the implementation of that
+method should be yet. You can use <code>pass</code> as a placeholder
+like so:</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">class</span> <span class="hljs-symbol">MyClass:</span><br><span class="hljs-symbol">    <span class="hljs-symbol">def</span></span> <span class="hljs-symbol">future_method</span>(<span class="hljs-symbol">self</span>):<br>        <span class="hljs-symbol">pass</span><br></code></pre></td></tr></table></figure>
+<p>In this code, <code>future_method</code> does nothing, but it's a
+valid method. Without the <code>pass</code> statement, the code would
+have a syntax error because Python expects a block of code to follow the
+method definition. The <code>pass</code> keyword is saying, "I
+acknowledge that you expect something here, but I don't want to do
+anything."</p>
+<p>Similarly, it can be used in conditional statements, loops, etc.
+where some code is expected:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">if</span> some_condition:<br>    pass  # TODO: handle <span class="hljs-keyword">this</span> condition<br><br></code></pre></td></tr></table></figure>
+<p>In the above case, <code>pass</code> is used to indicate that this
+condition should be handled in the future.</p>
+<p>Keep in mind, it's typically used in development phases, and in most
+cases, you should eventually replace <code>pass</code> with some
+meaningful code.</p>
+<h2 id="dataclass"><code>@dataclass</code></h2>
+<p>The <code>@dataclass</code> decorator is a feature of Python
+introduced in Python 3.7, as part of the <code>dataclasses</code>
+module. It provides a convenient way to generate special methods for
+classes which mainly contain data, like the <strong>init</strong>,
+<strong>repr</strong>, and <strong>eq</strong> methods.</p>
+<h3 id="example">Example:</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@dataclass</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">DogInfo</span>():<br>    name: <span class="hljs-built_in">str</span><br>    age: <span class="hljs-built_in">int</span><br><br></code></pre></td></tr></table></figure>
+<p><code>DogInfo</code> is defined as a dataclass, which means Python
+will automatically add special methods like <strong>init</strong>,
+<strong>repr</strong>, and <strong>eq</strong>.</p>
+<h3 id="compare-to-java">Compare to Java</h3>
+<p>Java does not have a direct equivalent to Python's dataclasses, but
+it does have similar features for creating simple classes that mainly
+contain data.</p>
+<p>One approach in Java is to create a simple class with private fields,
+and generate getter, setter, <code>equals()</code>,
+<code>hashCode()</code>, and <code>toString()</code> methods. Most
+modern Java IDEs can generate these methods for you.</p>
+<p>Starting from Java 14, there's also a preview feature called
+<code>record</code> which provides similar functionality to Python's
+dataclasses. Here's an example:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">record</span> <span class="hljs-title class_">DogInfo</span><span class="hljs-params">(String name, <span class="hljs-type">int</span> age)</span> &#123;&#125;<br></code></pre></td></tr></table></figure>
+<p>In this Java code, <code>DogInfo</code> is defined as a record with
+two fields: <code>name</code> and <code>age</code>. Java automatically
+generates constructor, equals, hashCode, and toString methods.</p>
+<h3
+id="dataclassfrozentrue-the-frozentrue"><code>@dataclass(frozen=True)</code>
+the <code>(frozen=True)</code></h3>
+<p>The <code>@dataclass</code> decorator in Python comes with several
+parameters that you can use to customize the behavior of the dataclass,
+and one of these parameters is <code>frozen</code>.</p>
+<p>If you set <code>frozen=True</code> when you define a dataclass, it
+makes the instances of that dataclass immutable, similar to a tuple.
+That is, once the instance has been created and its attributes have been
+set, you can't change them.</p>
+<p>If you try to change an attribute of a frozen dataclass, Python
+raises an exception. Here's an example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> dataclasses <span class="hljs-keyword">import</span> dataclass<br><br><span class="hljs-meta">@dataclass(<span class="hljs-params">frozen=<span class="hljs-literal">True</span></span>)</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Point</span>:<br>    x: <span class="hljs-built_in">float</span><br>    y: <span class="hljs-built_in">float</span><br><br>p = Point(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>)<br>p.x = <span class="hljs-number">5</span>  <span class="hljs-comment"># Raises a `dataclasses.FrozenInstanceError`</span><br><br></code></pre></td></tr></table></figure>
+<p>If you run this code, you'll get a <code>FrozenInstanceError</code>
+when you try to assign <code>5</code> to <code>p.x</code>.</p>
+<p>The <code>frozen=True</code> parameter is useful when you want to
+create a dataclass that is hashable and can be used as a dictionary key,
+or when you want to ensure that an instance of the class won't change
+once it's been created.</p>
+<h4 id="compare-to-javas-final-keyword">Compare to Java’s
+<code>final</code> keyword</h4>
+<p>Compare with <code>final float PI</code> in Java: the
+<code>frozen=True</code> parameter for Python's <code>@dataclass</code>
+and the <code>final</code> keyword in Java serve similar purposes, but
+they're not exactly the same.</p>
+<p>The <code>frozen=True</code> parameter in Python makes it so that all
+attributes of an instance of a dataclass are immutable -- you can't
+change them once they're set. This is similar to how a
+<code>final</code> variable in Java can't be changed once it's
+initialized.</p>
+<p>However, the <code>final</code> keyword in Java can be used in
+several contexts. When used with a variable (like
+<code>final float PI</code>), it makes that variable a constant -- you
+can't change its value once it's initialized. When used with a class, it
+means the class can't be subclassed. When used with a method, it means
+the method can't be overridden by subclasses.</p>
+<p>The <code>frozen=True</code> parameter in Python's
+<code>@dataclass</code> only affects the mutability of instances of the
+class. It doesn't prevent the class from being subclassed, nor does it
+prevent methods from being overridden. There's no exact equivalent in
+Python for Java's <code>final</code> keyword when used with classes and
+methods. Python's philosophy tends towards allowing greater flexibility,
+so "final" classes and methods are not a language feature.</p>
+<h3 id="post_init"><code>post_init</code></h3>
+<p>The <code>__post_init__</code> method in Python is a special method
+provided by the dataclasses module. It's a method that you can define in
+your dataclass, and if it exists, it gets called automatically at the
+end of the generated <code>__init__</code> method.</p>
+<p>The purpose of the <code>__post_init__</code> method is to perform
+any additional initialization steps that you need to do beyond just
+setting the attributes of your dataclass to the provided values.</p>
+<p>Here's an example of how you might use it:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> dataclasses <span class="hljs-keyword">import</span> dataclass<br><br><span class="hljs-meta">@dataclass</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Point</span>:<br>    x: <span class="hljs-built_in">float</span><br>    y: <span class="hljs-built_in">float</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__post_init__</span>(<span class="hljs-params">self</span>):<br>        self.magnitude = (self.x ** <span class="hljs-number">2</span> + self.y ** <span class="hljs-number">2</span>) ** <span class="hljs-number">0.5</span><br><br>p = Point(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>)<br><span class="hljs-built_in">print</span>(p.magnitude)  <span class="hljs-comment"># Outputs: 5.0</span><br><br></code></pre></td></tr></table></figure>
+<p>In this example, after the <code>x</code> and <code>y</code>
+attributes are set in the <code>__init__</code> method, the
+<code>__post_init__</code> method is automatically called. This
+calculates the magnitude of the point from its <code>x</code> and
+<code>y</code> coordinates and stores it in the <code>magnitude</code>
+attribute.</p>
+<p>If you don't define a <code>__post_init__</code> method in your
+dataclass, then nothing extra happens after <code>__init__</code>. But
+if you do define it, then it provides a way to add some additional
+initialization behavior that goes beyond just setting attribute
+values.</p>
+<h2 id="inherit-in-python-and-java">Inherit in Python and Java</h2>
+<p>Inheritance is a key feature in many object-oriented programming
+languages, including Python and Java. It is a mechanism that allows a
+class to acquire the properties and behaviors of another class.</p>
+<p>The class from which properties are inherited is known as the parent
+class, superclass, or base class. The class that inherits those
+properties is known as the child class, subclass, or derived class.</p>
+<p>When a class inherits from another class in Python, it gains access
+to all of the superclass's attributes and methods. This means that
+objects of the subclass can be treated as instances of the superclass,
+and code that works with the superclass will automatically work with the
+subclass.</p>
+<p>Python's inheritance is defined as follows:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ParentClass</span>:<br>    <span class="hljs-keyword">pass</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ChildClass</span>(<span class="hljs-title class_ inherited__">ParentClass</span>):<br>    <span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure>
+<p>In this example, <code>ChildClass</code> is inheriting from
+<code>ParentClass</code>.</p>
+<p>Python supports both single and multiple inheritance. Single
+inheritance is when a class inherits from a single superclass, while
+multiple inheritance is when a class inherits from more than one
+superclass. Here is an example of multiple inheritance:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ParentClass1</span>:<br>    <span class="hljs-keyword">pass</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ParentClass2</span>:<br>    <span class="hljs-keyword">pass</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ChildClass</span>(ParentClass1, ParentClass2):<br>    <span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure>
+<p>In this example, <code>ChildClass</code> is inheriting from both
+<code>ParentClass1</code> and <code>ParentClass2</code>.</p>
+<p>Java also supports inheritance, but with a key difference: Java does
+not support multiple inheritance for classes. A class in Java can only
+directly inherit from one superclass. However, a class can implement
+multiple interfaces, which is a sort of workaround for multiple
+inheritance.</p>
+<p>This is how you define inheritance in Java:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ParentClass</span> &#123;<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ChildClass</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">ParentClass</span> &#123;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>In this example, <code>ChildClass</code> is inheriting from
+<code>ParentClass</code>.</p>
+<p>Despite the difference in multiple inheritance, the fundamental idea
+behind inheritance is the same in both languages. It's a way to organize
+code, increase reusability, and set up relationships between different
+types.</p>
+<p>Also, Java have abstract class which might be different with what
+python’s inherit behaves.</p>
+<h4 id="a-key-example">A key example:</h4>
+<p>Yes, you're correct. When you create an instance of
+<code>AClass</code> by calling <code>AClass("t1", "t2", "t3")</code>,
+the <code>p1</code>, <code>p2</code>, and <code>p3</code> attributes of
+<code>a_class</code> will be set to "t1", "t2", and "t3"
+respectively.</p>
+<p>The values "p1_attribute", "p2_attribute", and "p3_attribute"
+specified in the class definition are default values. They are used if
+you create an instance without providing corresponding arguments.</p>
+<p>Here's how it works:</p>
+<p>Try to answer the following question:</p>
+<p>If I have code</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">@dataclass(frozen=True)<br><span class="hljs-keyword">class</span> <span class="hljs-symbol">AClass:</span><br><span class="hljs-symbol">    <span class="hljs-symbol">p1</span>: <span class="hljs-symbol">str</span></span> = &quot;<span class="hljs-symbol">p1_attribute</span>&quot;<br>    <span class="hljs-symbol">p2: <span class="hljs-symbol">str</span></span> = &quot;<span class="hljs-symbol">p2_attribute</span>&quot;<br>    <span class="hljs-symbol">p3: <span class="hljs-symbol">str</span></span> = &quot;<span class="hljs-symbol">p3_attribute</span>&quot;<br></code></pre></td></tr></table></figure>
+<p>and I have <code>a_class = AClass("t1", "t2", "t3")</code>, then the
+<code>p1, p2, p3</code> of <code>a_class</code> will be "t1", "t2", and
+"t3"?</p>
+<ul>
+<li><p>answer Yes, it’s correct. When you create an instance of
+<code>AClass</code> by calling <code>AClass("t1", "t2", "t3")</code>,
+the <code>p1</code>, <code>p2</code>, and <code>p3</code> attributes of
+<code>a_class</code> will be set to "t1", "t2", and "t3" respectively.
+The values "p1_attribute", "p2_attribute", and "p3_attribute" specified
+in the class definition are default values. They are used if you create
+an instance without providing corresponding arguments. Here's how it
+works:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> dataclasses <span class="hljs-keyword">import</span> dataclass<br><br><span class="hljs-meta">@dataclass(<span class="hljs-params">frozen=<span class="hljs-literal">True</span></span>)</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">AClass</span>:<br>    p1: <span class="hljs-built_in">str</span> = <span class="hljs-string">&quot;p1_attribute&quot;</span><br>    p2: <span class="hljs-built_in">str</span> = <span class="hljs-string">&quot;p2_attribute&quot;</span><br>    p3: <span class="hljs-built_in">str</span> = <span class="hljs-string">&quot;p3_attribute&quot;</span><br><br><span class="hljs-comment"># Creating an instance with arguments</span><br>a_class = AClass(<span class="hljs-string">&quot;t1&quot;</span>, <span class="hljs-string">&quot;t2&quot;</span>, <span class="hljs-string">&quot;t3&quot;</span>)<br><span class="hljs-built_in">print</span>(a_class.p1)  <span class="hljs-comment"># Outputs: t1</span><br><span class="hljs-built_in">print</span>(a_class.p2)  <span class="hljs-comment"># Outputs: t2</span><br><span class="hljs-built_in">print</span>(a_class.p3)  <span class="hljs-comment"># Outputs: t3</span><br><br><span class="hljs-comment"># Creating an instance without arguments</span><br>another_class = AClass()<br><span class="hljs-built_in">print</span>(another_class.p1)  <span class="hljs-comment"># Outputs: p1_attribute</span><br><span class="hljs-built_in">print</span>(another_class.p2)  <span class="hljs-comment"># Outputs: p2_attribute</span><br><span class="hljs-built_in">print</span>(another_class.p3)  <span class="hljs-comment"># Outputs: p3_attribute</span><br><br></code></pre></td></tr></table></figure>
+<p>In this code, when we create <code>a_class</code> with arguments,
+those arguments override the default values. But when we create
+<code>another_class</code> without arguments, the attributes get set to
+the default values.</p></li>
+</ul>
+<h2 id="yield"><code>yield</code></h2>
+<p>I search several times on the <code>yiedl</code> key word in python.
+Even with ChatGPT, I cannot clearly understand how <code>yield</code>
+keyword is working in python and why we need it. One key step to
+understand it is that the <strong><code>yield</code></strong> keyword
+cannot be replaced with <strong><code>return</code></strong> because
+<strong><code>return</code></strong> in a function terminates the
+function entirely, while <strong><code>yield</code></strong> only pauses
+the function. If you replace <strong><code>yield</code></strong> with
+<strong><code>return</code></strong>, your function will stop executing
+after the first <strong><code>return</code></strong> statement it
+encounters, and it will not be able to produce multiple values over
+time.</p>
+<hr />
+<p>The <code>yield</code> keyword in Python is used in a special kind of
+function called a generator. Generators are a type of iterable, like
+lists or tuples. Unlike lists, they don't allow indexing with arbitrary
+indices, but they can still be iterated through with for loops.</p>
+<p>When the <code>yield</code> keyword is called in a function, it
+returns a value and pauses execution of the function. The function can
+then be resumed right where it left off, allowing it to generate a
+sequence of results over time, instead of computing them all at once and
+returning them in a list for instance.</p>
+<p>Here's a simple example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">simple_generator</span>():<br>    <span class="hljs-keyword">yield</span> <span class="hljs-number">1</span><br>    <span class="hljs-keyword">yield</span> <span class="hljs-number">2</span><br>    <span class="hljs-keyword">yield</span> <span class="hljs-number">3</span><br><br><span class="hljs-keyword">for</span> value <span class="hljs-keyword">in</span> simple_generator():<br>    <span class="hljs-built_in">print</span>(value)<br></code></pre></td></tr></table></figure>
+<p>This will output:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-number">1</span><br><span class="hljs-number">2</span><br><span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
+<p>If you only need to generate a single value from your function, then
+you can use <code>return</code> instead of <code>yield</code>. Also, if
+your function generates a small number of values, you might be able to
+use <code>return</code> to return them all at once in a list, rather
+than generating them one at a time with <code>yield</code>.</p>
+<p>In summary, <code>yield</code> is a special keyword used in the
+context of Python generators, and it cannot be simply replaced with
+<code>return</code> without changing the function's behavior.</p>
+<h3 id="can-i-use-a-block-of-code-to-implement-yield">Can I use a block
+of code to implement <code>yield</code>?</h3>
+<p>In Python, the <code>yield</code> keyword is used to make a function
+into a generator that can produce a sequence of results over time.
+However, the <code>yield</code> keyword itself does quite a bit of
+behind-the-scenes work, so it's not straightforward to replace it with a
+few lines of code. You would need to implement a whole class with an
+iterator to get equivalent behavior.</p>
+<p>Here is a simple example of how you might do that. This example
+implements a generator that yields the numbers 1, 2, and 3, similar to
+the previous example.</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-keyword">class</span> <span class="hljs-title class_">SimpleGenerator</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params"><span class="hljs-variable language_">self</span></span>):<br>        <span class="hljs-variable language_">self</span>.current = <span class="hljs-number">0</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__iter__</span>(<span class="hljs-params"><span class="hljs-variable language_">self</span></span>):<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__next__</span>(<span class="hljs-params"><span class="hljs-variable language_">self</span></span>):<br>        <span class="hljs-variable language_">self</span>.current += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-variable language_">self</span>.current &gt; <span class="hljs-number">3</span>:<br>            <span class="hljs-keyword">raise</span> <span class="hljs-title class_">StopIteration</span><br>        <span class="hljs-symbol">else:</span><br>            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>.current<br><br><span class="hljs-comment"># Use the generator</span><br><span class="hljs-keyword">for</span> value <span class="hljs-keyword">in</span> <span class="hljs-title class_">SimpleGenerator</span>():<br>    print(value)<br><br></code></pre></td></tr></table></figure>
+<p>In this code, the <code>SimpleGenerator</code> class has a
+<code>__next__</code> method that implements the logic of the generator:
+it keeps track of the current number, and each time
+<code>__next__</code> is called, it increments the number and returns
+it. When the number gets bigger than 3, it raises a
+<code>StopIteration</code> exception, which signals that the generator
+is done.</p>
+<p>This is a more explicit way of implementing a generator, and it can
+give you a clearer sense of what's going on behind the scenes when you
+use the <code>yield</code> keyword. However, using <code>yield</code> is
+generally simpler and more concise, which is why it's usually preferred
+for creating generators in Python.</p>
+<h3
+id="but-with-yield-keyword-there-wont-be-such-thing-to-store-the-iterable-result-which-means-i-wont-be-able-to-print-the-whole-return-result-inside-of-the-method-with-yield">but
+with <code>yield</code> keyword, there won't be such thing to store the
+iterable result, which means I won't be able to print the whole return
+result inside of the method with 'yield`?</h3>
+<ul>
+<li><p>answer You're correct. A generator (a function that uses the
+<code>yield</code> keyword) doesn't return a value that can be stored in
+a variable like a list or tuple. Instead, it produces values one at a
+time on-the-fly as you iterate over the generator. Here's an
+example:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-keyword">def</span> <span class="hljs-title function_">simple_generator</span>():<br>    <span class="hljs-keyword">yield</span> <span class="hljs-number">1</span><br>    <span class="hljs-keyword">yield</span> <span class="hljs-number">2</span><br>    <span class="hljs-keyword">yield</span> <span class="hljs-number">3</span><br><br><span class="hljs-comment"># This won&#x27;t work as you might expect:</span><br>result = simple_generator()<br>print(result)  <span class="hljs-comment"># Outputs: &lt;generator object simple_generator at 0x7f...&gt;</span><br><br></code></pre></td></tr></table></figure>
+<p>When you try to print <code>result</code>, it tells you that it's a
+generator object, not a list of numbers. If you want to collect all the
+values produced by a generator into a list, you can do that by passing
+the generator to the <code>list</code> function:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs applescript"><span class="hljs-literal">result</span> = <span class="hljs-built_in">list</span>(simple_generator())<br>print(<span class="hljs-literal">result</span>)  <span class="hljs-comment"># Outputs: [1, 2, 3]</span><br><br></code></pre></td></tr></table></figure>
+<p>However, it's important to remember that one of the main reasons to
+use generators is when you're working with a large amount of data that
+won't fit into memory all at once. In such cases, you'd generally want
+to process the generator's values one at a time, rather than trying to
+store them all in a list.</p></li>
+</ul>
+<h2 id="enumerate"><code>enumerate()</code></h2>
+<p>The <code>enumerate</code> function in Python is a built-in function
+that allows you to loop over something and have an automatic
+counter.</p>
+<p>In a <code>for</code> loop, when you use
+<code>enumerate(sources)</code>, it returns an enumerate object, which
+is an iterable that yields pairs of the form
+<code>(index, value)</code>. In each iteration of the loop,
+<code>idx</code> is the index of the current item, and
+<code>source</code> is the value of the current item.</p>
+<p>Here's a simple example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">fruits = [<span class="hljs-string">&#x27;apple&#x27;</span>, <span class="hljs-string">&#x27;banana&#x27;</span>, <span class="hljs-string">&#x27;cherry&#x27;</span>]<br><br><span class="hljs-keyword">for</span> idx, fruit <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(fruits):<br>    <span class="hljs-built_in">print</span>(idx, fruit)<br></code></pre></td></tr></table></figure>
+<p>This will output:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-number">0</span> apple<br><span class="hljs-number">1</span> banana<br><span class="hljs-number">2</span> cherry<br></code></pre></td></tr></table></figure>
+<p>As you can see, <code>idx</code> is the index of each item in the
+list, and <code>fruit</code> is the value of each item. This can be very
+useful in situations where you need to know the index of the items as
+you're looping over them.</p>
+<h2 id="iter"><code>iter()</code></h2>
+<p>The <code>iter()</code> function in Python is a built-in function
+that returns an iterator object. An iterator is an object that can be
+iterated (looped) upon. An object which will return data, one element at
+a time when <code>next()</code> is called on it.</p>
+<p>In more technical terms, an iterator is an object that implements the
+iterator protocol, which consists of the methods <code>__iter__()</code>
+and <code>__next__()</code>.</p>
+<p>Here's an example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">my_list = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]<br>my_iter = <span class="hljs-built_in">iter</span>(my_list)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">next</span>(my_iter))  <span class="hljs-comment"># Outputs: 1</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">next</span>(my_iter))  <span class="hljs-comment"># Outputs: 2</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">next</span>(my_iter))  <span class="hljs-comment"># Outputs: 3</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">next</span>(my_iter))  <span class="hljs-comment"># Outputs: 4</span><br><br></code></pre></td></tr></table></figure>
+<p>In this code, <code>iter(my_list)</code> returns an iterator object
+that you can fetch values from one at a time using the
+<code>next()</code> function. Once all elements are exhausted,
+<code>next()</code> will raise a <code>StopIteration</code>
+exception.</p>
+<p>Most of the time, you don't need to use <code>iter()</code> and
+<code>next()</code> directly, because Python's <code>for</code> loop
+automatically calls them when you loop over an iterable object:</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">my_list = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]<br><span class="hljs-keyword">for</span> <span class="hljs-keyword">element</span> <span class="hljs-keyword">in</span> my_list:<br>    print(<span class="hljs-keyword">element</span>)<br><br></code></pre></td></tr></table></figure>
+<p>This code does the same thing as the previous example, but it's a lot
+simpler and clearer. The <code>for</code> loop automatically calls
+<code>iter(my_list)</code> to get an iterator, and then it calls
+<code>next()</code> on that iterator for each iteration of the loop.
+When <code>next()</code> raises a <code>StopIteration</code> exception,
+the <code>for</code> loop catches it and gracefully exits the loop.</p>
+<h2 id="ternary-operator-in-python">ternary operator in Python</h2>
+<h3 id="example-1">Example:</h3>
+<p>rewrite the following Java code in Python</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">5</span>;<br><span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> (j &gt; <span class="hljs-number">1</span>) ? <span class="hljs-number">6</span> : <span class="hljs-number">7</span>; <span class="hljs-comment">// if j &gt; 1, then i = 6, else, i = 7</span><br></code></pre></td></tr></table></figure>
+<p>Python does have a similar construct, but the syntax is different
+from Java. Instead of <code>(j &gt; 1) ? 6 : 7</code>, in Python you
+would write <code>6 if j &gt; 1 else 7</code>.</p>
+<p>Here's an example:</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">5</span><br><span class="hljs-attribute">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">6</span> if j &gt; <span class="hljs-number">1</span> else <span class="hljs-number">7</span><br></code></pre></td></tr></table></figure>
+<p>In this Python code, <code>6 if j &gt; 1 else 7</code> is a
+conditional expression (often called a ternary operation). It checks if
+<code>j &gt; 1</code>. If <code>j &gt; 1</code> is true, it evaluates to
+<code>6</code>. Otherwise, it evaluates to <code>7</code>. This value is
+then assigned to <code>i</code>.</p>
+<p>This is similar to the <code>? :</code> operator in Java, but the
+syntax is slightly different.</p>
+<h1 id="git">Git</h1>
+<h2
+id="differences-between-git-switch-another-branch-and-git-checkout-another-branch">Differences
+between <code>git switch another-branch</code> and
+<code>git checkout another-branch</code></h2>
+<p>In versions of Git prior to 2.23, the command
+<code>git checkout</code> was primarily used to switch between branches
+in a Git repository. However, starting from Git 2.23, the command
+<code>git switch</code> was introduced as a more intuitive and safer
+alternative to <code>git checkout</code> when it comes to switching
+branches. Here are the main differences between the two commands:</p>
+<ol type="1">
+<li>Simplicity and clarity: The <code>git switch</code> command was
+introduced to provide a clearer and more straightforward syntax for
+switching branches. The name "switch" better reflects the action being
+performed, making it easier to understand its purpose at a glance.</li>
+<li>Safety: The <code>git switch</code> command is designed to be more
+cautious and less error-prone than <code>git checkout</code>. When using
+<code>git switch</code>, Git performs additional checks to ensure that
+you don't accidentally lose work or overwrite uncommitted changes. For
+example, if you have uncommitted changes in your working directory, Git
+will refuse to switch branches unless you either commit the changes or
+stash them. This helps prevent data loss.</li>
+<li>Branch creation: With <code>git switch</code>, you can create and
+switch to a new branch in a single command using the
+<code>git switch -c &lt;new-branch&gt;</code> syntax. This combines the
+creation of a branch and switching to it into a single step. In
+contrast, <code>git checkout</code> requires separate commands to create
+and switch to a new branch (<code>git branch &lt;new-branch&gt;</code>
+and <code>git checkout &lt;new-branch&gt;</code>).</li>
+<li>Replacing detached HEAD: In <code>git switch</code>, the command
+<code>git switch &lt;commit&gt;</code> is used to switch to a specific
+commit, effectively replacing the old "detached HEAD" state. This syntax
+makes it more explicit and less error-prone to switch to a specific
+commit, as opposed to <code>git checkout &lt;commit&gt;</code>.</li>
+</ol>
+<p>It's worth noting that <code>git checkout</code> is still supported
+in recent versions of Git to maintain backward compatibility, but
+<code>git switch</code> is encouraged for branch switching operations
+due to its advantages in safety and simplicity.</p>
+<h2
+id="git-command-for-create-and-checkout-to-a-new-branch-together">Git
+command for create and checkout to a new branch together</h2>
+<p>You may use <code>git checkout -b another-branch</code></p>
+<h1 id="terminal-command">Terminal Command</h1>
+<h2 id="split-the-command-window-to-multiple-sub-windows">Split the
+command window to multiple sub windows</h2>
+<p>You may use <code>command</code> + <code>D</code> on key board</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Daily-Logs/" class="category-chain-item">Daily Logs</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Daily-Logs/Intern-Log/" class="category-chain-item">Intern Log</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Daily-Logs/Intern-Log/Tech-Summary/" class="category-chain-item">Tech Summary</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Tech/">#Tech</a>
+      
+        <a href="/tags/Intern/">#Intern</a>
+      
+        <a href="/tags/Intern-Log/">#Intern Log</a>
+      
+        <a href="/tags/Python/">#Python</a>
+      
+        <a href="/tags/Python-Grammar/">#Python Grammar</a>
+      
+        <a href="/tags/Git/">#Git</a>
+      
+        <a href="/tags/Git-Command/">#Git Command</a>
+      
+        <a href="/tags/Terminal/">#Terminal</a>
+      
+        <a href="/tags/Terminal-Command/">#Terminal Command</a>
+      
+        <a href="/tags/Intern-At-300K/">#Intern At 300K</a>
+      
+        <a href="/tags/Learning-Log/">#Learning Log</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>About Daily Learning Summary, Intern</div>
+      <div>http://slray.com/2023/06/14/intern-log/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Sirui Ray Li</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>June 14, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/02/04/Java-Annotation-build-annotations-by-yourself/" title="Self-built Annotation :Format and Essence">
+                        <span class="hidden-mobile">Self-built Annotation :Format and Essence</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        aggregate visit: 
+        <span id="busuanzi_value_site_pv"></span>
+         times
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        , 
+        <span id="busuanzi_value_site_uv"></span>
+         people
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
