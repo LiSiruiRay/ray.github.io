@@ -1,5 +1,5 @@
 ---
-title: About my intern study summary
+title: About Daily Learning Summary, Intern
 date: 2023-06-14 01:38:25
 tags:
   [
