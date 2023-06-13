@@ -2,8 +2,6 @@
 ## Docs: https://hexo.io/docs/configuration.html
 ## Source: https://github.com/hexojs/hexo/
 
-# for table of content
-
 # Site
 title: Ray's website
 subtitle: testing testing testing
@@ -37,20 +35,42 @@ code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
 
-navbar:
-  blog_title: Ray's blog
-
 # Writing
 new_post_name: :title.md # File name of new posts
 default_layout: post
-titlecase: false # Transform title into titlecase
+post:
+    math:
+        enable: true
+        specific: true
+        engine: mathjax
+    meta:
+      author:  # 作者，优先根据 front-matter 里 author 字段，其次是 hexo 配置中 author 值
+        enable: false
+      date:  # 文章日期，优先根据 front-matter 里 date 字段，其次是 md 文件日期
+        enable: true
+        format: "dddd, MMMM Do YYYY, h:mm a"  # 格式参照 ISO-8601 日期格式化
+      wordcount:  # 字数统计
+        enable: true
+        format: "{} words"  # 显示的文本，{}是数字的占位符（必须包含)，下同
+      min2read:  # 阅读时间
+        enable: true
+        format: "{} minutes"
+      views:  # 阅读次数
+        enable: true
+        source: "busuanzi"  # 统计数据来源，可选：leancloud | busuanzi   注意不蒜子会间歇抽风
+        format: "visit: {} times"
+
+titlecase: true # Transform title into titlecase
 external_link:
   enable: true # Open external links in new tab
   field: site # Apply to the whole site
   exclude: ''
 filename_case: 0
 render_drafts: true
-post_asset_folder: true
+post_asset_folder: false
+#marked:
+#  prependRoot: true
+#  postAsset: true
 relative_link: false
 future: true
 highlight:
@@ -109,6 +129,19 @@ ignore:
 ## Themes: https://hexo.io/themes/
 theme: fluid
 
+navbar:
+  blog_title: Ray's blog
+
+index:
+  slogan:
+    enable: true
+    text: Welcome to Ray's blog!
+    api:
+      enable: false
+      url: "https://v1.hitokoto.cn/"
+      method: "GET"
+      headers: {}
+      keys: ["hitokoto"]
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
@@ -117,42 +150,7 @@ deploy:
   branch: gh-pages
   message: "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"
 
-##Post page setting
-##added myself
-#post:
-#  meta:
-#    author:  # 作者，优先根据 front-matter 里 author 字段，其次是 hexo 配置中 author 值
-#      enable: false
-#    date:  # 文章日期，优先根据 front-matter 里 date 字段，其次是 md 文件日期
-#      enable: true
-#      format: "dddd, MMMM Do YYYY, h:mm a"  # 格式参照 ISO-8601 日期格式化
-#    wordcount:  # 字数统计
-#      enable: true
-#      format: "{} 字"  # 显示的文本，{}是数字的占位符（必须包含)，下同
-#    min2read:  # 阅读时间
-#      enable: true
-#      format: "{} 分钟"
-#    views:  # 阅读次数
-#      enable: false
-#      source: "leancloud"  # 统计数据来源，可选：leancloud | busuanzi   注意不蒜子会间歇抽风
-#      format: "{} 次"
-post:
-    meta:
-      author:  # 作者，优先根据 front-matter 里 author 字段，其次是 hexo 配置中 author 值
-        enable: false
-      date:  # 文章日期，优先根据 front-matter 里 date 字段，其次是 md 文件日期
-        enable: true
-        format: "dddd, MMMM Do YYYY, h:mm a"  # 格式参照 ISO-8601 日期格式化
-      wordcount:  # 字数统计
-        enable: true
-        format: "{} wordss"  # 显示的文本，{}是数字的占位符（必须包含)，下同
-      min2read:  # 阅读时间
-        enable: true
-        format: "{} minutes"
-      views:  # 阅读次数
-        enable: true
-        source: "busuanzi"  # 统计数据来源，可选：leancloud | busuanzi   注意不蒜子会间歇抽风
-        format: "visit: {} times"
+
 
 footer:
   statistics:
@@ -161,7 +159,30 @@ footer:
     pv_format: "aggregate visit: {} times"  # 显示的文本，{}是数字的占位符（必须包含)，下同
     uv_format: ", {} people"
     
+code:
+  copy_btn: true
+  highlight:
+    enable: true
+    line_number: true
+    lib: "highlightjs"
+    highlightjs:
+      style: 'Github Gist'
+      bg_color: false
+    prismjs:
+      style: "default"
+      preprocess: true
+#post:
+#  comments:
+#    enable: true
+#    type: disqus
+#
+#    disqus:
+#  shortname: fluid
+
+
 PDF:
   type: pdf
   selector: 'a[href$=".pdf"]'
   replacement: '<object data="%s" type="application/pdf" width="500" height="600"></object>'
+  
+# for table of content
