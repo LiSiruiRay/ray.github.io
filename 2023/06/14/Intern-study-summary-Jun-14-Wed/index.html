@@ -1,0 +1,974 @@
+
+
+<!DOCTYPE html>
+<html lang="en,zh-CN,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/ray.jpg">
+  <link rel="icon" href="/ray.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Sirui Ray Li">
+  <meta name="keywords" content="testing3">
+  
+    <meta name="description" content="Learning record for what I learned during my internship at 300K—a quant company.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Intern study summary - Jun 14 Wed">
+<meta property="og:url" content="http://slray.com/2023/06/14/Intern-study-summary-Jun-14-Wed/index.html">
+<meta property="og:site_name" content="Ray&#39;s website">
+<meta property="og:description" content="Learning record for what I learned during my internship at 300K—a quant company.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-06-14T14:25:45.000Z">
+<meta property="article:modified_time" content="2023-06-14T14:29:56.988Z">
+<meta property="article:author" content="Sirui Ray Li">
+<meta property="article:tag" content="Intern">
+<meta property="article:tag" content="Intern Log">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Python Grammar">
+<meta property="article:tag" content="PyCharm">
+<meta property="article:tag" content="PyCharm Professional">
+<meta property="article:tag" content="Terminal">
+<meta property="article:tag" content="Terminal Command">
+<meta property="article:tag" content="Intern At 300K">
+<meta property="article:tag" content="Learning Log">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="HTML">
+<meta property="article:tag" content="Tech">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Intern study summary - Jun 14 Wed - Ray&#39;s website</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"slray.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ray&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Intern study summary - Jun 14 Wed"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-06-14 22:25" pubdate>
+          Wednesday, June 14th 2023, 10:25 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          9.8k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          83 minutes
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          visit: <span id="busuanzi_value_page_pv"></span> times
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Intern study summary - Jun 14 Wed</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <style>
+.tog-button {
+    color: white;
+  border-radius: 20px; /* Rounded corners */
+  /* border: 10px;  */
+  /* Remove default button border */
+  /* border-color: white; */
+  padding: 10px 20px; /* Add some padding */
+  text-decoration: none; /* Remove default underline */
+  cursor: pointer; /* Change cursor on hover */
+  background-color: transparent; /* Transparent background */
+  color: white; /* Add some color */
+}
+
+.tog-button:hover {
+  background-color: #ddd; /* Add a hover effect */
+  color: black;
+}
+
+.tog-content {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    /* color: white; */
+    /* boarder: 10px; */
+}
+</style>
+<h1 id="python">Python</h1>
+<h2 id="polymorphism">Polymorphism</h2>
+<h3
+id="does-python-have-the-same-thing-as-javas-polymorphism-for-example-i-have-class-car-price-int-age-int-name-strand-class-bmwcar-power-str-color-str-when-i-declare-a-function-as-get_car_infocar-car-can-i-input-an-instance-of-bmw-will-i-be-able-to-access-the-power-and-color-attribute-of-the-input-which-is-type-car">Does
+python have the same thing as Java's Polymorphism? For example, I have
+<code>class Car: price: int; age: int; name: str</code>and
+<code>class BMW(car): power: str; color: str</code>, when I declare a
+function as <code>get_car_info(car: Car)</code> can I input an instance
+of <code>BMW</code>? will i be able to access the <code>power</code> and
+<code>color</code> attribute of the input, which is type
+<code>Car</code>?</h3>
+<div class="tog-container">
+<p><button class="tog-button">Show/Hide Answer</button></p>
+</div>
+<div class="tog-content" style="display: none;">
+<p>Yes, Python does support a form of polymorphism, but it is somewhat
+different from Java's. Python's typing is dynamic, whereas Java's is
+static. In Python, if an object has a method or property, you can use
+it, regardless of the object's type. This concept is often summarized by
+the phrase "duck typing": If it walks like a duck and quacks like a
+duck, it's a duck.</p>
+<p>In your example, you define <code>Car</code> and <code>BMW</code>
+classes, and then a function <code>get_car_info(car: Car)</code>. The
+type hint <code>Car</code> is just that: a hint. Python will allow you
+to pass any object to <code>get_car_info</code>. If the object has all
+the properties and methods the function tries to use, the function will
+work fine.</p>
+<p>So, yes, you can pass a <code>BMW</code> instance to
+<code>get_car_info</code>. Whether you can access <code>power</code> and
+<code>color</code> depends on the body of <code>get_car_info</code>. If
+the function tries to access those properties, it will work fine with a
+<code>BMW</code> instance. If you pass in a <code>Car</code> instance
+that doesn't have those properties, however, the function will raise an
+AttributeError.</p>
+<p>Here is an example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Car</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, price: <span class="hljs-built_in">int</span>, age: <span class="hljs-built_in">int</span>, name: <span class="hljs-built_in">str</span></span>):<br>        self.price = price<br>        self.age = age<br>        self.name = name<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">BMW</span>(<span class="hljs-title class_ inherited__">Car</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, price: <span class="hljs-built_in">int</span>, age: <span class="hljs-built_in">int</span>, name: <span class="hljs-built_in">str</span>, power: <span class="hljs-built_in">str</span>, color: <span class="hljs-built_in">str</span></span>):<br>        <span class="hljs-built_in">super</span>().__init__(price, age, name)<br>        self.power = power<br>        self.color = color<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_car_info</span>(<span class="hljs-params">car: Car</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;Name: <span class="hljs-subst">&#123;car.name&#125;</span>, Age: <span class="hljs-subst">&#123;car.age&#125;</span>, Price: <span class="hljs-subst">&#123;car.price&#125;</span>&#x27;</span>)<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(car, BMW):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;Power: <span class="hljs-subst">&#123;car.power&#125;</span>, Color: <span class="hljs-subst">&#123;car.color&#125;</span>&#x27;</span>)<br><br>my_bmw = BMW(<span class="hljs-number">30000</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;BMW X5&#x27;</span>, <span class="hljs-string">&#x27;250 hp&#x27;</span>, <span class="hljs-string">&#x27;Red&#x27;</span>)<br>get_car_info(my_bmw)<br><br></code></pre></td></tr></table></figure>
+<p>Here, the <code>get_car_info</code> function first checks whether the
+<code>car</code> is an instance of <code>BMW</code> before trying to
+access the <code>power</code> and <code>color</code> attributes,
+avoiding an AttributeError when used with a <code>Car</code>
+instance.</p>
+<p>It's worth mentioning that Python's approach to polymorphism is more
+flexible than Java's, but it also has downsides. The lack of strict
+typing can lead to errors that are only caught at runtime, rather than
+at compile-time like in Java. You might want to consider using Python's
+optional type checking features to get some of the benefits of static
+typing while keeping the flexibility of Python.</p>
+</div>
+<script>
+let togButton = document.querySelector('.tog-button');
+let togContent = document.querySelector('.tog-content');
+
+togButton.addEventListener('click', function() {
+    console.log("clicked")
+  if(togContent.style.display == 'none') {
+    togContent.style.display = 'block';
+  } else {
+    togContent.style.display = 'none';
+  }
+});
+</script>
+<h1 id="pyenv">pyenv</h1>
+<h2
+id="use-pyenv-to-change-the-python-version-of-your-system-global">Use
+pyenv to change the python version of your system (global)</h2>
+<p><code>pyenv</code> is a simple yet powerful Python version management
+tool. Here are the steps to change the global Python version using
+<code>pyenv</code>:</p>
+<ol type="1">
+<li><p><strong>Install <code>pyenv</code></strong>: Before you use
+<code>pyenv</code>, you need to install it. Here is the command to
+install <code>pyenv</code> using Homebrew on macOS:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew update<br>brew install pyenv<br></code></pre></td></tr></table></figure>
+<p>For Linux, you can use the <code>pyenv-installer</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl &lt;https://pyenv.run&gt; | bash<br></code></pre></td></tr></table></figure>
+<p>Make sure you follow the instructions provided by the installer to
+set up your shell for pyenv usage.</p></li>
+<li><p><strong>List Available Python Versions</strong>: Use the
+<code>pyenv install --list</code> command to see the list of all
+available Python versions. It should display a list of versions like
+this:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">2.7.17<br>3.5.9<br>3.6.10<br>3.7.7<br>3.8.2<br>...<br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Install a Specific Python Version</strong>: You can
+install a specific Python version using <code>pyenv</code>. For example,
+to install Python 3.8.2, you would use this command:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">pyenv</span> install <span class="hljs-number">3</span>.<span class="hljs-number">8</span>.<span class="hljs-number">2</span><br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Set the Global Python Version</strong>: After the Python
+version you want is installed, you can set it as the global version with
+<code>pyenv global</code>. For example, to set Python 3.8.2 as the
+global version, you would use this command:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">pyenv</span> global <span class="hljs-number">3</span>.<span class="hljs-number">8</span>.<span class="hljs-number">2</span><br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Confirm the Change</strong>: To confirm that the global
+Python version has been changed, you can use the
+<code>python --version</code> command. It should display something like
+<code>Python 3.8.2</code>, indicating that the version has been
+changed.</p></li>
+</ol>
+<p>That's it! You have successfully changed the global Python version
+using <code>pyenv</code>. Keep in mind that changing the global Python
+version will affect all the Python programs on your system, so make sure
+you really want to do this before you proceed.</p>
+<h2 id="wont-work">Won’t work</h2>
+<p>Sometimes you will find that even you followed the steps
+aforementioned, when you type <code>python3 --version</code>, you will
+still see the old version, which means the command
+<code>pyenv global 3.8.2</code>is not working. Keep reading:</p>
+<p>If you have just installed <code>pyenv</code> and have set the global
+Python version, but when running <code>python3 --version</code> the
+version shown is still the system version (Python 3.8.9 in this case),
+it suggests that your shell environment might not be set up properly to
+use <code>pyenv</code>.</p>
+<p>One of the common reasons for this is that <code>pyenv</code> is not
+properly integrated in your shell.</p>
+<p>Here is how you can do it:</p>
+<ol type="1">
+<li><p><strong>Add <code>pyenv</code> to bash so command line knows
+about <code>pyenv</code></strong>: Depending on your shell, you need to
+add these lines to your shell's configuration file (<code>.bashrc</code>
+or <code>.bash_profile</code> for bash, <code>.zshrc</code> for
+Zsh):</p>
+<p>For <code>bash</code>:</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-keyword">echo</span> -e &#x27;<span class="hljs-keyword">if</span> <span class="hljs-keyword">command</span> -v pyenv 1&gt;<span class="hljs-string">/dev/null</span> 2&gt;&amp;1; then\\n  eval <span class="hljs-string">&quot;$(pyenv init -)&quot;</span>\\nfi&#x27; &gt;&gt; ~<span class="hljs-string">/.bashrc</span><br>source ~<span class="hljs-string">/.bashrc</span><br><br></code></pre></td></tr></table></figure>
+<p>For <code>zsh</code>:</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-keyword">echo</span> -e &#x27;<span class="hljs-keyword">if</span> <span class="hljs-keyword">command</span> -v pyenv 1&gt;<span class="hljs-string">/dev/null</span> 2&gt;&amp;1; then\\n  eval <span class="hljs-string">&quot;$(pyenv init -)&quot;</span>\\nfi&#x27; &gt;&gt; ~<span class="hljs-string">/.zshrc</span><br>source ~<span class="hljs-string">/.zshrc</span><br><br></code></pre></td></tr></table></figure>
+<p>These commands will append the <code>pyenv init</code> command to
+your shell configuration file and then reload the shell configuration
+file. The <code>pyenv init</code> command configures the shell to use
+<code>pyenv</code> for Python version management.</p></li>
+<li><p><strong>Restart your shell</strong>: This ensures that the
+changes take effect.</p></li>
+<li><p><strong>Check the Python version</strong>: Now, when you type
+<code>python3 --version</code>, it should display
+<code>Python 3.8.16</code> or whatever version you set as the global
+version using <code>pyenv</code>.</p></li>
+</ol>
+<p>If the version is still not showing up correctly, it might be due to
+the specific naming of the python binaries. Try using the command
+<code>python --version</code> instead of <code>python3 --version</code>.
+<code>pyenv</code> might have set the version correctly, but the
+<code>python3</code> command could still be pointing to your system's
+Python installation.</p>
+<p>If the issue persists, do check the list of Python versions installed
+under <code>pyenv</code> using <code>pyenv versions</code>. This will
+help you verify whether the intended Python version is correctly
+installed under <code>pyenv</code>. If it's not listed, you'll need to
+install it using <code>pyenv install 3.8.16</code>.</p>
+<h1 id="pycharm">PyCharm:</h1>
+<p>Note: I am using the newest version up to date 2023 Jun 14th of
+PyCharm Professional. (MacOS with M1 Pro)</p>
+<h2 id="install-a-python-package-in-pycharm">Install a python package in
+PyCharm</h2>
+<p>Installing a Python package in PyCharm is quite simple. Here's how
+you do it:</p>
+<ol type="1">
+<li>Open your project in PyCharm.</li>
+<li>Navigate to <code>File -&gt; Settings</code>. For macOS, navigate to
+<code>PyCharm -&gt; Preferences</code>.</li>
+<li>In the Settings/Preferences dialog, navigate to
+<code>Project: [your_project_name] -&gt; Project Interpreter</code>.</li>
+<li>In the top-right corner of the dialog, click the <code>+</code>
+(plus) icon to add a new package.</li>
+<li>In the new window that opens (the Available Packages dialog), you'll
+see a list of available packages. You can search for the package you
+want to install by typing its name into the search box.</li>
+<li>After you find your package, simply click the
+<code>Install Package</code> button at the bottom of the dialog.</li>
+<li>Wait for PyCharm to download and install the package. You can see
+the installation progress in the status bar at the bottom of the
+dialog.</li>
+<li>After the installation finishes, you can close the dialog. Your
+package is now installed and ready to use.</li>
+</ol>
+<p>Remember that PyCharm creates a new virtual environment for each
+project by default, so the package you've installed is only available in
+the current project's environment. If you want the package to be
+available globally or in a different project, you need to install it in
+the corresponding environment.</p>
+<h1 id="command">Command</h1>
+<h2 id="clear-the-terminal">Clear the terminal:</h2>
+<p>You can simply type the following code to clear your screen:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">clear<br></code></pre></td></tr></table></figure>
+<p>Yet you will find that when you scroll up, the content you typed
+before still exists. Here is one of the reasons:</p>
+<p>The <code>clear</code> command on a Unix-based system like macOS will
+clear the visible window of the terminal, but it doesn't clear the
+terminal's scrollback buffer. That means when you scroll up, you'll
+still be able to see the previous commands and output.</p>
+<p>If you want to clear the terminal completely, including the
+scrollback buffer, you can use the <code>reset</code> command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">reset<br></code></pre></td></tr></table></figure>
+<p>This will not only clear the terminal screen, but also the scrollback
+buffer, so you won't be able to scroll up to see previous output.</p>
+<p>Alternatively, if you're using the Terminal app on macOS, you can use
+the keyboard shortcut <code>Cmd+K</code> to clear the screen and the
+scrollback buffer. This works in both bash and zsh, the default shell on
+macOS as of Catalina.</p>
+<p>Please note, always be careful when using commands that permanently
+delete history or output, especially in production environments or when
+working with sensitive data.</p>
+<p>Note: sometimes when you use <code>reset</code>command, the effect is
+same as using <code>clear</code> . In this case, <code>Cmd+K</code> is a
+better choice.</p>
+<h1 id="hexo">Hexo</h1>
+<p>I am using Hexo basing my blog. I also had some tips for how to
+further beautify your blog.</p>
+<p>Note, you might know that Hexo could render Markdown grammar. Yet you
+might not know that Hexo could also render html code in the middle of
+Markdown file. I used to write my blog in notion, yet notion, unlike
+classical markdown compiler, supported tog element which allows you to
+hide and show content when other people click on a button. Here is a
+html version of code you can use to achieve the same effect. Actually,
+you’ve seen such use at the beginning of this blog.</p>
+<p>Here's the way to add the HTML and JavaScript code into your Markdown
+file:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs html">Here&#x27;s an interactive section that hides and shows content:<br><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tog-container&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tog-button&quot;</span>&gt;</span>Show/Hide Answer<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tog-content&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: none;&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Your answer goes here.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">  <span class="hljs-keyword">let</span> togButton = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;.tog-button&quot;</span>);</span><br><span class="language-javascript">  <span class="hljs-keyword">let</span> togContent = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;.tog-content&quot;</span>);</span><br><span class="language-javascript"></span><br><span class="language-javascript">  togButton.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;click&quot;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">    <span class="hljs-keyword">if</span> (togContent.<span class="hljs-property">style</span>.<span class="hljs-property">display</span> == <span class="hljs-string">&quot;none&quot;</span>) &#123;</span><br><span class="language-javascript">      togContent.<span class="hljs-property">style</span>.<span class="hljs-property">display</span> = <span class="hljs-string">&quot;block&quot;</span>;</span><br><span class="language-javascript">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="language-javascript">      togContent.<span class="hljs-property">style</span>.<span class="hljs-property">display</span> = <span class="hljs-string">&quot;none&quot;</span>;</span><br><span class="language-javascript">    &#125;</span><br><span class="language-javascript">  &#125;);</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>Please note that in the above example, the JavaScript code is
+embedded directly in the Markdown file. Some Markdown processors have
+safety features that remove script tags. If your script is not running
+after you add it, you might want to check your Markdown processor's
+documentation or use an external <code>.js</code> file.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Daily-Logs/" class="category-chain-item">Daily Logs</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Daily-Logs/Intern-Log/" class="category-chain-item">Intern Log</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Daily-Logs/Intern-Log/Tech-Summary/" class="category-chain-item">Tech Summary</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Intern/">#Intern</a>
+      
+        <a href="/tags/Intern-Log/">#Intern Log</a>
+      
+        <a href="/tags/Python/">#Python</a>
+      
+        <a href="/tags/Python-Grammar/">#Python Grammar</a>
+      
+        <a href="/tags/PyCharm/">#PyCharm</a>
+      
+        <a href="/tags/PyCharm-Professional/">#PyCharm Professional</a>
+      
+        <a href="/tags/Terminal/">#Terminal</a>
+      
+        <a href="/tags/Terminal-Command/">#Terminal Command</a>
+      
+        <a href="/tags/Intern-At-300K/">#Intern At 300K</a>
+      
+        <a href="/tags/Learning-Log/">#Learning Log</a>
+      
+        <a href="/tags/Hexo/">#Hexo</a>
+      
+        <a href="/tags/HTML/">#HTML</a>
+      
+        <a href="/tags/Tech/">#Tech</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Intern study summary - Jun 14 Wed</div>
+      <div>http://slray.com/2023/06/14/Intern-study-summary-Jun-14-Wed/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Sirui Ray Li</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>June 14, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/06/14/intern-log/" title="Intern study summary - Jun 13 Tue">
+                        <span class="hidden-mobile">Intern study summary - Jun 13 Tue</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        aggregate visit: 
+        <span id="busuanzi_value_site_pv"></span>
+         times
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        , 
+        <span id="busuanzi_value_site_uv"></span>
+         people
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
