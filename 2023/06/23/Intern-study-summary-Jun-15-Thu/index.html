@@ -1,0 +1,1044 @@
+
+
+<!DOCTYPE html>
+<html lang="en,zh-CN,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/ray.jpg">
+  <link rel="icon" href="/ray.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Sirui Ray Li">
+  <meta name="keywords" content="testing3">
+  
+    <meta name="description" content="Learning record for what I learned during my internship at 300K—a quant company on the day of 15th of Jun, Thu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Intern study summary - Jun 15 Thu">
+<meta property="og:url" content="http://slray.com/2023/06/23/Intern-study-summary-Jun-15-Thu/index.html">
+<meta property="og:site_name" content="Ray&#39;s website">
+<meta property="og:description" content="Learning record for what I learned during my internship at 300K—a quant company on the day of 15th of Jun, Thu">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://slray.com/2023/06/23/Intern-study-summary-Jun-15-Thu/symmetric-encrypt.jpeg">
+<meta property="og:image" content="http://slray.com/2023/06/23/Intern-study-summary-Jun-15-Thu/assymetric-encrypt.jpeg">
+<meta property="og:image" content="http://slray.com/2023/06/23/Intern-study-summary-Jun-15-Thu/xarray-concat.jpeg">
+<meta property="article:published_time" content="2023-06-22T17:44:09.000Z">
+<meta property="article:modified_time" content="2023-06-22T18:37:19.255Z">
+<meta property="article:author" content="Sirui Ray Li">
+<meta property="article:tag" content="Intern">
+<meta property="article:tag" content="Intern Log">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Python Grammar">
+<meta property="article:tag" content="PyCharm">
+<meta property="article:tag" content="PyCharm Professional">
+<meta property="article:tag" content="Terminal">
+<meta property="article:tag" content="Terminal Command">
+<meta property="article:tag" content="Intern At 300K">
+<meta property="article:tag" content="Learning Log">
+<meta property="article:tag" content="Tech">
+<meta property="article:tag" content="Decentralized Exchange">
+<meta property="article:tag" content="Dex">
+<meta property="article:tag" content="xarray">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://slray.com/2023/06/23/Intern-study-summary-Jun-15-Thu/symmetric-encrypt.jpeg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Intern study summary - Jun 15 Thu - Ray&#39;s website</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"slray.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ray&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Intern study summary - Jun 15 Thu"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-06-23 01:44" pubdate>
+          Friday, June 23rd 2023, 1:44 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          14k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          114 minutes
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          visit: <span id="busuanzi_value_page_pv"></span> times
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Intern study summary - Jun 15 Thu</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="intern-study-summary---jun-15-thu">Intern study summary - Jun 15
+Thu</h1>
+<p>This blog is a record for what I learned during my internship at
+300K—a quant company.</p>
+<p>I spent most of my day on fixing bugs of the project. Thus this blog
+might include less new information.</p>
+<h1 id="asymmetric-encryption">Asymmetric Encryption</h1>
+<p>Think about a scenario: Alice is communicating with Bob by mail. The
+problem is that they do not want other people to see their conversation
+but they cannot ensure that people won’t see their mails(other people
+might be the courier or other people who had access during the posting
+process).</p>
+<p>Thus they figured a way to encrypt the mail. For example, they let
+every character move to the next one: “I love you” become “J mpwf zpv”.
+The way to cipher the mail is also called a
+<strong><em>key</em></strong>. Anyone with the cipher key could decipher
+the mail. However, a new problem came out: how can they tell each other
+about the way of encrypting? They cannot send the key to each other
+since the sending process could be monitored.</p>
+<p>The above mentioned way of encrypting is called symmetric encryption,
+where the same key is used for both encryption and decryption.</p>
+<img src="/2023/06/23/Intern-study-summary-Jun-15-Thu/symmetric-encrypt.jpeg" srcset="/img/loading.gif" lazyload class="" title="symmetric encryption">
+<p>Now, to solve the problem of having to send the key, a new way of
+encrypting was invented, which is the asymmetric encryption.</p>
+<p>Think about a mail box with two doors.</p>
+<p>One of the door is a tiny small door that only allows putting in
+mails. The second door is a bigger door. Only through this door can a
+mail be taken out.</p>
+<p>Each door is paired with a key, of course. The key to open the first
+door (that only allows putting in mails) is called <strong><em>public
+key(pk)</em></strong>. The second key is thus called a
+<strong><em>private key</em></strong>, or <strong><em>secret
+key</em></strong>(<strong><em>sk</em></strong>).</p>
+<p>Now, let’s go through how this weird box solved the problem of
+symmetric encrypt:</p>
+<p>Before Bob send an mails to Alice, Alice send this mail box with two
+door aforementioned and a public key to Bob. Once Bob got the box and
+the public key, Bob put an mail into the box. Then send the mail which
+is inside the box back to Alice. Since Alice did not give her private
+key to anyone, no one could take the mail out of the box until Alice get
+the box.</p>
+<p>This solution made the communicating process much securer. The mail
+itself is called <em>plaintext</em>, the box with mail inside is called
+<em>ciphertext</em> (I use putting a mail into a box as a metaphor of
+cipher.)</p>
+<img src="/2023/06/23/Intern-study-summary-Jun-15-Thu/assymetric-encrypt.jpeg" srcset="/img/loading.gif" lazyload class="" title="assymmetric encryption">
+<h1 id="make"><code>make</code></h1>
+<p><code>make</code> is a build automation tool that automatically
+builds executable programs and libraries from source code by reading
+files called <code>Makefiles</code> which specify how to derive the
+target program.</p>
+<p>If you are looking to use the <code>make</code> command on your Mac,
+here's what you should do:</p>
+<ol type="1">
+<li><p>Install Xcode: Xcode is a free development tool from Apple.
+<code>make</code> is part of this toolset. To install Xcode, you need to
+go to the Apple App Store, search for Xcode, and install it.</p></li>
+<li><p>Once you have Xcode installed, open a terminal window (you can
+find Terminal by searching for it in Spotlight - the magnifying glass
+icon at the top right of your screen).</p></li>
+<li><p>In the Terminal, type the following command to install Command
+Line Tools, which includes <code>make</code>:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">xcode-select --install<br></code></pre></td></tr></table></figure>
+<p>You might be prompted for your password. Type it in and press enter.
+This will start the download and installation process.</p></li>
+<li><p>After the installation is completed, you can verify the
+installation by typing <code>make -v</code> in the Terminal. If
+<code>make</code> is installed, you'll see some version information
+outputted.</p></li>
+</ol>
+<p>In case you have already installed Xcode and Command Line Tools, and
+you're just looking for how to use the <code>make</code> command, here's
+an example:</p>
+<p>Let's say you have a C program and you want to compile it using
+<code>make</code>.</p>
+<p>First, create a file named <code>Makefile</code> in your project
+directory and it might look something like this:</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-section">myprogram: myprogram.c</span><br>    gcc -o myprogram myprogram.c<br></code></pre></td></tr></table></figure>
+<p>This <code>Makefile</code> tells <code>make</code> how to build your
+program. Here <code>myprogram</code> is the target,
+<code>myprogram.c</code> is the dependency, and
+<code>gcc -o myprogram myprogram.c</code> is the command
+<code>make</code> will run to create or update the target.</p>
+<p>Then you can just run <code>make</code> in your terminal:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">make<br></code></pre></td></tr></table></figure>
+<p>This will compile your <code>myprogram.c</code> file into an
+executable called <code>myprogram</code>.</p>
+<p>If your source code changes, you can recompile just by running
+<code>make</code> again. If your code hasn't changed, <code>make</code>
+won't do anything.</p>
+<h2
+id="make-nothing-to-be-done-for-xxxx."><code>make: Nothing to be done for 'xxxx'.</code></h2>
+<p>I got this problem when I have the <code>'xxxx'</code> in my
+Makefile. Make sure that the Makefile the format is the same. For a new
+make command, use <code>tab</code> instead of <code>space</code>, I
+found PyCharm will automatically convert <code>tab</code> to
+<code>space</code> which took me a while to debug.</p>
+<h1 id="xarray-library-in-python"><code>xarray</code> library in
+Python</h1>
+<p>I need to merge two <code>DataArrays</code> together when I was
+processing the data.</p>
+<p>Here is the detailed documentation for <code>xarray</code>: <a
+target="_blank" rel="noopener" href="https://docs.xarray.dev/en/stable/user-guide/combining.html#concatenate">Documentation</a></p>
+<h2 id="concat">concat</h2>
+<p>Here is a visual sense of concat:</p>
+<img src="/2023/06/23/Intern-study-summary-Jun-15-Thu/xarray-concat.jpeg" srcset="/img/loading.gif" lazyload class="" title="xarray concat">
+<p>Here is the <a
+target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=xdrcMi_FB8Q&amp;t=1102s&amp;ab_channel=WestDRI">video</a>
+I watched to learn about <code>xarray</code>, they also compared it with
+<code>numpy</code> and <code>pandas</code>, which might be helpful for
+those who are familiar with those two library.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> xarray <span class="hljs-keyword">as</span> xr<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-meta">&gt;&gt;&gt; </span>data = xr.DataArray(<br><span class="hljs-meta">... </span>np.random.random(size=(<span class="hljs-number">4</span>, <span class="hljs-number">3</span>)),<br><span class="hljs-meta">... </span>dims=(<span class="hljs-string">&quot;y&quot;</span>, <span class="hljs-string">&quot;x&quot;</span>),<br><span class="hljs-meta">... </span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span>data<br>&lt;xarray.DataArray (y: <span class="hljs-number">4</span>, x: <span class="hljs-number">3</span>)&gt;<br>array([[<span class="hljs-number">0.66017383</span>, <span class="hljs-number">0.01435655</span>, <span class="hljs-number">0.82392498</span>],<br>       [<span class="hljs-number">0.06476051</span>, <span class="hljs-number">0.6504625</span> , <span class="hljs-number">0.61194439</span>],<br>       [<span class="hljs-number">0.40693448</span>, <span class="hljs-number">0.22710373</span>, <span class="hljs-number">0.30344243</span>],<br>       [<span class="hljs-number">0.06840932</span>, <span class="hljs-number">0.32321194</span>, <span class="hljs-number">0.13938409</span>]])<br>Dimensions without coordinates: y, x<br><span class="hljs-meta">&gt;&gt;&gt; </span>data2 = xr.DataArray(np.random.random(size=(<span class="hljs-number">4</span>, <span class="hljs-number">3</span>)),dims=(<span class="hljs-string">&quot;y&quot;</span>, <span class="hljs-string">&quot;x&quot;</span>),)<br><span class="hljs-meta">&gt;&gt;&gt; </span>data2<br>&lt;xarray.DataArray (y: <span class="hljs-number">4</span>, x: <span class="hljs-number">3</span>)&gt;<br>array([[<span class="hljs-number">0.90414607</span>, <span class="hljs-number">0.12080436</span>, <span class="hljs-number">0.12541235</span>],<br>       [<span class="hljs-number">0.68558428</span>, <span class="hljs-number">0.27262736</span>, <span class="hljs-number">0.74151799</span>],<br>       [<span class="hljs-number">0.21410586</span>, <span class="hljs-number">0.02924536</span>, <span class="hljs-number">0.32955468</span>],<br>       [<span class="hljs-number">0.01220016</span>, <span class="hljs-number">0.25980773</span>, <span class="hljs-number">0.47056426</span>]])<br>Dimensions without coordinates: y, x<br><span class="hljs-meta">&gt;&gt;&gt; </span>data3 = xr.DataArray(np.random.random(size=(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>)),dims=(<span class="hljs-string">&quot;y&quot;</span>, <span class="hljs-string">&quot;x&quot;</span>),)<br><span class="hljs-meta">&gt;&gt;&gt; </span>data3<br>&lt;xarray.DataArray (y: <span class="hljs-number">4</span>, x: <span class="hljs-number">4</span>)&gt;<br>array([[<span class="hljs-number">0.19104632</span>, <span class="hljs-number">0.40055872</span>, <span class="hljs-number">0.20014418</span>, <span class="hljs-number">0.60157153</span>],<br>       [<span class="hljs-number">0.94211448</span>, <span class="hljs-number">0.21033792</span>, <span class="hljs-number">0.63576454</span>, <span class="hljs-number">0.77343922</span>],<br>       [<span class="hljs-number">0.3038103</span> , <span class="hljs-number">0.70945801</span>, <span class="hljs-number">0.95828555</span>, <span class="hljs-number">0.19862075</span>],<br>       [<span class="hljs-number">0.73792562</span>, <span class="hljs-number">0.52394306</span>, <span class="hljs-number">0.9605408</span> , <span class="hljs-number">0.48479543</span>]])<br>Dimensions without coordinates: y, x<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>xr.concat([data, data2], dim = <span class="hljs-string">&quot;y&quot;</span>)<br>&lt;xarray.DataArray (y: <span class="hljs-number">8</span>, x: <span class="hljs-number">3</span>)&gt;<br>array([[<span class="hljs-number">0.66017383</span>, <span class="hljs-number">0.01435655</span>, <span class="hljs-number">0.82392498</span>],<br>       [<span class="hljs-number">0.06476051</span>, <span class="hljs-number">0.6504625</span> , <span class="hljs-number">0.61194439</span>],<br>       [<span class="hljs-number">0.40693448</span>, <span class="hljs-number">0.22710373</span>, <span class="hljs-number">0.30344243</span>],<br>       [<span class="hljs-number">0.06840932</span>, <span class="hljs-number">0.32321194</span>, <span class="hljs-number">0.13938409</span>],<br>       [<span class="hljs-number">0.90414607</span>, <span class="hljs-number">0.12080436</span>, <span class="hljs-number">0.12541235</span>],<br>       [<span class="hljs-number">0.68558428</span>, <span class="hljs-number">0.27262736</span>, <span class="hljs-number">0.74151799</span>],<br>       [<span class="hljs-number">0.21410586</span>, <span class="hljs-number">0.02924536</span>, <span class="hljs-number">0.32955468</span>],<br>       [<span class="hljs-number">0.01220016</span>, <span class="hljs-number">0.25980773</span>, <span class="hljs-number">0.47056426</span>]])<br>Dimensions without coordinates: y, x<br><span class="hljs-meta">&gt;&gt;&gt; </span>data<br>&lt;xarray.DataArray (y: <span class="hljs-number">4</span>, x: <span class="hljs-number">3</span>)&gt;<br>array([[<span class="hljs-number">0.66017383</span>, <span class="hljs-number">0.01435655</span>, <span class="hljs-number">0.82392498</span>],<br>       [<span class="hljs-number">0.06476051</span>, <span class="hljs-number">0.6504625</span> , <span class="hljs-number">0.61194439</span>],<br>       [<span class="hljs-number">0.40693448</span>, <span class="hljs-number">0.22710373</span>, <span class="hljs-number">0.30344243</span>],<br>       [<span class="hljs-number">0.06840932</span>, <span class="hljs-number">0.32321194</span>, <span class="hljs-number">0.13938409</span>]])<br>Dimensions without coordinates: y, x<br><span class="hljs-meta">&gt;&gt;&gt; </span>data2<br>&lt;xarray.DataArray (y: <span class="hljs-number">4</span>, x: <span class="hljs-number">3</span>)&gt;<br>array([[<span class="hljs-number">0.90414607</span>, <span class="hljs-number">0.12080436</span>, <span class="hljs-number">0.12541235</span>],<br>       [<span class="hljs-number">0.68558428</span>, <span class="hljs-number">0.27262736</span>, <span class="hljs-number">0.74151799</span>],<br>       [<span class="hljs-number">0.21410586</span>, <span class="hljs-number">0.02924536</span>, <span class="hljs-number">0.32955468</span>],<br>       [<span class="hljs-number">0.01220016</span>, <span class="hljs-number">0.25980773</span>, <span class="hljs-number">0.47056426</span>]])<br>Dimensions without coordinates: y, x<br><span class="hljs-meta">&gt;&gt;&gt; </span>xr.concat([data, data3], dim = <span class="hljs-string">&quot;x&quot;</span>)<br>&lt;xarray.DataArray (y: <span class="hljs-number">4</span>, x: <span class="hljs-number">7</span>)&gt;<br>array([[<span class="hljs-number">0.66017383</span>, <span class="hljs-number">0.01435655</span>, <span class="hljs-number">0.82392498</span>, <span class="hljs-number">0.19104632</span>, <span class="hljs-number">0.40055872</span>,<br>        <span class="hljs-number">0.20014418</span>, <span class="hljs-number">0.60157153</span>],<br>       [<span class="hljs-number">0.06476051</span>, <span class="hljs-number">0.6504625</span> , <span class="hljs-number">0.61194439</span>, <span class="hljs-number">0.94211448</span>, <span class="hljs-number">0.21033792</span>,<br>        <span class="hljs-number">0.63576454</span>, <span class="hljs-number">0.77343922</span>],<br>       [<span class="hljs-number">0.40693448</span>, <span class="hljs-number">0.22710373</span>, <span class="hljs-number">0.30344243</span>, <span class="hljs-number">0.3038103</span> , <span class="hljs-number">0.70945801</span>,<br>        <span class="hljs-number">0.95828555</span>, <span class="hljs-number">0.19862075</span>],<br>       [<span class="hljs-number">0.06840932</span>, <span class="hljs-number">0.32321194</span>, <span class="hljs-number">0.13938409</span>, <span class="hljs-number">0.73792562</span>, <span class="hljs-number">0.52394306</span>,<br>        <span class="hljs-number">0.9605408</span> , <span class="hljs-number">0.48479543</span>]])<br>Dimensions without coordinates: y, x<br></code></pre></td></tr></table></figure>
+<h1 id="dex-decentralized-exchanges">DEX (decentralized exchanges)</h1>
+<p>DEX and CEX refer to two types of cryptocurrency exchanges:
+Decentralized Exchanges (DEX) and Centralized Exchanges (CEX).</p>
+<p>CEXs operate similarly to traditional financial exchanges. They are
+managed by a central authority (the company running the exchange), which
+provides a platform for buyers and sellers to trade cryptocurrencies.
+They handle the security of users' funds and users' private keys are
+held by the exchange. Examples of CEXs include Binance, Coinbase, and
+Kraken.</p>
+<p>DEXs, on the other hand, operate without a central authority. They
+use blockchain technology to enable direct peer-to-peer cryptocurrency
+transactions. Users keep control of their private keys and funds, which
+adds to the security, but also means users are fully responsible for
+their own security. Examples of DEXs include Uniswap, SushiSwap, and
+PancakeSwap.</p>
+<p>Key differences include:</p>
+<ol type="1">
+<li>Custody: In CEX, the exchange has custody of the funds while in DEX,
+users have full control of their funds.</li>
+<li>Anonymity: DEXs often don't require user identification, making them
+more anonymous than CEXs, which usually require some form of KYC (Know
+Your Customer) process.</li>
+<li>Number and Types of Assets: CEXs often have a wider range of
+cryptocurrencies and other assets, while DEXs mainly focus on tokens of
+a specific blockchain (like ERC20 tokens for Ethereum).</li>
+<li>Trust: In CEXs, users need to trust the exchange, while in DEXs,
+trust is based on smart contracts and the underlying blockchain
+technology.</li>
+</ol>
+<h2 id="blockchain">blockchain</h2>
+<p>A blockchain is a type of distributed ledger technology that stores
+data across multiple systems in a network. It's designed to be secure,
+transparent, and resistant to modification of the data. This data is
+stored in blocks, and each block is linked to the one before it, forming
+a chain (hence the name, blockchain).</p>
+<p>Here's how it works in a bit more detail:</p>
+<ol type="1">
+<li><strong>Data Transactions</strong>: When a transaction occurs (like
+a Bitcoin being sent from one person to another), that transaction is
+grouped together with other transactions that have occurred in the same
+time frame into a block.</li>
+<li><strong>Block Verification</strong>: This block is then sent to all
+the nodes in the network. Nodes are computers that are participating in
+the blockchain network. They have a copy of the entire blockchain and
+work to verify the transactions in the new block.</li>
+<li><strong>Consensus</strong>: Once the nodes reach consensus and
+confirm that the transactions in the block are valid, the block is added
+to the chain. The new block includes a unique identifier called a
+cryptographic hash, as well as the hash of the previous block in the
+chain, which is what links the blocks together in a chain and makes the
+blockchain secure.</li>
+</ol>
+<p>One of the most famous uses of blockchain technology is for
+cryptocurrencies like Bitcoin, but there are many other potential uses,
+including supply chain tracking, voting systems, identity verification,
+and more.</p>
+<p>The main advantages of blockchain technology are its transparency,
+security, and decentralization. However, it also faces challenges, such
+as scalability and the significant amount of energy required by the
+consensus process in many blockchains (like Bitcoin's proof-of-work
+system).</p>
+<h2 id="how-dex-uses-blockchain-exactly">How DEX uses blockchain
+exactly?</h2>
+<p>Decentralized Exchanges (DEXs) use blockchain technology to
+facilitate direct peer-to-peer transactions, bypassing the need for a
+central authority.</p>
+<p>Here's a more detailed explanation:</p>
+<ol type="1">
+<li><strong>Smart Contracts</strong>: DEXs are primarily built using
+smart contracts. These are self-executing contracts with the terms of
+the agreement directly written into code. They're stored on the
+blockchain, which makes them transparent and immutable. In a DEX, smart
+contracts are used to facilitate and automate the trading process.</li>
+<li><strong>On-chain Transactions</strong>: All trades occur directly on
+the blockchain. When a user submits a trade on a DEX, it's essentially a
+transaction that's broadcast to the entire network, just like any other
+blockchain transaction.</li>
+<li><strong>Liquidity Pools</strong>: In many DEXs, liquidity is
+provided by users themselves through a system known as liquidity pools.
+Instead of an order book matching buyers and sellers, users deposit
+pairs of tokens into a pool, creating a market that others can trade
+against. The smart contract maintains the balance between the two tokens
+in the pool based on the trades happening.</li>
+<li><strong>Wallet Integration</strong>: DEXs allow direct integration
+with decentralized wallets (like MetaMask). Since trades are
+wallet-to-wallet, users maintain control over their private keys
+throughout the entire process, enhancing security.</li>
+<li><strong>Token Swaps</strong>: DEXs primarily facilitate token swaps,
+which is the exchange of one cryptocurrency for another. This is
+achieved through smart contracts which handle the swap automatically
+once the user initiates the transaction.</li>
+</ol>
+<p>Remember, though, that while the decentralized nature of DEXs offers
+advantages like increased privacy and control over one's assets, it also
+means that the responsibility for security rests largely with the user.
+If you lose access to your wallet, for instance, the DEX can't help you
+recover it.</p>
+<h2 id="more-resources">More resources:</h2>
+<p>Here are some of passages and videos I watched:</p>
+<p>In English:</p>
+<ul>
+<li>Videos:
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=2tTVJL4bpTU&amp;ab_channel=WhiteboardCrypto">What
+is a DEX? How A Decentralized Exchange Works</a></li>
+<li>A good YouTube Channel: <a
+target="_blank" rel="noopener" href="https://www.youtube.com/c/WhiteboardCrypto">Whiteboard
+Crypto</a></li>
+</ul></li>
+</ul>
+<p>In Chinese:</p>
+<ul>
+<li>Passages:
+<ul>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/634263865">一文读懂 DEX
+去中心化交易所</a></li>
+</ul></li>
+<li>Videos:
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1pG4y1b7HY/?spm_id_from=333.337.search-card.all.click&amp;vd_source=d84085799dfdb99d199a04d156250394">【科普篇】什么是去中心化交易所
+Uniswap(dApp)以及什么是 Uni 代币动画演示中英双字幕</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1NJ411D7rf/?spm_id_from=333.337.search-card.all.click&amp;vd_source=d84085799dfdb99d199a04d156250394">尚硅谷区块链全套教程完整版(深入掌握以太坊核心技术)</a></li>
+</ul></li>
+</ul>
+<h1 id="yaml">yaml</h1>
+<p>YAML, which stands for "YAML Ain't Markup Language," is a
+human-friendly data serialization standard for all programming
+languages. It's often used for configuration files and in applications
+where data is being stored or transmitted. YAML files typically have the
+extension <code>.yaml</code> or <code>.yml</code>.</p>
+<p>In YAML, we use indentation to represent hierarchical relationships,
+similar to the way it's done in Python. This can be easier to read than
+other data formats like JSON or XML, where structural information can be
+obscured by syntactical clutter.</p>
+<p>There are several data types that YAML can represent, but two of the
+most important are lists (also known as sequences) and maps (also known
+as dictionaries or hashes).</p>
+<ol type="1">
+<li><p><strong>Lists</strong>: Lists are simply a sequence of items. In
+YAML, lists are represented by each item in the list being on a new line
+with the same indentation and a leading dash (<code>-</code>).</p>
+<p>For example:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">fruits:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">Apple</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">Banana</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">Orange</span><br></code></pre></td></tr></table></figure>
+<p>In this case, "fruits" is a list that includes "Apple", "Banana", and
+"Orange".</p></li>
+<li><p><strong>Maps</strong>: Maps are used to link together pairs of
+items. In YAML, maps are represented with a colon (<code>:</code>)
+between the items in each pair.</p>
+<p>For example:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">person:</span><br>  <span class="hljs-attr">name:</span> <span class="hljs-string">John</span><br>  <span class="hljs-attr">age:</span> <span class="hljs-number">30</span><br></code></pre></td></tr></table></figure>
+<p>In this case, "person" is a map that includes "name: John" and "age:
+30".</p></li>
+</ol>
+<p>Moreover, YAML supports complex nesting of sequences and maps. This
+allows you to create a data structure as complex as your application
+requires. For example:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">persons:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">John</span><br>    <span class="hljs-attr">age:</span> <span class="hljs-number">30</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Jane</span><br>    <span class="hljs-attr">age:</span> <span class="hljs-number">25</span><br></code></pre></td></tr></table></figure>
+<p>In this case, "persons" is a list of maps, each map represents a
+person with attributes "name" and "age".</p>
+<p>YAML files are commonly used for configuration purposes, especially
+in DevOps environments, and can be found in applications like Ansible,
+Kubernetes, and Docker. They are also often used for defining workflows,
+like GitHub Actions workflows, or setting up continuous
+integration/continuous deployment (CI/CD) pipelines. Additionally, they
+can be used for data exchange between languages with different data
+structures, data serialization, and more.</p>
+<h1 id="command-line-tips-pycharm">Command Line tips &amp; PyCharm:</h1>
+<p>I am using the PyCharm professional that is the most recent version
+up to today.</p>
+<h2
+id="command-shift-f-to-search-every-thing-in-project"><code>command + shift + f</code>
+to search every thing in project</h2>
+<p>Sometimes you can only remember a line of code or a specific special
+word in one of the files in your project. When you are trying to locate
+such words, or trying to local such files by such words or lines of
+codes, you could try <code>command + shift + f</code>. This command will
+find all the occurrence of your input string in all the files.</p>
+<h2 id="command-shift-o-to-search-file"><code>command + shift + o</code>
+to search file</h2>
+<p>This is used to such a specific file. For example, you want to open a
+file named “self-destruct.py”, you could search “self-destruct.py” after
+using <code>command + shift + o</code>, then click <code>return</code>
+on your keyboard.</p>
+<h2 id="cc-and-w"><code>Cc</code> and <code>W</code></h2>
+<p>When you are trying to local a specific word that must to totally
+identical to your input, you could use <code>Cc</code> and
+<code>W</code>. This would be useful when you are trying to replace
+certain word with another one.</p>
+<p><code>Cc</code> is matching with the same case. When this is clicked,
+“Ray” and “ray” is not the same word. Which means you cannot find “ray”
+by searching “Ray”.</p>
+<p><code>W</code> is searching the whole word. When this is clicked, you
+won’t find “Ray-is-smart” or “Rayisexcellent” by searching “Ray”.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Daily-Logs/" class="category-chain-item">Daily Logs</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Daily-Logs/Intern-Log/" class="category-chain-item">Intern Log</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Daily-Logs/Intern-Log/Tech-Summary/" class="category-chain-item">Tech Summary</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Intern/">#Intern</a>
+      
+        <a href="/tags/Intern-Log/">#Intern Log</a>
+      
+        <a href="/tags/Python/">#Python</a>
+      
+        <a href="/tags/Python-Grammar/">#Python Grammar</a>
+      
+        <a href="/tags/PyCharm/">#PyCharm</a>
+      
+        <a href="/tags/PyCharm-Professional/">#PyCharm Professional</a>
+      
+        <a href="/tags/Terminal/">#Terminal</a>
+      
+        <a href="/tags/Terminal-Command/">#Terminal Command</a>
+      
+        <a href="/tags/Intern-At-300K/">#Intern At 300K</a>
+      
+        <a href="/tags/Learning-Log/">#Learning Log</a>
+      
+        <a href="/tags/Tech/">#Tech</a>
+      
+        <a href="/tags/Decentralized-Exchange/">#Decentralized Exchange</a>
+      
+        <a href="/tags/Dex/">#Dex</a>
+      
+        <a href="/tags/xarray/">#xarray</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Intern study summary - Jun 15 Thu</div>
+      <div>http://slray.com/2023/06/23/Intern-study-summary-Jun-15-Thu/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Sirui Ray Li</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>June 23, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/06/14/Intern-study-summary-Jun-14-Wed/" title="Intern study summary - Jun 14 Wed">
+                        <span class="hidden-mobile">Intern study summary - Jun 14 Wed</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        aggregate visit: 
+        <span id="busuanzi_value_site_pv"></span>
+         times
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        , 
+        <span id="busuanzi_value_site_uv"></span>
+         people
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
