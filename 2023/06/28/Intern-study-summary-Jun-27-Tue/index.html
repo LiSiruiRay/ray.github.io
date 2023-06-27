@@ -1,0 +1,1016 @@
+
+
+<!DOCTYPE html>
+<html lang="en,zh-CN,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/ray.jpg">
+  <link rel="icon" href="/ray.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Sirui Ray Li">
+  <meta name="keywords" content="testing3">
+  
+    <meta name="description" content="Learning record for what I learned during my internship at 300K—a quant company on the day of 15th of Jun, Thu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Intern study summary - Jun 27 Tue">
+<meta property="og:url" content="http://slray.com/2023/06/28/Intern-study-summary-Jun-27-Tue/index.html">
+<meta property="og:site_name" content="Ray&#39;s website">
+<meta property="og:description" content="Learning record for what I learned during my internship at 300K—a quant company on the day of 15th of Jun, Thu">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-06-27T16:01:48.000Z">
+<meta property="article:modified_time" content="2023-06-27T16:05:25.239Z">
+<meta property="article:author" content="Sirui Ray Li">
+<meta property="article:tag" content="Intern">
+<meta property="article:tag" content="Intern Log">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Python Grammar">
+<meta property="article:tag" content="Terminal">
+<meta property="article:tag" content="Terminal Command">
+<meta property="article:tag" content="Intern At 300K">
+<meta property="article:tag" content="Learning Log">
+<meta property="article:tag" content="Tech">
+<meta property="article:tag" content="Shell Script Grammar">
+<meta property="article:tag" content="Vim">
+<meta property="article:tag" content="Git">
+<meta property="article:tag" content="Git command">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Intern study summary - Jun 27 Tue - Ray&#39;s website</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"slray.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ray&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Intern study summary - Jun 27 Tue"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-06-28 00:01" pubdate>
+          Wednesday, June 28th 2023, 12:01 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          13k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          112 minutes
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          visit: <span id="busuanzi_value_page_pv"></span> times
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Intern study summary - Jun 27 Tue</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="vim">Vim</h1>
+<p>When I was using git to merge, there was part of the command line
+popped up asking me to add some commit message. What is that? How can I
+quit it?</p>
+<p>You're very likely to be in Vim, the default editor for many systems,
+which Git often uses for writing commit messages.</p>
+<p>If you want to exit without saving the message, you can follow these
+steps:</p>
+<ol type="1">
+<li>Press the <code>ESC</code> key (if you are in insert or append
+mode)</li>
+<li>Then type <code>:q!</code> and press <code>Enter</code>. The
+<code>:q!</code> command tells Vim to quit without saving changes.</li>
+</ol>
+<p>If you want to save your message and then exit, you can follow these
+steps:</p>
+<ol type="1">
+<li>Press <code>ESC</code> key (if you are in insert or append
+mode)</li>
+<li>Then type <code>:wq</code> and press <code>Enter</code>. The
+<code>:wq</code> command tells Vim to write (save) the changes and then
+quit.</li>
+</ol>
+<h2 id="how-to-change-the-default-editor-for-git">How to change the
+default editor for git?</h2>
+<p>You can switch to a different text editor. For example, if you prefer
+to use visual studio code (vsc), you can switch the default editor for
+git with the following command:</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mel">git config --<span class="hljs-keyword">global</span> core.<span class="hljs-keyword">editor</span> <span class="hljs-string">&quot;code&quot;</span><br></code></pre></td></tr></table></figure>
+<h1 id="python-add-argument">Python add argument</h1>
+<p>When using Git, you should often use the commend
+<code>git commit -m "xxxx"</code>. Here the <code>git</code> is just
+like running <code>python [xxx.py](http://xxx.py)</code> or
+<code>make</code>, and the thing following it is called an argument.
+Here the argument is <code>commit -m "xxx"</code>.</p>
+<p>You can also do that in python, which means you could do things like
+<code>python [test.py](http://test.py) -times 100</code>. And, you can
+make your own argument.</p>
+<p>Here is an example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@click.command()</span><br><span class="hljs-meta">@click.argument(<span class="hljs-params"><span class="hljs-string">&quot;config&quot;</span>, <span class="hljs-built_in">type</span>=<span class="hljs-built_in">str</span>, required=<span class="hljs-literal">False</span></span>)</span><br><span class="hljs-meta">@click.option(<span class="hljs-params"><span class="hljs-string">&quot;-f&quot;</span>, <span class="hljs-string">&quot;--config-file&quot;</span>, <span class="hljs-built_in">type</span>=<span class="hljs-built_in">str</span>, default=<span class="hljs-literal">None</span></span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>(<span class="hljs-params">config, config_file</span>):<br>    <span class="hljs-comment"># Your code here</span><br>    <span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure>
+<p>Explanation:</p>
+<p>These lines of code belong to a Python program using the
+<code>click</code> library. <code>click</code> is a package for creating
+beautiful command line interfaces in a composable way. It's highly
+configurable but comes with sensible defaults out of the box.</p>
+<p>Here's the breakdown:</p>
+<ol type="1">
+<li><strong><code>@click.command()</code></strong>: This line is a
+decorator that tells Click this function will be a command-line command.
+This means when you run your script from the command-line, this function
+can be executed.</li>
+<li><strong><code>@click.argument("config", type=str, required=False)</code></strong>:
+This decorator adds an argument to your command. Arguments are
+positional parameters to your command. In this case, an argument named
+<code>config</code> is expected, which should be of <code>str</code>
+(string) type. The <code>required=False</code> parameter means this
+argument is optional.</li>
+<li><strong><code>@click.option("-f", "--config-file", type=str, default=None)</code></strong>:
+This decorator adds an option to your command. Options are extra
+parameters you can include when calling your command, and they are
+typically used to modify the behavior of the command in some way.
+Options are denoted by either a single
+`<code>followed by a single character (like</code>f<code>) or by</code>-<code>followed by a word (like</code>-config-file<code>). Either</code>f<code>or</code>-config-file<code>can be used to specify this option in this case. This option takes a string (</code>type=str<code>) and defaults to</code>None<code>if it's not provided (</code>default=None`).</li>
+</ol>
+<p>In practical usage, these decorators would be applied to a function
+that forms the core of your command-line application.</p>
+<p>In the code above, <code>main</code> is the function that gets
+executed when you run your command. The parameters <code>config</code>
+and <code>config_file</code> get their values from the command-line
+arguments and options respectively.</p>
+<h2
+id="what-if-i-want-to-have-another-optional-argument-other-than-config-do-i-add-another-click.arguemnt">what
+if I want to have another optional argument other than
+<code>config</code>? Do I add another <code>@click.arguemnt</code>?</h2>
+<p>Yes, you can add additional arguments by using the
+<code>@click.argument()</code> decorator again. The key point to
+remember is that arguments are positional. This means the order in which
+they are defined in your function will be the order in which they should
+be provided when you run your command.</p>
+<p>Here's an example of adding an additional argument named
+<code>option</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@click.command()</span><br><span class="hljs-meta">@click.argument(<span class="hljs-params"><span class="hljs-string">&quot;config&quot;</span>, <span class="hljs-built_in">type</span>=<span class="hljs-built_in">str</span>, required=<span class="hljs-literal">False</span></span>)</span><br><span class="hljs-meta">@click.argument(<span class="hljs-params"><span class="hljs-string">&quot;option&quot;</span>, <span class="hljs-built_in">type</span>=<span class="hljs-built_in">str</span>, required=<span class="hljs-literal">False</span></span>)</span><br><span class="hljs-meta">@click.option(<span class="hljs-params"><span class="hljs-string">&quot;-f&quot;</span>, <span class="hljs-string">&quot;--config-file&quot;</span>, <span class="hljs-built_in">type</span>=<span class="hljs-built_in">str</span>, default=<span class="hljs-literal">None</span></span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>(<span class="hljs-params">config, option, config_file</span>):<br>    <span class="hljs-comment"># Your code here</span><br>    <span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure>
+<p>In this example, <code>option</code> is another optional argument.
+When running this command, <code>config</code> would need to be provided
+before <code>option</code>. For instance:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python your_script.py my_config my_option -f my_config_file<br></code></pre></td></tr></table></figure>
+<p>In this command, <code>my_config</code> would be passed to the
+<code>config</code> argument, <code>my_option</code> would be passed to
+the <code>option</code> argument, and <code>my_config_file</code> would
+be passed to the <code>config_file</code> option.</p>
+<p>If you find the positional nature of arguments to be limiting or
+confusing, consider using more options (with
+<code>@click.option()</code>) instead, as options can be provided in any
+order.</p>
+<h2
+id="does-the-click.option-has-a-relationship-with-the-upper-one.-for-example-the--f-is-belong-to-option-i-cannot-add--f-after-config">Does
+the <code>@click.option</code> has a relationship with the upper one.
+For example, the '-f' is belong to option, I cannot add '-f' after
+'config'?</h2>
+<p>The <code>-f</code> or <code>--config-file</code> option, as
+specified in the <code>@click.option</code> decorator, can be placed
+anywhere on the command line when invoking the command, regardless of
+the order of other arguments or options.</p>
+<p>Here are valid ways of calling the command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">python your_script.py my_config -f my_config_file<br>python your_script.py -f my_config_file my_config<br><br></code></pre></td></tr></table></figure>
+<p>In both of these examples, <code>my_config</code> would be passed to
+the <code>config</code> argument and <code>my_config_file</code> would
+be passed to the <code>config_file</code> option.</p>
+<p>The decorators <code>@click.argument</code> and
+<code>@click.option</code> only dictate the structure and syntax of
+command-line inputs for your Python script, they don't rigidly fix the
+sequence in which these arguments and options should be passed on the
+command line. However, do note that the sequence of positional arguments
+(<code>@click.argument</code>) is important while the sequence of
+options (<code>@click.option</code>) is not.</p>
+<h2 id="here-is-a-more-detailed-example">Here is a more detailed
+example</h2>
+<p>Requirement: I want to add an optional argument after
+<code>python xx.py</code> that specify the start, end, and pred
+date.</p>
+<p>For optional parameters like start date, end date, and prediction
+date, it's usually best to use options (<code>@click.option</code>)
+instead of arguments (<code>@click.argument</code>). Options provide
+more flexibility as they can be specified in any order and they are
+easier for users to understand because they are more explicit.</p>
+<p>Here's how you might add these to your command:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@click.command()</span><br><span class="hljs-meta">@click.option(<span class="hljs-params"><span class="hljs-string">&quot;--start-date&quot;</span>, <span class="hljs-built_in">type</span>=<span class="hljs-built_in">str</span>, <span class="hljs-built_in">help</span>=<span class="hljs-string">&quot;The start date&quot;</span>, default=<span class="hljs-literal">None</span></span>)</span><br><span class="hljs-meta">@click.option(<span class="hljs-params"><span class="hljs-string">&quot;--end-date&quot;</span>, <span class="hljs-built_in">type</span>=<span class="hljs-built_in">str</span>, <span class="hljs-built_in">help</span>=<span class="hljs-string">&quot;The end date&quot;</span>, default=<span class="hljs-literal">None</span></span>)</span><br><span class="hljs-meta">@click.option(<span class="hljs-params"><span class="hljs-string">&quot;--pred-date&quot;</span>, <span class="hljs-built_in">type</span>=<span class="hljs-built_in">str</span>, <span class="hljs-built_in">help</span>=<span class="hljs-string">&quot;The prediction date&quot;</span>, default=<span class="hljs-literal">None</span></span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>(<span class="hljs-params">start_date, end_date, pred_date</span>):<br>    <span class="hljs-comment"># Your code here</span><br>    <span class="hljs-keyword">pass</span><br><br></code></pre></td></tr></table></figure>
+<p>In this example, each option can be used like this:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">python xx.py --start-date 2023-01-01 --end-date 2023-12-31 --pred-date 2024-01-01<br><br></code></pre></td></tr></table></figure>
+<p>If a user does not provide an option, its default value will be
+<code>None</code>. If you want a different default value, you can change
+the <code>default</code> parameter in the <code>@click.option()</code>
+call.</p>
+<p>As for conventions, it's typical to use hyphens (<code>-</code>) to
+separate words in option and command names, rather than underscores
+(<code>_</code>). This is more consistent with the way other
+command-line tools work. It's also common to provide a short, one-letter
+name for each option if it's an option that will be used frequently.
+This can be done by providing additional names when calling
+<code>@click.option()</code>, like this:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@click.option(<span class="hljs-params"><span class="hljs-string">&quot;-s&quot;</span>, <span class="hljs-string">&quot;--start-date&quot;</span>, <span class="hljs-built_in">type</span>=<span class="hljs-built_in">str</span>, <span class="hljs-built_in">help</span>=<span class="hljs-string">&quot;The start date&quot;</span>, default=<span class="hljs-literal">None</span></span>)</span><br><br></code></pre></td></tr></table></figure>
+<p>In this example, the <code>start-date</code> option can be specified
+with either <code>-s</code> or <code>--start-date</code>. This makes it
+quicker to type for users who use it frequently, while still keeping it
+easy to understand for new users.</p>
+<h2 id="explain-the-example">Explain the example</h2>
+<p>why I am using <code>-</code> in the decorator but <code>_</code> in
+the main function? Is it just following the order, which means the top
+argument is the first in the function, or it is corresponding that
+change '-' to '_'?</p>
+<p>In the Click library, when you define options, they can have a dash
+in their name (<code>-</code>). This is a common practice in command
+line tools. However, in Python, variable names cannot contain a dash
+because the dash is interpreted as the subtraction operator. So, in the
+context of the function definition, you have to use underscores instead
+of dashes.</p>
+<p>Click automatically converts dashes to underscores when passing the
+values to your function. This allows you to follow command-line
+conventions when defining your arguments and options, while still having
+valid Python variable names inside your function.</p>
+<p>For example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@click.option(<span class="hljs-params"><span class="hljs-string">&quot;--start-date&quot;</span>, <span class="hljs-built_in">type</span>=<span class="hljs-built_in">str</span>, <span class="hljs-built_in">help</span>=<span class="hljs-string">&quot;The start date&quot;</span>, default=<span class="hljs-literal">None</span></span>)</span><br></code></pre></td></tr></table></figure>
+<p>Here, the <code>start-date</code> will be accessed as
+<code>start_date</code> in your function:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>(<span class="hljs-params">start_date</span>):<br>    <span class="hljs-comment"># start_date here is equivalent to --start-date in the option</span><br></code></pre></td></tr></table></figure>
+<p>The argument order in the function definition does need to match the
+order in which you've decorated the function with
+<code>@click.argument</code> and <code>@click.option</code> decorators.
+However, it doesn't matter whether an argument or option has dashes or
+underscores in its name; Click handles that conversion for you.</p>
+<hr />
+<p>So if I change</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@click.command()</span><br><span class="hljs-meta">@click.option(<span class="hljs-params"><span class="hljs-string">&quot;--start-date&quot;</span>, <span class="hljs-built_in">type</span>=<span class="hljs-built_in">str</span>, <span class="hljs-built_in">help</span>=<span class="hljs-string">&quot;The start date&quot;</span>, default=<span class="hljs-literal">None</span></span>)</span><br><span class="hljs-meta">@click.option(<span class="hljs-params"><span class="hljs-string">&quot;--end-date&quot;</span>, <span class="hljs-built_in">type</span>=<span class="hljs-built_in">str</span>, <span class="hljs-built_in">help</span>=<span class="hljs-string">&quot;The end date&quot;</span>, default=<span class="hljs-literal">None</span></span>)</span><br><span class="hljs-meta">@click.option(<span class="hljs-params"><span class="hljs-string">&quot;--pred-date&quot;</span>, <span class="hljs-built_in">type</span>=<span class="hljs-built_in">str</span>, <span class="hljs-built_in">help</span>=<span class="hljs-string">&quot;The prediction date&quot;</span>, default=<span class="hljs-literal">None</span></span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>(<span class="hljs-params">start_date, end_date, pred_date</span>):<br>    <span class="hljs-comment"># Your code here</span><br>    <span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure>
+<p>to</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@click.command()</span><br><span class="hljs-meta">@click.option(<span class="hljs-params"><span class="hljs-string">&quot;--start-date&quot;</span>, <span class="hljs-built_in">type</span>=<span class="hljs-built_in">str</span>, <span class="hljs-built_in">help</span>=<span class="hljs-string">&quot;The start date&quot;</span>, default=<span class="hljs-literal">None</span></span>)</span><br><span class="hljs-meta">@click.option(<span class="hljs-params"><span class="hljs-string">&quot;--end-date&quot;</span>, <span class="hljs-built_in">type</span>=<span class="hljs-built_in">str</span>, <span class="hljs-built_in">help</span>=<span class="hljs-string">&quot;The end date&quot;</span>, default=<span class="hljs-literal">None</span></span>)</span><br><span class="hljs-meta">@click.option(<span class="hljs-params"><span class="hljs-string">&quot;--pred-date&quot;</span>, <span class="hljs-built_in">type</span>=<span class="hljs-built_in">str</span>, <span class="hljs-built_in">help</span>=<span class="hljs-string">&quot;The prediction date&quot;</span>, default=<span class="hljs-literal">None</span></span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>(<span class="hljs-params">start_date, pred_date, end_date</span>):<br><span class="hljs-comment"># Your code here</span><br><span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure>
+<p>it won't change the functionality of the program?</p>
+<p>For options in Click, the order of parameters in your function
+definition does not have to match the order of the
+<code>@click.option()</code> decorators. This is because options are not
+positional; they are identified by their names.</p>
+<p>So yes, swapping <code>pred_date</code> and <code>end_date</code> in
+the function definition won't change the functionality of your
+program:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@click.command()</span><br><span class="hljs-meta">@click.option(<span class="hljs-params"><span class="hljs-string">&quot;--start-date&quot;</span>, <span class="hljs-built_in">type</span>=<span class="hljs-built_in">str</span>, <span class="hljs-built_in">help</span>=<span class="hljs-string">&quot;The start date&quot;</span>, default=<span class="hljs-literal">None</span></span>)</span><br><span class="hljs-meta">@click.option(<span class="hljs-params"><span class="hljs-string">&quot;--end-date&quot;</span>, <span class="hljs-built_in">type</span>=<span class="hljs-built_in">str</span>, <span class="hljs-built_in">help</span>=<span class="hljs-string">&quot;The end date&quot;</span>, default=<span class="hljs-literal">None</span></span>)</span><br><span class="hljs-meta">@click.option(<span class="hljs-params"><span class="hljs-string">&quot;--pred-date&quot;</span>, <span class="hljs-built_in">type</span>=<span class="hljs-built_in">str</span>, <span class="hljs-built_in">help</span>=<span class="hljs-string">&quot;The prediction date&quot;</span>, default=<span class="hljs-literal">None</span></span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>(<span class="hljs-params">start_date, pred_date, end_date</span>):<br>    <span class="hljs-comment"># Your code here</span><br>    <span class="hljs-keyword">pass</span><br><br></code></pre></td></tr></table></figure>
+<p>You can still call the command with options in any order:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">python xx.py --start-date 2023-01-01 --end-date 2023-12-31 --pred-date 2024-01-01<br><br></code></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python xx.py --pred-date 2024-01-01 --start-date 2023-01-01 --end-date 2023-12-31<br></code></pre></td></tr></table></figure>
+<p>Both will work fine.</p>
+<h1 id="shell-script-grammar">Shell script grammar</h1>
+<p>I am using the shell script grammar under Jenkins, the uppercased
+string inside of <code>$&#123;&#125;</code> is a placeholder (a variable that has
+values, and the string inside <code>$&#123;&#125;</code> is its name).</p>
+<h2
+id="if-else-statement-in-shell-script-grammar-example"><code>if-else</code>
+statement in shell script grammar example</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">if</span> <span class="hljs-variable">$&#123;PIP_INSTALL&#125;</span><br><span class="hljs-keyword">then</span><br>   make install<br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure>
+<p>In the code above, <code>$&#123;PIP_INSTALL&#125;</code> is a boolean typed
+value. <code>fi</code> is an abbreviation for “finish”, meaning the end
+of the code block. Similar to the <code>&#125;</code> in java’s if else
+statement.</p>
+<p>Rewrite the code in Java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (PIP_INSTALL) &#123;<br>	<span class="hljs-comment">// make install execution</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h2
+id="check-if-a-variable-is-empty-similar-to-null-in-java-and-none-in-python">Check
+if a variable is empty (similar to <code>null</code> in Java and
+<code>None</code> in Python)</h2>
+<p>If you want to check if a variable in a bash shell script (like the
+one you posted) is empty, you can use <code>-z</code> operator, which
+returns true if the length of the string is zero.</p>
+<p>Here is an example of your script checking if the
+<code>$&#123;PIP_INSTALL&#125;</code> variable is empty or not:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">if</span> [ -z <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;PIP_INSTALL&#125;</span>&quot;</span> ]<br><span class="hljs-keyword">then</span><br>   <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;PIP_INSTALL is empty&quot;</span><br><span class="hljs-keyword">else</span><br>   make install<br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure>
+<p>In this script, <code>-z "$&#123;PIP_INSTALL&#125;"</code> checks if
+<code>$&#123;PIP_INSTALL&#125;</code> is empty. If <code>$&#123;PIP_INSTALL&#125;</code> is
+empty, it prints "PIP_INSTALL is empty", otherwise it runs
+<code>make install</code>.</p>
+<p>The brackets <code>[</code> and <code>]</code> are required for the
+test command (<code>[ -z "$&#123;PIP_INSTALL&#125;" ]</code> is equivalent to
+<code>test -z "$&#123;PIP_INSTALL&#125;"</code>). And also note that there should
+be a space between <code>[</code> and <code>-z</code> and between
+<code>$&#123;PIP_INSTALL&#125;</code> and <code>]</code>.</p>
+<p>The <code>$&#123;PIP_INSTALL&#125;</code> variable is enclosed in quotes. This
+is a good practice because it prevents word splitting and pathname
+expansion. If <code>$&#123;PIP_INSTALL&#125;</code> is not set or if it is set to
+a value that contains spaces, without the quotes, the script may not
+behave as expected.</p>
+<h2 id="and-operation"><code>AND</code> operation</h2>
+<p>If you want to perform an AND operation in a Bash shell script, you
+can use <code>-a</code> operator, or <code>&amp;&amp;</code> operator
+inside your <code>if</code> condition.</p>
+<p>Let's say you want to check if <code>$&#123;PIP_INSTALL&#125;</code> is not
+empty, and some other variable <code>$&#123;SOME_VAR&#125;</code> equals "yes",
+you could do something like:</p>
+<p>Option 1: Using <code>-a</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">if</span> [ -n <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;PIP_INSTALL&#125;</span>&quot;</span> -a <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;SOME_VAR&#125;</span>&quot;</span> = <span class="hljs-string">&quot;yes&quot;</span> ]<br><span class="hljs-keyword">then</span><br>   make install<br><span class="hljs-keyword">else</span><br>   <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Either PIP_INSTALL is empty or SOME_VAR is not yes&quot;</span><br><span class="hljs-keyword">fi</span><br><br></code></pre></td></tr></table></figure>
+<p>Option 2: Using <code>&amp;&amp;</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">if</span> [ -n <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;PIP_INSTALL&#125;</span>&quot;</span> ] &amp;&amp; [ <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;SOME_VAR&#125;</span>&quot;</span> = <span class="hljs-string">&quot;yes&quot;</span> ]<br><span class="hljs-keyword">then</span><br>   make install<br><span class="hljs-keyword">else</span><br>   <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Either PIP_INSTALL is empty or SOME_VAR is not yes&quot;</span><br><span class="hljs-keyword">fi</span><br><br></code></pre></td></tr></table></figure>
+<p>In both scripts:</p>
+<ul>
+<li><code>n "$&#123;PIP_INSTALL&#125;"</code> checks if
+<code>$&#123;PIP_INSTALL&#125;</code> is not empty.</li>
+<li><code>"$&#123;SOME_VAR&#125;" = "yes"</code> checks if
+<code>$&#123;SOME_VAR&#125;</code> is equal to "yes".</li>
+<li>The <code>if</code> statement is true (and <code>make install</code>
+is executed) if and only if both conditions are true. Otherwise, "Either
+PIP_INSTALL is empty or SOME_VAR is not yes" is printed.</li>
+</ul>
+<p>Again, note the spaces surrounding the brackets and operators. They
+are required for the script to work correctly.</p>
+<h2 id="equal-in-if-comparing-to-other-languages">equal in if comparing
+to other languages</h2>
+<p>If I want to see if something equals to another, unlike other
+programming languages that I have to write "==", I can use only one
+"=”.</p>
+<p>Yes, that's correct. In Bash shell scripts, you use a single equals
+sign (<code>=</code>) for string comparison in an <code>if</code>
+statement, rather than the double equals sign (<code>==</code>) that's
+typically used in many programming languages.</p>
+<p>For example, if you wanted to check if the string variable
+<code>$&#123;MY_VAR&#125;</code> equals the string "Hello", you could write:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;MY_VAR&#125;</span>&quot;</span> = <span class="hljs-string">&quot;Hello&quot;</span> ]<br><span class="hljs-keyword">then</span><br>   <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;MY_VAR is Hello&quot;</span><br><span class="hljs-keyword">else</span><br>   <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;MY_VAR is not Hello&quot;</span><br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure>
+<p>This would print "MY_VAR is Hello" if <code>$&#123;MY_VAR&#125;</code> equals
+"Hello", and "MY_VAR is not Hello" otherwise.</p>
+<p>However, it is also worth noting that using <code>==</code> for
+comparison also works in bash and it is common to see it in many scripts
+for the sake of clarity and consistency with other programming
+languages, although <code>=</code> is more traditional:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;MY_VAR&#125;</span>&quot;</span> == <span class="hljs-string">&quot;Hello&quot;</span> ]<br><span class="hljs-keyword">then</span><br>   <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;MY_VAR is Hello&quot;</span><br><span class="hljs-keyword">else</span><br>   <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;MY_VAR is not Hello&quot;</span><br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure>
+<p>In both cases, be sure to leave spaces around the <code>=</code> or
+<code>==</code>. Bash treats them as special characters and requires
+spaces around them to correctly interpret your command.</p>
+<h2 id="print-in-shell">“<code>print</code>” in shell</h2>
+<p>The <code>echo</code> in the code above, then, is like the print
+statement in other language?</p>
+<p>Yes, that's correct. The <code>echo</code> command in Bash is similar
+to the <code>print</code> statement in many other programming
+languages.</p>
+<p><code>echo</code> is used in shell scripts and command line
+interfaces to output the strings it is being passed as arguments to the
+standard output, which is typically the terminal. This can be text or
+the value of a variable.</p>
+<p>For example:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Hello, World!&quot;</span><br></code></pre></td></tr></table></figure>
+<p>This command will print "Hello, World!" to the terminal.</p>
+<p>And you can use it with variables like this:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">MY_VAR=<span class="hljs-string">&quot;Hello, World!&quot;</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;MY_VAR&#125;</span><br></code></pre></td></tr></table></figure>
+<p>This will also print "Hello, World!" to the terminal.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Daily-Logs/" class="category-chain-item">Daily Logs</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Daily-Logs/Intern-Log/" class="category-chain-item">Intern Log</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Daily-Logs/Intern-Log/Tech-Summary/" class="category-chain-item">Tech Summary</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Intern/">#Intern</a>
+      
+        <a href="/tags/Intern-Log/">#Intern Log</a>
+      
+        <a href="/tags/Python/">#Python</a>
+      
+        <a href="/tags/Python-Grammar/">#Python Grammar</a>
+      
+        <a href="/tags/Terminal/">#Terminal</a>
+      
+        <a href="/tags/Terminal-Command/">#Terminal Command</a>
+      
+        <a href="/tags/Intern-At-300K/">#Intern At 300K</a>
+      
+        <a href="/tags/Learning-Log/">#Learning Log</a>
+      
+        <a href="/tags/Tech/">#Tech</a>
+      
+        <a href="/tags/Shell-Script-Grammar/">#Shell Script Grammar</a>
+      
+        <a href="/tags/Vim/">#Vim</a>
+      
+        <a href="/tags/Git/">#Git</a>
+      
+        <a href="/tags/Git-command/">#Git command</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Intern study summary - Jun 27 Tue</div>
+      <div>http://slray.com/2023/06/28/Intern-study-summary-Jun-27-Tue/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Sirui Ray Li</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>June 28, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/06/23/Intern-study-summary-Jun-15-Thu/" title="Intern study summary - Jun 15 Thu">
+                        <span class="hidden-mobile">Intern study summary - Jun 15 Thu</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        aggregate visit: 
+        <span id="busuanzi_value_site_pv"></span>
+         times
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        , 
+        <span id="busuanzi_value_site_uv"></span>
+         people
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
