@@ -1,6 +1,7 @@
 ---
-title: About Daily Learning Summary, Intern
+title: Intern study summary - Jun 13 Tue
 date: 2023-06-14 01:38:25
+excerpt: Learning record for what I learned during my internship at 300K—a quant company.
 tags:
   [
     Intern,
@@ -21,8 +22,6 @@ categories:
   - Tech Summary
 ---
 
-This blog is a record for what I learned during my internship at 300K—a quant company.
-
 # Python
 
 ## `pass`
@@ -33,7 +32,7 @@ In Python, the `pass` keyword is a **placeholder** statement. It is used when a 
 
 Suppose you're designing a new class and you know it needs a particular method, but you aren't sure what the implementation of that method should be yet. You can use `pass` as a placeholder like so:
 
-```
+```python
 class MyClass:
     def future_method(self):
         pass
@@ -43,7 +42,7 @@ In this code, `future_method` does nothing, but it's a valid method. Without the
 
 Similarly, it can be used in conditional statements, loops, etc. where some code is expected:
 
-```
+```python
 if some_condition:
     pass  # TODO: handle this condition
 
@@ -91,7 +90,7 @@ If you set `frozen=True` when you define a dataclass, it makes the instances of 
 
 If you try to change an attribute of a frozen dataclass, Python raises an exception. Here's an example:
 
-```
+```python
 from dataclasses import dataclass
 
 @dataclass(frozen=True)
@@ -211,7 +210,7 @@ Try to answer the following question:
 
 If I have code
 
-```
+```python
 @dataclass(frozen=True)
 class AClass:
     p1: str = "p1_attribute"
@@ -221,35 +220,77 @@ class AClass:
 
 and I have `a_class = AClass("t1", "t2", "t3")`, then the `p1, p2, p3` of `a_class` will be "t1", "t2", and "t3"?
 
-- answer
-  Yes, it’s correct. When you create an instance of `AClass` by calling `AClass("t1", "t2", "t3")`, the `p1`, `p2`, and `p3` attributes of `a_class` will be set to "t1", "t2", and "t3" respectively.
-  The values "p1_attribute", "p2_attribute", and "p3_attribute" specified in the class definition are default values. They are used if you create an instance without providing corresponding arguments.
-  Here's how it works:
+<style>
+.tog-button {
+    color: white;
+  border-radius: 20px; /* Rounded corners */
+  /* border: 10px;  */
+  /* Remove default button border */
+  /* border-color: white; */
+  padding: 10px 20px; /* Add some padding */
+  text-decoration: none; /* Remove default underline */
+  cursor: pointer; /* Change cursor on hover */
+  background-color: transparent; /* Transparent background */
+  color: white; /* Add some color */
+}
 
-  ```
-  from dataclasses import dataclass
+.tog-button:hover {
+  background-color: #ddd; /* Add a hover effect */
+  color: black;
+}
 
-  @dataclass(frozen=True)
-  class AClass:
-      p1: str = "p1_attribute"
-      p2: str = "p2_attribute"
-      p3: str = "p3_attribute"
+.tog-content {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    /* color: white; */
+    /* boarder: 10px; */
+}
+</style>
+<div class="tog-container">
+  <button class="tog-button">Show/Hide Answer</button>
+</div>
 
-  # Creating an instance with arguments
-  a_class = AClass("t1", "t2", "t3")
-  print(a_class.p1)  # Outputs: t1
-  print(a_class.p2)  # Outputs: t2
-  print(a_class.p3)  # Outputs: t3
+<div class="tog-content" style="display: none;">
+Yes, it’s correct. When you create an instance of `AClass` by calling `AClass("t1", "t2", "t3")`, the `p1`, `p2`, and `p3` attributes of `a_class` will be set to "t1", "t2", and "t3" respectively.
+The values "p1_attribute", "p2_attribute", and "p3_attribute" specified in the class definition are default values. They are used if you create an instance without providing corresponding arguments.
+Here's how it works:
 
-  # Creating an instance without arguments
-  another_class = AClass()
-  print(another_class.p1)  # Outputs: p1_attribute
-  print(another_class.p2)  # Outputs: p2_attribute
-  print(another_class.p3)  # Outputs: p3_attribute
+```python
+from dataclasses import dataclass
+@dataclass(frozen=True)
+class AClass:
+p1: str = "p1_attribute"
+p2: str = "p2_attribute"
+p3: str = "p3_attribute"
+# Creating an instance with arguments
+a_class = AClass("t1", "t2", "t3")
+print(a_class.p1)  # Outputs: t1
+print(a_class.p2)  # Outputs: t2
+print(a_class.p3)  # Outputs: t3
+# Creating an instance without arguments
+another_class = AClass()
+print(another_class.p1)  # Outputs: p1_attribute
+print(another_class.p2)  # Outputs: p2_attribute
+print(another_class.p3)  # Outputs: p3_attribute
+```
 
-  ```
+In this code, when we create `a_class` with arguments, those arguments override the default values. But when we create `another_class` without arguments, the attributes get set to the default values.
 
-  In this code, when we create `a_class` with arguments, those arguments override the default values. But when we create `another_class` without arguments, the attributes get set to the default values.
+</div>
+
+<script>
+let togButton = document.querySelector('.tog-button');
+let togContent = document.querySelector('.tog-content');
+
+togButton.addEventListener('click', function() {
+    console.log("clicked")
+  if(togContent.style.display == 'none') {
+    togContent.style.display = 'block';
+  } else {
+    togContent.style.display = 'none';
+  }
+});
+</script>
 
 ## `yield`
 
@@ -291,7 +332,7 @@ In Python, the `yield` keyword is used to make a function into a generator that 
 
 Here is a simple example of how you might do that. This example implements a generator that yields the numbers 1, 2, and 3, similar to the previous example.
 
-```
+```python
 class SimpleGenerator:
     def __init__(self):
         self.current = 0
@@ -318,32 +359,55 @@ This is a more explicit way of implementing a generator, and it can give you a c
 
 ### but with `yield` keyword, there won't be such thing to store the iterable result, which means I won't be able to print the whole return result inside of the method with 'yield`?
 
-- answer
-  You're correct. A generator (a function that uses the `yield` keyword) doesn't return a value that can be stored in a variable like a list or tuple. Instead, it produces values one at a time on-the-fly as you iterate over the generator.
+<div class="tog-container">
+  <button class="tog-button" name="button2">Show/Hide Answer</button>
+</div>
+
+<div class="tog-content" style="display: none;" name="content2">
+You're correct. A generator (a function that uses the `yield` keyword) doesn't return a value that can be stored in a variable like a list or tuple. Instead, it produces values one at a time on-the-fly as you iterate over the generator.
   Here's an example:
 
-  ```
-  def simple_generator():
-      yield 1
-      yield 2
-      yield 3
+```
+def simple_generator():
+    yield 1
+    yield 2
+    yield 3
 
-  # This won't work as you might expect:
-  result = simple_generator()
-  print(result)  # Outputs: <generator object simple_generator at 0x7f...>
+# This won't work as you might expect:
+result = simple_generator()
+print(result)  # Outputs: <generator object simple_generator at 0x7f...>
 
-  ```
+```
 
-  When you try to print `result`, it tells you that it's a generator object, not a list of numbers.
-  If you want to collect all the values produced by a generator into a list, you can do that by passing the generator to the `list` function:
+When you try to print `result`, it tells you that it's a generator object, not a list of numbers.
+If you want to collect all the values produced by a generator into a list, you can do that by passing the generator to the `list` function:
 
-  ```
-  result = list(simple_generator())
-  print(result)  # Outputs: [1, 2, 3]
+```
+result = list(simple_generator())
+print(result)  # Outputs: [1, 2, 3]
 
-  ```
+```
 
-  However, it's important to remember that one of the main reasons to use generators is when you're working with a large amount of data that won't fit into memory all at once. In such cases, you'd generally want to process the generator's values one at a time, rather than trying to store them all in a list.
+However, it's important to remember that one of the main reasons to use generators is when you're working with a large amount of data that won't fit into memory all at once. In such cases, you'd generally want to process the generator's values one at a time, rather than trying to store them all in a list.
+
+</div>
+
+<script>
+let elements = document.getElementsByName('button2');
+let button2 = elements[0]
+let elements2 = document.getElementsByName('content2');
+let content2 = elements2[0]
+
+button2.addEventListener('click', function() {
+    console.log("clicked")
+    console.log(content2)
+  if(content2.style.display == 'none') {
+    content2.style.display = 'block';
+  } else {
+    content2.style.display = 'none';
+  }
+});
+</script>
 
 ## `enumerate()`
 
@@ -378,7 +442,7 @@ In more technical terms, an iterator is an object that implements the iterator p
 
 Here's an example:
 
-```
+```python
 my_list = [1, 2, 3, 4]
 my_iter = iter(my_list)
 
@@ -393,7 +457,7 @@ In this code, `iter(my_list)` returns an iterator object that you can fetch valu
 
 Most of the time, you don't need to use `iter()` and `next()` directly, because Python's `for` loop automatically calls them when you loop over an iterable object:
 
-```
+```python
 my_list = [1, 2, 3, 4]
 for element in my_list:
     print(element)
@@ -417,7 +481,7 @@ Python does have a similar construct, but the syntax is different from Java. Ins
 
 Here's an example:
 
-```
+```java
 j = 5
 i = 6 if j > 1 else 7
 ```

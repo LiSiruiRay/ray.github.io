@@ -1,52 +1,35 @@
-# Hexo Configuration
-## Docs: https://hexo.io/docs/configuration.html
-## Source: https://github.com/hexojs/hexo/
-
-# for table of content
-
-# Site
 title: Ray's website
 subtitle: testing testing testing
 description: testing2
 keywords: testing3
 author: Sirui Ray Li
 language:
-    - en
-    - zh-CN
+  - en
+  - zh-CN
 timezone: ''
-
-# Show multilingual switcher in footer.
 language_switcher: true
-
-# URL
-## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: http://slray.com
-permalink: :year/:month/:day/:title/
-permalink_defaults:
+permalink: ':year/:month/:day/:title/'
+permalink_defaults: null
 pretty_urls:
-  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
-  trailing_html: true # Set to false to remove trailing '.html' from permalinks
-
-# Directory
+  trailing_index: true
+  trailing_html: true
 source_dir: source
 public_dir: public
 tag_dir: tags
 archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
-i18n_dir: :lang
-skip_render:
-
+i18n_dir: ':lang'
+skip_render: null
 navbar:
   blog_title: Ray's blog
-
-# Writing
-new_post_name: :title.md # File name of new posts
+new_post_name: ':title.md'
 default_layout: post
-titlecase: false # Transform title into titlecase
+titlecase: false
 external_link:
-  enable: true # Open external links in new tab
-  field: site # Apply to the whole site
+  enable: true
+  field: site
   exclude: ''
 filename_case: 0
 render_drafts: true
@@ -65,103 +48,53 @@ prismjs:
   preprocess: true
   line_number: true
   tab_replace: ''
-
-# Home page setting
-# path: Root path for your blogs index page. (default = '')
-# per_page: Posts displayed per page. (0 = disable pagination)
-# order_by: Posts order. (Order by date descending by default)
 index_generator:
   path: ''
   per_page: 10
-  order_by: -date
-
-# Category & Tag
+  order_by: '-date'
 default_category: uncategorized
-category_map:
-tag_map:
-
-# Metadata elements
-## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
+category_map: null
+tag_map: null
 meta_generator: true
-
-# Date / Time format
-## Hexo uses Moment.js to parse and display date
-## You can customize the date format as defined in
-## http://momentjs.com/docs/#/displaying/format/
 date_format: YYYY-MM-DD
 time_format: HH:mm:ss
-## updated_option supports 'mtime', 'date', 'empty'
-updated_option: 'mtime'
-
-# Pagination
-## Set per_page to 0 to disable pagination
+updated_option: mtime
 per_page: 10
 pagination_dir: page
-
-# Include / Exclude file(s)
-## include:/exclude: options only apply to the 'source/' folder
-include:
-exclude:
-ignore:
-
-# Extensions
-## Plugins: https://hexo.io/plugins/
-## Themes: https://hexo.io/themes/
+include: null
+exclude: null
+ignore: null
 theme: fluid
-
-# Deployment
-## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://github.com/LiSiruiRay/ray.github.io.git # https://bitbucket.org/JohnSmith/johnsmith.bitbucket.io
+  repo: https://github.com/LiSiruiRay/ray.github.io.git
   branch: gh-pages
-  message: "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"
-
-##Post page setting
-##added myself
-#post:
-#  meta:
-#    author:  # 作者，优先根据 front-matter 里 author 字段，其次是 hexo 配置中 author 值
-#      enable: false
-#    date:  # 文章日期，优先根据 front-matter 里 date 字段，其次是 md 文件日期
-#      enable: true
-#      format: "dddd, MMMM Do YYYY, h:mm a"  # 格式参照 ISO-8601 日期格式化
-#    wordcount:  # 字数统计
-#      enable: true
-#      format: "{} 字"  # 显示的文本，{}是数字的占位符（必须包含)，下同
-#    min2read:  # 阅读时间
-#      enable: true
-#      format: "{} 分钟"
-#    views:  # 阅读次数
-#      enable: false
-#      source: "leancloud"  # 统计数据来源，可选：leancloud | busuanzi   注意不蒜子会间歇抽风
-#      format: "{} 次"
+  message: 'Site updated: {{ now(''YYYY-MM-DD HH:mm:ss'') }}'
+  repository: git@github.com:LiSiruiRay/LiSiruiRay/ray.github.io/
 post:
-    meta:
-      author:  # 作者，优先根据 front-matter 里 author 字段，其次是 hexo 配置中 author 值
-        enable: false
-      date:  # 文章日期，优先根据 front-matter 里 date 字段，其次是 md 文件日期
-        enable: true
-        format: "dddd, MMMM Do YYYY, h:mm a"  # 格式参照 ISO-8601 日期格式化
-      wordcount:  # 字数统计
-        enable: true
-        format: "{} wordss"  # 显示的文本，{}是数字的占位符（必须包含)，下同
-      min2read:  # 阅读时间
-        enable: true
-        format: "{} minutes"
-      views:  # 阅读次数
-        enable: true
-        source: "busuanzi"  # 统计数据来源，可选：leancloud | busuanzi   注意不蒜子会间歇抽风
-        format: "visit: {} times"
-
+  meta:
+    author:
+      enable: false
+    date:
+      enable: true
+      format: dddd, MMMM Do YYYY, h:mm a
+    wordcount:
+      enable: true
+      format: '{} wordss'
+    min2read:
+      enable: true
+      format: '{} minutes'
+    views:
+      enable: true
+      source: busuanzi
+      format: 'visit: {} times'
 footer:
   statistics:
     enable: true
-    source: "busuanzi"  # 可选 leancloud | busuanzi  根据自己需求选择
-    pv_format: "aggregate visit: {} times"  # 显示的文本，{}是数字的占位符（必须包含)，下同
-    uv_format: ", {} people"
-    
+    source: busuanzi
+    pv_format: 'aggregate visit: {} times'
+    uv_format: ', {} people'
 PDF:
   type: pdf
-  selector: 'a[href$=".pdf"]'
-  replacement: '<object data="%s" type="application/pdf" width="500" height="600"></object>'
+  selector: a[href$=".pdf"]
+  replacement: <object data="%s" type="application/pdf" width="500" height="600"></object>
