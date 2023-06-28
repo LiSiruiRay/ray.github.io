@@ -1,0 +1,1099 @@
+
+
+<!DOCTYPE html>
+<html lang="en,zh-CN,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/ray.jpg">
+  <link rel="icon" href="/ray.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Sirui Ray Li">
+  <meta name="keywords" content="testing3">
+  
+    <meta name="description" content="Learning record for what I learned during my internship at 300K—a quant company on the day of 15th of Jun, Thu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Intern study summary - Jun 25 Sun">
+<meta property="og:url" content="http://slray.com/2023/06/25/Intern-study-summary-Jun-25-Sun/index.html">
+<meta property="og:site_name" content="Ray&#39;s website">
+<meta property="og:description" content="Learning record for what I learned during my internship at 300K—a quant company on the day of 15th of Jun, Thu">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-06-25T13:37:02.000Z">
+<meta property="article:modified_time" content="2023-06-28T13:40:52.762Z">
+<meta property="article:author" content="Sirui Ray Li">
+<meta property="article:tag" content="Intern">
+<meta property="article:tag" content="Intern Log">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Python Grammar">
+<meta property="article:tag" content="PyCharm Professional">
+<meta property="article:tag" content="Intern At 300K">
+<meta property="article:tag" content="Learning Log">
+<meta property="article:tag" content="Tech">
+<meta property="article:tag" content="I&#x2F;O">
+<meta property="article:tag" content="Error Explanation">
+<meta property="article:tag" content="RESTful API">
+<meta property="article:tag" content="Command Line">
+<meta property="article:tag" content="URL">
+<meta property="article:tag" content="Programming Tips">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Intern study summary - Jun 25 Sun - Ray&#39;s website</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"slray.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ray&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Intern study summary - Jun 25 Sun"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-06-25 21:37" pubdate>
+          Sunday, June 25th 2023, 9:37 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          16k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          134 minutes
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          visit: <span id="busuanzi_value_page_pv"></span> times
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Intern study summary - Jun 25 Sun</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>This blog is create on the day of 2023-06-28 21:37:02. Yet, to
+maintain the order, I changed the creating date.</p>
+<h1 id="python">Python</h1>
+<h2 id="package-directory-folder">Package &amp; Directory (folder)</h2>
+<p>In Python, a directory becomes a package when it contains a special
+file named <code>__init__.py</code>. This file can be empty, and it
+indicates that the directory should be treated as a Python package. A
+Python package is simply a way of organizing related modules
+(<code>.py</code> files) into a directory hierarchy.</p>
+<p>Essentially, a package in Python is also a directory, but not all
+directories are packages. If you have a directory with Python files but
+no <code>__init__.py</code>, Python will treat it as a directory of
+scripts, not as a package.</p>
+<p>Let's say you have a directory called <code>utils</code> and inside
+it, you have some Python scripts like <code>script1.py</code>,
+<code>script2.py</code>, etc. If you want to import functions from these
+scripts in other parts of your code like so:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> utils.script1 <span class="hljs-keyword">import</span> my_function<br></code></pre></td></tr></table></figure>
+<p>You would need to make <code>utils</code> a package by adding an
+<code>__init__.py</code> file inside it. If you don't add an
+<code>__init__.py</code> file, Python won't recognize <code>utils</code>
+as a package and you won't be able to import from it in this manner.</p>
+<p>To summarize, if you just want a bunch of Python scripts in a folder
+and you're not concerned about importing from them, you can just use a
+regular directory. But if you want to be able to import
+functions/classes from these scripts as part of a package, you should
+add an <code>__init__.py</code> file to the directory, turning it into a
+package.</p>
+<h2 id="io-in-python"><code>I/O</code> in python</h2>
+<h3 id="create-folders-by-python">Create folders by python</h3>
+<p>You can create folders (directories) in Python using the
+<code>os</code> module's <code>mkdir</code> or <code>makedirs</code>
+function.</p>
+<p>Here's how to create a single folder:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><br>os.mkdir(<span class="hljs-string">&quot;my_folder&quot;</span>)<br></code></pre></td></tr></table></figure>
+<p>This will create a folder named "my_folder" in the current
+directory.</p>
+<p>If you want to create a nested directory structure, you can use
+<code>os.makedirs</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><br>os.makedirs(<span class="hljs-string">&quot;my_folder/sub_folder/sub_sub_folder&quot;</span>)<br></code></pre></td></tr></table></figure>
+<p>This will create the entire path, even if the intermediate folders
+("my_folder" and "my_folder/sub_folder") do not exist.</p>
+<p>Note that these functions will raise a <code>FileExistsError</code>
+if the folder you're trying to create already exists. If you want to
+avoid this, you can check if the directory exists before creating
+it:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><br><span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(<span class="hljs-string">&quot;my_folder&quot;</span>):<br>    os.mkdir(<span class="hljs-string">&quot;my_folder&quot;</span>)<br></code></pre></td></tr></table></figure>
+<p>Or, if you're using Python 3.7 or later, you can use the
+<code>exist_ok</code> parameter with <code>os.makedirs</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><br>os.makedirs(<span class="hljs-string">&quot;my_folder/sub_folder/sub_sub_folder&quot;</span>, exist_ok=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+<p>This will not raise an error if the folder already exists.</p>
+<h3 id="get-a-list-of-folders-name">Get a list of folder's name</h3>
+<p>You can get a list of folder names in a directory using the
+<code>os</code> module's <code>listdir</code> or <code>os.scandir</code>
+functions.</p>
+<p>Here's a simple example using <code>os.listdir</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><br>folder_path = <span class="hljs-string">&quot;/path/to/your/folder&quot;</span><br>folders = [name <span class="hljs-keyword">for</span> name <span class="hljs-keyword">in</span> os.listdir(folder_path) <span class="hljs-keyword">if</span> os.path.isdir(os.path.join(folder_path, name))]<br><br><span class="hljs-built_in">print</span>(folders)<br></code></pre></td></tr></table></figure>
+<p>This script will give you a list of all the directories (not files)
+in the specified folder. The <code>os.path.isdir</code> function checks
+if the path is a directory.</p>
+<p>Here's an example using <code>os.scandir</code>, which is a bit more
+efficient if you're doing additional operations like checking if the
+paths are directories:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><br>folder_path = <span class="hljs-string">&quot;/path/to/your/folder&quot;</span><br>folders = [entry.name <span class="hljs-keyword">for</span> entry <span class="hljs-keyword">in</span> os.scandir(folder_path) <span class="hljs-keyword">if</span> entry.is_dir()]<br><br><span class="hljs-built_in">print</span>(folders)<br></code></pre></td></tr></table></figure>
+<p>Both these scripts will print the names of the folders in the
+specified directory. Note that these are just the folder names, not
+their full paths. If you want the full paths, replace
+<code>entry.name</code> with <code>entry.path</code> in the second
+example, or <code>name</code> with
+<code>os.path.join(folder_path, name)</code> in the first.</p>
+<h3 id="create-a-file">Create a file</h3>
+<p>You can create a file in Python using the built-in <code>open</code>
+function with the <code>w</code> (write) mode. Here's an example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;myfile.txt&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>    <span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure>
+<p>This code will create a file named <code>myfile.txt</code> in the
+current directory. If the file already exists, this will overwrite
+it.</p>
+<p>The <code>with</code> statement is used for context management, it
+ensures that the file is properly closed after it is no longer
+needed.</p>
+<p>If you want to write some data to the file when you create it, you
+can do that like this:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;myfile.txt&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>    f.write(<span class="hljs-string">&quot;Hello, World!&quot;</span>)<br></code></pre></td></tr></table></figure>
+<p>This code will create <code>myfile.txt</code> and write the string
+<code>Hello, World!</code> to it.</p>
+<p>If you want to create the file without overwriting it if it already
+exists, you can use the <code>x</code> (exclusive creation) mode:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">try</span>:<br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;myfile.txt&#x27;</span>, <span class="hljs-string">&#x27;x&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>        <span class="hljs-keyword">pass</span><br><span class="hljs-keyword">except</span> FileExistsError:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;The file already exists.&quot;</span>)<br></code></pre></td></tr></table></figure>
+<p>This code will only create the file if it doesn't already exist. If
+the file does exist, a <code>FileExistsError</code> is raised, and the
+code in the <code>except</code> block is executed.</p>
+<h3 id="how-to-delete-a-file">how to delete a file</h3>
+<p>You can delete a file in Python using the <code>os</code> module's
+<code>remove</code> function. Here's a simple example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><br>file_path = <span class="hljs-string">&quot;/path/to/your/file.txt&quot;</span><br>os.remove(file_path)<br></code></pre></td></tr></table></figure>
+<p>This code will delete the file at the specified path.</p>
+<p>Please be careful, because this operation cannot be undone. Once a
+file is deleted in this way, it cannot be recovered.</p>
+<p>If you want to make sure that a file exists before you try to delete
+it, you can use <code>os.path.isfile</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><br>file_path = <span class="hljs-string">&quot;/path/to/your/file.txt&quot;</span><br><br><span class="hljs-keyword">if</span> os.path.isfile(file_path):<br>    os.remove(file_path)<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;Error: <span class="hljs-subst">&#123;file_path&#125;</span> not a valid filename&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<p>This code will only try to delete the file if it exists. If the file
+doesn't exist, it will print an error message instead.</p>
+<h2
+id="unexpected-eof-while-parsing"><strong><code>unexpected EOF while parsing</code></strong></h2>
+<p>The error message <code>unexpected EOF while parsing</code> typically
+means that the Python interpreter has reached the end of your file (EOF
+stands for End Of File) while it was expecting to find something else.
+This is typically due to unmatched or improperly used parentheses,
+brackets, or quotes.</p>
+<p>For example, this error could happen if you have an opening
+parenthesis or bracket without a closing one:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># Missing closing parenthesis</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Hello, world!&quot;</span><br><br><span class="hljs-comment"># Missing closing bracket</span><br>my_list = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
+<p>Or if you have opened a string with a quote but never closed it:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># Missing closing quote</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Hello, world)</span><br></code></pre></td></tr></table></figure>
+<p>Without the rest of your code, I can't tell you exactly what's
+causing the problem. But you should go through your code and make sure
+that all parentheses, brackets, and quotes are properly matched and
+closed. Using an IDE or a text editor with syntax highlighting can be
+very helpful for this, as it will often visually indicate unmatched
+parentheses or quotes.</p>
+<h2
+id="parameter-filename-unfilled"><code>Parameter 'filename' unfilled</code></h2>
+<p>When a Python function, method, or constructor (the
+<code>__init__</code> method in a class) requires arguments, you must
+provide those arguments whenever you call the function, method, or
+constructor. If you don't, you will see an error message or a warning
+depending on your development environment.</p>
+<p>The message "Parameter 'filename' unfilled" is telling you that you
+are calling a function or method that requires a parameter named
+'filename', but you are not providing a value for that parameter.</p>
+<p>For example, suppose you have the following function:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">print_file_contents</span>(<span class="hljs-params">filename</span>):<br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(filename, <span class="hljs-string">&#x27;r&#x27;</span>) <span class="hljs-keyword">as</span> file:<br>        <span class="hljs-built_in">print</span>(file.read())<br></code></pre></td></tr></table></figure>
+<p>If you call <code>print_file_contents()</code> without providing an
+argument, like this:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">print_file_contents()<br></code></pre></td></tr></table></figure>
+<p>Then you will see an error because you didn't fill in the 'filename'
+parameter. The correct way to call the function is to provide the
+filename as an argument, like this:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">print_file_contents(<span class="hljs-string">&#x27;myfile.txt&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<p>This error can also occur if you're using an Integrated Development
+Environment (IDE) or editor that provides code checking or linting
+services, and you've written a function call without filling in all the
+required parameters. In this case, the IDE will flag the incomplete
+function call as an error even before you run the code.</p>
+<h2 id="key-check-in-python">Key check in Python</h2>
+<p><code>has_key()</code> in python:</p>
+<p>The <code>has_key()</code> method in Python dictionaries was
+deprecated and removed in Python 3. It was used to check if a given key
+exists in a dictionary. Instead of using <code>has_key()</code>, you can
+directly use the <code>in</code> operator to check for the presence of a
+key in a dictionary.</p>
+<p>Here's an example of how you can check if a key exists in a
+dictionary using the <code>in</code> operator:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">my_dict = &#123;<span class="hljs-string">&#x27;key1&#x27;</span>: <span class="hljs-string">&#x27;value1&#x27;</span>, <span class="hljs-string">&#x27;key2&#x27;</span>: <span class="hljs-string">&#x27;value2&#x27;</span>, <span class="hljs-string">&#x27;key3&#x27;</span>: <span class="hljs-string">&#x27;value3&#x27;</span>&#125;<br><br><span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;key2&#x27;</span> <span class="hljs-keyword">in</span> my_dict:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Key &#x27;key2&#x27; exists in the dictionary.&quot;</span>)<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Key &#x27;key2&#x27; does not exist in the dictionary.&quot;</span>)<br></code></pre></td></tr></table></figure>
+<p>Output:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">Key <span class="hljs-string">&#x27;key2&#x27;</span> exists <span class="hljs-keyword">in</span> the dictionary.<br></code></pre></td></tr></table></figure>
+<p>Using the <code>in</code> operator is the recommended way to check
+for the presence of a key in a dictionary in Python.</p>
+<h2 id="hex-in-python">Hex in python</h2>
+<h3 id="example">Example:</h3>
+<p>Convert str of hex to a hex in python, and add one</p>
+<p>To convert a string representation of a hexadecimal number to an
+integer, use the <code>int</code> function in Python with base 16. Then
+you can add one to this value as it is now an integer. Here's an
+example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">hex_str = <span class="hljs-string">&quot;0x1a&quot;</span><br>value = <span class="hljs-built_in">int</span>(hex_str, <span class="hljs-number">16</span>)<br>value += <span class="hljs-number">1</span><br><span class="hljs-built_in">print</span>(value)<br></code></pre></td></tr></table></figure>
+<p>This will output <code>27</code> (1a in hexadecimal is 26 in
+decimal).</p>
+<p>If you want the result to remain in hexadecimal format, you can then
+convert it back to a hexadecimal string using the <code>hex</code>
+function:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">hex_str = <span class="hljs-string">&quot;0x1a&quot;</span><br>value = <span class="hljs-built_in">int</span>(hex_str, <span class="hljs-number">16</span>)<br>value += <span class="hljs-number">1</span><br>new_hex_str = <span class="hljs-built_in">hex</span>(value)<br><span class="hljs-built_in">print</span>(new_hex_str)<br></code></pre></td></tr></table></figure>
+<p>This will output <code>0x1b</code> (27 in decimal is 1b in
+hexadecimal).</p>
+<h3 id="hex-to-decimal">Hex to Decimal</h3>
+<p>The conversion of a hexadecimal (hex) number to a decimal number in
+Python can be done using the built-in <code>int()</code> function,
+specifying the base as 16 (since hexadecimal is base 16).</p>
+<p>Here's an example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">hex_number = <span class="hljs-string">&quot;0x1a&quot;</span> <span class="hljs-comment"># hex_number is a string representation of a hexadecimal number.</span><br>dec_number = <span class="hljs-built_in">int</span>(hex_number, <span class="hljs-number">16</span>) <span class="hljs-comment"># dec_number is now a decimal (base 10) representation of hex_number.</span><br><span class="hljs-built_in">print</span>(dec_number)<br><br></code></pre></td></tr></table></figure>
+<p>This will output: <code>26</code></p>
+<p>In this case, the hexadecimal number <code>1a</code> corresponds to
+the decimal number <code>26</code>.</p>
+<p>The <code>int()</code> function in Python can convert a string
+representation of a number in any base (between 2 and 36) to a decimal
+integer. When you pass in '16' as the second argument, you're telling it
+to interpret the string as a hexadecimal number.</p>
+<h1 id="restful-api">RESTful API</h1>
+<p>RESTful API is a type of web API that uses HTTP methods to interact
+with resources. REST stands for Representational State Transfer, and
+it's a set of design principles for creating networked applications.</p>
+<p>Here's a brief overview of the basic principles of REST:</p>
+<ol type="1">
+<li><strong>Client-Server Architecture:</strong> REST APIs follow a
+client-server model, where the client sends a request to the server and
+waits for a response. The client and server are independent and can be
+developed separately.</li>
+<li><strong>Stateless:</strong> Each request from the client to the
+server must contain all the information needed to understand and process
+the request. The server shouldn't store any information about the
+client's state between requests.</li>
+<li><strong>Cacheable:</strong> Responses from the server can be cached
+by the client. This can improve performance by reducing the need for
+repeated requests.</li>
+<li><strong>Uniform Interface:</strong> REST APIs should have a
+consistent, uniform interface, which makes them easier to use. This
+involves using standard HTTP methods (like GET, POST, PUT, DELETE),
+using resource URIs to identify resources, and using standard HTTP
+response codes.</li>
+<li><strong>Layered System:</strong> REST APIs can be composed of
+multiple layers, each performing specific tasks. For example, there
+might be a layer for handling requests, a layer for processing data, and
+a layer for storing data.</li>
+</ol>
+<p>A RESTful API is typically used to allow different software systems
+to communicate with each other. In your case, you would use a RESTful
+API to allow your Swift front-end to communicate with your Python
+back-end. The Swift code would send HTTP requests to the API, and the
+API would respond with the requested data.</p>
+<h1 id="cat"><code>cat</code></h1>
+<p>You can use <code>cat</code> command in the terminal to check the
+content of a file.</p>
+<h1 id="pycharm-python-interpreter-problem">PyCharm Python interpreter
+problem</h1>
+<p>Look at the following situation and see if you are able to figure it
+out:</p>
+<p>I am working on a flask project. have finished the project before
+with PyCharm and I am using the PyCharm to open it. Now it is prompting
+that package requirements 'python-dotev == 1.0.0', 'Flask == 2.3.2' not
+satisfied. I clicked on the install package, got "Cannot set up a python
+SDK at Python 3.8 (serverProj)
+(/Users/ray/rayfile/serverProj/venv/bin/python). The SDK seems
+invalid.”</p>
+<p>Solution:</p>
+<p>This issue seems to be due to a problem with the Python interpreter
+selected for your project in PyCharm. The interpreter might be
+improperly configured, or the virtual environment associated with the
+project might be corrupted.</p>
+<p>Here are some steps you can follow to try to resolve this:</p>
+<ol type="1">
+<li><strong>Ensure that Python is correctly installed</strong>: Open a
+terminal (outside of PyCharm) and type <code>python3 --version</code>.
+This should return the version of Python installed. If it doesn't, you
+might need to install Python.</li>
+<li><strong>Recreate the virtual environment</strong>: It's possible
+that your project's virtual environment is corrupted. Navigate to your
+project's directory in terminal, delete the existing 'venv' directory
+(<code>rm -rf venv</code>), and create a new one using
+<code>python3 -m venv venv</code>.</li>
+<li><strong>Reconfigure your PyCharm interpreter</strong>: In PyCharm,
+go to Preferences -&gt; Project -&gt; Python Interpreter. Add a new
+interpreter, and select "Existing environment". Navigate to the Python
+executable in your newly created 'venv' directory (it should be at
+/path-to-your-project/venv/bin/python). Set this as your project
+interpreter.</li>
+<li><strong>Reinstall the packages</strong>: Try installing
+'python-dotenv' and 'Flask' again. You can do this in PyCharm or from
+the terminal by activating your virtual environment
+(<code>source venv/bin/activate</code>), and then using pip to install
+the packages
+(<code>pip install python-dotenv==1.0.0 Flask==2.3.2</code>).</li>
+</ol>
+<h1 id="and-in-url"><code>?</code> and <code>&amp;</code> in URL</h1>
+<p>Here I will provide an example of RESTful API to better illustrate
+what a RESTful API is and dive deeper in to the URL’s world.</p>
+<hr />
+<h2 id="example-1">Example:</h2>
+<p>While I was developing an API for data querying for the company, I
+had the following requirement:</p>
+<p>I need to write a function in python flask with the entry point as
+"/data-api/top-pairs/<exchange>?endDate=<end_date>&amp;days=<days>".</p>
+<p>Query string <code>endDate</code> and <code>days</code> are
+optional</p>
+<p>Default <code>endDate</code> = current UTC date and default
+<code>days</code> is 7.</p>
+<p>The function returns the link</p>
+<p><strong>Solution</strong></p>
+<p>Here's how you could define a Flask route with the endpoint
+<code>/data-api/top-pairs/&lt;exchange&gt;</code>, accepting optional
+query parameters <code>endDate</code> and <code>days</code>.</p>
+<p>The function first checks if the query parameters are present in the
+request, and if not, it assigns them default values. It then constructs
+and returns a link.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask, request<br><span class="hljs-keyword">from</span> datetime <span class="hljs-keyword">import</span> datetime, timedelta<br><span class="hljs-keyword">import</span> pytz<br><br>app = Flask(__name__)<br><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/data-api/top-pairs/&lt;exchange&gt;&#x27;</span>, methods=[<span class="hljs-string">&#x27;GET&#x27;</span>]</span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_top_pairs</span>(<span class="hljs-params">exchange</span>):<br>    <span class="hljs-comment"># Get query parameters, provide default values if not present</span><br>    end_date = request.args.get(<span class="hljs-string">&#x27;endDate&#x27;</span>, datetime.now(pytz.utc).strftime(<span class="hljs-string">&#x27;%Y-%m-%d&#x27;</span>))<br>    days = request.args.get(<span class="hljs-string">&#x27;days&#x27;</span>, <span class="hljs-number">7</span>)<br><br>    <span class="hljs-comment"># Construct and return the link</span><br>    link = <span class="hljs-string">f&quot;/data-api/top-pairs/<span class="hljs-subst">&#123;exchange&#125;</span>?endDate=<span class="hljs-subst">&#123;end_date&#125;</span>&amp;days=<span class="hljs-subst">&#123;days&#125;</span>&quot;</span><br>    <span class="hljs-keyword">return</span> link<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    app.run(debug=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+<p>In this example, <code>exchange</code> is part of the URL, while
+<code>endDate</code> and <code>days</code> are optional query
+parameters. The function <code>get_top_pairs()</code> extracts these
+parameters using <code>request.args.get()</code>, providing default
+values of the current date (in UTC) and 7 days if they're not present.
+Then, it constructs a link string and returns it.</p>
+<p>Note: This code uses Flask's built-in request object to access the
+query parameters. The <code>args</code> attribute is a MultiDict object
+that contains all the received query parameters. The <code>get()</code>
+method is used to access a parameter value, and allows you to provide a
+default value if the parameter is not found.</p>
+<h2 id="dive-deeper">Dive deeper</h2>
+<p>What is the <code>?</code> and <code>&amp;</code> in the link? I
+always see those stuff in a weblink. Why here the string in the
+<code>@app.route()</code> is without <code>endDate</code> and
+<code>days</code>?</p>
+<p>In a URL, the <code>?</code> and <code>&amp;</code> symbols are used
+to specify query parameters.</p>
+<ul>
+<li>The <code>?</code> symbol is used to start the query parameters
+section of a URL. It separates the path portion of the URL from the
+query parameters.</li>
+<li>The <code>&amp;</code> symbol is used to separate multiple query
+parameters.</li>
+</ul>
+<p>So, in the URL
+<code>https://example.com/page?param1=value1&amp;param2=value2</code>,
+<code>param1</code> and <code>param2</code> are query parameters with
+respective values of <code>value1</code> and <code>value2</code>.</p>
+<p>Regarding your second question, in the <code>@app.route()</code>
+decorator, you only specify the path portion of the URL. This is because
+the route is used to map a URL to a specific function in your Flask
+application.</p>
+<p>In your case, the route is
+<code>/data-api/top-pairs/&lt;exchange&gt;</code>. The
+<code>&lt;exchange&gt;</code> part is a variable part of the URL and
+Flask captures the value in this part of the URL and passes it to your
+function as an argument.</p>
+<p>The query parameters (<code>endDate</code> and <code>days</code> in
+your case) are not part of the route because they are optional and their
+order does not matter. They are accessed inside your function using
+<code>request.args.get()</code>. This is a dictionary-like object that
+allows you to access the query parameters by their name.</p>
+<p>The route does not need to know about these parameters. It only needs
+to know about the fixed and variable parts of the path of the URL. It's
+the job of your function to handle the query parameters, not the
+route.</p>
+<h1 id="tips-for-preventing-typos">Tips for preventing typos</h1>
+<p>I hate typo!!!!!!!!!!!!!!!!!!!!!</p>
+<p>Typos can sometimes be very tricky to spot, especially when they
+result in valid but incorrect code, as was the case here. They can be a
+common source of bugs that are hard to find.</p>
+<p>Here are a few suggestions to minimize the impact of typos:</p>
+<ol type="1">
+<li><strong>Use an Integrated Development Environment (IDE)</strong>:
+Most IDEs have features like syntax highlighting and autocomplete that
+can help spot typos. Some can even detect some types of bugs before you
+even run your code.</li>
+<li><strong>Code Reviews</strong>: Having another set of eyes look over
+your code can often spot mistakes that you might have missed.</li>
+<li><strong>Testing</strong>: Writing tests for your code can help
+ensure that it's doing what you expect and can help catch bugs
+introduced by typos.</li>
+<li><strong>Take Breaks</strong>: Sometimes, if you've been looking at
+the same piece of code for a long time, it can be hard to spot mistakes.
+Taking a short break can help reset your perspective and make it easier
+to see errors.</li>
+<li><strong>Pair Programming</strong>: This is a technique where two
+programmers work together at one workstation. One, the driver, writes
+the code while the other, the observer or navigator, reviews each line
+of code as it is typed in. The two programmers switch roles
+frequently.</li>
+</ol>
+<p>Remember, everyone makes mistakes and that's okay. What's important
+is learning from them and finding ways to minimize them in the future.
+And remember, even the best programmers often find that "the problem was
+a typo" after a long debugging session!</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Daily-Logs/" class="category-chain-item">Daily Logs</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Daily-Logs/Intern-Log/" class="category-chain-item">Intern Log</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Daily-Logs/Intern-Log/Tech-Summary/" class="category-chain-item">Tech Summary</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Intern/">#Intern</a>
+      
+        <a href="/tags/Intern-Log/">#Intern Log</a>
+      
+        <a href="/tags/Python/">#Python</a>
+      
+        <a href="/tags/Python-Grammar/">#Python Grammar</a>
+      
+        <a href="/tags/PyCharm-Professional/">#PyCharm Professional</a>
+      
+        <a href="/tags/Intern-At-300K/">#Intern At 300K</a>
+      
+        <a href="/tags/Learning-Log/">#Learning Log</a>
+      
+        <a href="/tags/Tech/">#Tech</a>
+      
+        <a href="/tags/I-O/">#I/O</a>
+      
+        <a href="/tags/Error-Explanation/">#Error Explanation</a>
+      
+        <a href="/tags/RESTful-API/">#RESTful API</a>
+      
+        <a href="/tags/Command-Line/">#Command Line</a>
+      
+        <a href="/tags/URL/">#URL</a>
+      
+        <a href="/tags/Programming-Tips/">#Programming Tips</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Intern study summary - Jun 25 Sun</div>
+      <div>http://slray.com/2023/06/25/Intern-study-summary-Jun-25-Sun/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Sirui Ray Li</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>June 25, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/06/28/Intern-study-summary-Jun-27-Tue/" title="Intern study summary - Jun 27 Tue">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Intern study summary - Jun 27 Tue</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/06/23/Intern-study-summary-Jun-15-Thu/" title="Intern study summary - Jun 15 Thu">
+                        <span class="hidden-mobile">Intern study summary - Jun 15 Thu</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        aggregate visit: 
+        <span id="busuanzi_value_site_pv"></span>
+         times
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        , 
+        <span id="busuanzi_value_site_uv"></span>
+         people
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
