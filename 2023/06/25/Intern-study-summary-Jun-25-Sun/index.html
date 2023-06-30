@@ -24,7 +24,7 @@
 <meta property="og:description" content="Learning record for what I learned during my internship at 300K—a quant company on the day of 15th of Jun, Thu">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-06-25T13:37:02.000Z">
-<meta property="article:modified_time" content="2023-06-28T13:40:52.762Z">
+<meta property="article:modified_time" content="2023-06-30T03:35:42.830Z">
 <meta property="article:author" content="Sirui Ray Li">
 <meta property="article:tag" content="Intern">
 <meta property="article:tag" content="Intern Log">
@@ -248,7 +248,7 @@
         
         
           <!-- compatible with older versions-->
-          134 minutes
+          135 minutes
         
       </span>
     
@@ -583,13 +583,14 @@ query parameters <code>endDate</code> and <code>days</code>.</p>
 <p>The function first checks if the query parameters are present in the
 request, and if not, it assigns them default values. It then constructs
 and returns a link.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask, request<br><span class="hljs-keyword">from</span> datetime <span class="hljs-keyword">import</span> datetime, timedelta<br><span class="hljs-keyword">import</span> pytz<br><br>app = Flask(__name__)<br><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/data-api/top-pairs/&lt;exchange&gt;&#x27;</span>, methods=[<span class="hljs-string">&#x27;GET&#x27;</span>]</span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_top_pairs</span>(<span class="hljs-params">exchange</span>):<br>    <span class="hljs-comment"># Get query parameters, provide default values if not present</span><br>    end_date = request.args.get(<span class="hljs-string">&#x27;endDate&#x27;</span>, datetime.now(pytz.utc).strftime(<span class="hljs-string">&#x27;%Y-%m-%d&#x27;</span>))<br>    days = request.args.get(<span class="hljs-string">&#x27;days&#x27;</span>, <span class="hljs-number">7</span>)<br><br>    <span class="hljs-comment"># Construct and return the link</span><br>    link = <span class="hljs-string">f&quot;/data-api/top-pairs/<span class="hljs-subst">&#123;exchange&#125;</span>?endDate=<span class="hljs-subst">&#123;end_date&#125;</span>&amp;days=<span class="hljs-subst">&#123;days&#125;</span>&quot;</span><br>    <span class="hljs-keyword">return</span> link<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    app.run(debug=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
-<p>In this example, <code>exchange</code> is part of the URL, while
-<code>endDate</code> and <code>days</code> are optional query
-parameters. The function <code>get_top_pairs()</code> extracts these
-parameters using <code>request.args.get()</code>, providing default
-values of the current date (in UTC) and 7 days if they're not present.
-Then, it constructs a link string and returns it.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask, request<br><span class="hljs-keyword">from</span> datetime <span class="hljs-keyword">import</span> datetime, timedelta<br><span class="hljs-keyword">import</span> pytz<br><br>app = Flask(__name__)<br><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/a-api/b-function/&lt;c_parameter&gt;&#x27;</span>, methods=[<span class="hljs-string">&#x27;GET&#x27;</span>]</span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">afunction</span>(<span class="hljs-params">c_parameter</span>):<br>    <span class="hljs-comment"># Get query parameters, provide default values if not present</span><br>    p1 = request.args.get(<span class="hljs-string">&#x27;c-optional-parameter&#x27;</span>, <span class="hljs-string">&quot;default-value-c&quot;</span>)<br>    p2 = request.args.get(<span class="hljs-string">&#x27;d-optional-parameter&#x27;</span>, <span class="hljs-string">&quot;default-value-d&quot;</span>)<br><br>    <span class="hljs-comment"># Construct and return the link</span><br>    link = <span class="hljs-string">f&quot;/a-api/b-function/<span class="hljs-subst">&#123;c_parameter&#125;</span>?c-optional-parameter=<span class="hljs-subst">&#123;p1&#125;</span>&amp;days=<span class="hljs-subst">&#123;p2&#125;</span>&quot;</span><br>    <span class="hljs-keyword">return</span> link<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    app.run(debug=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+<p>In this example, <code>c_parameter</code> is part of the URL, while
+<code>c-optional-parameter</code> and <code>d-optional-parameter</code>
+are optional query parameters. The function <code>afunction()</code>
+extracts these parameters using <code>request.args.get()</code>,
+providing default values of the current date (in UTC) and 7 days if
+they're not present. Then, it constructs a link string and returns
+it.</p>
 <p>Note: This code uses Flask's built-in request object to access the
 query parameters. The <code>args</code> attribute is a MultiDict object
 that contains all the received query parameters. The <code>get()</code>
@@ -598,8 +599,8 @@ default value if the parameter is not found.</p>
 <h2 id="dive-deeper">Dive deeper</h2>
 <p>What is the <code>?</code> and <code>&amp;</code> in the link? I
 always see those stuff in a weblink. Why here the string in the
-<code>@app.route()</code> is without <code>endDate</code> and
-<code>days</code>?</p>
+<code>@app.route()</code> is without <code>c-optional-parameter</code>
+and <code>d-optional-parameter</code>?</p>
 <p>In a URL, the <code>?</code> and <code>&amp;</code> symbols are used
 to specify query parameters.</p>
 <ul>
@@ -617,16 +618,17 @@ respective values of <code>value1</code> and <code>value2</code>.</p>
 decorator, you only specify the path portion of the URL. This is because
 the route is used to map a URL to a specific function in your Flask
 application.</p>
-<p>In your case, the route is
-<code>/data-api/top-pairs/&lt;exchange&gt;</code>. The
-<code>&lt;exchange&gt;</code> part is a variable part of the URL and
+<p>In the case above, the route is
+<code>/a-api/b-function/&lt;c_parameter&gt;</code>. The
+<code>&lt;c_parameter&gt;</code> part is a variable part of the URL and
 Flask captures the value in this part of the URL and passes it to your
 function as an argument.</p>
-<p>The query parameters (<code>endDate</code> and <code>days</code> in
-your case) are not part of the route because they are optional and their
-order does not matter. They are accessed inside your function using
-<code>request.args.get()</code>. This is a dictionary-like object that
-allows you to access the query parameters by their name.</p>
+<p>The query parameters (<code>c-optional-parameter</code> and
+<code>d-optional-parameter</code> in your case) are not part of the
+route because they are optional and their order does not matter. They
+are accessed inside your function using <code>request.args.get()</code>.
+This is a dictionary-like object that allows you to access the query
+parameters by their name.</p>
 <p>The route does not need to know about these parameters. It only needs
 to know about the fixed and variable parts of the path of the URL. It's
 the job of your function to handle the query parameters, not the
