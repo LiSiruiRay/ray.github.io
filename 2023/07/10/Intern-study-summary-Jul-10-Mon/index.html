@@ -1,0 +1,1449 @@
+
+
+<!DOCTYPE html>
+<html lang="en,zh-CN,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/ray.jpg">
+  <link rel="icon" href="/ray.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Sirui Ray Li">
+  <meta name="keywords" content="testing3">
+  
+    <meta name="description" content="Learning record for what I learned during my internship at 300K—a quant company on the day of 15th of Jun, Thu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Intern study summary - Jul 10 Mon">
+<meta property="og:url" content="http://slray.com/2023/07/10/Intern-study-summary-Jul-10-Mon/index.html">
+<meta property="og:site_name" content="Ray&#39;s website">
+<meta property="og:description" content="Learning record for what I learned during my internship at 300K—a quant company on the day of 15th of Jun, Thu">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-07-10T15:04:29.000Z">
+<meta property="article:modified_time" content="2023-07-10T15:06:51.868Z">
+<meta property="article:author" content="Sirui Ray Li">
+<meta property="article:tag" content="Intern">
+<meta property="article:tag" content="Intern Log">
+<meta property="article:tag" content="Learning Log">
+<meta property="article:tag" content="Intern At 300K">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Python Grammar">
+<meta property="article:tag" content="Tech">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Python Version Problem">
+<meta property="article:tag" content="Command Line">
+<meta property="article:tag" content="Programming Tips">
+<meta property="article:tag" content="ChatGPT fun fact">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Intern study summary - Jul 10 Mon - Ray&#39;s website</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"slray.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ray&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Intern study summary - Jul 10 Mon"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-07-10 23:04" pubdate>
+          Monday, July 10th 2023, 11:04 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          30k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          252 minutes
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          visit: <span id="busuanzi_value_page_pv"></span> times
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Intern study summary - Jul 10 Mon</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="scaling-for-predicted-data">Scaling for predicted data</h1>
+<h2
+id="i-was-in-the-middle-of-a-machine-learning-project-and-i-met-a-situation-where-there-was-a-scaler-applied-after-predicted-data.">I
+was in the middle of a machine learning project, and I met a situation
+where there was a scaler applied after predicted data.</h2>
+<p>There is an example of scaler</p>
+<p>Suppose you're predicting house prices, and let's say the price range
+in your data is $100,000 to $1,000,000. In machine learning, it's often
+beneficial to normalize target variables to make the training process
+more efficient and stable. This is especially the case with deep
+learning models.</p>
+<p>So, in pre-processing, you might divide all house prices by
+$1,000,000 to ensure the target values fall within a smaller range, say
+between 0.1 and 1.0. This is your normalization step.</p>
+<p>Now, suppose you have trained your model and are ready to make
+predictions. You input a set of features describing a house into your
+model, and it outputs a value of 0.5.</p>
+<p>Here's the important part: that 0.5 isn't the actual predicted price
+of the house. It's the normalized price. Because the model was trained
+on normalized prices, it also predicts normalized prices.</p>
+<p>So, how do you interpret this prediction? That's where the original
+scale comes back in. You need to undo the normalization to get the
+predicted price in dollars. To do this, you multiply the normalized
+prediction by the scaling factor you used during pre-processing, which
+is $1,000,000 in our example.</p>
+<p>After doing this, we find our model predicts the house to be worth
+$500,000.</p>
+<p>So, this is why the mean (or any other scaling factor) of the target
+values is stored: you need it to "unnormalize" the predictions made by
+your model to get them back into a meaningful scale. It's not that you
+need the target values to make predictions, it's that you need them to
+interpret the predictions.</p>
+<h2
+id="relationship-between-model-and-the-scaling-parameter">Relationship
+between model and the scaling parameter</h2>
+<p>In a typical production setting, the scaling parameters (for both
+features and targets) would be calculated during the training phase,
+stored, and then used in the prediction phase.</p>
+<p>When you're ready to make predictions with new data, you would:</p>
+<ol type="1">
+<li>Apply the same preprocessing steps to the new data as were applied
+to the training data, using the stored feature scaling parameters. This
+includes filling in missing values, scaling, and any other
+transformations.</li>
+<li>Run the model to make predictions.</li>
+<li>Transform the model's predictions back to the original scale using
+the stored target scaling parameters.</li>
+</ol>
+<p>The point to note here is that the scaling parameters are derived
+from the training data, not the new data. This ensures that the model
+sees the new data in the same way it saw the training data, and that the
+predictions it makes are on the correct scale.</p>
+<h1 id="python">Python</h1>
+<h2 id="check-my-global-python">check my global python</h2>
+<p>To check your global Python version, you can use the command line on
+your operating system. Here is a general procedure:</p>
+<ol type="1">
+<li><strong>Open your Terminal</strong>
+<ul>
+<li>For macOS and Linux: you can use the Terminal application</li>
+<li>For Windows: you can use Command Prompt or PowerShell</li>
+</ul></li>
+<li><strong>Type the following command and press Enter</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python --version<br></code></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">python3 --version<br><br></code></pre></td></tr></table></figure>
+<p>This command will output something like this:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">Python 3.8.5<br><br></code></pre></td></tr></table></figure>
+<p>This means that your global Python version is 3.8.5.</p>
+<p>If you have multiple versions of Python installed on your system, the
+<code>python --version</code> command will give you the version that is
+set as the default.</p>
+<p>Keep in mind that for some systems, particularly if they're running a
+recent version of macOS or Linux, <code>python</code> may refer to
+Python 2.x, and <code>python3</code> will refer to Python 3.x. As such,
+if you want to know the version of Python 3.x installed, it's often
+better to use <code>python3 --version</code>.</p>
+<h2 id="pip-vs-pip3"><code>pip</code> vs <code>pip3</code></h2>
+<p><code>pip</code> and <code>pip3</code> are package managers for
+Python that allow you to install and manage additional libraries and
+dependencies not included with the standard Python distribution.</p>
+<p>The primary difference between <code>pip</code> and <code>pip3</code>
+has to do with the version of Python that they are intended to manage
+packages for:</p>
+<ol type="1">
+<li><code>pip</code>: This command is often used for Python 2.x
+versions. However, if you've only installed Python 3.x on your system,
+<code>pip</code> might be configured to work with Python 3.x.</li>
+<li><code>pip3</code>: This command is explicitly used for Python 3.x
+versions. If you have both Python 2.x and Python 3.x installed on your
+system and you want to manage packages for Python 3.x, you would use
+<code>pip3</code>.</li>
+</ol>
+<p>Remember that as of January 1, 2020, Python 2.x has been officially
+deprecated, and it's recommended to use Python 3.x. Therefore, it's
+generally more relevant to use <code>pip3</code> unless you're
+maintaining legacy Python 2.x code.</p>
+<p>One more thing to note is that the specific usage of <code>pip</code>
+or <code>pip3</code> can also depend on how your Python environment is
+set up. Some environments may be configured such that the
+<code>pip</code> command refers to Python 3.x, so it's always important
+to confirm which version of Python your <code>pip</code> command
+corresponds to. This can usually be done by checking the version of pip
+with the following command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip --version<br><br></code></pre></td></tr></table></figure>
+<p>This command will output the version of pip and the version of Python
+it is linked with.</p>
+<h1 id="problem-with-anaconda-with-jupyter">Problem with Anaconda with
+Jupyter</h1>
+<p>When I created a new virtual environment, I find that it did not
+appear in my Jupyter Lab. Also, my global python (check by
+<code>which python</code>) is also not changed. This problem took me
+hours to fix. Here are detailed steps you may debug:</p>
+<h2 id="ipykernels-problem"><code>ipykernel</code>'s problem</h2>
+<p>To make your newly created conda environment visible in Jupyter Lab,
+you will need to install the <code>ipykernel</code> module, which
+provides the IPython kernel for Jupyter. Here's how to do it:</p>
+<ol type="1">
+<li>First, make sure you're in the correct environment. If not, activate
+it:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda activate myenv<br><br></code></pre></td></tr></table></figure>
+<ol type="1">
+<li>Now, install <code>ipykernel</code>:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda install -c anaconda ipykernel<br><br></code></pre></td></tr></table></figure>
+<ol type="1">
+<li>Finally, create a new kernel for your environment:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">python -m ipykernel install --user --name=myenv<br><br></code></pre></td></tr></table></figure>
+<p>Replace <code>myenv</code> with the name of your environment.</p>
+<ol type="1">
+<li>Now, you can deactivate your environment:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda deactivate<br><br></code></pre></td></tr></table></figure>
+<p>After this process, you should be able to see your new environment as
+a kernel option within Jupyter Lab. Make sure to restart Jupyter Lab so
+the changes can take effect.</p>
+<p>Remember, when you're in Jupyter Lab and want to use your new
+environment, you should select the corresponding kernel (named
+<code>myenv</code> or whatever you named your environment) from the
+kernel selection list.</p>
+<p>This ensures that the notebook is using your desired Python
+environment, and any packages installed there. If you want to return to
+the default Python environment, you can select the default kernel from
+the same list.</p>
+<h2
+id="applicationsxcode.appcontentsdeveloperusrbinpython3-no-module-named-ipykernel"><code>/Applications/Xcode.app/Contents/Developer/usr/bin/python3: No module named ipykernel</code></h2>
+<p>Remember:
+************************************************************************************************************************This
+might also means that your global python is not switched to your virtual
+environment python! Check that first! (by
+<code>which python</code>)**</p>
+<p>This error suggests that the <code>ipykernel</code> module is not
+installed in the current Python environment, or that Python is not
+correctly recognizing it.</p>
+<p>You're getting this error because you're trying to run the
+<code>ipykernel</code> module with the Python version bundled with
+Xcode. That version may not have the necessary modules installed.</p>
+<p>Instead, you should use the Python version from the Conda environment
+where you've installed <code>ipykernel</code>. Make sure you have your
+Conda environment activated when you run the command to install the
+kernel.</p>
+<p>Here's how to do it:</p>
+<ol type="1">
+<li><p>Activate your environment:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda activate myenv<br><br></code></pre></td></tr></table></figure></li>
+<li><p>Install <code>ipykernel</code> in your environment:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda install -c anaconda ipykernel<br><br></code></pre></td></tr></table></figure></li>
+<li><p>Now, create a new kernel for your environment:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">python -m ipykernel install --user --name=myenv<br><br></code></pre></td></tr></table></figure></li>
+</ol>
+<p>Make sure to replace <code>myenv</code> with the name of your
+environment. After running these commands, you should be able to see
+your new environment as a kernel option within Jupyter Lab. Don't forget
+to restart Jupyter Lab to reflect the changes.</p>
+<p>It's also a good idea to verify your Python version and path within
+your Conda environment. Use <code>which python</code> to make sure it's
+pointing to the Python in your Conda environment and not elsewhere.</p>
+<p>If you're still encountering issues, you might need to adjust the
+PATH environment variable, or there could be a more complex
+configuration issue at hand.</p>
+<h2 id="am-i-using-python-in-my-conda-environment">Am I using Python in
+my Conda environment?</h2>
+<p>You can check which Python version you're using and from which
+location (path) it's running by using the command <code>which</code> and
+<code>python --version</code> in your terminal.</p>
+<p>To do so, please follow these steps:</p>
+<ol type="1">
+<li>Open a terminal.</li>
+<li>If your Conda environment isn't activated, activate it with the
+command:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda activate myenv<br><br></code></pre></td></tr></table></figure>
+<p>Replace <code>myenv</code> with the name of your Conda
+environment.</p>
+<ol type="1">
+<li>Now, run the <code>which python</code> command. This will return the
+path of the Python interpreter currently in use. When you're in an
+active Conda environment, the path should point to a location within the
+environment's directory. For example:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">which</span> python<br><br></code></pre></td></tr></table></figure>
+<p>You might see output similar to this:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">/home/user/anaconda3/envs/myenv/bin/python<br><br></code></pre></td></tr></table></figure>
+<p>This indicates that you're using the Python installed in your
+<code>myenv</code> Conda environment.</p>
+<ol type="1">
+<li>Additionally, you can check the Python version:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">python --version<br><br></code></pre></td></tr></table></figure>
+<p>This will return the Python version that's currently in use in your
+active environment. If this matches the version you've installed in your
+Conda environment, it's an additional confirmation that you're using the
+right Python interpreter.</p>
+<h2
+id="i-did-not-get-my-python-pointing-to-my-virtual-environment-after-i-ran-conda-activate-the-environment">I
+did not get my python pointing to my virtual environment after I ran
+conda activate the environment</h2>
+<p>If running <code>conda activate myenv</code> does not switch your
+Python interpreter to the one installed in the Conda environment, there
+might be several reasons:</p>
+<ol type="1">
+<li><strong>The PATH isn't updated</strong>: When activating a Conda
+environment, it should add itself to the front of your PATH variable.
+You can check your PATH by using <code>echo $PATH</code>. The path of
+your Conda environment should be the first one.</li>
+<li><strong>Conda isn't initialized</strong>: If you've installed Conda
+recently or in a new shell, you may need to run <code>conda init</code>.
+This will set up your shell to use <code>conda activate</code> properly.
+You can also try opening a new terminal window or restarting your
+computer to make sure the changes take effect.</li>
+<li><strong>There's an issue with your Conda installation or
+environment</strong>: If your Conda installation or the specific
+environment has become corrupted for some reason, it might not activate
+properly. In that case, you might need to recreate the environment or
+reinstall Conda.</li>
+<li><strong>There's a problem with your shell configuration</strong>:
+Shell configurations, like <code>.bashrc</code> or
+<code>.bash_profile</code> for Bash and <code>.zshrc</code> for Zsh,
+could be influencing your PATH variable or how the
+<code>conda activate</code> command works.</li>
+</ol>
+<p>Here are steps you could take to potentially resolve the issue:</p>
+<ul>
+<li>Make sure that Conda is properly initialized for your shell. You can
+do this by running <code>conda init bash</code> (replace
+<code>bash</code> with your shell, if it's not Bash).</li>
+<li>Check your shell configuration files (like <code>.bashrc</code>,
+<code>.bash_profile</code>, or <code>.zshrc</code> depending on your
+shell) for anything that might be affecting the PATH variable or the
+operation of Conda commands.</li>
+<li>Try to create a new Conda environment and see if
+<code>conda activate</code> works for that environment.</li>
+</ul>
+<p>Remember to replace <code>myenv</code> with the name of your Conda
+environment when running these commands. If the problem persists, you
+might want to consider reinstalling Conda.</p>
+<h3 id="check-which-shell-i-am-using">check which shell I am using</h3>
+<p>You can determine which shell you're currently using by executing the
+following command in your terminal:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-variable">$0</span><br><br></code></pre></td></tr></table></figure>
+<p>This command will output the name of the currently running shell. The
+output could be <code>-bash</code>, <code>-zsh</code>,
+<code>-ksh</code>, <code>-csh</code>, <code>-tcsh</code>,
+<code>-sh</code>, etc. The hyphen (-) before the shell name indicates
+that this shell is a login shell. If there's no hyphen, it means the
+shell is not a login shell, but the shell name will still be
+displayed.</p>
+<p>If you want to know the default shell, you can use the following
+command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-variable">$SHELL</span><br><br></code></pre></td></tr></table></figure>
+<p>This will output the path to the default shell, which might look like
+<code>/bin/bash</code>, <code>/bin/zsh</code>, or something similar.</p>
+<p>Note that you might be running a shell that's different from your
+default shell, especially if you opened it from an application or script
+that specified a particular shell to use.</p>
+<h2
+id="i-tried-several-ways-to-fix-the-problem-of-python-not-pointing-to-correct-virtual-environment.-you-need-to-fix-the-problem-in-.">I
+tried several ways to fix the problem of python not pointing to correct
+virtual environment. You need to fix the problem in .</h2>
+<p>To debug the issue, you can:</p>
+<ol type="1">
+<li><strong>Check your PATH variable</strong>: Print your PATH variable
+in your terminal with the command <code>echo $PATH</code> and verify
+whether the first path is indeed the path to your conda environment's
+bin directory.</li>
+<li><strong>Check for Python aliases</strong>: In your terminal, type
+<code>alias</code> to see if python has been aliased to something else.
+Look for a line that begins with <code>alias python=</code>. If such a
+line exists, <code>python</code> is aliased to whatever follows the
+<code>=</code>.</li>
+<li><strong>Check Conda Environment List</strong>: Check if your
+environment is activated properly by listing all your conda environments
+with the command <code>conda env list</code>. The currently active
+environment will have a `` next to it. If your environment isn't active,
+try activating it again.</li>
+</ol>
+<p>If you are still having issues, consider providing more details or
+errors that you are encountering for more specific troubleshooting.</p>
+<h2 id="echo-path"><code>❯ echo $PATH</code></h2>
+<p>I got</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">/usr/local/bin:/Users/ray/opt/anaconda3/envs/test_env_2/bin:/Users/ray/opt/anaconda3/condabin:/Library/Frameworks/Python.framework/Versions/3.11/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:~/.dotnet/tools:/Library/Apple/usr/bin:/Users/ray/.fig/bin:/Users/ray/.local/bin<br></code></pre></td></tr></table></figure>
+<p>when printing out my <code>PATH</code></p>
+<p>From the <code>echo $PATH</code> result, it appears that
+<code>/usr/local/bin</code> comes before
+<code>/Users/ray/opt/anaconda3/envs/test_env_2/bin</code>, which is your
+Conda environment path.</p>
+<p>This is likely the issue: when you type <code>python</code>, your
+shell is finding a Python interpreter in <code>/usr/local/bin</code>
+before it gets to the one in your Conda environment.</p>
+<p>To solve this, you need to ensure that the path to the Python
+interpreter in your Conda environment comes before any other Python
+paths. This can be done by appending <code>/usr/local/bin</code> to the
+end of the PATH instead of at the beginning.</p>
+<p><strong>Please note</strong>: Modifying the PATH variable can affect
+system behavior. Proceed with caution and only if you're comfortable
+doing so. If you're uncertain, ask for help.</p>
+<p>You can modify your PATH variable within your shell's configuration
+file (e.g., <code>.bashrc</code>, <code>.bash_profile</code>,
+<code>.zshrc</code>, etc.). The process might look something like
+this:</p>
+<ol type="1">
+<li><p>Open your shell configuration file in a text editor. For example,
+if you're using Zsh, you might type <code>nano ~/.zshrc</code> in the
+terminal.</p></li>
+<li><p>Look for a line that starts with <code>export PATH=</code>.
+You're likely to find a line that looks something like this:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> PATH=<span class="hljs-string">&quot;/usr/local/bin:<span class="hljs-variable">$PATH</span>&quot;</span><br><br></code></pre></td></tr></table></figure></li>
+<li><p>You need to change it to append <code>/usr/local/bin</code> at
+the end of the PATH. It should look like this:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> PATH=<span class="hljs-string">&quot;<span class="hljs-variable">$PATH</span>:/usr/local/bin&quot;</span><br><br></code></pre></td></tr></table></figure></li>
+<li><p>Save the file and exit the text editor. If you're using
+<code>nano</code>, you can do this by pressing <code>Ctrl + X</code>,
+then <code>Y</code> to confirm that you want to save the changes, then
+<code>Enter</code> to confirm the file name.</p></li>
+<li><p>The changes will take effect the next time you start a new shell
+session, or you can source your shell configuration file to apply the
+changes immediately. For example, if you're using Zsh, you could type
+<code>source ~/.zshrc</code>.</p></li>
+</ol>
+<p>After this, <code>which python</code> should point to the Python
+interpreter in your activated Conda environment.</p>
+<h2
+id="python-aliased-to-usrbinpython3"><code>python: aliased to /usr/bin/python3</code></h2>
+<p>It looks like your <code>python</code> command is aliased to
+<code>/usr/bin/python3</code>. An alias in a shell is a name or shortcut
+for a command or a sequence of commands.</p>
+<p>The alias is likely set in your shell profile (like
+<code>.bashrc</code>, <code>.bash_profile</code>, <code>.zshrc</code>,
+or equivalent for your shell). You will need to locate where this alias
+is set and comment it out or remove it. Here is how you can do it:</p>
+<ol type="1">
+<li><p>Open your shell profile. If you are using zsh, it would be
+<code>~/.zshrc</code>. If bash, it could be <code>~/.bashrc</code> or
+<code>~/.bash_profile</code>. Use a text editor to open the file, for
+instance:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">nano ~/.zshrc  <span class="hljs-comment"># for zsh</span><br><br></code></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">nano ~/.bashrc  <span class="hljs-comment"># for bash</span><br><br></code></pre></td></tr></table></figure></li>
+<li><p>Look for a line that says
+<code>alias python='/usr/bin/python3'</code> or something
+similar.</p></li>
+<li><p>Comment out this line by adding a <code>#</code> at the start of
+the line. It should look like this:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#alias python=&#x27;/usr/bin/python3&#x27;</span><br><br></code></pre></td></tr></table></figure></li>
+<li><p>Save the file and exit. In nano, you can do this by pressing
+<code>Ctrl+X</code>, then <code>Y</code> to confirm that you want to
+save your changes, and then <code>Enter</code> to confirm the file
+name.</p></li>
+<li><p>Now you need to source your shell profile to apply the changes.
+If you are using zsh, type <code>source ~/.zshrc</code>. If you're using
+bash, type <code>source ~/.bashrc</code> or
+<code>source ~/.bash_profile</code>.</p></li>
+<li><p>Now type <code>which python</code> again. It should point to the
+Python in your Conda environment.</p></li>
+</ol>
+<p>Remember, commenting out this alias means that when you type
+<code>python</code>, it will no longer default to
+<code>/usr/bin/python3</code> in any terminal session. If you need to
+use this particular Python interpreter, you might want to create a
+different alias that doesn't conflict with the <code>python</code>
+command.</p>
+<h2 id="zshrc"><code>.zshrc</code></h2>
+<p>Here is my .zshrc, why when I use which python after activate virtual
+environment, it is shown not the virtual environment one</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># ...</span><br><span class="hljs-comment"># alias python=/usr/bin/python3</span><br><br><span class="hljs-comment"># &gt;&gt;&gt; conda initialize &gt;&gt;&gt;</span><br><span class="hljs-comment"># !! Contents within this block are managed by &#x27;conda init&#x27; !!</span><br>__conda_setup=<span class="hljs-string">&quot;<span class="hljs-subst">$(&#x27;/Users/ray/opt/anaconda3/bin/conda&#x27; &#x27;shell.zsh&#x27; &#x27;hook&#x27; 2&gt; /dev/null)</span>&quot;</span><br><span class="hljs-keyword">if</span> [ $? -eq 0 ]; <span class="hljs-keyword">then</span><br>    <span class="hljs-built_in">eval</span> <span class="hljs-string">&quot;<span class="hljs-variable">$__conda_setup</span>&quot;</span><br><span class="hljs-keyword">else</span><br>    <span class="hljs-keyword">if</span> [ -f <span class="hljs-string">&quot;/Users/ray/opt/anaconda3/etc/profile.d/conda.sh&quot;</span> ]; <span class="hljs-keyword">then</span><br>        . <span class="hljs-string">&quot;/Users/ray/opt/anaconda3/etc/profile.d/conda.sh&quot;</span><br>    <span class="hljs-keyword">else</span><br>        <span class="hljs-built_in">export</span> PATH=<span class="hljs-string">&quot;/Users/ray/opt/anaconda3/bin:<span class="hljs-variable">$PATH</span>&quot;</span><br>    <span class="hljs-keyword">fi</span><br><span class="hljs-keyword">fi</span><br><span class="hljs-built_in">unset</span> __conda_setup<br><span class="hljs-comment"># &lt;&lt;&lt; conda initialize &lt;&lt;&lt;</span><br><br><span class="hljs-built_in">export</span> PATH=<span class="hljs-string">&quot;<span class="hljs-variable">$PATH</span>:/usr/local/bin&quot;</span><br><br></code></pre></td></tr></table></figure>
+<p>Based on the <code>.zshrc</code> file, there doesn't appear to be an
+alias that would prevent you from accessing the Python interpreter in
+your Conda environment.</p>
+<p>One possible issue could be the placement of the conda initialization
+block in your <code>.zshrc</code>.</p>
+<p>The conda initialization block:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># &gt;&gt;&gt; conda initialize &gt;&gt;&gt;</span><br>...<br><span class="hljs-comment"># &lt;&lt;&lt; conda initialize &lt;&lt;&lt;</span><br><br></code></pre></td></tr></table></figure>
+<p>is at the very bottom of your <code>.zshrc</code> file. This block
+ensures that your Conda installation works correctly. It's supposed to
+modify your PATH variable so that the <code>conda</code> command and the
+Python interpreter in your current Conda environment can be found.</p>
+<p>The problem is, you are adding <code>/usr/local/bin</code> to your
+PATH <strong>after</strong> the conda initialization. This means that
+the shell will find the Python interpreter in
+<code>/usr/local/bin</code> before the one in your Conda
+environment.</p>
+<p>To fix this, you should move the
+<code>export PATH="$PATH:/usr/local/bin"</code> line above the conda
+initialization block. It should look like this:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> PATH=<span class="hljs-string">&quot;<span class="hljs-variable">$PATH</span>:/usr/local/bin&quot;</span><br><br><span class="hljs-comment"># &gt;&gt;&gt; conda initialize &gt;&gt;&gt;</span><br>...<br><span class="hljs-comment"># &lt;&lt;&lt; conda initialize &lt;&lt;&lt;</span><br><br></code></pre></td></tr></table></figure>
+<p>Then, close your terminal, open a new terminal, activate your Conda
+environment, and see if <code>which python</code> points to the Python
+interpreter in your Conda environment.</p>
+<p>If the issue persists, it may also be due to configurations in other
+shell configuration files such as <code>.zsh_profile</code> or
+<code>.zshenv</code>, or due to an alias defined in a shell startup file
+that is sourced after <code>.zshrc</code>. If the problem persists, you
+may want to examine these other files.</p>
+<h2 id="problem-remained">Problem remained</h2>
+<p>Your <code>which python</code> command is still reporting that
+<code>python</code> is aliased to <code>/usr/bin/python3</code>, which
+means somewhere in your configuration, this alias is set.</p>
+<p>Here are a few more steps to debug the issue:</p>
+<ol type="1">
+<li><strong>Check for global aliases</strong>: You can check global
+aliases by typing <code>alias</code> in your terminal. This command will
+list all currently active aliases in your shell. Look for an entry that
+says <code>python=/usr/bin/python3</code> or similar.</li>
+<li><strong>Check other shell configuration files</strong>: The alias
+could be set in another configuration file that gets loaded when a new
+shell is started. For Zsh, common ones are <code>.zshenv</code>,
+<code>.zprofile</code>, <code>.zshrc</code> (which you've already
+checked), and <code>.zlogin</code>. Look for
+<code>alias python='/usr/bin/python3'</code> in these files and comment
+it out if you find it.</li>
+<li><strong>Check conda environment activation scripts</strong>:
+Sometimes, custom scripts might run when you activate a conda
+environment. These scripts are located in the
+<code>envs/your_env/etc/conda/activate.d/</code> and
+<code>envs/your_env/etc/conda/deactivate.d/</code> directories inside
+your conda directory. Check these scripts for the alias as well.</li>
+</ol>
+<p>If you find the alias, comment it out by adding a <code>#</code> at
+the beginning of the line, save the file, and start a new shell
+session.</p>
+<p>If none of the above suggestions help, and you're sure there are no
+other shell configuration files that could set the alias, you might want
+to consider reinstalling conda. Please ensure to back up important data
+before proceeding with reinstallation.</p>
+<h3 id="where-is-.zshenv-and-.zprofile">where is <code>.zshenv</code>
+and <code>.zprofile</code></h3>
+<p>The <code>.zshenv</code> and <code>.zprofile</code> files are
+typically located in your home directory, the same place as your
+<code>.zshrc</code> file. You can check if they exist and view their
+contents with the following commands:</p>
+<p>For <code>.zshenv</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> ~/.zshenv<br></code></pre></td></tr></table></figure>
+<p>For <code>.zprofile</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> ~/.zprofile<br></code></pre></td></tr></table></figure>
+<p>If the files do not exist, the <code>cat</code> command will return
+an error message saying that there is "No such file or directory".</p>
+<p>If they do exist, these files are used to set environment variables
+and other settings each time a new shell session is started.</p>
+<p>If you find the alias that's causing problems in these files, you can
+comment it out by adding a <code>#</code> at the beginning of the line.
+Then, save the file and start a new shell session to see if the problem
+is resolved.</p>
+<h2 id="final-problem-.zprofile">Final problem:
+<code>.zprofile</code></h2>
+<p>Here is the code for .zprofile</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Fig pre block. Keep at the top of this file.</span><br>[[ -f <span class="hljs-string">&quot;<span class="hljs-variable">$HOME</span>/.fig/shell/zprofile.pre.zsh&quot;</span> ]] &amp;&amp; <span class="hljs-built_in">builtin</span> <span class="hljs-built_in">source</span> <span class="hljs-string">&quot;<span class="hljs-variable">$HOME</span>/.fig/shell/zprofile.pre.zsh&quot;</span><br><span class="hljs-built_in">export</span> JAVA_HOME=$(/usr/libexec/java_home)<br><br><span class="hljs-built_in">eval</span> <span class="hljs-string">&quot;<span class="hljs-subst">$(/opt/homebrew/bin/brew shellenv)</span>&quot;</span><br><br><span class="hljs-comment"># Fig post block. Keep at the bottom of this file.</span><br>[[ -f <span class="hljs-string">&quot;<span class="hljs-variable">$HOME</span>/.fig/shell/zprofile.post.zsh&quot;</span> ]] &amp;&amp; <span class="hljs-built_in">builtin</span> <span class="hljs-built_in">source</span> <span class="hljs-string">&quot;<span class="hljs-variable">$HOME</span>/.fig/shell/zprofile.post.zsh&quot;</span><br><br><span class="hljs-comment"># Setting PATH for Python 3.11</span><br><span class="hljs-comment"># The original version is saved in .zprofile.pysave</span><br>PATH=<span class="hljs-string">&quot;/Library/Frameworks/Python.framework/Versions/3.11/bin:<span class="hljs-variable">$&#123;PATH&#125;</span>&quot;</span><br><span class="hljs-built_in">export</span> PATH<br><br></code></pre></td></tr></table></figure>
+<p>In your <code>.zprofile</code> file, the following lines are
+modifying the PATH environment variable:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Setting PATH for Python 3.11</span><br><span class="hljs-comment"># The original version is saved in .zprofile.pysave</span><br>PATH=<span class="hljs-string">&quot;/Library/Frameworks/Python.framework/Versions/3.11/bin:<span class="hljs-variable">$&#123;PATH&#125;</span>&quot;</span><br><span class="hljs-built_in">export</span> PATH<br><br></code></pre></td></tr></table></figure>
+<p>This code prepends the directory
+<code>/Library/Frameworks/Python.framework/Versions/3.11/bin</code> to
+your PATH. The shell looks for executables in the directories listed in
+PATH in order, from left to right. So, it will find the Python 3.11
+executable in this directory before it finds the Python executable in
+your Conda environment.</p>
+<p>To fix the issue, you should comment out these lines in your
+<code>.zprofile</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Setting PATH for Python 3.11</span><br><span class="hljs-comment"># The original version is saved in .zprofile.pysave</span><br><span class="hljs-comment"># PATH=&quot;/Library/Frameworks/Python.framework/Versions/3.11/bin:$&#123;PATH&#125;&quot;</span><br><span class="hljs-comment"># export PATH</span><br><br></code></pre></td></tr></table></figure>
+<p>Save the changes, close your terminal, open a new terminal, activate
+your Conda environment, and then try <code>which python</code> again. It
+should now point to the Python interpreter in your Conda
+environment.</p>
+<p>Here, the problem solved.</p>
+<h1 id="machine-learning-set-up">Machine Learning Set Up</h1>
+<p>I started working on a machine learning project and here are my
+learning summaries for setting up for machine learning</p>
+<h2
+id="sudo-apt-install-build-essential"><code>sudo apt install build-essential</code></h2>
+<p>The command <code>sudo apt install build-essential</code> is used in
+Debian-based Linux distributions such as Ubuntu. Here's what each part
+of the command does:</p>
+<ul>
+<li><code>sudo</code>: This is a command that allows you to run other
+commands with administrative (superuser) permissions. It's a way of
+saying, "I know what I'm doing, please allow me to execute this
+command."</li>
+<li><code>apt</code>: This is the package management command-line tool
+used by Ubuntu and other Debian-based distributions. It's used for
+handling packages, which are collections of files that comprise software
+applications or parts of them.</li>
+<li><code>install</code>: This is the command you use to tell
+<code>apt</code> that you want to install a package.</li>
+<li><code>build-essential</code>: This is a package that includes a
+bunch of software that's essential for building (compiling and linking)
+other software. For example, it includes the <code>gcc</code> and
+<code>g++</code> compilers, and the <code>make</code> utility, which are
+all used in the process of turning source code into runnable
+programs.</li>
+</ul>
+<p>So, to break it down, <code>sudo apt install build-essential</code>
+is a command that you would use on a Debian-based system to install the
+essential packages you need to build other software from source
+code.</p>
+<h2 id="do-i-use-the-same-commend-in-macos">Do I use the same commend in
+MacOS?</h2>
+<p>In contrast, macOS uses a different system for package management. It
+doesn't come with a built-in package manager like <code>apt</code>, but
+many macOS users use package managers like <code>Homebrew</code> or
+<code>MacPorts</code> to install software from the command line.</p>
+<p>If you have Homebrew installed, you can install the Xcode Command
+Line Tools (which include compilers and other build tools) with this
+command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">xcode-select --install<br></code></pre></td></tr></table></figure>
+<p>And, you can install other necessary tools with:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew install make gcc<br></code></pre></td></tr></table></figure>
+<p>If you don't have Homebrew, you can install it with the following
+command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">/bin/bash -c <span class="hljs-string">&quot;<span class="hljs-subst">$(curl -fsSL &lt;https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh&gt;)</span>&quot;</span><br></code></pre></td></tr></table></figure>
+<p>Please note that while these commands are generally safe to run, you
+should always be careful when executing commands that require
+<code>sudo</code> or other administrative privileges, as they can
+potentially make major changes to your system. Make sure to understand
+what a command does before you run it.</p>
+<h2 id="miniconda">Miniconda</h2>
+<p>Miniconda is a free, minimal installer for Conda. Conda is an
+open-source package management system and environment management system
+that runs on Windows, macOS, and Linux. Conda quickly installs, runs,
+and updates packages and their dependencies, and it allows you to switch
+between environments on your local machine.</p>
+<p>Miniconda is essentially a stripped-down version of the full Anaconda
+distribution, which is used for data science and machine learning tasks.
+Miniconda includes only Conda and its dependencies, making it a
+lightweight alternative for those who don't need (or want to manually
+control) the extra packages included in the full Anaconda
+distribution.</p>
+<p>With Miniconda installed, you can use the Conda commands to manage
+environments and install packages. For instance, if you wanted to
+install a package such as numpy, you could create a new environment and
+install numpy into it using the Conda package manager.</p>
+<p>Miniconda can be a good choice if you:</p>
+<ul>
+<li>Want to minimize the disk space taken up by your Python setup.</li>
+<li>Already know which packages you need and prefer to manually control
+your package installations.</li>
+<li>Are setting up Python on a system where you don't have full control
+over your environment, such as a server.</li>
+</ul>
+<h2 id="anaconda-miniconda">Anaconda &amp; Miniconda</h2>
+<h3 id="if-i-have-anaconda-installed-do-i-still-need-miniconda">If I
+have anaconda installed, do I still need miniconda?</h3>
+<p>If you already have Anaconda installed, you don't need to install
+Miniconda. Both Anaconda and Miniconda use Conda as their package
+manager. The primary difference is that Anaconda comes with a lot more
+pre-installed packages, while Miniconda starts with a minimal set of
+features to save space.</p>
+<p>To check if you have Conda installed (either through Anaconda or
+Miniconda), you can use your command line interface. Here's how you do
+it:</p>
+<ol type="1">
+<li><p>Open a terminal (on Linux or macOS) or command prompt (on
+Windows).</p></li>
+<li><p>Type the following command and press enter:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda --version<br></code></pre></td></tr></table></figure></li>
+</ol>
+<p>If Conda is installed, this command should return the version number
+of your Conda installation. If the command isn't recognized or returns
+an error, then Conda is likely not installed (or not correctly added to
+your system's PATH variable).</p>
+<p>In the case that you don't see any output or get an error, you might
+need to install Conda (either through Anaconda for a more complete
+package, or Miniconda for a minimalistic setup).</p>
+<h3 id="does-miniconda-and-conda-share-the-same-command">Does miniconda
+and conda share the same command?</h3>
+<p>Yes, both Anaconda and Miniconda use Conda as their package and
+environment management system. Therefore, the command line interface and
+the usage of commands are the same for both.</p>
+<p>Here are a few common Conda commands that you would use in both
+Anaconda and Miniconda:</p>
+<ul>
+<li><strong>To create a new environment</strong>: <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda create --name myenv<br><br></code></pre></td></tr></table></figure> Replace
+"myenv" with the name of your choice.</li>
+<li><strong>To activate an environment</strong>: <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda activate myenv<br><br></code></pre></td></tr></table></figure> Replace
+"myenv" with the name of the environment you wish to activate.</li>
+<li><strong>To install a package</strong>: <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda install package-name<br><br></code></pre></td></tr></table></figure> Replace
+"package-name" with the name of the package you wish to install.</li>
+<li><strong>To list all environments</strong>: <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda <span class="hljs-built_in">env</span> list<br><br></code></pre></td></tr></table></figure> This
+command shows you all the Conda environments you have on your
+system.</li>
+<li><strong>To update a specific package</strong>: <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda update package-name<br><br></code></pre></td></tr></table></figure>
+Replace "package-name" with the name of the package you wish to
+update.</li>
+<li><strong>To remove a package</strong>: <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda remove package-name<br><br></code></pre></td></tr></table></figure> Replace
+"package-name" with the name of the package you wish to remove.</li>
+<li><strong>To deactivate the current environment</strong>:
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda deactivate<br><br></code></pre></td></tr></table></figure></li>
+</ul>
+<p>So, regardless of whether you're using Anaconda or Miniconda, these
+commands will work the same way as long as you have Conda installed and
+properly set up on your system.</p>
+<h2 id="problem-with-torch">Problem with Torch</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">/var/folders/l7/_k2kxj9n5m5fnj95rbr69_dh0000gn/T/ipykernel_29889/<span class="hljs-number">3360310955.</span>py:<span class="hljs-number">1</span>: UserWarning: Failed to initialize NumPy: No module named <span class="hljs-string">&#x27;numpy&#x27;</span> (Triggered internally at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:<span class="hljs-number">84.</span>)<br>  x = torch.arange(<span class="hljs-number">12</span>)<br></code></pre></td></tr></table></figure>
+<p>The warning message you're seeing means that the Python environment
+in which you're running your code does not have the NumPy module
+installed, or the installation has not been properly recognized.</p>
+<p>NumPy is a Python library that provides support for large,
+multi-dimensional arrays and matrices, along with a collection of
+mathematical functions to operate on these arrays. It's a crucial
+library in scientific computing with Python.</p>
+<p>In the context of PyTorch, a deep learning framework, NumPy is used
+internally for certain operations. The code you're trying to run appears
+to be creating a PyTorch tensor using <code>torch.arange(12)</code>, and
+for some reason, PyTorch is trying to use NumPy and failing because it
+can't find it.</p>
+<p>You can try installing NumPy using pip (Python's package manager)
+with the following command:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake">pip <span class="hljs-keyword">install</span> numpy<br><br></code></pre></td></tr></table></figure>
+<p>Or if you're using an Anaconda distribution, you can use:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake">conda <span class="hljs-keyword">install</span> numpy<br><br></code></pre></td></tr></table></figure>
+<p>After installation, make sure you restart your Python interpreter or
+Jupyter notebook (if you're using it), so that the newly installed
+package is correctly picked up by your environment.</p>
+<p>If you've already installed NumPy and still are seeing this issue,
+it's possible that there's some kind of environment conflict. Make sure
+that the Python interpreter you're running your code in is the same one
+where you installed NumPy.</p>
+<p>If the issue persists even after these steps, there might be deeper
+configuration issues with your Python environment, which would require
+more detailed debugging.</p>
+<h2 id="can-i-not-fix-it">Can I not fix it?</h2>
+<p>It depends on the tasks you're performing. For simple operations in
+PyTorch, the absence of NumPy might not affect your code. But as the
+warning suggests, some PyTorch functions do rely on NumPy internally. If
+you attempt to use one of these functions, it may cause errors or
+unexpected behavior. Additionally, NumPy and PyTorch are often used
+together in machine learning and data processing workflows due to their
+complementary features, so not having NumPy might limit what you can
+do.</p>
+<p>For example, PyTorch provides functions to convert its tensors to
+NumPy arrays and vice versa (<code>torch.from_numpy</code>,
+<code>tensor.numpy()</code>), which is a common operation in machine
+learning pipelines. These functions won't work if NumPy isn't
+installed.</p>
+<p>Given that NumPy is a fundamental library in the Python scientific
+stack and it's relatively easy to install, it's generally recommended to
+have it installed if you're doing anything related to data analysis,
+machine learning, or scientific computing. If there's a specific reason
+why you don't want to install NumPy, it might be helpful to provide more
+context.</p>
+<h1 id="store-model-in-database-mongodb">Store Model in database
+(MongoDB)</h1>
+<p>To store a machine learning model in MongoDB, you need to serialize
+the model into a format that can be stored in a MongoDB database.
+MongoDB is a NoSQL database which supports storing binary data in BSON
+format (Binary JSON), so you can save your model as a binary blob and
+then save it in MongoDB.</p>
+<p>Here is how you can do it using PyTorch:</p>
+<ol type="1">
+<li><p><strong>Serialize your PyTorch model (model.pth)</strong></p>
+<p>You can use PyTorch's <code>torch.save()</code> function to serialize
+the model.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> torch<br>model = ...  <span class="hljs-comment"># Assume your model is already trained</span><br>torch.save(model.state_dict(), <span class="hljs-string">&quot;model.pth&quot;</span>)<br><br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Convert the .pth file to bytes</strong></p>
+<p>To save the model in MongoDB, you need to convert the model file to
+bytes. You can use Python's built-in functions to read the model as
+bytes.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;model.pth&quot;</span>, <span class="hljs-string">&quot;rb&quot;</span>) <span class="hljs-keyword">as</span> f:<br>    bytes_data = f.read()<br><br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Save the bytes data to MongoDB</strong></p>
+<p>You can now save this bytes data to MongoDB using PyMongo, which is a
+Python driver for MongoDB.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> pymongo <span class="hljs-keyword">import</span> MongoClient<br>client = MongoClient(<span class="hljs-string">&#x27;mongodb://localhost:27017/&#x27;</span>)<br>db = client[<span class="hljs-string">&#x27;mydatabase&#x27;</span>]<br>collection = db[<span class="hljs-string">&#x27;mymodels&#x27;</span>]<br>model_data = &#123;<br>    <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;my_model&quot;</span>,<br>    <span class="hljs-string">&quot;data&quot;</span>: bytes_data<br>&#125;<br>collection.insert_one(model_data)<br><br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Retrieve the model</strong></p>
+<p>Later, if you want to retrieve the model from MongoDB, you can do the
+following:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python">retrieved_model_data = collection.find_one(&#123;<span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;my_model&quot;</span>&#125;)<br>bytes_data = retrieved_model_data[<span class="hljs-string">&quot;data&quot;</span>]<br><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;retrieved_model.pth&quot;</span>, <span class="hljs-string">&quot;wb&quot;</span>) <span class="hljs-keyword">as</span> f:<br>    f.write(bytes_data)<br><br><span class="hljs-comment"># Now you can load the model with PyTorch</span><br>model = ...  <span class="hljs-comment"># Instantiate your model class</span><br>model.load_state_dict(torch.load(<span class="hljs-string">&quot;retrieved_model.pth&quot;</span>))<br><br></code></pre></td></tr></table></figure></li>
+</ol>
+<p>This code assumes you have MongoDB running locally and you have
+PyMongo installed (<code>pip install pymongo</code>). Please replace
+<code>"mydatabase"</code>, <code>"mymodels"</code>, and
+<code>"my_model"</code> with your actual database, collection, and model
+names respectively.</p>
+<p>Please note, JSON is a text-based format and might not be efficient
+for storing large binary data like machine learning models. Also, some
+information might get lost when converting the binary model to JSON.
+Therefore, it's better to store the model directly as binary data in
+MongoDB.</p>
+<p>As a best practice, for larger models, consider using a dedicated
+model storage system or cloud-based storage solutions like Amazon S3 or
+Google Cloud Storage. MongoDB is great for structured data, but might
+not be the most efficient way to store large binary blobs like machine
+learning models.</p>
+<h1 id="some-fun-facts-about-chatgpt">Some fun facts about ChatGPT</h1>
+<p>I asked:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">I am curious about whether you will take any non-characters into account when I am asking. For example, are the two following sentence meaning the same thing <span class="hljs-keyword">for</span> you?<br><span class="hljs-string">&quot;I hate typo&quot;</span><br><span class="hljs-string">&quot;I hate typo!!!!!!!!!!!!&quot;</span><br></code></pre></td></tr></table></figure>
+<p>to ChatGPT</p>
+<p>Here is the answer:</p>
+<blockquote>
+<p>Yes, I do take non-character symbols, such as punctuation marks, into
+account when interpreting and responding to messages. In natural
+language processing, the exclamation points in your second sentence can
+often be interpreted as conveying a higher degree of emotion or
+intensity compared to the first sentence.</p>
+<p>"I hate typo" generally indicates a dislike for typos.</p>
+<p>"I hate typo!!!!!!!!!!!!" suggests a very strong, emphatic dislike
+for typos, because exclamation points often express strong emotions in
+written language.</p>
+<p>However, while I take these punctuation marks into account to
+interpret sentiment or emphasis, my understanding of the semantics,
+i.e., the meaning of the sentences remains the same in both cases - both
+indicate a dislike for typos. The difference is in the degree of emotion
+conveyed.</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Daily-Logs/" class="category-chain-item">Daily Logs</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Daily-Logs/Intern-Log/" class="category-chain-item">Intern Log</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Daily-Logs/Intern-Log/Tech-Summary/" class="category-chain-item">Tech Summary</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Intern/">#Intern</a>
+      
+        <a href="/tags/Intern-Log/">#Intern Log</a>
+      
+        <a href="/tags/Learning-Log/">#Learning Log</a>
+      
+        <a href="/tags/Intern-At-300K/">#Intern At 300K</a>
+      
+        <a href="/tags/Python/">#Python</a>
+      
+        <a href="/tags/Python-Grammar/">#Python Grammar</a>
+      
+        <a href="/tags/Tech/">#Tech</a>
+      
+        <a href="/tags/Machine-Learning/">#Machine Learning</a>
+      
+        <a href="/tags/Python-Version-Problem/">#Python Version Problem</a>
+      
+        <a href="/tags/Command-Line/">#Command Line</a>
+      
+        <a href="/tags/Programming-Tips/">#Programming Tips</a>
+      
+        <a href="/tags/ChatGPT-fun-fact/">#ChatGPT fun fact</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Intern study summary - Jul 10 Mon</div>
+      <div>http://slray.com/2023/07/10/Intern-study-summary-Jul-10-Mon/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Sirui Ray Li</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>July 10, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/06/28/Intern-study-summary-Jun-28-Wed/" title="Intern study summary - Jun 28 Wed">
+                        <span class="hidden-mobile">Intern study summary - Jun 28 Wed</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        aggregate visit: 
+        <span id="busuanzi_value_site_pv"></span>
+         times
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        , 
+        <span id="busuanzi_value_site_uv"></span>
+         people
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
