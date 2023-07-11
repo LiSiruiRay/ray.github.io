@@ -4,6 +4,49 @@
   
   
   <entry>
+    <title>Intern study summary - Jul 11 Tue</title>
+    <link href="/2023/07/11/Intern-study-summary-Jul-11-Tue/"/>
+    <url>/2023/07/11/Intern-study-summary-Jul-11-Tue/</url>
+    
+    <content type="html"><![CDATA[<h1 id="python">Python</h1><h2 id="equal-and">Equal and <code>==</code></h2><p><code>self.assertEqual</code> is a method provided by the<code>unittest</code> module in Python. It is used in test cases toassert that two values are equal. If they are not, the test fails and anAssertionError is raised.</p><p><code>self.assertEqual</code> uses the <code>==</code> operator tocheck for equality, which checks if two objects have the same value.This can be thought of as checking equality "by value".</p><p>In Python, <code>==</code> compares the value of two objects, whereasthe <code>is</code> operator checks whether they are the exact sameobject (i.e., comparing "by reference"). For instance:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">a = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br>b = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br>c = a<br><br><span class="hljs-built_in">print</span>(a == b)  <span class="hljs-comment"># True - a and b have the same values</span><br><span class="hljs-built_in">print</span>(a <span class="hljs-keyword">is</span> b)  <span class="hljs-comment"># False - a and b are different objects in memory</span><br><span class="hljs-built_in">print</span>(a <span class="hljs-keyword">is</span> c)  <span class="hljs-comment"># True - a and c are the exact same object in memory</span><br><br></code></pre></td></tr></table></figure><h3 id="compare-with-java">compare with Java</h3><p>In Java, the <code>==</code> operator checks for reference equality(whether two variables reference the exact same object), which isanalogous to the <code>is</code> operator in Python. The<code>equals</code> method in Java is used to check for value equality,but its behavior can vary depending on how it's implemented in the classof the objects being compared. This is most similar to the<code>==</code> operator in Python or <code>self.assertEqual</code> inPython's <code>unittest</code> module.</p><h2 id="return-two-different-type-together">Return two different typetogether</h2><h3 id="example">example:</h3><p>If I have return as <code>return model, target_size</code>,<code>model</code> is <code>Model</code> type, and<code>target_size</code> is ndarray type. How do I put in the functionafter <code>&gt;</code>?</p><p>The "-&gt;" symbol is used in Python type hinting to indicate thereturn type of a function. It's used to make the code easier tounderstand and maintain, and to help in using tools that perform typechecking or provide coding assistance.</p><p>In your case, since your function is returning a tuple of a<code>Model</code> type object and a <code>ndarray</code> type object,you can indicate the return type like this:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> keras.models <span class="hljs-keyword">import</span> Model<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">your_function</span>(<span class="hljs-params">...</span>) -&gt; <span class="hljs-built_in">tuple</span>[Model, np.ndarray]:<br>    <span class="hljs-comment"># your code</span><br>    <span class="hljs-keyword">return</span> model, target_size<br><br></code></pre></td></tr></table></figure><p>In this code:</p><ul><li><code>Model</code> is the type for the <code>model</code>.</li><li><code>np.ndarray</code> is the type for<code>target_size</code>.</li></ul><p>Note that these type hints are not enforced at runtime. Python isstill a dynamically typed language. These hints are primarily for thebenefit of the programmer and development tools.</p><p>Also, if your Python version is lower than 3.9, you might want to use<code>Tuple</code> from <code>typing</code> module because the built-in<code>tuple</code> does not support type hints in those versions:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> keras.models <span class="hljs-keyword">import</span> Model<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">Tuple</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">your_function</span>(<span class="hljs-params">...</span>) -&gt; <span class="hljs-type">Tuple</span>[Model, np.ndarray]:<br>    <span class="hljs-comment"># your code</span><br>    <span class="hljs-keyword">return</span> model, target_size<br><br></code></pre></td></tr></table></figure><h1 id="database">Database</h1><h2 id="mongodb-read-by-id">MongoDB Read by ID</h2><p>In order to access MongoDB data in Python, you need to use a librarycalled <code>pymongo</code>. Here's a simple example of how you canretrieve a document by its <code>_id</code>:</p><p>Firstly, install the <code>pymongo</code> package using pip:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">pip install pymongo<br><br></code></pre></td></tr></table></figure><p>And then use this script:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> pymongo <span class="hljs-keyword">import</span> MongoClient<br><span class="hljs-keyword">from</span> bson.objectid <span class="hljs-keyword">import</span> ObjectId<br><br><span class="hljs-comment"># Create a client connection to your MongoDB instance</span><br>client = MongoClient(<span class="hljs-string">&#x27;mongodb://localhost:27017/&#x27;</span>)<br><br><span class="hljs-comment"># Access the &#x27;database&#x27; database and the &#x27;collection&#x27; collection</span><br>db = client[<span class="hljs-string">&#x27;database&#x27;</span>]<br>collection = db[<span class="hljs-string">&#x27;collection&#x27;</span>]<br><br><span class="hljs-comment"># Define the id you&#x27;re looking for</span><br>id_to_find = <span class="hljs-string">&#x27;60ebe5ab9d6965cb97f9d0a2&#x27;</span>  <span class="hljs-comment"># replace with your id string</span><br><br><span class="hljs-comment"># Use the ObjectId class to convert the id string into an ObjectId</span><br>id_to_find = ObjectId(id_to_find)<br><br><span class="hljs-comment"># Use the find_one method, which returns the first matching document</span><br>document = collection.find_one(&#123;<span class="hljs-string">&#x27;_id&#x27;</span>: id_to_find&#125;)<br><br><span class="hljs-comment"># Print the document</span><br><span class="hljs-built_in">print</span>(document)<br><br></code></pre></td></tr></table></figure><p>You will need to replace <code>'mongodb://localhost:27017/'</code>with the connection string for your own MongoDB instance. Replace<code>'database'</code> and <code>'collection'</code> with the names ofyour database and collection, and<code>'60ebe5ab9d6965cb97f9d0a2'</code> with the id string of thedocument you're trying to find.</p><p>This script first connects to your MongoDB instance and selects thedesired database and collection. It then uses the <code>find_one</code>method on the collection to retrieve the document with the specified<code>_id</code>. The <code>find_one</code> method returns<code>None</code> if no document matches the query. Finally, it printsout the document.</p><p>Remember to import the <code>ObjectId</code> class from the<code>bson.objectid</code> module, which is needed to convert the stringrepresentation of an id into a proper MongoDB ObjectId.</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Daily Logs</category>
+      
+      <category>Intern Log</category>
+      
+      <category>Tech Summary</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Intern</tag>
+      
+      <tag>Intern Log</tag>
+      
+      <tag>Learning Log</tag>
+      
+      <tag>Intern At 300K</tag>
+      
+      <tag>Python</tag>
+      
+      <tag>Python Grammar</tag>
+      
+      <tag>Command Line</tag>
+      
+      <tag>Programming Tips</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Intern study summary - Jul 10 Mon</title>
     <link href="/2023/07/10/Intern-study-summary-Jul-10-Mon/"/>
     <url>/2023/07/10/Intern-study-summary-Jul-10-Mon/</url>
@@ -36,15 +79,15 @@
       
       <tag>Python Grammar</tag>
       
+      <tag>Command Line</tag>
+      
+      <tag>Programming Tips</tag>
+      
       <tag>Tech</tag>
       
       <tag>Machine Learning</tag>
       
       <tag>Python Version Problem</tag>
-      
-      <tag>Command Line</tag>
-      
-      <tag>Programming Tips</tag>
       
       <tag>ChatGPT fun fact</tag>
       
@@ -130,11 +173,11 @@
       
       <tag>Python Grammar</tag>
       
-      <tag>Tech</tag>
-      
       <tag>Terminal</tag>
       
       <tag>Terminal Command</tag>
+      
+      <tag>Tech</tag>
       
       <tag>Shell Script Grammar</tag>
       
@@ -183,13 +226,13 @@
       
       <tag>Python Grammar</tag>
       
-      <tag>Tech</tag>
-      
       <tag>Command Line</tag>
       
       <tag>Programming Tips</tag>
       
       <tag>PyCharm Professional</tag>
+      
+      <tag>Tech</tag>
       
       <tag>I/O</tag>
       
@@ -238,8 +281,6 @@
       
       <tag>Python Grammar</tag>
       
-      <tag>Tech</tag>
-      
       <tag>PyCharm</tag>
       
       <tag>PyCharm Professional</tag>
@@ -247,6 +288,8 @@
       <tag>Terminal</tag>
       
       <tag>Terminal Command</tag>
+      
+      <tag>Tech</tag>
       
       <tag>Decentralized Exchange</tag>
       
@@ -293,8 +336,6 @@
       
       <tag>Python Grammar</tag>
       
-      <tag>Tech</tag>
-      
       <tag>PyCharm</tag>
       
       <tag>PyCharm Professional</tag>
@@ -306,6 +347,8 @@
       <tag>Hexo</tag>
       
       <tag>HTML</tag>
+      
+      <tag>Tech</tag>
       
     </tags>
     
@@ -346,11 +389,11 @@
       
       <tag>Python Grammar</tag>
       
-      <tag>Tech</tag>
-      
       <tag>Terminal</tag>
       
       <tag>Terminal Command</tag>
+      
+      <tag>Tech</tag>
       
       <tag>Git</tag>
       
