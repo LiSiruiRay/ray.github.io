@@ -4,6 +4,55 @@
   
   
   <entry>
+    <title>Intern study summary - Jul 12 Wed</title>
+    <link href="/2023/07/12/Intern-study-summary-Jul-12-Wed/"/>
+    <url>/2023/07/12/Intern-study-summary-Jul-12-Wed/</url>
+    
+    <content type="html"><![CDATA[<h1 id="python">Python</h1><h2 id="compare-complex-object">Compare complex object</h2><p>When I was doing unittest on my project, I got<code>ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()</code>for my <code>self.assertEqual()</code></p><p>This error is due to trying to directly compare two arrays using the<code>assertEqual</code> function in the <code>unittest</code> module.The error message suggests that it's ambiguous to evaluate the truthvalue of an array with more than one element.</p><p>To fix this, you can use<code>numpy.testing.assert_array_equal</code> to compare numpy arrayselement by element:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TestModel</span>(unittest.TestCase):<br>    ...<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">test_load_model_with_target_size</span>(<span class="hljs-params">self</span>):<br>        ...<br>        np.testing.assert_array_equal(self.sample_target_size, target_size)<br>    ...<br><br></code></pre></td></tr></table></figure><p>This <code>assert_array_equal</code> function raises anAssertionError if two array-like objects are not equal. If they are notthe same shape, they are considered unequal. If an element in one of theinput arrays has a value of <code>NaN</code>, then the correspondingelement in the other input is considered equal if it also has a value of<code>NaN</code>.</p><p>Note: <code>numpy</code> should be already installed if you'redealing with arrays. If not, you may need to install it using<code>pip install numpy</code>.</p><h2 id="one-time-setup">One time <code>setUp()</code></h2><p>While unittesting, we usually need to set up some data before we canactually testing the function. Those setting up process could beduplicated code, which we should void. Thus, we could use the<code>setUp</code> function, which will be auto called before every testfunction ran.</p><p>Yet sometimes we use very complex <code>setUp</code> function to dosome process that might take a lot of time. In this case, it would bebetter to only do the <code>setUp</code> once and make the rest ofunittests use the result from that <code>setUp</code>.</p><p>Here is a conditional way of calling <code>setUp</code>, if somethingalready been initialized, simply return and do not do <code>setUp</code>any more. Here, I will use the <code>id</code> as something we shouldonly initialize once.</p><p>You can check if <code>self.id</code> exists in the instancedictionary of the class using <code>hasattr()</code>. The<code>hasattr()</code> function in Python is used to check if an objecthas the given named attribute and return true if present, elsefalse.</p><p>Here is an example of how you could modify your <code>setUp()</code>method:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> unittest<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TestMyClass</span>(unittest.TestCase):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">setUp</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-built_in">hasattr</span>(self, <span class="hljs-string">&#x27;id&#x27;</span>):<br>            self.<span class="hljs-built_in">id</span> = <span class="hljs-string">&quot;some id&quot;</span> <span class="hljs-comment"># Or use a function to generate the id</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">test_something</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-comment"># Your test here</span><br>        <span class="hljs-keyword">pass</span><br><br></code></pre></td></tr></table></figure><p>In this example, <code>setUp()</code> first checks if<code>self.id</code> exists. If not, it sets an ID. Now, you can use<code>self.id</code> throughout your tests without getting an<code>AttributeError</code>. This ID will be generated before each testruns, but only if it hasn't been generated before.</p><h3 id="yet-this-way-is-not-perfect-because">Yet this way is notperfect, because:</h3><p>The <code>setUp()</code> method in <code>unittest.TestCase</code> isdesigned to run before each test method, meaning the attributes set init won't persist between tests, causing the <code>AttributeError</code>you're experiencing.</p><p>One possible solution is using the <code>setUpClass(cls)</code>method instead. This method is a class method, and it's run only oncebefore any tests or the <code>setUp()</code> method is run in the testcase. The attribute defined in this method should persist acrossdifferent tests.</p><p>Here's how you can use it:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> unittest<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TestModel</span>(unittest.TestCase):<br><span class="hljs-meta">    @classmethod</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">setUpClass</span>(<span class="hljs-params">cls</span>):<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-built_in">hasattr</span>(cls, <span class="hljs-string">&#x27;test_id&#x27;</span>):<br>            cls.test_id = <span class="hljs-string">&quot;some id&quot;</span>  <span class="hljs-comment"># Set a test_id here</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">test_load_model_with_target_size</span>(<span class="hljs-params">self</span>):<br>        model, target_size = load_model_with_target_size(self.__class__.test_id)<br>        <span class="hljs-comment"># rest of the test</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">test_read_model</span>(<span class="hljs-params">self</span>):<br>        model, config = load_model_from_db(self.__class__.test_id)<br>        <span class="hljs-comment"># rest of the test</span><br><br></code></pre></td></tr></table></figure><p>In this case, <code>test_id</code> is set as a class attribute, soit's shared among all instances of <code>TestModel</code>, allowing itto be accessed in any test method. Note the use of<code>self.__class__.test_id</code> in the test methods instead of<code>self.test_id</code>.</p><p>Also, ensure that your function<code>load_model_with_target_size()</code> and<code>load_model_from_db()</code> are implemented correctly and canhandle the value of <code>test_id</code> that you are passing.</p><h3id="but-i-cannot-set-some-attribute-to-self-if-i-used-this-method">But Icannot set some attribute to self if I used this method</h3><p>You're correct that <code>setUpClass(cls)</code> is a class methodand hence doesn't have access to instance-specific variables. Therecommended way to have instance-specific setup is using the<code>setUp(self)</code> method, which gets run before every test methodin the class. However, it will not retain the value of the variablebetween different tests.</p><p>If you want to set a value only once and use that value in multipletests (while still having access to instance variables), you can use acombination of <code>setUpClass(cls)</code> and<code>setUp(self)</code>. Use <code>setUpClass(cls)</code> to set avalue that's shared among all instances, and <code>setUp(self)</code> toassign that shared value to an instance variable.</p><p>Here's an example:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> unittest<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TestModel</span>(unittest.TestCase):<br><span class="hljs-meta">    @classmethod</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">setUpClass</span>(<span class="hljs-params">cls</span>):<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-built_in">hasattr</span>(cls, <span class="hljs-string">&#x27;test_id&#x27;</span>):<br>            cls.test_id = <span class="hljs-string">&quot;some id&quot;</span>  <span class="hljs-comment"># Set a test_id here</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">setUp</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-built_in">hasattr</span>(self, <span class="hljs-string">&#x27;id&#x27;</span>):<br>            self.<span class="hljs-built_in">id</span> = self.__class__.test_id<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">test_load_model_with_target_size</span>(<span class="hljs-params">self</span>):<br>        model, target_size = load_model_with_target_size(self.<span class="hljs-built_in">id</span>)<br>        <span class="hljs-comment"># rest of the test</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">test_read_model</span>(<span class="hljs-params">self</span>):<br>        model, config = load_model_from_db(self.<span class="hljs-built_in">id</span>)<br>        <span class="hljs-comment"># rest of the test</span><br><br></code></pre></td></tr></table></figure><p>In this case, <code>setUpClass(cls)</code> sets <code>test_id</code>as a class attribute, which is shared among all instances.<code>setUp(self)</code> then assigns this class attribute to aninstance attribute <code>self.id</code> before each test. Now, you canuse <code>self.id</code> in your test methods. This way, you'll get thedesired effect: <code>test_id</code> is set only once, and its value isused in each test via the instance attribute <code>self.id</code>.</p><p>Remember, this will give you the same <code>test_id</code> for alltest methods in the class. If you want to use different IDs fordifferent test methods, you'll have to generate a new ID within eachtest method itself.</p><h2 id="environment-variable-operation">Environment variableoperation</h2><p>To set environment variables in Python, you can use the<code>os</code> module's <code>environ</code> dictionary. Here's anexample of setting an environment variable:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><br><span class="hljs-comment"># Set environment variable</span><br>os.environ[<span class="hljs-string">&#x27;MY_ENV_VAR&#x27;</span>] = <span class="hljs-string">&#x27;my value&#x27;</span><br><br><span class="hljs-comment"># Get environment variable</span><br><span class="hljs-built_in">print</span>(os.getenv(<span class="hljs-string">&#x27;MY_ENV_VAR&#x27;</span>))  <span class="hljs-comment"># Outputs: &#x27;my value&#x27;</span><br><br></code></pre></td></tr></table></figure><p>However, it's important to note that these environment variables areonly set for the current process in which your Python script is running.If you exit this script or start a new one, the environment variablesyou set will not be available.</p><p>If you want to set environment variables that are available to allprocesses, you will need to do this outside of Python, typically in thecommand line for your operating system. The method varies depending onwhether you are using Windows, macOS, or a Linux-based system. Forinstance, in Linux you could use the <code>export</code> command:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">export MY_ENV_VAR=<span class="hljs-string">&quot;my value&quot;</span><br><br></code></pre></td></tr></table></figure><p>And then access it in Python:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><br><span class="hljs-comment"># Get environment variable</span><br><span class="hljs-built_in">print</span>(os.getenv(<span class="hljs-string">&#x27;MY_ENV_VAR&#x27;</span>))  <span class="hljs-comment"># Outputs: &#x27;my value&#x27;</span><br><br></code></pre></td></tr></table></figure><p>Keep in mind that this will only set the environment variable for theduration of the current terminal session. If you want to set apersistent environment variable, you will need to add the<code>export</code> line to your shell profile file (like<code>.bashrc</code> or <code>.bash_profile</code> for bash,<code>.zshrc</code> for zsh, etc.).</p><h2 id="flag-argument-in-click">flag argument in click</h2><p>Click is a Python library used for creating beautiful command lineinterfaces. To have an argument that acts as a flag to turn on somefunctionality, you would use an <code>option</code> rather than an<code>argument</code>.</p><p>Options in Click are optional (as the name suggests) and can beboolean flags. This is exactly what you want. Here is an example how youcan implement it:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> click<br><br><span class="hljs-meta">@click.command()</span><br><span class="hljs-meta">@click.option(<span class="hljs-params"><span class="hljs-string">&#x27;--read-file&#x27;</span>, <span class="hljs-string">&#x27;-f&#x27;</span>, is_flag=<span class="hljs-literal">True</span>, <span class="hljs-built_in">help</span>=<span class="hljs-string">&#x27;Turn on file reading&#x27;</span></span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">my_program</span>(<span class="hljs-params">read_file</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;My Program that reads a file if -f is provided.&quot;&quot;&quot;</span><br>    <span class="hljs-keyword">if</span> read_file:<br>        <span class="hljs-comment"># put your file reading code here</span><br>        click.echo(<span class="hljs-string">&#x27;File reading turned on.&#x27;</span>)<br>    <span class="hljs-keyword">else</span>:<br>        click.echo(<span class="hljs-string">&#x27;File reading turned off.&#x27;</span>)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    my_program()<br><br></code></pre></td></tr></table></figure><p>In the example above, <code>read_file</code> is a boolean that is<code>True</code> if <code>-f</code> or <code>--read-file</code> ispassed on the command line, and <code>False</code> otherwise. The<code>is_flag=True</code> part is what makes this an on/off switch. Notethe use of <code>option</code> instead of <code>argument</code> todenote that this is optional.</p><p>You can run the program with the <code>-f</code> option likethis:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">$ python my_program.py -f<br>File reading turned on.<br><br></code></pre></td></tr></table></figure><p>And without <code>-f</code>, it would be:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">$ python my_program.py<br>File reading turned off.<br><br></code></pre></td></tr></table></figure><h1 id="numpy">Numpy</h1><p>I met a problem when I was trying to read the data(the type isndarray) I saved to my database: I found even the dimension of my datais different. I thought about it and found that the problem was aboutthe <code>dtype</code>. When storing an ndarry, the default<code>dtype</code> is <code>np.float64</code>, yet while reading I used<code>np.float32</code>. Thus, I was thinking make the<code>dtype</code> as an input parameter:</p><h1 id="ndarray-reading-from-file-different-from-storing">ndarrayreading from file different from storing</h1><p>the float</p><p>Please note that the string should match a valid numpy dtype. Thefull list of valid numpy dtypes can be found in the <ahref="https://numpy.org/devdocs/user/basics.types.html">NumPydocumentation</a>.</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">result = from_buffer(target_size_byte, dtype=<span class="hljs-string">&#x27;float64&#x27;</span>)<br><br></code></pre></td></tr></table></figure><p>You can also use equivalent string values to represent the numpydtype. For example, you could replace <code>np.float64</code> with thestring <code>'float64'</code>.</p><p>In this function <code>from_buffer</code>, the <code>dtype</code> isa parameter where you can specify the desired data type.</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">from_buffer</span>(<span class="hljs-params">target_size_byte, dtype</span>):<br>    target_size = np.frombuffer(target_size_byte, dtype=dtype)<br>    <span class="hljs-keyword">return</span> target_size<br><br><span class="hljs-comment"># Usage</span><br>result = from_buffer(target_size_byte, dtype=np.float64)<br><br></code></pre></td></tr></table></figure><p>If you want to set the <code>np.float64</code> as an input parameterto your function, you can simply use a variable that you pass to yourfunction. This variable should be of type <code>numpy.dtype</code> orany equivalent type string. Here is an example:</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Daily Logs</category>
+      
+      <category>Intern Log</category>
+      
+      <category>Tech Summary</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Intern</tag>
+      
+      <tag>Intern Log</tag>
+      
+      <tag>Learning Log</tag>
+      
+      <tag>Intern At 300K</tag>
+      
+      <tag>Python</tag>
+      
+      <tag>Python Grammar</tag>
+      
+      <tag>Programming Tips</tag>
+      
+      <tag>UnitTest</tag>
+      
+      <tag>Numpy</tag>
+      
+      <tag>Environment Variable</tag>
+      
+      <tag>Click Library</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Intern study summary - Jul 11 Tue</title>
     <link href="/2023/07/11/Intern-study-summary-Jul-11-Tue/"/>
     <url>/2023/07/11/Intern-study-summary-Jul-11-Tue/</url>
@@ -79,15 +128,15 @@
       
       <tag>Python Grammar</tag>
       
-      <tag>Command Line</tag>
-      
-      <tag>Programming Tips</tag>
-      
       <tag>Tech</tag>
       
       <tag>Machine Learning</tag>
       
       <tag>Python Version Problem</tag>
+      
+      <tag>Command Line</tag>
+      
+      <tag>Programming Tips</tag>
       
       <tag>ChatGPT fun fact</tag>
       
@@ -173,11 +222,11 @@
       
       <tag>Python Grammar</tag>
       
+      <tag>Tech</tag>
+      
       <tag>Terminal</tag>
       
       <tag>Terminal Command</tag>
-      
-      <tag>Tech</tag>
       
       <tag>Shell Script Grammar</tag>
       
@@ -226,13 +275,13 @@
       
       <tag>Python Grammar</tag>
       
+      <tag>Tech</tag>
+      
       <tag>Command Line</tag>
       
       <tag>Programming Tips</tag>
       
       <tag>PyCharm Professional</tag>
-      
-      <tag>Tech</tag>
       
       <tag>I/O</tag>
       
@@ -281,6 +330,8 @@
       
       <tag>Python Grammar</tag>
       
+      <tag>Tech</tag>
+      
       <tag>PyCharm</tag>
       
       <tag>PyCharm Professional</tag>
@@ -288,8 +339,6 @@
       <tag>Terminal</tag>
       
       <tag>Terminal Command</tag>
-      
-      <tag>Tech</tag>
       
       <tag>Decentralized Exchange</tag>
       
@@ -336,6 +385,8 @@
       
       <tag>Python Grammar</tag>
       
+      <tag>Tech</tag>
+      
       <tag>PyCharm</tag>
       
       <tag>PyCharm Professional</tag>
@@ -347,8 +398,6 @@
       <tag>Hexo</tag>
       
       <tag>HTML</tag>
-      
-      <tag>Tech</tag>
       
     </tags>
     
@@ -389,11 +438,11 @@
       
       <tag>Python Grammar</tag>
       
+      <tag>Tech</tag>
+      
       <tag>Terminal</tag>
       
       <tag>Terminal Command</tag>
-      
-      <tag>Tech</tag>
       
       <tag>Git</tag>
       

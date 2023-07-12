@@ -1,0 +1,891 @@
+
+
+<!DOCTYPE html>
+<html lang="en,zh-CN,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/ray.jpg">
+  <link rel="icon" href="/ray.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Sirui Ray Li">
+  <meta name="keywords" content="testing3">
+  
+    <meta name="description" content="Learning record for what I learned during my internship at 300K—a quant company on the day of 15th of Jun, Thu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Intern study summary - Jul 12 Wed">
+<meta property="og:url" content="http://slray.com/2023/07/12/Intern-study-summary-Jul-12-Wed/index.html">
+<meta property="og:site_name" content="Ray&#39;s website">
+<meta property="og:description" content="Learning record for what I learned during my internship at 300K—a quant company on the day of 15th of Jun, Thu">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-07-12T13:49:46.000Z">
+<meta property="article:modified_time" content="2023-07-12T13:51:05.325Z">
+<meta property="article:author" content="Sirui Ray Li">
+<meta property="article:tag" content="Intern">
+<meta property="article:tag" content="Intern Log">
+<meta property="article:tag" content="Learning Log">
+<meta property="article:tag" content="Intern At 300K">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Python Grammar">
+<meta property="article:tag" content="Programming Tips">
+<meta property="article:tag" content="UnitTest">
+<meta property="article:tag" content="Numpy">
+<meta property="article:tag" content="Environment Variable">
+<meta property="article:tag" content="Click Library">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Intern study summary - Jul 12 Wed - Ray&#39;s website</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"slray.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ray&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Intern study summary - Jul 12 Wed"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-07-12 21:49" pubdate>
+          Wednesday, July 12th 2023, 9:49 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          8.4k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          71 minutes
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          visit: <span id="busuanzi_value_page_pv"></span> times
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Intern study summary - Jul 12 Wed</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="python">Python</h1>
+<h2 id="compare-complex-object">Compare complex object</h2>
+<p>When I was doing unittest on my project, I got
+<code>ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()</code>
+for my <code>self.assertEqual()</code></p>
+<p>This error is due to trying to directly compare two arrays using the
+<code>assertEqual</code> function in the <code>unittest</code> module.
+The error message suggests that it's ambiguous to evaluate the truth
+value of an array with more than one element.</p>
+<p>To fix this, you can use
+<code>numpy.testing.assert_array_equal</code> to compare numpy arrays
+element by element:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TestModel</span>(unittest.TestCase):<br>    ...<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">test_load_model_with_target_size</span>(<span class="hljs-params">self</span>):<br>        ...<br>        np.testing.assert_array_equal(self.sample_target_size, target_size)<br>    ...<br><br></code></pre></td></tr></table></figure>
+<p>This <code>assert_array_equal</code> function raises an
+AssertionError if two array-like objects are not equal. If they are not
+the same shape, they are considered unequal. If an element in one of the
+input arrays has a value of <code>NaN</code>, then the corresponding
+element in the other input is considered equal if it also has a value of
+<code>NaN</code>.</p>
+<p>Note: <code>numpy</code> should be already installed if you're
+dealing with arrays. If not, you may need to install it using
+<code>pip install numpy</code>.</p>
+<h2 id="one-time-setup">One time <code>setUp()</code></h2>
+<p>While unittesting, we usually need to set up some data before we can
+actually testing the function. Those setting up process could be
+duplicated code, which we should void. Thus, we could use the
+<code>setUp</code> function, which will be auto called before every test
+function ran.</p>
+<p>Yet sometimes we use very complex <code>setUp</code> function to do
+some process that might take a lot of time. In this case, it would be
+better to only do the <code>setUp</code> once and make the rest of
+unittests use the result from that <code>setUp</code>.</p>
+<p>Here is a conditional way of calling <code>setUp</code>, if something
+already been initialized, simply return and do not do <code>setUp</code>
+any more. Here, I will use the <code>id</code> as something we should
+only initialize once.</p>
+<p>You can check if <code>self.id</code> exists in the instance
+dictionary of the class using <code>hasattr()</code>. The
+<code>hasattr()</code> function in Python is used to check if an object
+has the given named attribute and return true if present, else
+false.</p>
+<p>Here is an example of how you could modify your <code>setUp()</code>
+method:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> unittest<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TestMyClass</span>(unittest.TestCase):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">setUp</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-built_in">hasattr</span>(self, <span class="hljs-string">&#x27;id&#x27;</span>):<br>            self.<span class="hljs-built_in">id</span> = <span class="hljs-string">&quot;some id&quot;</span> <span class="hljs-comment"># Or use a function to generate the id</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">test_something</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-comment"># Your test here</span><br>        <span class="hljs-keyword">pass</span><br><br></code></pre></td></tr></table></figure>
+<p>In this example, <code>setUp()</code> first checks if
+<code>self.id</code> exists. If not, it sets an ID. Now, you can use
+<code>self.id</code> throughout your tests without getting an
+<code>AttributeError</code>. This ID will be generated before each test
+runs, but only if it hasn't been generated before.</p>
+<h3 id="yet-this-way-is-not-perfect-because">Yet this way is not
+perfect, because:</h3>
+<p>The <code>setUp()</code> method in <code>unittest.TestCase</code> is
+designed to run before each test method, meaning the attributes set in
+it won't persist between tests, causing the <code>AttributeError</code>
+you're experiencing.</p>
+<p>One possible solution is using the <code>setUpClass(cls)</code>
+method instead. This method is a class method, and it's run only once
+before any tests or the <code>setUp()</code> method is run in the test
+case. The attribute defined in this method should persist across
+different tests.</p>
+<p>Here's how you can use it:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> unittest<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TestModel</span>(unittest.TestCase):<br><span class="hljs-meta">    @classmethod</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">setUpClass</span>(<span class="hljs-params">cls</span>):<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-built_in">hasattr</span>(cls, <span class="hljs-string">&#x27;test_id&#x27;</span>):<br>            cls.test_id = <span class="hljs-string">&quot;some id&quot;</span>  <span class="hljs-comment"># Set a test_id here</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">test_load_model_with_target_size</span>(<span class="hljs-params">self</span>):<br>        model, target_size = load_model_with_target_size(self.__class__.test_id)<br>        <span class="hljs-comment"># rest of the test</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">test_read_model</span>(<span class="hljs-params">self</span>):<br>        model, config = load_model_from_db(self.__class__.test_id)<br>        <span class="hljs-comment"># rest of the test</span><br><br></code></pre></td></tr></table></figure>
+<p>In this case, <code>test_id</code> is set as a class attribute, so
+it's shared among all instances of <code>TestModel</code>, allowing it
+to be accessed in any test method. Note the use of
+<code>self.__class__.test_id</code> in the test methods instead of
+<code>self.test_id</code>.</p>
+<p>Also, ensure that your function
+<code>load_model_with_target_size()</code> and
+<code>load_model_from_db()</code> are implemented correctly and can
+handle the value of <code>test_id</code> that you are passing.</p>
+<h3
+id="but-i-cannot-set-some-attribute-to-self-if-i-used-this-method">But I
+cannot set some attribute to self if I used this method</h3>
+<p>You're correct that <code>setUpClass(cls)</code> is a class method
+and hence doesn't have access to instance-specific variables. The
+recommended way to have instance-specific setup is using the
+<code>setUp(self)</code> method, which gets run before every test method
+in the class. However, it will not retain the value of the variable
+between different tests.</p>
+<p>If you want to set a value only once and use that value in multiple
+tests (while still having access to instance variables), you can use a
+combination of <code>setUpClass(cls)</code> and
+<code>setUp(self)</code>. Use <code>setUpClass(cls)</code> to set a
+value that's shared among all instances, and <code>setUp(self)</code> to
+assign that shared value to an instance variable.</p>
+<p>Here's an example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> unittest<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TestModel</span>(unittest.TestCase):<br><span class="hljs-meta">    @classmethod</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">setUpClass</span>(<span class="hljs-params">cls</span>):<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-built_in">hasattr</span>(cls, <span class="hljs-string">&#x27;test_id&#x27;</span>):<br>            cls.test_id = <span class="hljs-string">&quot;some id&quot;</span>  <span class="hljs-comment"># Set a test_id here</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">setUp</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-built_in">hasattr</span>(self, <span class="hljs-string">&#x27;id&#x27;</span>):<br>            self.<span class="hljs-built_in">id</span> = self.__class__.test_id<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">test_load_model_with_target_size</span>(<span class="hljs-params">self</span>):<br>        model, target_size = load_model_with_target_size(self.<span class="hljs-built_in">id</span>)<br>        <span class="hljs-comment"># rest of the test</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">test_read_model</span>(<span class="hljs-params">self</span>):<br>        model, config = load_model_from_db(self.<span class="hljs-built_in">id</span>)<br>        <span class="hljs-comment"># rest of the test</span><br><br></code></pre></td></tr></table></figure>
+<p>In this case, <code>setUpClass(cls)</code> sets <code>test_id</code>
+as a class attribute, which is shared among all instances.
+<code>setUp(self)</code> then assigns this class attribute to an
+instance attribute <code>self.id</code> before each test. Now, you can
+use <code>self.id</code> in your test methods. This way, you'll get the
+desired effect: <code>test_id</code> is set only once, and its value is
+used in each test via the instance attribute <code>self.id</code>.</p>
+<p>Remember, this will give you the same <code>test_id</code> for all
+test methods in the class. If you want to use different IDs for
+different test methods, you'll have to generate a new ID within each
+test method itself.</p>
+<h2 id="environment-variable-operation">Environment variable
+operation</h2>
+<p>To set environment variables in Python, you can use the
+<code>os</code> module's <code>environ</code> dictionary. Here's an
+example of setting an environment variable:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><br><span class="hljs-comment"># Set environment variable</span><br>os.environ[<span class="hljs-string">&#x27;MY_ENV_VAR&#x27;</span>] = <span class="hljs-string">&#x27;my value&#x27;</span><br><br><span class="hljs-comment"># Get environment variable</span><br><span class="hljs-built_in">print</span>(os.getenv(<span class="hljs-string">&#x27;MY_ENV_VAR&#x27;</span>))  <span class="hljs-comment"># Outputs: &#x27;my value&#x27;</span><br><br></code></pre></td></tr></table></figure>
+<p>However, it's important to note that these environment variables are
+only set for the current process in which your Python script is running.
+If you exit this script or start a new one, the environment variables
+you set will not be available.</p>
+<p>If you want to set environment variables that are available to all
+processes, you will need to do this outside of Python, typically in the
+command line for your operating system. The method varies depending on
+whether you are using Windows, macOS, or a Linux-based system. For
+instance, in Linux you could use the <code>export</code> command:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">export MY_ENV_VAR=<span class="hljs-string">&quot;my value&quot;</span><br><br></code></pre></td></tr></table></figure>
+<p>And then access it in Python:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><br><span class="hljs-comment"># Get environment variable</span><br><span class="hljs-built_in">print</span>(os.getenv(<span class="hljs-string">&#x27;MY_ENV_VAR&#x27;</span>))  <span class="hljs-comment"># Outputs: &#x27;my value&#x27;</span><br><br></code></pre></td></tr></table></figure>
+<p>Keep in mind that this will only set the environment variable for the
+duration of the current terminal session. If you want to set a
+persistent environment variable, you will need to add the
+<code>export</code> line to your shell profile file (like
+<code>.bashrc</code> or <code>.bash_profile</code> for bash,
+<code>.zshrc</code> for zsh, etc.).</p>
+<h2 id="flag-argument-in-click">flag argument in click</h2>
+<p>Click is a Python library used for creating beautiful command line
+interfaces. To have an argument that acts as a flag to turn on some
+functionality, you would use an <code>option</code> rather than an
+<code>argument</code>.</p>
+<p>Options in Click are optional (as the name suggests) and can be
+boolean flags. This is exactly what you want. Here is an example how you
+can implement it:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> click<br><br><span class="hljs-meta">@click.command()</span><br><span class="hljs-meta">@click.option(<span class="hljs-params"><span class="hljs-string">&#x27;--read-file&#x27;</span>, <span class="hljs-string">&#x27;-f&#x27;</span>, is_flag=<span class="hljs-literal">True</span>, <span class="hljs-built_in">help</span>=<span class="hljs-string">&#x27;Turn on file reading&#x27;</span></span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">my_program</span>(<span class="hljs-params">read_file</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;My Program that reads a file if -f is provided.&quot;&quot;&quot;</span><br>    <span class="hljs-keyword">if</span> read_file:<br>        <span class="hljs-comment"># put your file reading code here</span><br>        click.echo(<span class="hljs-string">&#x27;File reading turned on.&#x27;</span>)<br>    <span class="hljs-keyword">else</span>:<br>        click.echo(<span class="hljs-string">&#x27;File reading turned off.&#x27;</span>)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    my_program()<br><br></code></pre></td></tr></table></figure>
+<p>In the example above, <code>read_file</code> is a boolean that is
+<code>True</code> if <code>-f</code> or <code>--read-file</code> is
+passed on the command line, and <code>False</code> otherwise. The
+<code>is_flag=True</code> part is what makes this an on/off switch. Note
+the use of <code>option</code> instead of <code>argument</code> to
+denote that this is optional.</p>
+<p>You can run the program with the <code>-f</code> option like
+this:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">$ python my_program.py -f<br>File reading turned on.<br><br></code></pre></td></tr></table></figure>
+<p>And without <code>-f</code>, it would be:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">$ python my_program.py<br>File reading turned off.<br><br></code></pre></td></tr></table></figure>
+<h1 id="numpy">Numpy</h1>
+<p>I met a problem when I was trying to read the data(the type is
+ndarray) I saved to my database: I found even the dimension of my data
+is different. I thought about it and found that the problem was about
+the <code>dtype</code>. When storing an ndarry, the default
+<code>dtype</code> is <code>np.float64</code>, yet while reading I used
+<code>np.float32</code>. Thus, I was thinking make the
+<code>dtype</code> as an input parameter:</p>
+<h1 id="ndarray-reading-from-file-different-from-storing">ndarray
+reading from file different from storing</h1>
+<p>the float</p>
+<p>Please note that the string should match a valid numpy dtype. The
+full list of valid numpy dtypes can be found in the <a
+target="_blank" rel="noopener" href="https://numpy.org/devdocs/user/basics.types.html">NumPy
+documentation</a>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">result = from_buffer(target_size_byte, dtype=<span class="hljs-string">&#x27;float64&#x27;</span>)<br><br></code></pre></td></tr></table></figure>
+<p>You can also use equivalent string values to represent the numpy
+dtype. For example, you could replace <code>np.float64</code> with the
+string <code>'float64'</code>.</p>
+<p>In this function <code>from_buffer</code>, the <code>dtype</code> is
+a parameter where you can specify the desired data type.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">from_buffer</span>(<span class="hljs-params">target_size_byte, dtype</span>):<br>    target_size = np.frombuffer(target_size_byte, dtype=dtype)<br>    <span class="hljs-keyword">return</span> target_size<br><br><span class="hljs-comment"># Usage</span><br>result = from_buffer(target_size_byte, dtype=np.float64)<br><br></code></pre></td></tr></table></figure>
+<p>If you want to set the <code>np.float64</code> as an input parameter
+to your function, you can simply use a variable that you pass to your
+function. This variable should be of type <code>numpy.dtype</code> or
+any equivalent type string. Here is an example:</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Daily-Logs/" class="category-chain-item">Daily Logs</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Daily-Logs/Intern-Log/" class="category-chain-item">Intern Log</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Daily-Logs/Intern-Log/Tech-Summary/" class="category-chain-item">Tech Summary</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Intern/">#Intern</a>
+      
+        <a href="/tags/Intern-Log/">#Intern Log</a>
+      
+        <a href="/tags/Learning-Log/">#Learning Log</a>
+      
+        <a href="/tags/Intern-At-300K/">#Intern At 300K</a>
+      
+        <a href="/tags/Python/">#Python</a>
+      
+        <a href="/tags/Python-Grammar/">#Python Grammar</a>
+      
+        <a href="/tags/Programming-Tips/">#Programming Tips</a>
+      
+        <a href="/tags/UnitTest/">#UnitTest</a>
+      
+        <a href="/tags/Numpy/">#Numpy</a>
+      
+        <a href="/tags/Environment-Variable/">#Environment Variable</a>
+      
+        <a href="/tags/Click-Library/">#Click Library</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Intern study summary - Jul 12 Wed</div>
+      <div>http://slray.com/2023/07/12/Intern-study-summary-Jul-12-Wed/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Sirui Ray Li</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>July 12, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/07/11/Intern-study-summary-Jul-11-Tue/" title="Intern study summary - Jul 11 Tue">
+                        <span class="hidden-mobile">Intern study summary - Jul 11 Tue</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        aggregate visit: 
+        <span id="busuanzi_value_site_pv"></span>
+         times
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        , 
+        <span id="busuanzi_value_site_uv"></span>
+         people
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
