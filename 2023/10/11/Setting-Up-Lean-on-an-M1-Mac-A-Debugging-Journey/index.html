@@ -16,28 +16,29 @@
   <meta name="author" content="Sirui Ray Li">
   <meta name="keywords" content="testing3">
   
-    <meta name="description" content="This is a blog about what annotation in java is.">
+    <meta name="description" content="Apple&#39;s M1 chips have ushered in a new era of computing performance. But with new architectures come new challenges. One such challenge I recently faced was setting up the Lean theorem prover. Here&#39;s">
 <meta property="og:type" content="article">
-<meta property="og:title" content="What is Java Annotation?-intro">
-<meta property="og:url" content="http://blog.slray.com/2023/02/01/What-is-Java-Annotation-intro/index.html">
+<meta property="og:title" content="Setting Up Lean on an M1 Mac: A Debugging Journey">
+<meta property="og:url" content="http://blog.slray.com/2023/10/11/Setting-Up-Lean-on-an-M1-Mac-A-Debugging-Journey/index.html">
 <meta property="og:site_name" content="Ray&#39;s website">
-<meta property="og:description" content="This is a blog about what annotation in java is.">
+<meta property="og:description" content="Apple&#39;s M1 chips have ushered in a new era of computing performance. But with new architectures come new challenges. One such challenge I recently faced was setting up the Lean theorem prover. Here&#39;s">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-02-01T18:45:14.000Z">
-<meta property="article:modified_time" content="2023-02-21T03:38:55.856Z">
+<meta property="article:published_time" content="2023-10-12T01:08:37.000Z">
+<meta property="article:modified_time" content="2023-10-12T01:11:57.535Z">
 <meta property="article:author" content="Sirui Ray Li">
-<meta property="article:tag" content="Tech">
-<meta property="article:tag" content="Java">
-<meta property="article:tag" content="Java Annotation">
-<meta property="article:tag" content="Programming">
-<meta property="article:tag" content="Tutorial">
+<meta property="article:tag" content="Learning Log">
+<meta property="article:tag" content="Programming Tips">
+<meta property="article:tag" content="LEAN">
+<meta property="article:tag" content="automated theorem proving">
+<meta property="article:tag" content="Homebrew">
+<meta property="article:tag" content="arm based system">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>What is Java Annotation?-intro - Ray&#39;s website</title>
+  <title>Setting Up Lean on an M1 Mac: A Debugging Journey - Ray&#39;s website</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -203,7 +204,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="What is Java Annotation?-intro"></span>
+            <span id="subtitle" data-typed-text="Setting Up Lean on an M1 Mac: A Debugging Journey"></span>
           
         </div>
 
@@ -214,8 +215,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-02-01 13:45" pubdate>
-          Wednesday, February 1st 2023, 1:45 pm
+        <time datetime="2023-10-11 21:08" pubdate>
+          Wednesday, October 11th 2023, 9:08 pm
         </time>
       </span>
     
@@ -227,7 +228,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          2k words
+          2.2k words
         
       </span>
     
@@ -239,7 +240,7 @@
         
         
           <!-- compatible with older versions-->
-          17 minutes
+          19 minutes
         
       </span>
     
@@ -285,92 +286,76 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">What is Java Annotation?-intro</h1>
+            <h1 style="display: none">Setting Up Lean on an M1 Mac: A Debugging Journey</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="annotation-intro">Annotation-intro</h1>
-<p>This is the video version:</p>
-<div style="position: relative; width: 100%; padding-bottom: 70%;">
-<p><iframe src="https://www.youtube.com/embed/XEE_BeI-U_I" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
-</div>
-<h1 id="introduction">Introduction</h1>
-<h2 id="where-have-we-seen-annotation">Where have we seen
-annotation</h2>
-<ul>
-<li>When learning inheritance: <code>@Override</code>
-<ul>
-<li>extend a super class</li>
-<li>implements an interface</li>
-</ul></li>
-<li>When we use Unit test: <code>@Test</code>
-<ul>
-<li>To run something “without” a main method</li>
-</ul></li>
-<li><dl>
-<dt>When learning Java Spring (totally fine if you haven’t touched
-anything about spring)</dt>
-<dd>
-<p><code>@Configuration</code>, <code>@Component</code>,
-<code>@Repository</code>, <code>@Autowire</code>...</p>
-</dd>
-</dl>
-<ul>
-<li>We can use annotation to create beans</li>
-<li>We can use annotation to set restriction for parameters</li>
-</ul></li>
-</ul>
-<h1 id="what-is-annotation">What is annotation</h1>
-<h2 id="in-short-it-is-a-kind-of-not-part-of-the-program">In short, it
-is a kind of “not part of the program”</h2>
-<p>Where have we see something that feels like not part of the program?
-Yes, comments! Annotation is just like comments. But instead of for
-human, annotation is more like a comment for program, specifically for
-java compiler.</p>
-<h2 id="why-do-we-wanna-learn-annotation">Why do we wanna learn
-annotation?</h2>
-<p>Admittedly, you can write Java programs and use annotation without
-learning the underlaying principle. However, if you are not satisfied
-with just using the frameworks developed by others, if you wanna do
-frameworks by yourself, or if you want to have a deeper understanding of
-what is inside of Java language design, then it is indispensable to
-learn annotation and finish this series.</p>
-<p>Annotation is counted as an advanced knowledge of Java programming.
-You are stepping out of beginners and intermediate, if you are watching
-this video!</p>
-<h2 id="say-in-the-end">Say in the end</h2>
-<ul>
-<li>We will jump into the source code of annotation and have a touch on
-what exactly annotation is. (spoil alert! it is simply an
-interface)</li>
-<li>I will introduce several frequently used built-in annotation</li>
-</ul>
-<h1 id="definitions">Definitions:</h1>
-<h2 id="to-describe-programs-but-for-programs">--To describe programs,
-but for programs</h2>
-<h2 id="format-xxx">--Format: <code>@XXX</code></h2>
-<h1 id="functions">Functions:</h1>
-<h2 id="to-format-java-documentation-api-doc">1. To format java
-documentation (API doc)</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> : Ray Li</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@created</span> : 13/31/3033, 25:61</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@description</span> :</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Student</span> &#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> name of the person you wanna greet</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> sentence of the greeting</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> full greeting sentence</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">greet</span><span class="hljs-params">(String name, String sentence)</span> &#123;<br>        <span class="hljs-keyword">return</span> sentence + <span class="hljs-string">&quot;, &quot;</span> + name;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<ul>
-<li>A java document is something you see when you search up thing like
-"how to slipt String in Java". Here are some examples.
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://docs.oracle.com/javase/7/docs/api/java/lang/String.html">Class
-String</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://docs.oracle.com/javase/7/docs/api/java/util/Collections.html">Class
-Collections</a></li>
-</ul></li>
-</ul>
-<p>Then, type <code>javadoc</code> in the command line, and you will
-found the files pop out.</p>
-<p>Click the <code>index.html</code>, you will find the java doc.</p>
-<h2 id="analyze-the-code">2. Analyze the code</h2>
-<h2 id="compiling-check">3. Compiling check</h2>
+                <p>Apple's M1 chips have ushered in a new era of computing performance.
+But with new architectures come new challenges. One such challenge I
+recently faced was setting up the Lean theorem prover. Here's how I
+tackled it.</p>
+<h3 id="the-challenge"><strong>The Challenge</strong></h3>
+<p>While trying to set up Lean using <strong><code>elan</code></strong>,
+I faced an issue where I couldn't download
+<strong><code>lean3</code></strong>. It appeared that the links for
+<strong><code>lean3</code></strong> were replaced in favor of
+<strong><code>lean4</code></strong>, which was causing the 404
+errors.</p>
+<h3 id="manual-installation"><strong>Manual Installation</strong></h3>
+<p>Since the automated installation wasn't working, I decided to go the
+manual route. I downloaded the Lean 3.4.2 package for macOS from the <a
+target="_blank" rel="noopener" href="https://github.com/leanprover/lean3/releases">official Lean 3
+GitHub releases</a>.</p>
+<p>After extracting the ZIP file, I was presented with three folders:
+<strong><code>bin</code></strong>,
+<strong><code>include</code></strong>, and
+<strong><code>lib</code></strong>. This meant that the Lean executable
+was present and I didn't need to undergo any installation wizards or
+drag apps into folders.</p>
+<p>To use Lean seamlessly, I added the path to Lean's
+<strong><code>bin</code></strong> directory to the system's PATH. This
+would allow me to run Lean from any terminal window without specifying
+the full path.</p>
+<h3 id="elan-integration"><strong>Elan Integration</strong></h3>
+<p>For better version management, I wanted to integrate the manual
+installation with <strong><code>elan</code></strong>. After placing the
+extracted Lean folder under
+<strong><code>~/.elan/toolchains/</code></strong>, I tried setting an
+override with <strong><code>elan</code></strong>, but faced issues
+related to a missing library:
+<strong><code>libgmp.10.dylib</code></strong>.</p>
+<h3 id="the-gmp-library-issue"><strong>The GMP Library
+Issue</strong></h3>
+<p>Lean seemed to be expecting a specific version of the GMP library
+built for the x86_64 architecture, but my system, being an M1 Mac, had
+the ARM version.</p>
+<p>Here's how I resolved it:</p>
+<ol type="1">
+<li><p><strong>Install the x86_64 Homebrew</strong>:</p>
+<p>M1 Macs support both ARM and x86_64 architectures, and Homebrew
+provides separate installations for both. To ensure I was installing
+x86_64 software, I had to prefix my commands with
+<strong><code>arch -x86_64</code></strong>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">arch</span> -x86_64 /bin/bash -c <span class="hljs-string">&quot;<span class="hljs-subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span><br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Install the x86_64 version of GMP</strong>:</p>
+<p>Using the x86_64 version of Homebrew:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">arch</span> -x86_64 /usr/local/bin/brew install gmp<br></code></pre></td></tr></table></figure>
+<p>This ensured that Lean found the x86_64 version of the library it was
+expecting.</p></li>
+<li><p><strong>Run Lean</strong>:</p>
+<p>After these steps, I was finally able to run:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">~/.elan/toolchains/lean3-manual/bin/lean --version<br></code></pre></td></tr></table></figure>
+<p>And voila! Lean was up and running.</p></li>
+</ol>
+<h3 id="conclusion"><strong>Conclusion</strong></h3>
+<p>Setting up software on newer hardware often requires some tinkering.
+The M1 transition has introduced challenges, but with a little
+persistence (and a lot of troubleshooting), it's possible to find a way.
+Hopefully, as more software gets natively compiled for ARM, these issues
+will become less frequent.</p>
+<p>Remember, whenever you're stuck, the community (and sometimes even a
+friendly AI assistant) is there to help!</p>
 
                 
               </div>
@@ -389,27 +374,13 @@ found the files pop out.</p>
     
       <span class="category-chain">
         
-  <a href="/categories/Tech/" class="category-chain-item">Tech</a>
+  <a href="/categories/Daily-Logs/" class="category-chain-item">Daily Logs</a>
   
   
     <span>></span>
     
-  <a href="/categories/Tech/Java/" class="category-chain-item">Java</a>
+  <a href="/categories/Daily-Logs/Debug-Logs/" class="category-chain-item">Debug Logs</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/Tech/Java/Java-Language/" class="category-chain-item">Java Language</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Tech/Java/Java-Language/Annotation-Tutorial/" class="category-chain-item">Annotation Tutorial</a>
-  
-  
-
-  
-
   
 
   
@@ -425,15 +396,17 @@ found the files pop out.</p>
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Tech/">#Tech</a>
+        <a href="/tags/Learning-Log/">#Learning Log</a>
       
-        <a href="/tags/Java/">#Java</a>
+        <a href="/tags/Programming-Tips/">#Programming Tips</a>
       
-        <a href="/tags/Java-Annotation/">#Java Annotation</a>
+        <a href="/tags/LEAN/">#LEAN</a>
       
-        <a href="/tags/Programming/">#Programming</a>
+        <a href="/tags/automated-theorem-proving/">#automated theorem proving</a>
       
-        <a href="/tags/Tutorial/">#Tutorial</a>
+        <a href="/tags/Homebrew/">#Homebrew</a>
+      
+        <a href="/tags/arm-based-system/">#arm based system</a>
       
     </div>
   
@@ -445,8 +418,8 @@ found the files pop out.</p>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>What is Java Annotation?-intro</div>
-      <div>http://blog.slray.com/2023/02/01/What-is-Java-Annotation-intro/</div>
+      <div>Setting Up Lean on an M1 Mac: A Debugging Journey</div>
+      <div>http://blog.slray.com/2023/10/11/Setting-Up-Lean-on-an-M1-Mac-A-Debugging-Journey/</div>
     </div>
     <div class="license-meta">
       
@@ -458,7 +431,7 @@ found the files pop out.</p>
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>February 1, 2023</div>
+          <div>October 11, 2023</div>
         </div>
       
       
@@ -490,18 +463,12 @@ found the files pop out.</p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/02/02/Java-Annotation-built-in-annotation/" title="Java Annotation-built in annotation">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Java Annotation-built in annotation</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/01/10/How-does-this-website-come-into-place/" title="How does this website come into place?">
-                        <span class="hidden-mobile">How does this website come into place?</span>
+                      <a href="/2023/07/12/Intern-study-summary-Jul-12-Wed/" title="Intern study summary - Jul 12 Wed">
+                        <span class="hidden-mobile">Intern study summary - Jul 12 Wed</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
