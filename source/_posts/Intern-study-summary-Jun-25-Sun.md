@@ -374,27 +374,27 @@ import pytz
 
 app = Flask(__name__)
 
-@app.route('/data-api/top-pairs/<exchange>', methods=['GET'])
-def get_top_pairs(exchange):
+@app.route('/a-api/b-function/<c_parameter>', methods=['GET'])
+def afunction(c_parameter):
     # Get query parameters, provide default values if not present
-    end_date = request.args.get('endDate', datetime.now(pytz.utc).strftime('%Y-%m-%d'))
-    days = request.args.get('days', 7)
+    p1 = request.args.get('c-optional-parameter', "default-value-c")
+    p2 = request.args.get('d-optional-parameter', "default-value-d")
 
     # Construct and return the link
-    link = f"/data-api/top-pairs/{exchange}?endDate={end_date}&days={days}"
+    link = f"/a-api/b-function/{c_parameter}?c-optional-parameter={p1}&days={p2}"
     return link
 
 if __name__ == '__main__':
     app.run(debug=True)
 ```
 
-In this example, `exchange` is part of the URL, while `endDate` and `days` are optional query parameters. The function `get_top_pairs()` extracts these parameters using `request.args.get()`, providing default values of the current date (in UTC) and 7 days if they're not present. Then, it constructs a link string and returns it.
+In this example, `c_parameter` is part of the URL, while `c-optional-parameter` and `d-optional-parameter` are optional query parameters. The function `afunction()` extracts these parameters using `request.args.get()`, providing default values of the current date (in UTC) and 7 days if they're not present. Then, it constructs a link string and returns it.
 
 Note: This code uses Flask's built-in request object to access the query parameters. The `args` attribute is a MultiDict object that contains all the received query parameters. The `get()` method is used to access a parameter value, and allows you to provide a default value if the parameter is not found.
 
 ## Dive deeper
 
-What is the `?` and `&` in the link? I always see those stuff in a weblink. Why here the string in the `@app.route()` is without `endDate` and `days`?
+What is the `?` and `&` in the link? I always see those stuff in a weblink. Why here the string in the `@app.route()` is without `c-optional-parameter` and `d-optional-parameter`?
 
 In a URL, the `?` and `&` symbols are used to specify query parameters.
 
@@ -405,9 +405,9 @@ So, in the URL `https://example.com/page?param1=value1&param2=value2`, `param1` 
 
 Regarding your second question, in the `@app.route()` decorator, you only specify the path portion of the URL. This is because the route is used to map a URL to a specific function in your Flask application.
 
-In your case, the route is `/data-api/top-pairs/<exchange>`. The `<exchange>` part is a variable part of the URL and Flask captures the value in this part of the URL and passes it to your function as an argument.
+In the case above, the route is `/a-api/b-function/<c_parameter>`. The `<c_parameter>` part is a variable part of the URL and Flask captures the value in this part of the URL and passes it to your function as an argument.
 
-The query parameters (`endDate` and `days` in your case) are not part of the route because they are optional and their order does not matter. They are accessed inside your function using `request.args.get()`. This is a dictionary-like object that allows you to access the query parameters by their name.
+The query parameters (`c-optional-parameter` and `d-optional-parameter` in your case) are not part of the route because they are optional and their order does not matter. They are accessed inside your function using `request.args.get()`. This is a dictionary-like object that allows you to access the query parameters by their name.
 
 The route does not need to know about these parameters. It only needs to know about the fixed and variable parts of the path of the URL. It's the job of your function to handle the query parameters, not the route.
 

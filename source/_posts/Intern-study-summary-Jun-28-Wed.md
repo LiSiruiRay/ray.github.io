@@ -89,7 +89,7 @@ Remember that using `*args` and `**kwargs` can make your code less clear, becaus
 
 # Operation with YAML file
 
-You may find my introduction to YAML format in my blog: [Intern study summary Jun 15 Thu](https://slray.com/2023/06/23/Intern-study-summary-Jun-15-Thu/#yaml).
+You may find my introduction to YAML format in my blog: [Intern study summary Jun 15 Thu](https://blog.slray.com/2023/06/23/Intern-study-summary-Jun-15-Thu/#yaml).
 
 ---
 

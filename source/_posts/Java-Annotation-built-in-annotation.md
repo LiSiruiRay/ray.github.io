@@ -3,11 +3,12 @@ title: Java Annotation-built in annotation
 date: 2023-02-02 17:20:59
 tags: [Java, Java Annotation, Programming, Tech, Tutorial]
 categories:
-- Tech
-- Java
-- Java Language
-- Annotation Tutorial
+  - Tech
+  - Java
+  - Java Language
+  - Annotation Tutorial
 ---
+
 Here is the video version:
 
 <div style="position: relative; width: 100%; padding-bottom: 70%;">
@@ -32,7 +33,7 @@ now let's jump into some code and see how these three annotations are working in
 
 # `@Override`
 
-As we introduce before in the [Annotation-intro](https://slray.com/2023/02/02/What-is-Java-Annotation-intro/), `@Override` annotation is for checking whether a method is correctly overriding this class’ super class, or interface. 
+As we introduce before in the [Annotation-intro](https://blog.slray.com/2023/02/02/What-is-Java-Annotation-intro/), `@Override` annotation is for checking whether a method is correctly overriding this class’ super class, or interface.
 
 Let's go through some example codes:
 
@@ -73,9 +74,9 @@ public class Cat extends Animal{
 
 # `@Deprecated`
 
-`@Deprecated` annotation will mark current method as out-dated. 
+`@Deprecated` annotation will mark current method as out-dated.
 
-Let’s look at an example. 
+Let’s look at an example.
 
 We have a `SumCalculator`class in which we are planning to do sum calculation. At first we have the method as such:
 
@@ -106,7 +107,7 @@ public class SumCalculator {
         for (int num : nums) {
             result += num;
         }
-        
+
         return result;
     }
 }
@@ -130,7 +131,7 @@ When we write code like this, we can see on the top right corner where is a yell
 
 {% asset_img warnings.png All the warnings %}
 
-Each bar represent some warning. Such as “Method ‘test()’ is never used”. 
+Each bar represent some warning. Such as “Method ‘test()’ is never used”.
 
 {% asset_img warning_big.png detailed warnings %}
 

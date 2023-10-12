@@ -133,8 +133,7 @@ Here's how you might add these to your command:
 @click.command()
 @click.option("--start-date", type=str, help="The start date", default=None)
 @click.option("--end-date", type=str, help="The end date", default=None)
-@click.option("--pred-date", type=str, help="The prediction date", default=None)
-def main(start_date, end_date, pred_date):
+def main(start_date, end_date):
     # Your code here
     pass
 
@@ -143,7 +142,7 @@ def main(start_date, end_date, pred_date):
 In this example, each option can be used like this:
 
 ```bash
-python xx.py --start-date 2023-01-01 --end-date 2023-12-31 --pred-date 2024-01-01
+python xx.py --start-date 2023-01-01 --end-date 2023-12-31
 
 ```
 
@@ -189,8 +188,7 @@ So if I change
 @click.command()
 @click.option("--start-date", type=str, help="The start date", default=None)
 @click.option("--end-date", type=str, help="The end date", default=None)
-@click.option("--pred-date", type=str, help="The prediction date", default=None)
-def main(start_date, end_date, pred_date):
+def main(start_date, end_date):
     # Your code here
     pass
 ```
@@ -201,8 +199,7 @@ to
 @click.command()
 @click.option("--start-date", type=str, help="The start date", default=None)
 @click.option("--end-date", type=str, help="The end date", default=None)
-@click.option("--pred-date", type=str, help="The prediction date", default=None)
-def main(start_date, pred_date, end_date):
+def main(start_date, pred_date):
 # Your code here
 pass
 ```
@@ -217,8 +214,7 @@ So yes, swapping `pred_date` and `end_date` in the function definition won't cha
 @click.command()
 @click.option("--start-date", type=str, help="The start date", default=None)
 @click.option("--end-date", type=str, help="The end date", default=None)
-@click.option("--pred-date", type=str, help="The prediction date", default=None)
-def main(start_date, pred_date, end_date):
+def main(start_date, end_date):
     # Your code here
     pass
 
@@ -227,14 +223,14 @@ def main(start_date, pred_date, end_date):
 You can still call the command with options in any order:
 
 ```bash
-python xx.py --start-date 2023-01-01 --end-date 2023-12-31 --pred-date 2024-01-01
+python xx.py --start-date 2023-01-01 --end-date 2023-12-31
 
 ```
 
 or
 
 ```bash
-python xx.py --pred-date 2024-01-01 --start-date 2023-01-01 --end-date 2023-12-31
+python xx.py --start-date 2023-01-01 --end-date 2023-12-31
 ```
 
 Both will work fine.
