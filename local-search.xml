@@ -4,6 +4,43 @@
   
   
   <entry>
+    <title>Installing LEAN on arm based Mac — Manually compile and install</title>
+    <link href="/2023/10/12/Installing-LEAN-on-arm-based-Mac-%E2%80%94-Manually-compile-and-install/"/>
+    <url>/2023/10/12/Installing-LEAN-on-arm-based-Mac-%E2%80%94-Manually-compile-and-install/</url>
+    
+    <content type="html"><![CDATA[<h1id="installing-lean-on-arm-based-mac-manually-compile-and-install">InstallingLEAN on arm based Mac — Manually compile and install</h1><p>This is a tutorial on how to compile LEAN from source code andinstall it. Next, we will see how to move it to <code>elan</code> (nextpost)</p><h1 id="problem-with-elan">Problem with <code>elan</code></h1><p><code>elan</code> does not provide any installation for lean3 on armbased Mac anymore.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">❯ elan install lean3<br>info: downloading component <span class="hljs-string">&#x27;lean&#x27;</span><br>Error(Download(HttpStatus(404)), State &#123; next_error: None, backtrace: InternalBacktrace &#123; backtrace: None &#125; &#125;)<br>error: could not download nonexistent lean version `lean3`<br>info: caused by: could not download file from <span class="hljs-string">&#x27;https://github.com/leanprover/lean4/releases/expanded_assets/lean3&#x27;</span> to <span class="hljs-string">&#x27;/Users/ray/.elan/tmp/i3pouyka8f1tcrdn_file&#x27;</span><br>info: caused by: http request returned an unsuccessful status code: 404<br></code></pre></td></tr></table></figure><p>Thus, we should install LEAN manually, there are two choices:</p><ol type="1"><li>Download the binary file directly, then put to<code>~/.elan/toolchains/</code>, I demonstrated how to do that in myblog: <strong><ahref="https://blog.slray.com/2023/10/11/Setting-Up-Lean-on-an-M1-Mac-A-Debugging-Journey/">SettingUp Lean on an M1 Mac: A Debugging Journey</a></strong></li><li>Download the source code, compile yourself, install, then move thebinary files to <code>elan</code> folder.</li></ol><p>**************************This blog will focus mainly on the secondway.**************************</p><h2 id="links-for-downloading-lean">Links for downloading LEAN:</h2><ul><li>Community: This could be confusing. You might checked the link athttps://github.com/leanprover-community/mathlib, yet this will lead youto the <ahref="https://leanprover-community.github.io/lean3/get_started.html">officialwebsite</a>. If you want to install it manually (so that you canregulate versions), you want to check <strong><ahref="https://github.com/leanprover-community/lean">thislink</a></strong>, which is written in the <ahref="https://github.com/leanprover-community/mathlib/blob/master/OLD_README.md">OLD_README.md</a>.</li><li>Official release: https://github.com/leanprover/lean3/releases<ul><li>For arm based mac, you may want to download the<code>lean-3.4.2-darwin.zip</code>, but you might meet the problem ofthe following <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">❯ ./lean --version<br>dyld[22512]: Library not loaded: /usr/local/opt/gmp/lib/libgmp.10.dylib<br>  Referenced from: &lt;A8A24233-8885-3A1A-83F9-0071B27AF08A&gt; /Users/ray/.elan/toolchains/lean3-manual/bin/lean<br>  Reason: tried: <span class="hljs-string">&#x27;/usr/local/opt/gmp/lib/libgmp.10.dylib&#x27;</span> (no such file), <span class="hljs-string">&#x27;/System/Volumes/Preboot/Cryptexes/OS/usr/local/opt/gmp/lib/libgmp.10.dylib&#x27;</span> (no such file), <span class="hljs-string">&#x27;/usr/local/opt/gmp/lib/libgmp.10.dylib&#x27;</span> (no such file), <span class="hljs-string">&#x27;/usr/local/lib/libgmp.10.dylib&#x27;</span> (no such file), <span class="hljs-string">&#x27;/usr/lib/libgmp.10.dylib&#x27;</span> (no such file, not <span class="hljs-keyword">in</span> dyld cache)<br>[1]    22512 abort      ./lean --version<br></code></pre></td></tr></table></figure></li></ul></li></ul><h1 id="download-source-code-for-lean-community">Download source codefor LEAN (community)</h1><p>The process is similar for official release. You can download either<code>Source code(zip)</code> or <code>Source code(tar.gz)</code> fromthe official release.</p><h2 id="download-source-code-for-specific-version">Download source codefor specific version</h2><p>****************************Remember, clone thislink:****************************https://github.com/leanprover-community/lean</p><p>Here are the full steps (I will use v3.42.1 as an example):</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/leanprover-community/lean<br><span class="hljs-built_in">cd</span> lean<br>git checkout v3.42.1<br></code></pre></td></tr></table></figure><p>Here is the full output (don’t copy this)</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs bash">❯ git <span class="hljs-built_in">clone</span> https://github.com/leanprover-community/lean<br>Cloning into <span class="hljs-string">&#x27;lean&#x27;</span>...<br>remote: Enumerating objects: 152824, <span class="hljs-keyword">done</span>.<br>remote: Counting objects: 100% (452/452), <span class="hljs-keyword">done</span>.<br>remote: Compressing objects: 100% (220/220), <span class="hljs-keyword">done</span>.<br>remote: Total 152824 (delta 242), reused 324 (delta 205), pack-reused 152372<br>Receiving objects: 100% (152824/152824), 55.76 MiB | 14.88 MiB/s, <span class="hljs-keyword">done</span>.<br>Resolving deltas: 100% (112549/112549), <span class="hljs-keyword">done</span>.<br>❯ <span class="hljs-built_in">cd</span> lean<br>❯ <span class="hljs-built_in">ls</span><br>LICENSE   bors.toml images    script    tmp<br>README.md doc       leanpkg   src<br>bin       extras    library   tests<br>❯ git checkout v3.42.1<br>Note: switching to <span class="hljs-string">&#x27;v3.42.1&#x27;</span>.<br><br>You are <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;detached HEAD&#x27;</span> state. You can look around, make experimental<br>changes and commit them, and you can discard any commits you make <span class="hljs-keyword">in</span> this<br>state without impacting any branches by switching back to a branch.<br><br>If you want to create a new branch to retain commits you create, you may<br><span class="hljs-keyword">do</span> so (now or later) by using -c with the switch <span class="hljs-built_in">command</span>. Example:<br><br>  git switch -c &lt;new-branch-name&gt;<br><br>Or undo this operation with:<br><br>  git switch -<br><br>Turn off this advice by setting config variable advice.detachedHead to <span class="hljs-literal">false</span><br><br>HEAD is now at 68455b087 chore(*): release 3.42.1c (<span class="hljs-comment">#707)</span><br></code></pre></td></tr></table></figure><h1 id="compile-and-install">Compile and Install</h1><p>To compile Lean from this source code, you typically use tools like<strong><code>cmake</code></strong> and<strong><code>make</code></strong>.</p><p>Here's a step-by-step guide to building Lean 3.4.2 from source onmacOS:</p><ol type="1"><li><p><strong>Install Required Dependencies</strong>: First, ensure youhave the necessary dependencies installed. You'll typically need: -<strong><code>cmake</code></strong>: for configuring the build process.- <strong><code>g++</code></strong> or an equivalent C++ compiler: forcompiling the source code. If you use Homebrew, you can install themusing:</p><pre><code class="hljs"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew install cmake gcc<br></code></pre></td></tr></table></figure></code></pre></li><li><p><strong>Navigate to the Source Directory</strong>: Changedirectory to the root of the source code: If you followed the stepsaforementioned, you don’t need to do this</p><pre><code class="hljs"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> path/to/your/lean<br></code></pre></td></tr></table></figure></code></pre></li><li><p><strong>Configure and Build</strong>: Now, configure and compileLean: <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p build/release<br><span class="hljs-built_in">cd</span> build/release<br>cmake ../../src<br>make<br></code></pre></td></tr></table></figure></p><pre><code class="hljs">This will create a **`release`** build of Lean. The binary will be available in the **`build/release`** directory once the build process completes.This step take a while and you might see some warning. Those are fine as long as no error. Here is an example of warning<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">...<br>.../lean/src/library/typed_expr.cpp:59:18: warning: <span class="hljs-string">&#x27;write&#x27;</span> overrides a member <span class="hljs-keyword">function</span> but is not marked <span class="hljs-string">&#x27;override&#x27;</span> [-Winconsistent-missing-override]<br>    virtual void write(serializer &amp; s) const &#123;<br><br>.../lean/src/kernel/expr.h:370:18: note: overridden virtual <span class="hljs-keyword">function</span> is here<br>    virtual void write(serializer &amp; s) const = 0;<br>                 ^<br>4 warnings generated.<br></code></pre></td></tr></table></figure></code></pre></li><li><p><strong>Installation (Optional)</strong>: If you wish to installLean system-wide (or in a specified directory), you can use the<strong><code>install</code></strong> target with<strong><code>make</code></strong>: <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-built_in">make</span> install<br></code></pre></td></tr></table></figure></p><pre><code class="hljs">By default, this might install Lean to **`/usr/local/bin`**. If you wish to specify a different install directory, you can provide a prefix during the **`cmake`** configuration step:<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ruby">cmake -<span class="hljs-variable constant_">DCMAKE_INSTALL_PREFIX</span><span class="hljs-symbol">:PATH=/path/to/your/desired/install/location</span> ../../src<br></code></pre></td></tr></table></figure></code></pre></li><li><p><strong>Using with <code>elan</code></strong>: If you wish tointegrate this build with <strong><code>elan</code></strong>, you caneither: - Copy the binaries to the appropriate<strong><code>elan</code></strong> toolchain directory. - Or, point yoursystem's <strong><code>PATH</code></strong> variable to the directorycontaining the compiled binaries.</p></li><li><p><strong>Potential Issues</strong>:</p><ul><li>Keep an eye out for any error messages during the build process.They can indicate missing dependencies or other issues.</li><li>Ensure you have adequate disk space and permissions to write to thespecified directories.</li></ul></li></ol><p>Once you've successfully built Lean from source, you should be ableto run the <strong><code>lean</code></strong> binary and verify itsversion using <strong><code>lean --version</code></strong>.</p><p>Now, you have successfully installed LEAN, try it out by</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> ..<br><span class="hljs-built_in">cd</span> ..<br>bin/lean --version<br></code></pre></td></tr></table></figure><p>It should output something like</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">Lean (version 3.42.1, commit 68455b087d87, Release)<br></code></pre></td></tr></table></figure><p>Now you have installed LEAN, in my next blog, I will demonstrate howto put your manually installed LEAN to <code>elan</code></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Daily Logs</category>
+      
+      <category>Debug Logs</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Learning Log</tag>
+      
+      <tag>LEAN</tag>
+      
+      <tag>automated theorem proving</tag>
+      
+      <tag>Homebrew</tag>
+      
+      <tag>Programming Tips</tag>
+      
+      <tag>arm based system</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Setting Up Lean on an M1 Mac: A Debugging Journey</title>
     <link href="/2023/10/11/Setting-Up-Lean-on-an-M1-Mac-A-Debugging-Journey/"/>
     <url>/2023/10/11/Setting-Up-Lean-on-an-M1-Mac-A-Debugging-Journey/</url>
@@ -24,13 +61,13 @@
       
       <tag>Learning Log</tag>
       
-      <tag>Programming Tips</tag>
-      
       <tag>LEAN</tag>
       
       <tag>automated theorem proving</tag>
       
       <tag>Homebrew</tag>
+      
+      <tag>Programming Tips</tag>
       
       <tag>arm based system</tag>
       
@@ -61,19 +98,19 @@
     
     <tags>
       
+      <tag>Learning Log</tag>
+      
+      <tag>Programming Tips</tag>
+      
       <tag>Intern</tag>
       
       <tag>Intern Log</tag>
-      
-      <tag>Learning Log</tag>
       
       <tag>Intern At 300K</tag>
       
       <tag>Python</tag>
       
       <tag>Python Grammar</tag>
-      
-      <tag>Programming Tips</tag>
       
       <tag>UnitTest</tag>
       
@@ -110,11 +147,13 @@
     
     <tags>
       
+      <tag>Learning Log</tag>
+      
+      <tag>Programming Tips</tag>
+      
       <tag>Intern</tag>
       
       <tag>Intern Log</tag>
-      
-      <tag>Learning Log</tag>
       
       <tag>Intern At 300K</tag>
       
@@ -123,8 +162,6 @@
       <tag>Python Grammar</tag>
       
       <tag>Command Line</tag>
-      
-      <tag>Programming Tips</tag>
       
     </tags>
     
@@ -153,11 +190,13 @@
     
     <tags>
       
+      <tag>Learning Log</tag>
+      
+      <tag>Programming Tips</tag>
+      
       <tag>Intern</tag>
       
       <tag>Intern Log</tag>
-      
-      <tag>Learning Log</tag>
       
       <tag>Intern At 300K</tag>
       
@@ -166,8 +205,6 @@
       <tag>Python Grammar</tag>
       
       <tag>Command Line</tag>
-      
-      <tag>Programming Tips</tag>
       
       <tag>Tech</tag>
       
@@ -204,11 +241,11 @@
     
     <tags>
       
+      <tag>Learning Log</tag>
+      
       <tag>Intern</tag>
       
       <tag>Intern Log</tag>
-      
-      <tag>Learning Log</tag>
       
       <tag>Intern At 300K</tag>
       
@@ -247,11 +284,11 @@
     
     <tags>
       
+      <tag>Learning Log</tag>
+      
       <tag>Intern</tag>
       
       <tag>Intern Log</tag>
-      
-      <tag>Learning Log</tag>
       
       <tag>Intern At 300K</tag>
       
@@ -300,11 +337,13 @@
     
     <tags>
       
+      <tag>Learning Log</tag>
+      
+      <tag>Programming Tips</tag>
+      
       <tag>Intern</tag>
       
       <tag>Intern Log</tag>
-      
-      <tag>Learning Log</tag>
       
       <tag>Intern At 300K</tag>
       
@@ -313,8 +352,6 @@
       <tag>Python Grammar</tag>
       
       <tag>Command Line</tag>
-      
-      <tag>Programming Tips</tag>
       
       <tag>Tech</tag>
       
@@ -355,11 +392,11 @@
     
     <tags>
       
+      <tag>Learning Log</tag>
+      
       <tag>Intern</tag>
       
       <tag>Intern Log</tag>
-      
-      <tag>Learning Log</tag>
       
       <tag>Intern At 300K</tag>
       
@@ -410,11 +447,11 @@
     
     <tags>
       
+      <tag>Learning Log</tag>
+      
       <tag>Intern</tag>
       
       <tag>Intern Log</tag>
-      
-      <tag>Learning Log</tag>
       
       <tag>Intern At 300K</tag>
       
@@ -463,11 +500,11 @@
     
     <tags>
       
+      <tag>Learning Log</tag>
+      
       <tag>Intern</tag>
       
       <tag>Intern Log</tag>
-      
-      <tag>Learning Log</tag>
       
       <tag>Intern At 300K</tag>
       
