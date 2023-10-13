@@ -1,0 +1,938 @@
+
+
+<!DOCTYPE html>
+<html lang="en,zh-CN,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/ray.jpg">
+  <link rel="icon" href="/ray.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Sirui Ray Li">
+  <meta name="keywords" content="testing3">
+  
+    <meta name="description" content="Import LEAN into elan Notice:  I will use lean v3.42.1 for the demonstration  This is a tutorial on how to override&#x2F;import LEAN into elan, so that you can regulate different versions of LEAN with a ve">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Import LEAN into">
+<meta property="og:url" content="http://blog.slray.com/2023/10/12/Import-LEAN-into/index.html">
+<meta property="og:site_name" content="Ray&#39;s website">
+<meta property="og:description" content="Import LEAN into elan Notice:  I will use lean v3.42.1 for the demonstration  This is a tutorial on how to override&#x2F;import LEAN into elan, so that you can regulate different versions of LEAN with a ve">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-10-13T02:47:59.000Z">
+<meta property="article:modified_time" content="2023-10-13T02:50:50.722Z">
+<meta property="article:author" content="Sirui Ray Li">
+<meta property="article:tag" content="Learning Log">
+<meta property="article:tag" content="LEAN">
+<meta property="article:tag" content="elan">
+<meta property="article:tag" content="automated theorem proving">
+<meta property="article:tag" content="Programming Tips">
+<meta property="article:tag" content="arm based system">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Import LEAN into - Ray&#39;s website</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.slray.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ray&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Import LEAN into"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-10-12 22:47" pubdate>
+          Thursday, October 12th 2023, 10:47 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          9.1k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          76 minutes
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          visit: <span id="busuanzi_value_page_pv"></span> times
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Import LEAN into</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="import-lean-into-elan">Import LEAN into <code>elan</code></h1>
+<p>Notice:</p>
+<ul>
+<li>I will use lean v3.42.1 for the demonstration</li>
+</ul>
+<p>This is a tutorial on how to override/import LEAN into
+<code>elan</code>, so that you can regulate different versions of LEAN
+with a version control system.</p>
+<h1 id="problem-with-elan">Problem with <code>elan</code>,</h1>
+<p>As I mentioned in the blog: <a
+href="https://blog.slray.com/2023/10/12/Installing-LEAN-on-arm-based-Mac-%E2%80%94-Manually-compile-and-install/">https://blog.slray.com/2023/10/12/Installing-LEAN-on-arm-based-Mac-—-Manually-compile-and-install/</a></p>
+<p>The problem with <code>elan</code> is that when you are trying to
+download LEAN3, it pops:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">❯ elan install lean3<br>info: downloading component <span class="hljs-string">&#x27;lean&#x27;</span><br>Error(Download(HttpStatus(404)), State &#123; next_error: None, backtrace: InternalBacktrace &#123; backtrace: None &#125; &#125;)<br>error: could not download nonexistent lean version `lean3`<br>info: caused by: could not download file from <span class="hljs-string">&#x27;https://github.com/leanprover/lean4/releases/expanded_assets/lean3&#x27;</span> to <span class="hljs-string">&#x27;/Users/ray/.elan/tmp/i3pouyka8f1tcrdn_file&#x27;</span><br>info: caused by: http request returned an unsuccessful status code: 404<br></code></pre></td></tr></table></figure>
+<p>Here are the instructions on how to install LEAN manually (download
+source code, and compile):</p>
+<ul>
+<li><a
+href="https://blog.slray.com/2023/10/12/Installing-LEAN-on-arm-based-Mac-%E2%80%94-Manually-compile-and-install/">Installing
+LEAN on arm based Mac — Manually compile and install</a></li>
+<li><a
+href="https://blog.slray.com/2023/10/11/Setting-Up-Lean-on-an-M1-Mac-A-Debugging-Journey/">Setting
+Up Lean on an M1 Mac: A Debugging Journey</a></li>
+</ul>
+<h1 id="check-your-lean">Check your LEAN</h1>
+<p>Now you have install LEAN, if you <code>make install</code> ed, you
+can use</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">lean --version<br></code></pre></td></tr></table></figure>
+<p>globally. If not, you can still check by</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">path/to/your/lean --version<br></code></pre></td></tr></table></figure>
+<p>If you do not know the path, you may use the following command</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">where</span> lean<br></code></pre></td></tr></table></figure>
+<p>This will generate a path like</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">❯ <span class="hljs-built_in">where</span> lean<br>/Users/ray/.elan/bin/lean<br>/usr/local/bin/lean<br>/usr/local/bin/lean<br></code></pre></td></tr></table></figure>
+<p>Since you have not imported the lean into your <code>elan</code>, you
+might not see the first line.</p>
+<h1 id="import-lean-to-elan">Import LEAN to <code>elan</code></h1>
+<p>Now, to integrate it with <code>elan</code>, follow these steps:</p>
+<ol type="1">
+<li><strong>Locate the Binaries</strong>: (mentioned above) If you've
+installed Lean using <code>make install</code>, by default, the binaries
+are likely placed in <code>/usr/local/bin</code>. However, if you
+specified a custom installation path using the
+<code>DCMAKE_INSTALL_PREFIX</code> option, then the binaries will be in
+the <code>bin</code> subdirectory of that location.</li>
+</ol>
+<p>For example, if you set the install prefix to
+<code>/path/to/your/desired/install/location</code>, then the binaries
+should be in
+<code>/path/to/your/desired/install/location/bin</code>.</p>
+<ol type="1">
+<li><p><strong>Integrate with <code>elan</code></strong>:</p>
+<ul>
+<li>First, find out where <code>elan</code> stores its toolchains on
+your system. This is typically in the <code>~/.elan/toolchains</code>
+directory.</li>
+<li>Create a new directory inside <code>toolchains</code> with a
+recognizable name, e.g., <code>lean3.42.1-cmake</code>.</li>
+<li>Copy the binaries (from the location in step 1) into this new
+directory.</li>
+</ul>
+<p>For example:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> ~/.elan/toolchains/lean3.42.1-cmake<br><span class="hljs-built_in">cp</span> /path/to/your/binaries/* ~/.elan/toolchains/lean3.42.1-cmake/<br><br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Set the Custom Build as Default</strong>: Use
+<code>elan</code> to set this custom build as the default version:
+<code>bash     elan default lean3.42.1-cmake</code></p></li>
+<li><p><strong>Verify the Installation</strong>: Now, when you run
+<code>lean --version</code>, it should use your custom-built version.
+Verify this to ensure everything is set up correctly.</p></li>
+<li><p><strong>Important Note</strong>: When integrating custom builds
+with <code>elan</code>, be cautious about updating <code>elan</code> or
+changing configurations. Custom toolchains might be overwritten or
+disrupted. Always have a backup of your custom build to ensure you can
+restore it if needed.</p></li>
+</ol>
+<p>This process should allow you to use your custom-built version of
+Lean with <code>elan</code>.</p>
+<h1 id="make-install-detailed-example"><code>make install</code>
+detailed example</h1>
+<p>The process is very similar.</p>
+<ol type="1">
+<li><p><strong>Prepare a New Toolchain Directory for
+<code>elan</code></strong>:</p>
+<p>First, create a directory inside <code>elan</code>'s toolchains
+folder. This is where you'll place the custom-built version of Lean.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> ~/.elan/toolchains/lean3.42.1-cmake<br><br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Copy the Lean Binaries</strong>:</p>
+<p>Copy the <code>lean</code>, <code>leanchecker</code>, and
+<code>leanpkg</code> binaries (and any other related binaries) from
+<code>/usr/local/bin</code> to the custom toolchain directory you just
+created.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cp</span> /usr/local/bin/lean ~/.elan/toolchains/lean3.42.1-cmake/bin/<br><span class="hljs-built_in">cp</span> /usr/local/bin/leanchecker ~/.elan/toolchains/lean3.42.1-cmake/bin/<br><span class="hljs-built_in">cp</span> /usr/local/bin/leanpkg ~/.elan/toolchains/lean3.42.1-cmake/bin/<br><br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Set the Custom Build as Default in
+<code>elan</code></strong>:</p>
+<p>Use <code>elan</code> to set this custom build as the default
+version:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">elan default lean3.42.1-cmake<br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Verification</strong>:</p>
+<p>After setting the custom build as default, you can check which
+version of Lean is being used by running:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">lean --version<br></code></pre></td></tr></table></figure>
+<p>This should point to your custom-built version. Also,
+<code>elan show</code> will tell you the currently active
+toolchain.</p></li>
+</ol>
+<p>Remember, by integrating with <code>elan</code>, you gain the
+advantage of easily switching between different versions of Lean.
+However, when you update <code>elan</code> or modify its settings, be
+cautious. Custom toolchains might be affected, so it's always good to
+keep a backup of your custom build.</p>
+<h1 id="problem-of-...eanpkgmain.lean-not-found">Problem of
+<code>.../eanpkg/main.lean' not found</code></h1>
+<p>I downloaded the correct version of lean, and installed it, and with
+elan set it as default and global. But I still got</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">❯ leanpkg configure<br>&lt;unknown&gt;:1:1: error: file <span class="hljs-string">&#x27;..../.elan/toolchains/lean3.42.1-cmake/leanpkg/leanpkg/main.lean&#x27;</span> not found<br></code></pre></td></tr></table></figure>
+<p>Notice that the command <code>leanpkg configure</code> is not related
+to this blog, this blog is one of the series of installing miniF2F
+Github repo(which is also why I have to install lean3 instead of 4). You
+might still, however, encounter the same problem if your project is
+using the same command.</p>
+<hr />
+<h2 id="solution">Solution</h2>
+<p>The error suggests that <code>leanpkg</code> is looking for its main
+Lean file (i.e., <code>main.lean</code>) in the custom toolchain
+directory but isn't finding it. This is likely because when we set up
+the custom toolchain, we primarily focused on the binaries and didn't
+account for the other necessary files and directories that
+<code>leanpkg</code> and Lean itself might rely on.</p>
+<p>To resolve this:</p>
+<ol type="1">
+<li><p><strong>Copy Necessary Files</strong>:</p>
+<p>In addition to the binaries, you may need to copy over other required
+files or directories from the compiled Lean source to the custom
+toolchain directory. In this case, it's specifically looking for the
+<code>leanpkg</code> directory and its contents.</p>
+<p>From the root of your Lean source directory (where you compiled
+Lean), you can do:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cp</span> -r path/to/lean3.42.1-cmake-source/leanpkg ~/.elan/toolchains/lean3.42.1-cmake/<br></code></pre></td></tr></table></figure>
+<p>This assumes the source for <code>3.42.1</code> is in
+<code>path/to/lean3.42.1-cmake-source/</code> and that you named your
+custom toolchain <code>lean3.42.1-cmake</code>. Adjust the paths
+accordingly.</p></li>
+<li><p><strong>Re-run <code>leanpkg</code></strong>:</p>
+<p>After copying the necessary files, try running
+<code>leanpkg configure</code> again.</p></li>
+<li><p><strong>Check for Further Missing Files</strong>:</p>
+<p>If you encounter more errors about missing files, you'll need to
+repeat the process: identify the missing files or directories, copy them
+from the Lean source directory to the custom toolchain directory, and
+then retry the command.</p></li>
+</ol>
+<p>Keep in mind that manually setting up a custom toolchain can be a bit
+tricky since we're trying to replicate the exact structure and contents
+that Lean expects. It may require some trial and error to get everything
+right.</p>
+<p>If you continue to face issues, another option might be to bypass
+<code>elan</code> temporarily for <code>leanpkg</code> operations and
+use the binaries directly, but integrating with <code>elan</code> is
+more convenient in the long run.</p>
+<h1 id="not-a-directory-problem">“Not a directory” problem</h1>
+<p>I encountered the problem of</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">❯ <span class="hljs-built_in">cp</span> -r leanpkg ~/.elan/toolchains/lean3.42.1-cmake/<br><span class="hljs-built_in">cp</span>: /Users/ray/.elan/toolchains/lean3.42.1-cmake/leanpkg: Not a directory<br><span class="hljs-built_in">cp</span>: leanpkg: unable to copy extended attributes to /Users/ray/.elan/toolchains/lean3.42.1-cmake/leanpkg: Operation not permitted<br><span class="hljs-built_in">cp</span>: /Users/ray/.elan/toolchains/lean3.42.1-cmake/leanpkg/leanpkg.path: Not a directory<br><span class="hljs-built_in">cp</span>: /Users/ray/.elan/toolchains/lean3.42.1-cmake/leanpkg/leanpkg: Not a directory<br><span class="hljs-built_in">cp</span>: leanpkg/leanpkg: unable to copy extended attributes to /Users/ray/.elan/toolchains/lean3.42.1-cmake/leanpkg/leanpkg: Not a directory<br><span class="hljs-built_in">cp</span>: /Users/ray/.elan/toolchains/lean3.42.1-cmake/leanpkg/leanpkg/git.olean: Not a directory<br></code></pre></td></tr></table></figure>
+<p>while I was moving the files. The problem mainly suggest:</p>
+<ol type="1">
+<li>Permission not enough</li>
+<li>There are files conflict</li>
+</ol>
+<h2 id="solution-1">solution</h2>
+<ol type="1">
+<li><p><strong>Remove any conflicting files or directories</strong>:</p>
+<p>It seems there might already be a file named <code>leanpkg</code> in
+your custom toolchain directory. We need to ensure that there are no
+conflicts before copying over the directory.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">rm</span> -rf ~/.elan/toolchains/lean3.42.1-cmake/leanpkg<br></code></pre></td></tr></table></figure>
+<p>This command will remove the <code>leanpkg</code> file or directory
+in your custom toolchain directory if it exists.</p></li>
+<li><p><strong>Copy the <code>leanpkg</code> directory
+again</strong>:</p>
+<p>From your Lean source directory:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cp</span> -r leanpkg ~/.elan/toolchains/lean3.42.1-cmake/<br></code></pre></td></tr></table></figure></li>
+</ol>
+<p>This should copy the <code>leanpkg</code> directory without any
+conflicts. If you encounter more permission errors, you might need to
+use <code>sudo</code> with the <code>cp</code> command, but only do so
+if you're sure about the paths and operations, as using
+<code>sudo</code> can affect system-critical files if used
+incorrectly.</p>
+<h1 id="leanpkg-is-looking-for-wrong-lean"><code>leanpkg</code> is
+looking for wrong LEAN</h1>
+<p>I installed different versions of LEAN, I previously installed one
+for 3.4.2 (official release). While installing, I met problem of that
+<code>leanpkg</code> is looking for the file under
+<code>'/Users/ray/.elan/toolchains/lean3.4.2-cmake/leanpkg/leanpk</code>
+instead of
+<code>'/Users/ray/.elan/toolchains/lean3.42.1-cmake/leanpkg/leanpk</code></p>
+<h2 id="solution-2">Solution</h2>
+<p>The discrepancy you're seeing suggests that somewhere,
+<code>leanpkg</code> is still referencing the old toolchain path (from
+<code>3.4.2-cmake</code>) instead of the new one
+(<code>3.42.1-cmake</code>). This can happen due to a few reasons:</p>
+<ol type="1">
+<li><p><strong>Elan Configuration</strong>: If you've set the default
+version in <code>elan</code> to <code>lean3.4.2-cmake</code> or there's
+an override active, then tools will default to that version.</p>
+<p>To ensure you're using <code>3.42.1-cmake</code> as the default:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">elan default lean3.42.1-cmake<br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Local Project Configuration</strong>: If you're in a Lean
+project directory, there might be a <code>.lean-version</code> file or a
+<code>lean_version</code> field in the <code>leanpkg.toml</code> file
+that specifies which version to use. Make sure this is set to
+<code>3.42.1</code> or delete the <code>.lean-version</code> file to
+default to the global setting.</p></li>
+<li><p><strong>PATH Issues</strong>: It's also possible that there's
+some issue with how your <code>PATH</code> environment variable is set
+up. Maybe the older version's path is taking precedence. You can check
+which <code>leanpkg</code> is being used by:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">which</span> leanpkg<br></code></pre></td></tr></table></figure>
+<p>This will tell you the path of the <code>leanpkg</code> binary that's
+currently being executed.</p></li>
+<li><p><strong>Binary References</strong>: The <code>leanpkg</code>
+binary itself might be hardcoded or configured to reference paths from
+its compilation or installation. This is less likely, but it's
+possible.</p></li>
+</ol>
+<p>For immediate relief:</p>
+<ol type="1">
+<li><p><strong>Rename Old Toolchain</strong>: Temporarily, you can
+rename the old toolchain directory to something else to ensure it's not
+being used:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mv</span> ~/.elan/toolchains/lean3.4.2-cmake ~/.elan/toolchains/lean3.4.2-cmake-backup<br></code></pre></td></tr></table></figure>
+<p>This way, even if something is trying to reference the old toolchain,
+it won't find it, forcing it to default to the available
+toolchain.</p></li>
+</ol>
+<p>By systematically following these checks and changes, you should be
+able to pinpoint and resolve the issue. If all else fails, you may need
+to perform a fresh setup of <code>elan</code> and your Lean
+installations to clear out any lingering configurations.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Daily-Logs/" class="category-chain-item">Daily Logs</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Daily-Logs/Debug-Logs/" class="category-chain-item">Debug Logs</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Learning-Log/">#Learning Log</a>
+      
+        <a href="/tags/LEAN/">#LEAN</a>
+      
+        <a href="/tags/elan/">#elan</a>
+      
+        <a href="/tags/automated-theorem-proving/">#automated theorem proving</a>
+      
+        <a href="/tags/Programming-Tips/">#Programming Tips</a>
+      
+        <a href="/tags/arm-based-system/">#arm based system</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Import LEAN into</div>
+      <div>http://blog.slray.com/2023/10/12/Import-LEAN-into/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Sirui Ray Li</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>October 12, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/10/12/Installing-LEAN-on-arm-based-Mac-%E2%80%94-Manually-compile-and-install/" title="Installing LEAN on arm based Mac — Manually compile and install">
+                        <span class="hidden-mobile">Installing LEAN on arm based Mac — Manually compile and install</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        aggregate visit: 
+        <span id="busuanzi_value_site_pv"></span>
+         times
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        , 
+        <span id="busuanzi_value_site_uv"></span>
+         people
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
