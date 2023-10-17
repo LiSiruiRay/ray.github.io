@@ -1,0 +1,942 @@
+
+
+<!DOCTYPE html>
+<html lang="en,zh-CN,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/ray.jpg">
+  <link rel="icon" href="/ray.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Sirui Ray Li">
+  <meta name="keywords" content="testing3">
+  
+    <meta name="description" content="WebSocket Latency issues with REAL WORLD SITUATION &amp; SOLUTION">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WebSocket on stock data with latency issue">
+<meta property="og:url" content="http://blog.slray.com/2023/10/17/WebSocket-on-stock-data-with-latency-issue/index.html">
+<meta property="og:site_name" content="Ray&#39;s website">
+<meta property="og:description" content="WebSocket Latency issues with REAL WORLD SITUATION &amp; SOLUTION">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-10-17T18:13:08.000Z">
+<meta property="article:modified_time" content="2023-10-17T18:14:08.420Z">
+<meta property="article:author" content="Sirui Ray Li">
+<meta property="article:tag" content="Learning Log">
+<meta property="article:tag" content="WebSocket">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>WebSocket on stock data with latency issue - Ray&#39;s website</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.slray.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ray&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="WebSocket on stock data with latency issue"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-10-17 14:13" pubdate>
+          Tuesday, October 17th 2023, 2:13 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          13k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          108 minutes
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          visit: <span id="busuanzi_value_page_pv"></span> times
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">WebSocket on stock data with latency issue</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="websocket-on-stock-data-with-latency-issue">WebSocket on stock
+data with latency issue</h1>
+<p>This is a record of me learning WebSocket way of extracting
+low-latency stock price data.</p>
+<h1 id="pythonwebsocket">Python&amp;WebSocket</h1>
+<p>I will use the example of extracting stock data to demonstrate the
+process.</p>
+<hr />
+<p>WebSockets allow for two-way communication with a remote host, and
+they're perfect for receiving real-time stock data updates.</p>
+<p>Here's a step-by-step guide using the Python <code>websocket</code>
+library:</p>
+<ol type="1">
+<li><strong>Installation</strong>: First, you'll need to install the
+<code>websocket-client</code> library. You can do this via
+<code>pip</code>:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install websocket-client<br></code></pre></td></tr></table></figure>
+<ol type="1">
+<li><strong>Connecting to the WebSocket</strong>: You'll establish a
+connection to the WebSocket using the provided URL.</li>
+<li><strong>Sending &amp; Receiving Messages</strong>: Once the
+connection is established, you can send and receive messages.</li>
+</ol>
+<p>Here's a basic example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> websocket<br><span class="hljs-keyword">import</span> json<br><br><span class="hljs-comment"># Callbacks for the WebSocket</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">on_message</span>(<span class="hljs-params">ws, message</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Received: <span class="hljs-subst">&#123;message&#125;</span>&quot;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">on_error</span>(<span class="hljs-params">ws, error</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Error: <span class="hljs-subst">&#123;error&#125;</span>&quot;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">on_close</span>(<span class="hljs-params">ws, close_status_code, close_msg</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;WebSocket Closed&quot;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">on_open</span>(<span class="hljs-params">ws</span>):<br>    <span class="hljs-comment"># This function runs when the connection is established.</span><br>    <span class="hljs-comment"># You can send a message or set up whatever you need.</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;WebSocket Opened&quot;</span>)<br>    <span class="hljs-comment"># For example, to send a message:</span><br>    <span class="hljs-comment"># ws.send(&quot;Your message here&quot;)</span><br><br><span class="hljs-comment"># Set up the WebSocket connection</span><br>ws = websocket.WebSocketApp(<br>    <span class="hljs-string">&quot;ws://example.com/socket&quot;</span>,<br>    on_message=on_message,<br>    on_error=on_error,<br>    on_close=on_close,<br>)<br>ws.on_open = on_open<br><br><span class="hljs-comment"># Keep the connection running</span><br>ws.run_forever()<br><br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>on_message</code>: This function is called whenever a new
+message is received from the WebSocket.</li>
+<li><code>on_error</code>: This function is called when there's an error
+with the WebSocket.</li>
+<li><code>on_close</code>: This function is called when the WebSocket is
+closed.</li>
+<li><code>on_open</code>: This function is called when the WebSocket
+connection is successfully established.</li>
+</ul>
+<p>With this script, every time the WebSocket receives a message (e.g.,
+a stock price update), it will print that message to the console.</p>
+<ol type="1">
+<li><strong>Keeping the program running</strong>: Yes, once the
+connection is established, you have to keep your program running to
+continue receiving messages. The <code>run_forever()</code> function
+keeps the program running and the WebSocket connection alive. If you
+stop the program, you'll disconnect from the WebSocket.</li>
+</ol>
+<p><strong>Note</strong>: Always be careful when hardcoding API keys or
+sharing them. They should be kept secret. It's good practice to load
+them from environment variables or external configuration files.</p>
+<h2 id="send-a-message">Send a message</h2>
+<p>To send a message using the <code>websocket</code> library in Python,
+you'll use the <code>send</code> method of the WebSocket object. The
+message typically needs to be a string, so if you're sending a JSON
+message like the one you provided, you'll need to serialize it to a
+string using <code>json.dumps()</code>.</p>
+<p>Here's how you can integrate message sending into the previous
+code:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> websocket<br><span class="hljs-keyword">import</span> json<br><br><span class="hljs-comment"># Callbacks for the WebSocket</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">on_message</span>(<span class="hljs-params">ws, message</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Received: <span class="hljs-subst">&#123;message&#125;</span>&quot;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">on_error</span>(<span class="hljs-params">ws, error</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Error: <span class="hljs-subst">&#123;error&#125;</span>&quot;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">on_close</span>(<span class="hljs-params">ws, close_status_code, close_msg</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;WebSocket Closed&quot;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">on_open</span>(<span class="hljs-params">ws</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;WebSocket Opened&quot;</span>)<br><br>    <span class="hljs-comment"># Send subscription message</span><br>    message = &#123;<br>        <span class="hljs-string">&quot;action&quot;</span>: <span class="hljs-string">&quot;subscribe&quot;</span>,<br>        <span class="hljs-string">&quot;params&quot;</span>: &#123;<br>            <span class="hljs-string">&quot;symbols&quot;</span>: <span class="hljs-string">&quot;AAPL,RY,RY:TSX,EUR/USD,BTC/USD&quot;</span><br>        &#125;<br>    &#125;<br><br>    ws.send(json.dumps(message))<br><br><span class="hljs-comment"># Set up the WebSocket connection</span><br>ws = websocket.WebSocketApp(<br>    <span class="hljs-string">&quot;ws://example.com/socket&quot;</span>,<br>    on_message=on_message,<br>    on_error=on_error,<br>    on_close=on_close,<br>)<br>ws.on_open = on_open<br><br><span class="hljs-comment"># Keep the connection running</span><br>ws.run_forever()<br><br></code></pre></td></tr></table></figure>
+<p>When the WebSocket connection is opened, the <code>on_open</code>
+callback is triggered. Within that function, I've added the code to send
+your sample message. The message is first defined as a Python dictionary
+and then converted to a JSON string using <code>json.dumps()</code>.
+After that, it's sent to the WebSocket using the <code>send</code>
+method.</p>
+<h2 id="but-how-can-i-see-what-message-the-server-sent-me">But how can I
+see what message the server sent me?</h2>
+<p>In the example code I provided, every time the server sends a message
+to your WebSocket client, the <code>on_message</code> callback function
+is triggered. Inside this function, we've set up a simple print
+statement to display the message:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">on_message</span>(<span class="hljs-params">ws, message</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Received: <span class="hljs-subst">&#123;message&#125;</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
+<p>With this setup, any message received from the server will be printed
+to the console.</p>
+<p>However, if you'd like to process or analyze the messages in some
+way, you can modify the <code>on_message</code> function. For example,
+if the server sends JSON messages and you want to convert them to a
+Python dictionary to extract certain data, you can do the following:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">on_message</span>(<span class="hljs-params">ws, message</span>):<br>    data = json.loads(message)<br>    <span class="hljs-comment"># Now &#x27;data&#x27; is a Python dictionary. You can access its elements like:</span><br>    <span class="hljs-comment"># value = data[&#x27;someKey&#x27;]</span><br><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Received: <span class="hljs-subst">&#123;data&#125;</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
+<p>In this modified version, the received message is deserialized from a
+JSON string into a Python dictionary using <code>json.loads()</code>.
+Then you can access and process the data within the dictionary as
+needed.</p>
+<h1 id="inter-process-communication">Inter-process communication</h1>
+<p>If you want to maintain a connection in one script and send messages
+from another script, you'll need a mechanism for inter-process
+communication.</p>
+<p>Here's one approach using a combination of a WebSocket in one script
+and a message queue in another script:</p>
+<ol type="1">
+<li><strong>WebSocket script</strong>: This script establishes and
+maintains the WebSocket connection. It also listens for new messages to
+send from a message queue (e.g., using Python's
+<code>queue.Queue</code>).</li>
+<li><strong>Command-line script</strong>: This script allows you to
+enter new messages and adds them to the queue.</li>
+</ol>
+<p>Both scripts communicate using the shared message queue.</p>
+<h3 id="example-implementation">Example Implementation:</h3>
+<p><strong>1. websocket_script.py</strong>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> websocket<br><span class="hljs-keyword">import</span> json<br><span class="hljs-keyword">import</span> queue<br><span class="hljs-keyword">import</span> threading<br><br><span class="hljs-comment"># Shared message queue</span><br>msg_queue = queue.Queue()<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">on_message</span>(<span class="hljs-params">ws, message</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Received: <span class="hljs-subst">&#123;message&#125;</span>&quot;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">on_error</span>(<span class="hljs-params">ws, error</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Error: <span class="hljs-subst">&#123;error&#125;</span>&quot;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">on_close</span>(<span class="hljs-params">ws</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;WebSocket Closed&quot;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">on_open</span>(<span class="hljs-params">ws</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;WebSocket Opened&quot;</span>)<br><br>    <span class="hljs-comment"># Thread to listen for new messages from the queue</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">send_from_queue</span>():<br>        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>            message = msg_queue.get()<br>            ws.send(json.dumps(message))<br>            msg_queue.task_done()<br><br>    threading.Thread(target=send_from_queue).start()<br><br>ws = websocket.WebSocketApp(<br>    <span class="hljs-string">&quot;ws://example.com/socket&quot;</span>,<br>    on_message=on_message,<br>    on_error=on_error,<br>    on_close=on_close,<br>)<br>ws.on_open = on_open<br>ws.run_forever()<br><br></code></pre></td></tr></table></figure>
+<p><strong>2. command_line_script.py</strong>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> queue<br><br><span class="hljs-comment"># Use the same shared message queue as the WebSocket script</span><br>msg_queue = queue.Queue()<br><br><span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>    user_input = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;Enter message action (e.g., &#x27;subscribe&#x27;): &quot;</span>)<br>    <span class="hljs-keyword">if</span> user_input:<br>        <span class="hljs-comment"># Construct your message here based on the input</span><br>        message = &#123;<br>            <span class="hljs-string">&quot;action&quot;</span>: user_input,<br>            <span class="hljs-string">&quot;params&quot;</span>: &#123;<br>                <span class="hljs-string">&quot;symbols&quot;</span>: <span class="hljs-string">&quot;AAPL,RY,RY:TSX,EUR/USD,BTC/USD&quot;</span><br>            &#125;<br>        &#125;<br>        msg_queue.put(message)<br><br></code></pre></td></tr></table></figure>
+<h3 id="instructions">Instructions:</h3>
+<ol type="1">
+<li>Start <code>websocket_script.py</code> first to establish the
+WebSocket connection.</li>
+<li>Then, run <code>command_line_script.py</code>. This script will
+prompt you to enter new messages. Whenever you enter a message, it gets
+added to the queue, and the WebSocket script picks it up and sends it to
+the server.</li>
+</ol>
+<p>Note: This example uses a simple shared <code>queue.Queue()</code> to
+demonstrate the concept. In practice, especially if the scripts were to
+run in different environments, you'd use something like a message broker
+(e.g., RabbitMQ, Redis) or some other IPC (Inter-Process Communication)
+mechanism.</p>
+<h1 id="latency-from-processing-data">Latency from processing data</h1>
+<h3 id="situation1">Situation1</h3>
+<p>websocket send me 100 messages in 3 second. But I wrote a function to
+process each message, in the <code>on_message()</code> function
+provided, this function takes 2 second to process message, then how is
+the rest of the message doing? For example, I have 100 messages in 3
+second, but I need to kind of like wait for 2 second for the first
+message to be processed. Will I loss the result of 99 messages or
+something?</p>
+<h3 id="solution1">Solution1</h3>
+<p>If the processing of each message takes a significant amount of time
+(like the 2 seconds per message in your example), the WebSocket's
+event-driven model can indeed be a bottleneck. However, the WebSocket
+library won't drop messages because they arrive too quickly; instead,
+messages will be queued up and processed one at a time as the
+<code>on_message</code> handler is called. Here's a breakdown of the
+behavior:</p>
+<ol type="1">
+<li><strong>WebSocket Message Queue</strong>: The underlying WebSocket
+library will maintain an internal message queue. As messages come in
+from the server, they're placed in this queue. The
+<code>on_message</code> handler is called for each message in the order
+they arrived.</li>
+<li><strong>Processing Time</strong>: If processing each message takes 2
+seconds, then the <code>on_message</code> handler will be occupied for 2
+seconds for each message. During this time, new incoming messages will
+be queued up but not processed. After the current message is finished
+processing, the next message in the queue will be passed to the
+<code>on_message</code> handler.</li>
+<li><strong>Potential Issues</strong>:
+<ul>
+<li><strong>Latency</strong>: There will be a growing delay (latency)
+between when a message is received and when it is processed. In your
+example, the 100th message will be delayed by almost 200 seconds (2
+seconds * 100) before it's processed.</li>
+<li><strong>Memory Consumption</strong>: If messages arrive faster than
+they can be processed for an extended period, this can lead to increased
+memory consumption as the queue grows.</li>
+</ul></li>
+<li><strong>Solutions</strong>:
+<ul>
+<li><strong>Multithreading/Asynchronous Processing</strong>: Use threads
+or asynchronous tasks to process messages in parallel. This way, the
+<code>on_message</code> handler can quickly hand off the processing to
+another thread/task and be ready for the next message almost
+immediately.</li>
+<li><strong>Filtering Messages</strong>: If not all messages need to be
+processed, you can add a filtering mechanism to discard unneeded
+messages before processing.</li>
+<li><strong>Optimizing Processing</strong>: Look for ways to make the
+processing function faster.</li>
+<li><strong>Distributed Processing</strong>: For more advanced
+scenarios, consider using distributed processing systems (like Celery)
+to offload message processing to worker nodes.</li>
+</ul></li>
+</ol>
+<p>Here's a quick example using threading to process messages:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> websocket<br><span class="hljs-keyword">import</span> json<br><span class="hljs-keyword">import</span> threading<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">process_message</span>(<span class="hljs-params">message</span>):<br>    <span class="hljs-comment"># Your 2-second processing code here</span><br>    <span class="hljs-keyword">pass</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">on_message</span>(<span class="hljs-params">ws, message</span>):<br>    threading.Thread(target=process_message, args=(message,)).start()<br><br><span class="hljs-comment"># ... rest of the WebSocket code ...</span><br></code></pre></td></tr></table></figure>
+<p>In this example, each message starts a new thread for processing,
+allowing <code>on_message</code> to return almost immediately. This
+prevents the growing latency issue, but be cautious about starting too
+many threads at once; there's overhead associated with each thread. If
+you expect to handle a large volume of messages, consider using a thread
+pool or a more advanced solution like asynchronous processing or
+distributed task queues.</p>
+<h3 id="situation2">Situation2</h3>
+<p>If I am trying to store all the data to my database (postgres,
+locally), what if that time exceeded the data coming time? Does
+postgreSQL also provide something like a websocket where I can inject
+data faster? What if can't?</p>
+<p>Can I use a cache design then? For example, my websocket give me new
+message every seconde. But I have a queue (or like a buffer pool) that
+store the message, I will then store the data from the queue, so that
+when websocket stopped sending message, my machine still works on
+injecting the data. I know that db could inject data fast, but I might
+need to process the data before I inject it, that is why I am thinking
+about a new design.</p>
+<h3 id="solution2">Solution2</h3>
+<p>When dealing with high-frequency data input, especially from
+real-time sources like a WebSocket, and when there's a need to process
+and store this data in a relational database like PostgreSQL, there are
+several strategies to optimize and prevent data loss or excessive
+latency.</p>
+<ol type="1">
+<li><strong>Batch Inserts</strong>:
+<ul>
+<li>Rather than inserting each message into the database one by one, you
+can accumulate messages into batches and then perform a single batch
+insert. Databases are generally more efficient at handling batch
+operations than individual record inserts.</li>
+</ul></li>
+<li><strong>Caching &amp; Buffering</strong>:
+<ul>
+<li>As you mentioned, using a cache or buffer can be effective. You can
+store incoming messages in an in-memory structure (like a list in
+Python) or an in-memory database (like Redis). Once the buffer reaches a
+certain size or after a certain time interval, you can then process and
+batch insert the accumulated messages into PostgreSQL.</li>
+</ul></li>
+<li><strong>Processing Optimization</strong>:
+<ul>
+<li>If there's a need to process the data before inserting it, consider
+parallelizing this processing using threads or asynchronous tasks.</li>
+</ul></li>
+<li><strong>Database Optimization</strong>:
+<ul>
+<li>Make sure the PostgreSQL tables are properly indexed to handle the
+insert operations efficiently. Sometimes, disabling indexes during a
+massive insert and then rebuilding them afterward can be faster.</li>
+<li>Consider using a connection pooler like <code>pgBouncer</code> to
+reduce the overhead of establishing new connections for each insert
+operation.</li>
+</ul></li>
+<li><strong>Asynchronous Processing</strong>:
+<ul>
+<li>Consider using task queues like <code>Celery</code> with a message
+broker like <code>RabbitMQ</code> or <code>Redis</code>. When a message
+arrives, place it in the task queue. Workers will then pick up these
+tasks and process and insert them into the database. This decouples the
+rate of message arrival from the rate of database insertion.</li>
+</ul></li>
+<li><strong>Database Write-Ahead Log (WAL) Settings</strong>:
+<ul>
+<li>Fine-tuning PostgreSQL's WAL settings can improve write performance.
+However, be cautious as changing these settings can also impact the
+durability guarantees of the database.</li>
+</ul></li>
+</ol>
+<p>Here's a simple conceptual example using an in-memory buffer for
+batch inserts:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> websocket<br><span class="hljs-keyword">import</span> json<br><span class="hljs-keyword">import</span> time<br><br>BUFFER_SIZE = <span class="hljs-number">100</span>  <span class="hljs-comment"># Adjust as needed</span><br>buffer = []<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">process_and_store_in_db</span>(<span class="hljs-params">messages</span>):<br>    <span class="hljs-comment"># Process and batch insert the messages into PostgreSQL</span><br>    <span class="hljs-keyword">pass</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">on_message</span>(<span class="hljs-params">ws, message</span>):<br>    <span class="hljs-keyword">global</span> buffer<br>    buffer.append(message)<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(buffer) &gt;= BUFFER_SIZE:<br>        process_and_store_in_db(buffer)<br>        buffer = []<br><br><span class="hljs-comment"># ... rest of the WebSocket code ...</span><br><br><span class="hljs-comment"># You might also want to set up a periodic flush to handle cases where the</span><br><span class="hljs-comment"># buffer doesn&#x27;t reach BUFFER_SIZE within a certain time interval.</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">periodic_flush</span>():<br>    <span class="hljs-keyword">global</span> buffer<br>    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>        <span class="hljs-keyword">if</span> buffer:<br>            process_and_store_in_db(buffer)<br>            buffer = []<br>        time.sleep(<span class="hljs-number">10</span>)  <span class="hljs-comment"># Adjust the flush interval as needed</span><br><br><span class="hljs-keyword">import</span> threading<br>threading.Thread(target=periodic_flush).start()<br><br></code></pre></td></tr></table></figure>
+<p>This example keeps messages in an in-memory buffer. Once the buffer
+reaches a certain size (<code>BUFFER_SIZE</code>), it processes and
+batch inserts the messages into the database. There's also a periodic
+flush to handle cases where messages come in slowly and the buffer
+doesn't get filled quickly.</p>
+<p>Remember that these are just strategies. Depending on the exact
+requirements, hardware, network conditions, and the volume of data, the
+ideal solution might be a combination of the above methods.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Daily-Logs/" class="category-chain-item">Daily Logs</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Daily-Logs/Learning-Logs/" class="category-chain-item">Learning Logs</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Learning-Log/">#Learning Log</a>
+      
+        <a href="/tags/WebSocket/">#WebSocket</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>WebSocket on stock data with latency issue</div>
+      <div>http://blog.slray.com/2023/10/17/WebSocket-on-stock-data-with-latency-issue/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Sirui Ray Li</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>October 17, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/10/17/WebSocket-Introduction/" title="WebSocket Introduction">
+                        <span class="hidden-mobile">WebSocket Introduction</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        aggregate visit: 
+        <span id="busuanzi_value_site_pv"></span>
+         times
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        , 
+        <span id="busuanzi_value_site_uv"></span>
+         people
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
