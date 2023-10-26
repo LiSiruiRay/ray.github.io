@@ -4,6 +4,41 @@
   
   
   <entry>
+    <title>Operator Precedence in C</title>
+    <link href="/2023/10/26/Operator-Precedence-in-C/"/>
+    <url>/2023/10/26/Operator-Precedence-in-C/</url>
+    
+    <content type="html"><![CDATA[<p>This blog record how I debugged a problem while I was implementingfloat subtraction solely based on integer subtraction.</p><h1 id="operator-precedence-in-c">Operator Precedence in C</h1><p>What is some potential problem of the following code:</p><p>This code is a special case when subtracting two float numbers withdifferent sign.</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">if</span> (sign_f != sign_g) &#123;<br>    sign_res = sign_f;<br>    mantissa_res = mantissa_f + mantissa_g;<br>    <span class="hljs-keyword">if</span> (mantissa_res &amp; BIT24_MASK == BIT24_MASK) &#123;<br>      mantissa_res &gt;&gt;= <span class="hljs-number">1</span>;<br>      exp_res++;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>As I mentioned in the title, I was trying to check whether<code>mantissa_f + mantissa_g</code> exceeded the 2. If so, I need toreduce it to 1 point something and change the exponent. Yet the ifstatement does not work as I expected. This is because the<strong><code>==</code></strong> operator has a higher precedence thanthe <strong><code>&amp;</code></strong> operator.</p><p>Thus, the correct way of writing is<code>if ((mantissa_res &amp; BIT24_MASK) == BIT24_MASK)</code> or<code>if (mantissa_res &amp; BIT24_MASK)</code></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Daily Logs</category>
+      
+      <category>Learning Logs</category>
+      
+      <category>C</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Learning Log</tag>
+      
+      <tag>C</tag>
+      
+      <tag>operator</tag>
+      
+      <tag>debug</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>WebSocket on stock data with latency issue</title>
     <link href="/2023/10/17/WebSocket-on-stock-data-with-latency-issue/"/>
     <url>/2023/10/17/WebSocket-on-stock-data-with-latency-issue/</url>
@@ -299,13 +334,13 @@
       
       <tag>Python Grammar</tag>
       
-      <tag>Command Line</tag>
-      
       <tag>Tech</tag>
       
       <tag>Machine Learning</tag>
       
       <tag>Python Version Problem</tag>
+      
+      <tag>Command Line</tag>
       
       <tag>ChatGPT fun fact</tag>
       
@@ -446,9 +481,9 @@
       
       <tag>Python Grammar</tag>
       
-      <tag>Command Line</tag>
-      
       <tag>Tech</tag>
+      
+      <tag>Command Line</tag>
       
       <tag>PyCharm Professional</tag>
       
