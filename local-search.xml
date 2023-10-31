@@ -4,6 +4,45 @@
   
   
   <entry>
+    <title>Rudin Analysis Exercise 2.23</title>
+    <link href="/2023/10/31/Rudin-Analysis-Exercise-2-23/"/>
+    <url>/2023/10/31/Rudin-Analysis-Exercise-2-23/</url>
+    
+    <content type="html"><![CDATA[<h1 id="rudin-e2.23">Rudin E2.23</h1><p>This question is a prerequisite for Exercise 2.25, which correspondsto the Exercise 43.4 in <em>Foundations of MathematicalAnalysis</em></p><h1 id="question">Question</h1><p>Exercise 2.23 A collection <span class="math inline">\({V_α}\)</span>of open sets of <span class="math inline">\(X\)</span> is said to be abase for <span class="math inline">\(X\)</span> if the following istrue: For every <span class="math inline">\(x \in X\)</span> and everyopen set <span class="math inline">\(G \subset X\)</span> such that<span class="math inline">\(x \in G\)</span> , we have <spanclass="math inline">\(x \in V_\alpha \subset G\)</span> for some <spanclass="math inline">\(\alpha\)</span>. In other words, every open set in<span class="math inline">\(X\)</span> is the union of a subcollectionof <span class="math inline">\({V_\alpha}\)</span>.<strong>Prove</strong> that every separable metric space has a countablebase. Hint: Take all neighborhoods with rational radius and center insome countable dense subset of <spanclass="math inline">\(X\)</span>.</p><blockquote><p>A metric space is called <em>separable</em> if it contains acountable dense subset.</p></blockquote><h2 id="understand">Understand:</h2><p>For this question, we need to prove two things: there is a base andthe base is countable (remember base is a collection of set—set ofset).</p><p>We are given that <span class="math inline">\(X\)</span> isseparable. This is a hint itself. <span class="math inline">\(X\)</span>will contain a countable dense subset. This provide a feature ofcountable.</p><p>If we see the hint, we can also connect the countability with therational radius.</p><h2 id="prove">Prove:</h2><p>Since <span class="math inline">\(X\)</span> is separable, let <spanclass="math inline">\(\{x_1, x_2, …\}\)</span> be a dense (alsocountable) subset of <span class="math inline">\(X\)</span>.</p><p><span class="math inline">\(\forall m \in \Bbb{N}, r\in \Bbb{Q}, r\gt 0\)</span>, we let <span class="math inline">\(V_{m, r} = \{y : y\in N_{r}(x_m)\}\)</span>.</p><p>Since <span class="math inline">\(\Bbb{Q}, \Bbb{N}\)</span> are bothcountable, thus the collection of <span class="math inline">\(V_{m,r}\)</span> is countable.</p><p>(Notice this is not saying that <span class="math inline">\(V_{m,r}\)</span> is countable, this is saying that <spanclass="math inline">\(\{V_{m, r}\}_{m, r}\)</span> is countable)</p><p>Let <span class="math inline">\(V = \{V_{m, r}\}\)</span></p><p>Also, <span class="math inline">\(V_{m, r}\)</span> is open.(Actually <span class="math inline">\(V_{m, r} = N_{r}(x_m)\)</span>,which is open.)</p><p>Thus we found a countable collection of open set <spanclass="math inline">\(V\)</span>.</p><p>Now we will prove this <span class="math inline">\(V\)</span> is abase for <span class="math inline">\(X\)</span>.</p><p>To achieve this, we generally want to show: <spanclass="math inline">\(\forall \ open \ G \subset X, \exists V_{m,r} \inV: V \subset G\)</span></p><p>Yet this is of course not enough, to we actually need to also showthat for all points in <span class="math inline">\(G\)</span>, there isa <span class="math inline">\(V_{m, r} \in V\)</span> such that thispoint also in <span class="math inline">\(V_{m, r}\)</span></p><p>Let <span class="math inline">\(x \in X\)</span>, <spanclass="math inline">\(\exists \ open \ G: x \in G\)</span>. Since <spanclass="math inline">\(G\)</span> is open, all points in <spanclass="math inline">\(G\)</span> must be interior points of <spanclass="math inline">\(G\)</span>.</p><p>Thus <span class="math inline">\(x\)</span> is an interior point of<span class="math inline">\(G\)</span>. Thus, <spanclass="math inline">\(\exists \delta: N_\delta(x) \in G\)</span>.</p><p>Since <span class="math inline">\(\{x_1, x_2, …\}\)</span> is densein <span class="math inline">\(X\)</span>, <spanclass="math inline">\(\exists k \in N: x_k \inN_{\frac{\delta}{2}}(x)\)</span>.</p><p>This also means that <span class="math inline">\(x \inN_{\frac{\delta}{2}}(x_k)\)</span>. Thus <span class="math inline">\(x\in V_{k, \frac{\delta}{2}}\)</span>. Thus, <spanclass="math inline">\(V\)</span> is a base of <spanclass="math inline">\(X\)</span>.</p><hr /><p>The original proof I saw was from</p><img src="/2023/10/31/Rudin-Analysis-Exercise-2-23/original_E_2_23.png" class="" title="original question and proof"><p><ahref="https://minds.wisconsin.edu/bitstream/handle/1793/67009/rudin%20ch%202.pdf?sequence=10&amp;isAllowed=y">https://minds.wisconsin.edu/bitstream/handle/1793/67009/rudinch 2.pdf?sequence=10&amp;isAllowed=y</a></p><p>I was wondering the following questions:</p><ul><li>Why we need rational radius.</li><li>Why do we always have such <span class="math inline">\(x_k\)</span>in the open ball.</li><li>What is the second part doing.</li></ul><p>I provided my understanding of the proof.</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Daily Logs</category>
+      
+      <category>Learning Logs</category>
+      
+      <category>Math</category>
+      
+      <category>Analysis</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Real Analysis</tag>
+      
+      <tag>Rudin</tag>
+      
+      <tag>Analysis</tag>
+      
+      <tag>Math</tag>
+      
+      <tag>Countablility</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Operator Precedence in C</title>
     <link href="/2023/10/26/Operator-Precedence-in-C/"/>
     <url>/2023/10/26/Operator-Precedence-in-C/</url>
@@ -334,13 +373,13 @@
       
       <tag>Python Grammar</tag>
       
+      <tag>Command Line</tag>
+      
       <tag>Tech</tag>
       
       <tag>Machine Learning</tag>
       
       <tag>Python Version Problem</tag>
-      
-      <tag>Command Line</tag>
       
       <tag>ChatGPT fun fact</tag>
       
@@ -481,9 +520,9 @@
       
       <tag>Python Grammar</tag>
       
-      <tag>Tech</tag>
-      
       <tag>Command Line</tag>
+      
+      <tag>Tech</tag>
       
       <tag>PyCharm Professional</tag>
       
