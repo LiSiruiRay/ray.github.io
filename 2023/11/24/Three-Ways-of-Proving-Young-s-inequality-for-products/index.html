@@ -16,30 +16,24 @@
   <meta name="author" content="Sirui Ray Li">
   <meta name="keywords" content="testing3">
   
-    <meta name="description" content="Explained proof of an exercise question">
+    <meta name="description" content="Haven&#39;t started yet">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Rudin Analysis Exercise 2.23">
-<meta property="og:url" content="http://blog.slray.com/2023/10/31/Rudin-Analysis-Exercise-2-23/index.html">
+<meta property="og:title" content="Three Ways of Proving Young&#39;s inequality for products">
+<meta property="og:url" content="http://blog.slray.com/2023/11/24/Three-Ways-of-Proving-Young-s-inequality-for-products/index.html">
 <meta property="og:site_name" content="Ray&#39;s website">
-<meta property="og:description" content="Explained proof of an exercise question">
+<meta property="og:description" content="Haven&#39;t started yet">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://blog.slray.com/2023/10/31/Rudin-Analysis-Exercise-2-23/original_E_2_23.png">
-<meta property="article:published_time" content="2023-10-31T05:50:25.000Z">
-<meta property="article:modified_time" content="2023-10-31T05:59:27.107Z">
+<meta property="article:published_time" content="2023-11-24T07:16:59.000Z">
+<meta property="article:modified_time" content="2023-11-24T07:19:33.416Z">
 <meta property="article:author" content="Sirui Ray Li">
-<meta property="article:tag" content="Real Analysis">
-<meta property="article:tag" content="Rudin">
-<meta property="article:tag" content="Analysis">
-<meta property="article:tag" content="Math">
-<meta property="article:tag" content="Countablility">
+<meta property="article:tag" content="testing3">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://blog.slray.com/2023/10/31/Rudin-Analysis-Exercise-2-23/original_E_2_23.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Rudin Analysis Exercise 2.23 - Ray&#39;s website</title>
+  <title>Three Ways of Proving Young&#39;s inequality for products - Ray&#39;s website</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -205,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Rudin Analysis Exercise 2.23"></span>
+            <span id="subtitle" data-typed-text="Three Ways of Proving Young&#39;s inequality for products"></span>
           
         </div>
 
@@ -216,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-31 01:50" pubdate>
-          Tuesday, October 31st 2023, 1:50 am
+        <time datetime="2023-11-24 02:16" pubdate>
+          Friday, November 24th 2023, 2:16 am
         </time>
       </span>
     
@@ -229,7 +223,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          2.3k words
+          17 words
         
       </span>
     
@@ -241,7 +235,7 @@
         
         
           <!-- compatible with older versions-->
-          20 minutes
+          1 minutes
         
       </span>
     
@@ -287,103 +281,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Rudin Analysis Exercise 2.23</h1>
+            <h1 style="display: none">Three Ways of Proving Young&#39;s inequality for products</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="rudin-e2.23">Rudin E2.23</h1>
-<p>This question is a prerequisite for Exercise 2.25, which corresponds
-to the Exercise 43.4 in <em>Foundations of Mathematical
-Analysis</em></p>
-<h1 id="question">Question</h1>
-<p>Exercise 2.23 A collection <span class="math inline">\({V_α}\)</span>
-of open sets of <span class="math inline">\(X\)</span> is said to be a
-base for <span class="math inline">\(X\)</span> if the following is
-true: For every <span class="math inline">\(x \in X\)</span> and every
-open set <span class="math inline">\(G \subset X\)</span> such that
-<span class="math inline">\(x \in G\)</span> , we have <span
-class="math inline">\(x \in V_\alpha \subset G\)</span> for some <span
-class="math inline">\(\alpha\)</span>. In other words, every open set in
-<span class="math inline">\(X\)</span> is the union of a subcollection
-of <span class="math inline">\({V_\alpha}\)</span>.
-<strong>Prove</strong> that every separable metric space has a countable
-base. Hint: Take all neighborhoods with rational radius and center in
-some countable dense subset of <span
-class="math inline">\(X\)</span>.</p>
-<blockquote>
-<p>A metric space is called <em>separable</em> if it contains a
-countable dense subset.</p>
-</blockquote>
-<h2 id="understand">Understand:</h2>
-<p>For this question, we need to prove two things: there is a base and
-the base is countable (remember base is a collection of set—set of
-set).</p>
-<p>We are given that <span class="math inline">\(X\)</span> is
-separable. This is a hint itself. <span class="math inline">\(X\)</span>
-will contain a countable dense subset. This provide a feature of
-countable.</p>
-<p>If we see the hint, we can also connect the countability with the
-rational radius.</p>
-<h2 id="prove">Prove:</h2>
-<p>Since <span class="math inline">\(X\)</span> is separable, let <span
-class="math inline">\(\{x_1, x_2, …\}\)</span> be a dense (also
-countable) subset of <span class="math inline">\(X\)</span>.</p>
-<p><span class="math inline">\(\forall m \in \Bbb{N}, r\in \Bbb{Q}, r
-\gt 0\)</span>, we let <span class="math inline">\(V_{m, r} = \{y : y
-\in N_{r}(x_m)\}\)</span>.</p>
-<p>Since <span class="math inline">\(\Bbb{Q}, \Bbb{N}\)</span> are both
-countable, thus the collection of <span class="math inline">\(V_{m,
-r}\)</span> is countable.</p>
-<p>(Notice this is not saying that <span class="math inline">\(V_{m,
-r}\)</span> is countable, this is saying that <span
-class="math inline">\(\{V_{m, r}\}_{m, r}\)</span> is countable)</p>
-<p>Let <span class="math inline">\(V = \{V_{m, r}\}\)</span></p>
-<p>Also, <span class="math inline">\(V_{m, r}\)</span> is open.
-(Actually <span class="math inline">\(V_{m, r} = N_{r}(x_m)\)</span>,
-which is open.)</p>
-<p>Thus we found a countable collection of open set <span
-class="math inline">\(V\)</span>.</p>
-<p>Now we will prove this <span class="math inline">\(V\)</span> is a
-base for <span class="math inline">\(X\)</span>.</p>
-<p>To achieve this, we generally want to show: <span
-class="math inline">\(\forall \ open \ G \subset X, \exists V_{m,r} \in
-V: V \subset G\)</span></p>
-<p>Yet this is of course not enough, to we actually need to also show
-that for all points in <span class="math inline">\(G\)</span>, there is
-a <span class="math inline">\(V_{m, r} \in V\)</span> such that this
-point also in <span class="math inline">\(V_{m, r}\)</span></p>
-<p>Let <span class="math inline">\(x \in X\)</span>, <span
-class="math inline">\(\exists \ open \ G: x \in G\)</span>. Since <span
-class="math inline">\(G\)</span> is open, all points in <span
-class="math inline">\(G\)</span> must be interior points of <span
-class="math inline">\(G\)</span>.</p>
-<p>Thus <span class="math inline">\(x\)</span> is an interior point of
-<span class="math inline">\(G\)</span>. Thus, <span
-class="math inline">\(\exists \delta: N_\delta(x) \in G\)</span>.</p>
-<p>Since <span class="math inline">\(\{x_1, x_2, …\}\)</span> is dense
-in <span class="math inline">\(X\)</span>, <span
-class="math inline">\(\exists k \in N: x_k \in
-N_{\frac{\delta}{2}}(x)\)</span>.</p>
-<p>This also means that <span class="math inline">\(x \in
-N_{\frac{\delta}{2}}(x_k)\)</span>. Thus <span class="math inline">\(x
-\in V_{k, \frac{\delta}{2}}\)</span>. Thus, <span
-class="math inline">\(V\)</span> is a base of <span
-class="math inline">\(X\)</span>.</p>
-<hr />
-<p>The original proof I saw was from</p>
-<img src="/2023/10/31/Rudin-Analysis-Exercise-2-23/original_E_2_23.png" srcset="/img/loading.gif" lazyload class="" title="original question and proof">
-<p><a
-target="_blank" rel="noopener" href="https://minds.wisconsin.edu/bitstream/handle/1793/67009/rudin%20ch%202.pdf?sequence=10&amp;isAllowed=y">https://minds.wisconsin.edu/bitstream/handle/1793/67009/rudin
-ch 2.pdf?sequence=10&amp;isAllowed=y</a></p>
-<p>I was wondering the following questions:</p>
-<ul>
-<li>Why we need rational radius.</li>
-<li>Why do we always have such <span class="math inline">\(x_k\)</span>
-in the open ball.</li>
-<li>What is the second part doing.</li>
-</ul>
-<p>I provided my understanding of the proof.</p>
+                <p>Haven't started yet</p>
 
                 
               </div>
@@ -392,63 +295,6 @@ in the open ball.</li>
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Daily-Logs/" class="category-chain-item">Daily Logs</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Daily-Logs/Learning-Logs/" class="category-chain-item">Learning Logs</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Daily-Logs/Learning-Logs/Math/" class="category-chain-item">Math</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Daily-Logs/Learning-Logs/Math/Analysis/" class="category-chain-item">Analysis</a>
-  
-  
-
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/Real-Analysis/">#Real Analysis</a>
-      
-        <a href="/tags/Rudin/">#Rudin</a>
-      
-        <a href="/tags/Analysis/">#Analysis</a>
-      
-        <a href="/tags/Math/">#Math</a>
-      
-        <a href="/tags/Countablility/">#Countablility</a>
-      
-    </div>
   
 </div>
 
@@ -458,8 +304,8 @@ in the open ball.</li>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Rudin Analysis Exercise 2.23</div>
-      <div>http://blog.slray.com/2023/10/31/Rudin-Analysis-Exercise-2-23/</div>
+      <div>Three Ways of Proving Young&#39;s inequality for products</div>
+      <div>http://blog.slray.com/2023/11/24/Three-Ways-of-Proving-Young-s-inequality-for-products/</div>
     </div>
     <div class="license-meta">
       
@@ -471,7 +317,7 @@ in the open ball.</li>
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>October 31, 2023</div>
+          <div>November 24, 2023</div>
         </div>
       
       
@@ -498,29 +344,6 @@ in the open ball.</li>
 
 
 
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2023/11/24/Metric-in-L-p/" title="Metric in L^p">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Metric in L^p</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2023/10/26/Operator-Precedence-in-C/" title="Operator Precedence in C">
-                        <span class="hidden-mobile">Operator Precedence in C</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
               
             </div>
 
@@ -571,12 +394,6 @@ in the open ball.</li>
 
 
   
-
-
-  
-  
-
-
 
 
 
@@ -794,49 +611,6 @@ in the open ball.</li>
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        if (!window.MathJax) {
-          window.MathJax = {
-            tex    : {
-              inlineMath: { '[+]': [['$', '$']] }
-            },
-            loader : {
-              load: ['ui/lazy']
-            },
-            options: {
-              renderActions: {
-                insertedScript: [200, () => {
-                  document.querySelectorAll('mjx-container').forEach(node => {
-                    let target = node.parentNode;
-                    if (target.nodeName.toLowerCase() === 'li') {
-                      target.parentNode.classList.add('has-jax');
-                    }
-                  });
-                }, '', false]
-              }
-            }
-          };
-        } else {
-          MathJax.startup.document.state(0);
-          MathJax.texReset();
-          MathJax.typeset();
-          MathJax.typesetPromise();
-        }
-
-        Fluid.events.registerRefreshCallback(function() {
-          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
-            MathJax.startup.document.state(0);
-            MathJax.texReset();
-            MathJax.typeset();
-            MathJax.typesetPromise();
-          }
-        });
-      </script>
-    
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

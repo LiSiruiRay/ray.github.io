@@ -1,0 +1,1048 @@
+
+
+<!DOCTYPE html>
+<html lang="en,zh-CN,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/ray.jpg">
+  <link rel="icon" href="/ray.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Sirui Ray Li">
+  <meta name="keywords" content="testing3">
+  
+    <meta name="description" content="Metric in L^p This is a note for proof of \[ \left[ \int _{a}^{b}\left| f\left( x\right) \right| ^{p}dx\right]^{\frac{1}{p}} \] is a norm of \(L^p\) space. Here is the structure of the whole proof (se">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Metric in L^p">
+<meta property="og:url" content="http://blog.slray.com/2023/11/24/Metric-in-L-p/index.html">
+<meta property="og:site_name" content="Ray&#39;s website">
+<meta property="og:description" content="Metric in L^p This is a note for proof of \[ \left[ \int _{a}^{b}\left| f\left( x\right) \right| ^{p}dx\right]^{\frac{1}{p}} \] is a norm of \(L^p\) space. Here is the structure of the whole proof (se">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://blog.slray.com/2023/11/24/Metric-in-L-p/structure_of_the_prove.png">
+<meta property="article:published_time" content="2023-11-24T05:22:53.000Z">
+<meta property="article:modified_time" content="2023-11-24T07:18:37.072Z">
+<meta property="article:author" content="Sirui Ray Li">
+<meta property="article:tag" content="testing3">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://blog.slray.com/2023/11/24/Metric-in-L-p/structure_of_the_prove.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Metric in L^p - Ray&#39;s website</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.slray.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ray&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Metric in L^p"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-11-24 00:22" pubdate>
+          Friday, November 24th 2023, 12:22 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          9.6k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          80 minutes
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          visit: <span id="busuanzi_value_page_pv"></span> times
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Metric in L^p</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="metric-in-lp">Metric in L^p</h1>
+<p>This is a note for proof of</p>
+<p><span class="math display">\[
+\left[ \int _{a}^{b}\left| f\left( x\right) \right|
+^{p}dx\right]^{\frac{1}{p}}
+\]</span></p>
+<p>is a norm of <span class="math inline">\(L^p\)</span> space. Here is
+the structure of the whole proof (separated into different blogs):
+<img src="/2023/11/24/Metric-in-L-p/structure_of_the_prove.png" srcset="/img/loading.gif" lazyload class="" title="structure of the notes"></p>
+<h1 id="general-introduction">General introduction</h1>
+<p>In this prove, we will use <a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Young%27s_inequality_for_products">Young's
+inequality for products</a> to prove <a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/H%C3%B6lder%27s_inequality">Hölder's
+inequality</a>, then prove <a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Minkowski_inequality">Minkowski
+inequality</a>.</p>
+<p>The proof of <a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Young%27s_inequality_for_products">Young's
+inequality for products</a> has been shown in my other blog: <a
+href="https://blog.slray.com/2023/11/24/Three-Ways-of-Proving-Young-s-inequality-for-products/">Three
+Ways of Proving Young's inequality for products</a></p>
+<h1 id="llama">Llama:</h1>
+<h2 id="youngs-inequality-for-products"><strong>Young's inequality for
+products:</strong></h2>
+<p><span class="math inline">\(a, b, p, q \in \Bbb{R}\)</span></p>
+<p>If <span class="math inline">\(a ≥ 0\)</span> and <span
+class="math inline">\(b ≥ 0\)</span>, and if <span
+class="math inline">\(p &gt; 1\)</span> and <span
+class="math inline">\(q &gt; 1\)</span> such that <span
+class="math inline">\(\dfrac{1}{p}+\dfrac{1}{q}=1\)</span>, then</p>
+<p><span class="math display">\[
+ab\leq \dfrac{a^{p}}{p}+\dfrac{b^{q}}{q}.
+\]</span></p>
+<p>Equality holds if and only if <span class="math inline">\(a^p =
+b^q\)</span>.</p>
+<hr />
+<p>I met this theorem in Rudin’s <a
+target="_blank" rel="noopener" href="https://web.math.ucsb.edu/~agboola/teaching/2021/winter/122A/rudin.pdf">PRINCIPLES
+OF MATHEMATICAL ANALYSIS</a> Exercise 6.10.</p>
+<h1 id="proof-of-hölders-inequality">Proof of <a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/H%C3%B6lder%27s_inequality">Hölder's
+inequality</a></h1>
+<h2 id="hölders-inequality-continuous"><a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/H%C3%B6lder%27s_inequality">Hölder's
+inequality</a> (continuous)</h2>
+<p><span class="math inline">\(f, g\)</span> is continuous on <span
+class="math inline">\([a, b]\)</span>, then</p>
+<p><span class="math display">\[
+\int ^{b}_{a}\left| f\left( x\right) g\left( x\right) \right| dx\leq
+\left[ \int _{a}^{b}\left| f\left( x\right) \right| ^{p}dx\right]
+^{\dfrac{1}{p}}\left[ \int _{a}^{b}\left| g\left( x\right) \right|
+^qdx\right] ^{\dfrac{1}{q}},
+\]</span></p>
+<p>where <span class="math inline">\(p&gt;1\)</span>, and <span
+class="math inline">\(p\)</span> and <span
+class="math inline">\(q\)</span> conjugate (<span
+class="math inline">\(\frac{1}{p} + \frac{1}{q} = 1\)</span>).</p>
+<p>Equality holds if one of <span class="math inline">\(f, g\)</span> is
+zero, or exist <span class="math inline">\(\lambda\)</span> and <span
+class="math inline">\(\mu\)</span> (<span
+class="math inline">\(\lambda\mu &gt; 0\)</span>) such that</p>
+<p><span class="math display">\[
+\lambda\left|f\right|^p = \mu\left|g\right|^q
+\]</span></p>
+<h2 id="remark-of-the-theorem">Remark of the theorem</h2>
+<p>Notice this is actually the <a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Inner_product_space">inner
+product</a> of functions. I learned the concept of inner product space
+in <a
+target="_blank" rel="noopener" href="https://math.berkeley.edu/courses/choosing/lowerdivcourses/math54">Math
+54 - Linear Algebra &amp; Differential Equations</a> at UC Berkeley.
+Here is a <a
+target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=mFXpwNaYCMQ&amp;list=PLShth7hrtLHO2U1XkrI6ZgMyuPHDxRcob&amp;index=93&amp;ab_channel=LuvreetSangha">video</a>
+introducing the concept.</p>
+<p>In this way, the equality-hold-condition can be seen as two vectors
+(functions) are <a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Linear_independence">linearly
+dependent</a>.</p>
+<p>The discrete form of <a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/H%C3%B6lder%27s_inequality">Hölder's
+inequality</a> thus could be see as vectors in <span
+class="math inline">\(\Bbb{R}^n\)</span>.</p>
+<h2 id="proof-of-hölders-inequality-continuous">Proof of <a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/H%C3%B6lder%27s_inequality">Hölder's
+inequality</a> (continuous)</h2>
+<p>Let</p>
+<p><span class="math display">\[
+\begin{aligned}A=\dfrac{\left| f\left( x\right) \right| }{\left( \int
+_{a}^{b}\left| f\left( x\right) \right| ^{p}dx\right) ^{\dfrac{1}{p}}}\\
+B=\dfrac{\left| g\left( x\right) \right| }{\left( \int _{a}^{b}\left|
+g\left( x\right) \right| ^{q}dx\right) ^{\dfrac{1}{q}}}\end{aligned}
+\]</span></p>
+<blockquote>
+<p>We will first see <span class="math inline">\(AB ≤
+\dfrac{A^{p}}{p}+\dfrac{B^{q}}{q}\)</span>, then we integral both side
+to get right side (<span
+class="math inline">\(\dfrac{A^{p}}{p}+\dfrac{B^{q}}{q}\)</span>) be
+<span class="math inline">\(1\)</span>, then we see the relationship
+between the denominator and numerator.</p>
+</blockquote>
+<p>We have</p>
+<p><span class="math display">\[
+\begin{aligned}
+AB &amp;= \dfrac{\left| f\left( x\right) \right| \left| g\left( x\right)
+\right| }{\left(  \int _{a}^{b}|f\left( x\right) | ^{p}dx\right)
+^{\dfrac{1}{p}}\left( \int _{a}^{b}\left| g\left( x\right) \right|
+^{q}dx\right)^{\dfrac{1}{q}}} \\
+&amp;\leq \dfrac{A^{p}}{p}+\dfrac{B^{q}}{q} \\
+&amp;= \dfrac{1}{p}\cdot \dfrac{\left| f\left( x\right) \right|
+^{p}}{\int _{a}^{b}\left| f\left( x\right) \right|
+^{p}dx}+\dfrac{1}{q}\cdot \dfrac{\left| g\left( x\right) \right|
+^{q}}{\int _{a}^{b}\left| g\left( x\right) \right| ^{q}dx}
+\end{aligned}
+\]</span></p>
+<p>Rewrite in a clean way:</p>
+<p><span class="math display">\[
+\dfrac{\left| f\left( x\right) \right| \left| g\left( x\right) \right|
+}{\left(  \int _{a}^{b}|f\left( x\right) | ^{p}dx\right)
+^{\dfrac{1}{p}}\left( \int _{a}^{b}\left| g\left( x\right) \right|
+^{q}dx\right)^{\dfrac{1}{q}}}
+\le \dfrac{1}{p}\cdot \dfrac{\left| f\left( x\right) \right| ^{p}}{\int
+_{a}^{b}\left| f\left( x\right) \right| ^{p}dx}+\dfrac{1}{q}\cdot
+\dfrac{\left| g\left( x\right) \right| ^{q}}{\int _{a}^{b}\left| g\left(
+x\right) \right| ^{q}dx}
+\]</span></p>
+<p>We integrate both side and get</p>
+<p><span class="math display">\[
+\begin{aligned}
+\int ^{b}_{a}ABdx
+&amp;=\int _{a}^{b}\dfrac{ |f\left( x\right) \left| \right| g\left(
+x\right) | }{\left( \int _{a}^{b}\left| f\left( x\right) \right|
+^{p}dx\right) ^{\dfrac{1}{p}}\left(  \int _{a}^{b}|g(x)| ^{q}dx\right)
+^{\dfrac{1}{q}}}dx \\
+&amp;=\dfrac{ \int _{a}^{b}|f\left( x\right) \left| \right| g\left(
+x\right) | dx}{\left( \int _{a}^{b}\left| f\left( x\right) \right|
+^{p}dx\right) ^{\dfrac{1}{p}}\left(  \int _{a}^{b}|g(x)| ^{q}dx\right)
+^{\dfrac{1}{q}}}
+\\
+&amp;\leq \int _{a}^{b}\dfrac{1}{p}\cdot \dfrac{\left| f\left( x\right)
+\right| ^{p}}{ \int ^{b}_{a}| f\left( x\right)|^{p}dx}dx+\int
+_{a}^{b}\dfrac{1}{q}\cdot\dfrac{\left| g\left( x\right) \right|
+^{q}}{\int _{a}^{b}\left| g\left( x\right) \right| ^{q}dx}dx
+\\
+&amp;=\dfrac{1}{p}\int _{a}^{b}\dfrac{\left| f\left( x\right) \right|
+^{p}}{\int ^{b}_{a}\left| f\left( x\right) \right|
+^{p}dx}dx+\dfrac{1}{q}\int _{a}^{b}\dfrac{\left| g\left( x\right)
+\right| ^{q}}{\int _{a}^{b}\left| g\left( x\right) \right| ^{q}dx}dx
+\\
+&amp;=\dfrac{1}{p}\cdot \dfrac{\int _{a}^{b}\left| f\left( x\right)
+\right| ^{p}dx}{\int ^{b}_{a}\left| f\left( x\right) \right|
+^{p}dx}+\dfrac{1}{q}\cdot \dfrac{\int _{a}^{b}\left| g\left( x\right)
+\right| ^{q}dx}{\int _{a}^{b}\left| g\left( x\right) \right| ^{q}dx}\\
+&amp;=\dfrac{1}{p}+\dfrac{1}{q}\\
+&amp;=1
+\end{aligned}
+\]</span></p>
+<blockquote>
+<p>Note that <span class="math inline">\(\left( \int _{a}^{b}\left|
+f\left( x\right) \right| ^{p}dx\right) ^{\dfrac{1}{p}}\)</span>and <span
+class="math inline">\(\left( \int _{a}^{b}\left| g\left( x\right)
+\right| ^{q}dx\right) ^{\dfrac{1}{q}}\)</span> are both constant, thus
+when integrate over them, they remain the same.</p>
+</blockquote>
+<p>Rewrite in a clean way:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\dfrac{ \int _{a}^{b}|f\left( x\right) \left| \right| g\left( x\right) |
+dx}{\left( \int _{a}^{b}\left| f\left( x\right) \right| ^{p}dx\right)
+^{\dfrac{1}{p}}\left(  \int _{a}^{b}|g(x)| ^{q}dx\right)
+^{\dfrac{1}{q}}}
+&amp;\leq1
+\\
+\int _{a}^{b}|f\left( x\right) \left| \right| g\left( x\right) | dx
+&amp;\leq
+\left( \int _{a}^{b}\left| f\left( x\right) \right| ^{p}dx\right)
+^{\dfrac{1}{p}}\left(  \int _{a}^{b}|g(x)| ^{q}dx\right) ^{\dfrac{1}{q}}
+\end{aligned}
+\]</span></p>
+<p>By this, we proved the theorem.</p>
+<h1 id="proof-of-hölders-inequality-discrete">Proof of Hölder's
+Inequality (discrete)</h1>
+<p>Consider two sequences <span class="math inline">\((\mathbf{a} =
+(a_1, a_2, ..., a_n))\)</span> and <span
+class="math inline">\((\mathbf{b} = (b_1, b_2, ..., b_n))\)</span>, and
+let <span class="math inline">\(p, q &gt; 1\)</span> with <span
+class="math inline">\(\frac{1}{p} + \frac{1}{q} = 1\)</span>. We want to
+show that</p>
+<p><span class="math display">\[
+\sum_{i=1}^{n} a_i b_i \leq \left( \sum_{i=1}^{n} a_i^p
+\right)^{\frac{1}{p}} \left( \sum_{i=1}^{n} b_i^q \right)^{\frac{1}{q}}.
+\]</span></p>
+<p>Define the sequences <span class="math inline">\(A_i\)</span> and
+<span class="math inline">\(B_i\)</span> as follows:</p>
+<p><span class="math display">\[
+A_i = \frac{a_i}{\left( \sum_{i=1}^{n} a_i^p \right)^{\frac{1}{p}}},
+\quad B_i = \frac{b_i}{\left( \sum_{i=1}^{n} b_i^q
+\right)^{\frac{1}{q}}}, \quad i=1,2,...,n.
+\]</span></p>
+<p>From Young's inequality, we have <span class="math inline">\(a_i b_i
+\leq \frac{1}{p} a_i^p + \frac{1}{q} b_i^q\)</span>, or in terms of
+<span class="math inline">\(A_i\)</span> and <span
+class="math inline">\(B_i\)</span>:</p>
+<p><span class="math display">\[
+A_i B_i \leq \frac{1}{p} A_i^p + \frac{1}{q} B_i^q, \quad i=1,2,...,n.
+\]</span></p>
+<p>Summing over all <span class="math inline">\(i\)</span>, we get</p>
+<p><span class="math display">\[
+\sum_{i=1}^{n} A_i B_i \leq \sum_{i=1}^{n} \left( \frac{1}{p} A_i^p +
+\frac{1}{q} B_i^q \right) = \frac{1}{p} \sum_{i=1}^{n} A_i^p +
+\frac{1}{q} \sum_{i=1}^{n} B_i^q.
+\]</span></p>
+<p>Since the right-hand side equals <span
+class="math inline">\(\frac{1}{p} + \frac{1}{q} = 1\)</span>, we
+have</p>
+<p><span class="math display">\[
+\sum_{i=1}^{n} a_i b_i = \left( \sum_{i=1}^{n} a_i^p
+\right)^{\frac{1}{p}} \left( \sum_{i=1}^{n} b_i^q \right)^{\frac{1}{q}}
+\sum_{i=1}^{n} A_i B_i \leq \left( \sum_{i=1}^{n} a_i^p
+\right)^{\frac{1}{p}} \left( \sum_{i=1}^{n} b_i^q \right)^{\frac{1}{q}}.
+\]</span></p>
+<p>This concludes the proof of Hölder's inequality in its discrete
+form.</p>
+<h2 id="connection-to-the-cauchy-schwarz-inequality">Connection to the
+Cauchy-Schwarz Inequality</h2>
+<p>Note that for <span class="math inline">\(p = q = 2\)</span>,
+Hölder's inequality reduces to the well-known Cauchy-Schwarz
+inequality:</p>
+<p><span class="math display">\[
+(a, b)^2 \leq (a, a)(b, b) \Rightarrow (a, b) \leq \sqrt{(a, a)(b, b)}.
+\]</span></p>
+<p>The discrete version of Hölder's inequality is thus a generalization
+of the Cauchy-Schwarz inequality to <span
+class="math inline">\(\Bbb{R}^n\)</span>.</p>
+<h1 id="proof-of-minkowski-inequality">Proof of <a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Minkowski_inequality">Minkowski
+inequality</a></h1>
+<h2 id="minkowski-inequality-continuous"><a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Minkowski_inequality">Minkowski
+inequality</a> (continuous)</h2>
+<p>Let <span class="math inline">\(f, g\)</span> be functions on the
+interval <span class="math inline">\([a, b]\)</span>, and let <span
+class="math inline">\(p &gt; 1\)</span>. Minkowski's inequality states
+that</p>
+<p><span class="math display">\[
+\left( \int_{a}^{b} |f(x) + g(x)|^p dx \right)^{\frac{1}{p}} \leq \left(
+\int_{a}^{b} |f(x)|^p dx \right)^{\frac{1}{p}} + \left( \int_{a}^{b}
+|g(x)|^p dx \right)^{\frac{1}{p}}.
+\]</span></p>
+<p>where <span class="math inline">\(p&gt;1\)</span>. Equality holds iff
+there exist <span class="math inline">\(\lambda ≥ 0\)</span> such that
+<span class="math inline">\(f = \lambda g\)</span> or <span
+class="math inline">\(g = \lambda f\)</span></p>
+<h2 id="proof-of-minkowski-inequality-continuous-form">Proof of <a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Minkowski_inequality">Minkowski
+inequality</a> (continuous form)</h2>
+<p>The proof begins with the triangle inequality:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\int_{a}^{b} |f(x) + g(x)|^p dx &amp;= \int_{a}^{b} |f(x) +
+g(x)|^{p-1}|f(x) + g(x)| dx
+\\
+&amp;\leq \int_{a}^{b} |f(x) + g(x)|^{p-1}|f(x)| dx + \int_{a}^{b} |f(x)
++ g(x)|^{p-1}|g(x)| dx
+\end{aligned}
+\]</span></p>
+<p>Apply Hölder's inequality to the right-hand side:</p>
+<p>One of them is</p>
+<p><span class="math display">\[
+\int_{a}^{b} |f(x) + g(x)|^{p-1}|f(x)| dx \leq \left[\int_{a}^{b} |f(x)
++ g(x)|^p dx \right]^{\frac{p-1}{p}} \left\{\int_{a}^{b}
+|f(x)|^{p}dx\right\}^{\frac{1}{p}}
+\]</span></p>
+<p>Thus</p>
+<p><span class="math display">\[
+\int_{a}^{b} |f(x) + g(x)|^{p-1}|f(x)| dx + \int_{a}^{b} |f(x) +
+g(x)|^{p-1}|g(x)| dx \\
+\leq \left[\int_{a}^{b} |f(x) + g(x)|^p dx \right]^{\frac{p-1}{p}}
+\left\{\left[\int_{a}^{b} |f(x)|^{p}dx\right]^{\frac{1}{p}} +
+\left[\int_{a}^{b} |g(x)|^{p}dx\right]^{\frac{1}{p}}\right\}
+\]</span></p>
+<p>Divide <span class="math inline">\(\left[\int_{a}^{b} |f(x) + g(x)|^p
+dx \right]\)</span>to both side of the equation, we got</p>
+<p><span class="math display">\[
+\left( \int_{a}^{b} |f(x) + g(x)|^p dx \right)^{\frac{1}{p}} \leq \left(
+\int_{a}^{b} |f(x)|^p dx \right)^{\frac{1}{p}} + \left( \int_{a}^{b}
+|g(x)|^p dx \right)^{\frac{1}{p}}.
+\]</span></p>
+<p>This completes the proof of Minkowski's inequality.</p>
+<h2 id="minkowski-inequality-discrete"><a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Minkowski_inequality">Minkowski
+inequality</a> (discrete)</h2>
+<p>For sequences <span class="math inline">\(\mathbf{a} = (a_1, a_2,
+..., a_n)\)</span> and <span class="math inline">\(\mathbf{b} = (b_1,
+b_2, ..., b_n)\)</span> with <span class="math inline">\(p &gt;
+1\)</span>, Minkowski's inequality can be expressed as:</p>
+<p><span class="math display">\[
+\left( \sum_{i=1}^{n} |a_i + b_i|^p \right)^{\frac{1}{p}} \leq \left(
+\sum_{i=1}^{n} |a_i|^p \right)^{\frac{1}{p}} + \left( \sum_{i=1}^{n}
+|b_i|^p \right)^{\frac{1}{p}}.
+\]</span></p>
+<p>where <span class="math inline">\(p&gt;1\)</span>. Equality holds iff
+there exist <span class="math inline">\(\lambda ≥ 0\)</span> such that
+<span class="math inline">\(\mathbf{a} = \lambda \mathbf{b}\)</span> or
+<span class="math inline">\(\mathbf{b} = \lambda \mathbf{a}\)</span></p>
+<h2 id="proof-of-minkowski-inequality-discrete-form">Proof of <a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Minkowski_inequality">Minkowski
+inequality</a> (discrete form)</h2>
+<p><span class="math display">\[
+\left( \sum_{i=1}^{n} |a_i + b_i|^p \right)^{\frac{1}{p}} \leq \left(
+\sum_{i=1}^{n} |a_i|^p \right)^{\frac{1}{p}} + \left( \sum_{i=1}^{n}
+|b_i|^p \right)^{\frac{1}{p}}.
+\]</span></p>
+<p>The proof utilizes the triangle inequality in the following way:</p>
+<p><span class="math display">\[
+\sum_{i=1}^{n} |a_i + b_i|^p = \sum_{i=1}^{n} |a_i + b_i|^{p-1}|a_i +
+b_i|.
+\]</span></p>
+<p>By applying the triangle inequality, of</p>
+<p><span class="math display">\[
+|a_i + b_i|^{p-1}|a_i + b_i| \leq |a_i + b_i|^{p-1}|a_i| + |a_i +
+b_i|^{p-1}|b_i|.
+\]</span></p>
+<p>We get</p>
+<p><span class="math display">\[
+\sum_{i=1}^{n} |a_i + b_i|^p = \sum_{i=1}^{n} |a_i + b_i|^{p-1}|a_i +
+b_i| \leq \sum_{i=1}^{n} |a_i + b_i|^{p-1}|a_i| + \sum_{i=1}^{n} |a_i +
+b_i|^{p-1}|b_i|
+\]</span></p>
+<p>From Hölder's inequality we get</p>
+<p><span class="math display">\[
+\sum_{i=1}^{n} |a_i + b_i|^{p-1}|a_i| + \sum_{i=1}^{n} |a_i +
+b_i|^{p-1}|b_i| \leq \left(\sum_{i=1}^{n} |a_i +
+b_i|^{p}\right)^{\frac{p-1}{p}} \left[ \left(\sum_{i=1}^{n}
+|a_i|^p\right)^{\frac{1}{p}} + \left(\sum_{i=1}^{n}
+|b_i|^p\right)^{\frac{1}{p}}\right]
+\]</span></p>
+<p>Dividing both sides by <span class="math inline">\(\left(
+\sum_{i=1}^{n} |a_i + b_i|^{p} \right)^{\frac{p-1}{p}}\)</span>, we
+arrive at Minkowski's inequality:</p>
+<p><span class="math display">\[
+\left( \sum_{i=1}^{n} |a_i + b_i|^p \right)^{\frac{1}{p}} \leq \left(
+\sum_{i=1}^{n} |a_i|^p \right)^{\frac{1}{p}} + \left( \sum_{i=1}^{n}
+|b_i|^p \right)^{\frac{1}{p}}.
+\]</span></p>
+<p>This concludes the proof of the discrete form of Minkowski's
+inequality.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Metric in L^p</div>
+      <div>http://blog.slray.com/2023/11/24/Metric-in-L-p/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Sirui Ray Li</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>November 24, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/10/31/Rudin-Analysis-Exercise-2-23/" title="Rudin Analysis Exercise 2.23">
+                        <span class="hidden-mobile">Rudin Analysis Exercise 2.23</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        aggregate visit: 
+        <span id="busuanzi_value_site_pv"></span>
+         times
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        , 
+        <span id="busuanzi_value_site_uv"></span>
+         people
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
