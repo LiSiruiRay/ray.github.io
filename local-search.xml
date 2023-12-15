@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>x &gt; sinx: Three ways of proving</title>
+    <link href="/2023/12/15/x-sinx-Three-ways-of-proving/"/>
+    <url>/2023/12/15/x-sinx-Three-ways-of-proving/</url>
+    
+    <content type="html"><![CDATA[<p>More information can be found here:</p><ul><li>A Chinese Platform: <ahref="https://www.zhihu.com/question/20142934">How to prove <spanclass="math inline">\(sin(x) &lt; x\)</span> regiously?</a></li><li>Math.stackexchange: <ahref="https://math.stackexchange.com/questions/2433051/sine-inequality-how-to-prove-that-sinx-le-x-for-x-in-mathbbr">Sineinequality: How to prove that <spanclass="math inline">\(|sin(𝑥)|≤|𝑥|\)</span></a></li></ul><img src="/2023/12/15/x-sinx-Three-ways-of-proving/Way1.jpg" class="" title="Description and Way1"><img src="/2023/12/15/x-sinx-Three-ways-of-proving/Way2.jpg" class="" title="Description and Way1"><img src="/2023/12/15/x-sinx-Three-ways-of-proving/Way3.jpg" class="" title="Description and Way1">]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Metric in L^p</title>
     <link href="/2023/11/24/Metric-in-L-p/"/>
     <url>/2023/11/24/Metric-in-L-p/</url>
@@ -478,11 +491,11 @@
       
       <tag>Python Grammar</tag>
       
-      <tag>Tech</tag>
-      
       <tag>Terminal</tag>
       
       <tag>Terminal Command</tag>
+      
+      <tag>Tech</tag>
       
       <tag>Shell Script Grammar</tag>
       
@@ -535,9 +548,9 @@
       
       <tag>Command Line</tag>
       
-      <tag>Tech</tag>
-      
       <tag>PyCharm Professional</tag>
+      
+      <tag>Tech</tag>
       
       <tag>I/O</tag>
       
@@ -586,8 +599,6 @@
       
       <tag>Python Grammar</tag>
       
-      <tag>Tech</tag>
-      
       <tag>PyCharm</tag>
       
       <tag>PyCharm Professional</tag>
@@ -595,6 +606,8 @@
       <tag>Terminal</tag>
       
       <tag>Terminal Command</tag>
+      
+      <tag>Tech</tag>
       
       <tag>Decentralized Exchange</tag>
       
@@ -641,8 +654,6 @@
       
       <tag>Python Grammar</tag>
       
-      <tag>Tech</tag>
-      
       <tag>PyCharm</tag>
       
       <tag>PyCharm Professional</tag>
@@ -654,6 +665,8 @@
       <tag>Hexo</tag>
       
       <tag>HTML</tag>
+      
+      <tag>Tech</tag>
       
     </tags>
     
@@ -694,11 +707,11 @@
       
       <tag>Python Grammar</tag>
       
-      <tag>Tech</tag>
-      
       <tag>Terminal</tag>
       
       <tag>Terminal Command</tag>
+      
+      <tag>Tech</tag>
       
       <tag>Git</tag>
       
