@@ -4,6 +4,160 @@
   
   
   <entry>
+    <title>Some Comparing lemmas in analysis (epsilon delta language)</title>
+    <link href="/2023/12/18/Some-Comparing-lemmas-in-analysis-epsilon-delta-language/"/>
+    <url>/2023/12/18/Some-Comparing-lemmas-in-analysis-epsilon-delta-language/</url>
+    
+    <content type="html"><![CDATA[<h1 id="lemma-of-less-than">lemma of "less than"</h1><h2 id="content">Content:</h2><p><span class="math inline">\(x, y \in \Bbb{R}\)</span>, <spanclass="math inline">\(\forall \epsilon \gt 0\)</span>, <spanclass="math inline">\(x \lt y + \epsilon\)</span>, then <spanclass="math inline">\(x \leq y\)</span></p><h2 id="proof">Proof</h2><img src="/2023/12/18/Some-Comparing-lemmas-in-analysis-epsilon-delta-language/less_than.jpg" class="" title="Proof"><h1 id="lemma-of-equal">lemma of "Equal"</h1><h2 id="content-1">Content:</h2><p><span class="math inline">\(x, y \in \Bbb{R}\)</span>, <spanclass="math inline">\(\forall \epsilon \gt 0\)</span>, <spanclass="math inline">\(x = y + \epsilon\)</span>, then <spanclass="math inline">\(x = y\)</span></p><h2 id="proof-1">Proof</h2><img src="/2023/12/18/Some-Comparing-lemmas-in-analysis-epsilon-delta-language/equal.jpg" class="" title="Proof">]]></content>
+    
+    
+    <categories>
+      
+      <category>Daily Logs</category>
+      
+      <category>Math</category>
+      
+      <category>Analysis</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Math</tag>
+      
+      <tag>Analysis</tag>
+      
+      <tag>Real Analysis</tag>
+      
+      <tag>Metric</tag>
+      
+      <tag>Functional Space</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>A Fun Limit: relationship between (n!)^(1/n) and n</title>
+    <link href="/2023/12/18/A-Fun-Limit-relationship-between-n-1-n-and-n/"/>
+    <url>/2023/12/18/A-Fun-Limit-relationship-between-n-1-n-and-n/</url>
+    
+    <content type="html"><![CDATA[<p>We all know that <span class="math inline">\(n^n &gt;&gt; n! &gt;&gt;a^n &gt;&gt; n^a &gt;&gt; n\)</span>, but what about <spanclass="math inline">\((n!)^{\frac{1}{n}}\)</span> and <spanclass="math inline">\(n\)</span>?</p><h1 id="proof">Proof</h1><img src="/2023/12/18/A-Fun-Limit-relationship-between-n-1-n-and-n/limit_proof.jpg" class="" title="Proof"><h2 id="a-lemma">A lemma</h2><p>The proof of</p><p><span class="math display">\[\liminf _{n\rightarrow \infty }\dfrac{a_{n+1}}{a_{n}}\leq \liminf_{n\rightarrow \infty }\sqrt[n] {a_n}\leq \limsup _{n\rightarrow \infty}\sqrt[n] {a_n}\leq \limsup _{n\rightarrow \infty }\dfrac{a_{n}+1}{a_n}\]</span></p><p>Can be found <ahref="/2023/12/18/Relationship-between-Ratio-and-Root-test/">here</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Daily Logs</category>
+      
+      <category>Math</category>
+      
+      <category>Analysis</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Math</tag>
+      
+      <tag>Analysis</tag>
+      
+      <tag>Real Analysis</tag>
+      
+      <tag>Limit</tag>
+      
+      <tag>Order of infinity</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Relationship between Ratio and Root test</title>
+    <link href="/2023/12/18/Relationship-between-Ratio-and-Root-test/"/>
+    <url>/2023/12/18/Relationship-between-Ratio-and-Root-test/</url>
+    
+    <content type="html"><![CDATA[<h1 id="proof">Proof</h1><img src="/2023/12/18/Relationship-between-Ratio-and-Root-test/Root_Ratio_1.jpg" class="" title="Proof part 1"><img src="/2023/12/18/Relationship-between-Ratio-and-Root-test/Root_Ratio_2.jpg" class="" title="Proof part 2"><h1 id="more-information">More information</h1><ul><li>Mathematical Association of America: <ahref="https://maa.org/sites/default/files/0025570x33450.di021200.02p0190s.pdf">TheRelation Between the Root and Ratio Tests</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Daily Logs</category>
+      
+      <category>Math</category>
+      
+      <category>Analysis</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Math</tag>
+      
+      <tag>Analysis</tag>
+      
+      <tag>Real Analysis</tag>
+      
+      <tag>Limit</tag>
+      
+      <tag>Order of infinity</tag>
+      
+      <tag>Ratio Test</tag>
+      
+      <tag>Root Test</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>convergence of sum of sin(aknx)/n</title>
+    <link href="/2023/12/17/convergence-of-sum-of-sin-aknx-n/"/>
+    <url>/2023/12/17/convergence-of-sum-of-sin-aknx-n/</url>
+    
+    <content type="html"><![CDATA[<h1 id="the-prove">The prove</h1><p>The convergence of the sum of <spanclass="math inline">\(\sum_{n=1}^{\infty}\frac{sin(anx)}{x}\)</span></p><img src="/2023/12/17/convergence-of-sum-of-sin-aknx-n/sin_pic1.jpg" class=""><img src="/2023/12/17/convergence-of-sum-of-sin-aknx-n/sin_pic2.jpg" class=""><h1 id="conclusion">Conclusion</h1><p>Thus, we conclude that</p><p><span class="math display">\[\sum_{n=1}^{\infty} \frac{sin(anx)}{x}\]</span></p><ul><li>Pointwise convergent (only) on open interval <spanclass="math inline">\(\left(0, 2\pi\right)\)</span>;</li><li>Uniformly convergent on any close sub interval of <spanclass="math inline">\(\left(0, 2\pi\right)\)</span>.</li><li>The series on the other hand converges for every <spanclass="math inline">\(x\)</span>.</li></ul><h1 id="more-information-about-the-theroem">More information about thetheroem</h1><p>More information can be found:</p><ul><li>Math.stackexchagne:<ul><li><ahref="https://math.stackexchange.com/questions/4332419/on-the-pointwise-convergence-of-sum-n-ge-1-frac-sin-nxn-to-the-sawtoot">Pointwisecovergent of <span class="math inline">\(\sum_{n=1}^{\infty}\frac{sin(anx)}{x}\)</span></a></li><li><ahref="https://math.stackexchange.com/questions/1215465/showing-sum-frac-sinnxn-converges-pointwise">Showing<span class="math inline">\(\sum_{n=1}^{\infty}\frac{sin(anx)}{x}\)</span> converges pointwise</a></li></ul></li><li>Reddit<ul><li><ahref="https://www.reddit.com/r/math/comments/aee8c/%CF%83einxn_is_what_function/">Σe^(inx)/nis what function?</a></li></ul></li><li>Related YouTube Videos:<ul><li><ahref="https://www.youtube.com/watch?v=z1DEAX6lPOg&amp;ab_channel=blackpenredpen">usingcomplex numbers to evaluate the sum of sin(n)/n</a></li></ul></li><li>A Chinese Video Platform:<ul><li><ahref="https://www.bilibili.com/video/BV16h4y1K729/?spm_id_from=333.337.search-card.all.click&amp;vd_source=d84085799dfdb99d199a04d156250394">Pointwisecovergent of <span class="math inline">\(\sum_{n=1}^{\infty}\frac{sin(anx)}{x}\)</span></a></li></ul></li><li>A Chinese text forum:<ul><li><ahref="https://www.zhihu.com/question/464373158">∑(∞，n=1)sinnx/n,D=(0,2π)一致收敛余项准则能做吗？</a></li></ul></li><li>Related Theroems:<ul><li><ahref="https://en.wikipedia.org/wiki/Dirichlet%27s_test">Dirichlet'stest</a></li></ul></li><li>Similar Questions:<ul><li><ahref="https://www.zhihu.com/question/462036978/answer/1912301484">怎么求∑(1→∞)sin²n/n² 的和？</a></li></ul></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Daily Logs</category>
+      
+      <category>Math</category>
+      
+      <category>Analysis</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Math</tag>
+      
+      <tag>Analysis</tag>
+      
+      <tag>Real Analysis</tag>
+      
+      <tag>Limit</tag>
+      
+      <tag>Order of infinity</tag>
+      
+      <tag>Convergence of Sum</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>x &gt; sinx: Three ways of proving</title>
     <link href="/2023/12/15/x-sinx-Three-ways-of-proving/"/>
     <url>/2023/12/15/x-sinx-Three-ways-of-proving/</url>
@@ -11,6 +165,22 @@
     <content type="html"><![CDATA[<p>More information can be found here:</p><ul><li>A Chinese Platform: <ahref="https://www.zhihu.com/question/20142934">How to prove <spanclass="math inline">\(sin(x) &lt; x\)</span> regiously?</a></li><li>Math.stackexchange: <ahref="https://math.stackexchange.com/questions/2433051/sine-inequality-how-to-prove-that-sinx-le-x-for-x-in-mathbbr">Sineinequality: How to prove that <spanclass="math inline">\(|sin(𝑥)|≤|𝑥|\)</span></a></li></ul><img src="/2023/12/15/x-sinx-Three-ways-of-proving/Way1.jpg" class="" title="Description and Way1"><img src="/2023/12/15/x-sinx-Three-ways-of-proving/Way2.jpg" class="" title="Description and Way1"><img src="/2023/12/15/x-sinx-Three-ways-of-proving/Way3.jpg" class="" title="Description and Way1">]]></content>
     
     
+    <categories>
+      
+      <category>Daily Logs</category>
+      
+      <category>Math</category>
+      
+      <category>Analysis</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Math</tag>
+      
+    </tags>
     
   </entry>
   
@@ -24,6 +194,30 @@
     <content type="html"><![CDATA[<h1 id="metric-in-lp">Metric in L^p</h1><p>This is a note for proof of</p><p><span class="math display">\[\left[ \int _{a}^{b}\left| f\left( x\right) \right|^{p}dx\right]^{\frac{1}{p}}\]</span></p><p>is a norm of <span class="math inline">\(L^p\)</span> space. Here isthe structure of the whole proof (separated into different blogs):<img src="/2023/11/24/Metric-in-L-p/structure_of_the_prove.png" class="" title="structure of the notes"></p><h1 id="general-introduction">General introduction</h1><p>In this prove, we will use <ahref="https://en.wikipedia.org/wiki/Young%27s_inequality_for_products">Young'sinequality for products</a> to prove <ahref="https://en.wikipedia.org/wiki/H%C3%B6lder%27s_inequality">Hölder'sinequality</a>, then prove <ahref="https://en.wikipedia.org/wiki/Minkowski_inequality">Minkowskiinequality</a>.</p><p>The proof of <ahref="https://en.wikipedia.org/wiki/Young%27s_inequality_for_products">Young'sinequality for products</a> has been shown in my other blog: <ahref="https://blog.slray.com/2023/11/24/Three-Ways-of-Proving-Young-s-inequality-for-products/">ThreeWays of Proving Young's inequality for products</a></p><h1 id="llama">Llama:</h1><h2 id="youngs-inequality-for-products"><strong>Young's inequality forproducts:</strong></h2><p><span class="math inline">\(a, b, p, q \in \Bbb{R}\)</span></p><p>If <span class="math inline">\(a ≥ 0\)</span> and <spanclass="math inline">\(b ≥ 0\)</span>, and if <spanclass="math inline">\(p &gt; 1\)</span> and <spanclass="math inline">\(q &gt; 1\)</span> such that <spanclass="math inline">\(\dfrac{1}{p}+\dfrac{1}{q}=1\)</span>, then</p><p><span class="math display">\[ab\leq \dfrac{a^{p}}{p}+\dfrac{b^{q}}{q}.\]</span></p><p>Equality holds if and only if <span class="math inline">\(a^p =b^q\)</span>.</p><hr /><p>I met this theorem in Rudin’s <ahref="https://web.math.ucsb.edu/~agboola/teaching/2021/winter/122A/rudin.pdf">PRINCIPLESOF MATHEMATICAL ANALYSIS</a> Exercise 6.10.</p><h1 id="proof-of-hölders-inequality">Proof of <ahref="https://en.wikipedia.org/wiki/H%C3%B6lder%27s_inequality">Hölder'sinequality</a></h1><h2 id="hölders-inequality-continuous"><ahref="https://en.wikipedia.org/wiki/H%C3%B6lder%27s_inequality">Hölder'sinequality</a> (continuous)</h2><p><span class="math inline">\(f, g\)</span> is continuous on <spanclass="math inline">\([a, b]\)</span>, then</p><p><span class="math display">\[\int ^{b}_{a}\left| f\left( x\right) g\left( x\right) \right| dx\leq\left[ \int _{a}^{b}\left| f\left( x\right) \right| ^{p}dx\right]^{\dfrac{1}{p}}\left[ \int _{a}^{b}\left| g\left( x\right) \right|^qdx\right] ^{\dfrac{1}{q}},\]</span></p><p>where <span class="math inline">\(p&gt;1\)</span>, and <spanclass="math inline">\(p\)</span> and <spanclass="math inline">\(q\)</span> conjugate (<spanclass="math inline">\(\frac{1}{p} + \frac{1}{q} = 1\)</span>).</p><p>Equality holds if one of <span class="math inline">\(f, g\)</span> iszero, or exist <span class="math inline">\(\lambda\)</span> and <spanclass="math inline">\(\mu\)</span> (<spanclass="math inline">\(\lambda\mu &gt; 0\)</span>) such that</p><p><span class="math display">\[\lambda\left|f\right|^p = \mu\left|g\right|^q\]</span></p><h2 id="remark-of-the-theorem">Remark of the theorem</h2><p>Notice this is actually the <ahref="https://en.wikipedia.org/wiki/Inner_product_space">innerproduct</a> of functions. I learned the concept of inner product spacein <ahref="https://math.berkeley.edu/courses/choosing/lowerdivcourses/math54">Math54 - Linear Algebra &amp; Differential Equations</a> at UC Berkeley.Here is a <ahref="https://www.youtube.com/watch?v=mFXpwNaYCMQ&amp;list=PLShth7hrtLHO2U1XkrI6ZgMyuPHDxRcob&amp;index=93&amp;ab_channel=LuvreetSangha">video</a>introducing the concept.</p><p>In this way, the equality-hold-condition can be seen as two vectors(functions) are <ahref="https://en.wikipedia.org/wiki/Linear_independence">linearlydependent</a>.</p><p>The discrete form of <ahref="https://en.wikipedia.org/wiki/H%C3%B6lder%27s_inequality">Hölder'sinequality</a> thus could be see as vectors in <spanclass="math inline">\(\Bbb{R}^n\)</span>.</p><h2 id="proof-of-hölders-inequality-continuous">Proof of <ahref="https://en.wikipedia.org/wiki/H%C3%B6lder%27s_inequality">Hölder'sinequality</a> (continuous)</h2><p>Let</p><p><span class="math display">\[\begin{aligned}A=\dfrac{\left| f\left( x\right) \right| }{\left( \int_{a}^{b}\left| f\left( x\right) \right| ^{p}dx\right) ^{\dfrac{1}{p}}}\\B=\dfrac{\left| g\left( x\right) \right| }{\left( \int _{a}^{b}\left|g\left( x\right) \right| ^{q}dx\right) ^{\dfrac{1}{q}}}\end{aligned}\]</span></p><blockquote><p>We will first see <span class="math inline">\(AB ≤\dfrac{A^{p}}{p}+\dfrac{B^{q}}{q}\)</span>, then we integral both sideto get right side (<spanclass="math inline">\(\dfrac{A^{p}}{p}+\dfrac{B^{q}}{q}\)</span>) be<span class="math inline">\(1\)</span>, then we see the relationshipbetween the denominator and numerator.</p></blockquote><p>We have</p><p><span class="math display">\[\begin{aligned}AB &amp;= \dfrac{\left| f\left( x\right) \right| \left| g\left( x\right)\right| }{\left(  \int _{a}^{b}|f\left( x\right) | ^{p}dx\right)^{\dfrac{1}{p}}\left( \int _{a}^{b}\left| g\left( x\right) \right|^{q}dx\right)^{\dfrac{1}{q}}} \\&amp;\leq \dfrac{A^{p}}{p}+\dfrac{B^{q}}{q} \\&amp;= \dfrac{1}{p}\cdot \dfrac{\left| f\left( x\right) \right|^{p}}{\int _{a}^{b}\left| f\left( x\right) \right|^{p}dx}+\dfrac{1}{q}\cdot \dfrac{\left| g\left( x\right) \right|^{q}}{\int _{a}^{b}\left| g\left( x\right) \right| ^{q}dx}\end{aligned}\]</span></p><p>Rewrite in a clean way:</p><p><span class="math display">\[\dfrac{\left| f\left( x\right) \right| \left| g\left( x\right) \right|}{\left(  \int _{a}^{b}|f\left( x\right) | ^{p}dx\right)^{\dfrac{1}{p}}\left( \int _{a}^{b}\left| g\left( x\right) \right|^{q}dx\right)^{\dfrac{1}{q}}}\le \dfrac{1}{p}\cdot \dfrac{\left| f\left( x\right) \right| ^{p}}{\int_{a}^{b}\left| f\left( x\right) \right| ^{p}dx}+\dfrac{1}{q}\cdot\dfrac{\left| g\left( x\right) \right| ^{q}}{\int _{a}^{b}\left| g\left(x\right) \right| ^{q}dx}\]</span></p><p>We integrate both side and get</p><p><span class="math display">\[\begin{aligned}\int ^{b}_{a}ABdx&amp;=\int _{a}^{b}\dfrac{ |f\left( x\right) \left| \right| g\left(x\right) | }{\left( \int _{a}^{b}\left| f\left( x\right) \right|^{p}dx\right) ^{\dfrac{1}{p}}\left(  \int _{a}^{b}|g(x)| ^{q}dx\right)^{\dfrac{1}{q}}}dx \\&amp;=\dfrac{ \int _{a}^{b}|f\left( x\right) \left| \right| g\left(x\right) | dx}{\left( \int _{a}^{b}\left| f\left( x\right) \right|^{p}dx\right) ^{\dfrac{1}{p}}\left(  \int _{a}^{b}|g(x)| ^{q}dx\right)^{\dfrac{1}{q}}}\\&amp;\leq \int _{a}^{b}\dfrac{1}{p}\cdot \dfrac{\left| f\left( x\right)\right| ^{p}}{ \int ^{b}_{a}| f\left( x\right)|^{p}dx}dx+\int_{a}^{b}\dfrac{1}{q}\cdot\dfrac{\left| g\left( x\right) \right|^{q}}{\int _{a}^{b}\left| g\left( x\right) \right| ^{q}dx}dx\\&amp;=\dfrac{1}{p}\int _{a}^{b}\dfrac{\left| f\left( x\right) \right|^{p}}{\int ^{b}_{a}\left| f\left( x\right) \right|^{p}dx}dx+\dfrac{1}{q}\int _{a}^{b}\dfrac{\left| g\left( x\right)\right| ^{q}}{\int _{a}^{b}\left| g\left( x\right) \right| ^{q}dx}dx\\&amp;=\dfrac{1}{p}\cdot \dfrac{\int _{a}^{b}\left| f\left( x\right)\right| ^{p}dx}{\int ^{b}_{a}\left| f\left( x\right) \right|^{p}dx}+\dfrac{1}{q}\cdot \dfrac{\int _{a}^{b}\left| g\left( x\right)\right| ^{q}dx}{\int _{a}^{b}\left| g\left( x\right) \right| ^{q}dx}\\&amp;=\dfrac{1}{p}+\dfrac{1}{q}\\&amp;=1\end{aligned}\]</span></p><blockquote><p>Note that <span class="math inline">\(\left( \int _{a}^{b}\left|f\left( x\right) \right| ^{p}dx\right) ^{\dfrac{1}{p}}\)</span>and <spanclass="math inline">\(\left( \int _{a}^{b}\left| g\left( x\right)\right| ^{q}dx\right) ^{\dfrac{1}{q}}\)</span> are both constant, thuswhen integrate over them, they remain the same.</p></blockquote><p>Rewrite in a clean way:</p><p><span class="math display">\[\begin{aligned}\dfrac{ \int _{a}^{b}|f\left( x\right) \left| \right| g\left( x\right) |dx}{\left( \int _{a}^{b}\left| f\left( x\right) \right| ^{p}dx\right)^{\dfrac{1}{p}}\left(  \int _{a}^{b}|g(x)| ^{q}dx\right)^{\dfrac{1}{q}}}&amp;\leq1\\\int _{a}^{b}|f\left( x\right) \left| \right| g\left( x\right) | dx&amp;\leq\left( \int _{a}^{b}\left| f\left( x\right) \right| ^{p}dx\right)^{\dfrac{1}{p}}\left(  \int _{a}^{b}|g(x)| ^{q}dx\right) ^{\dfrac{1}{q}}\end{aligned}\]</span></p><p>By this, we proved the theorem.</p><h1 id="proof-of-hölders-inequality-discrete">Proof of Hölder'sInequality (discrete)</h1><p>Consider two sequences <span class="math inline">\((\mathbf{a} =(a_1, a_2, ..., a_n))\)</span> and <spanclass="math inline">\((\mathbf{b} = (b_1, b_2, ..., b_n))\)</span>, andlet <span class="math inline">\(p, q &gt; 1\)</span> with <spanclass="math inline">\(\frac{1}{p} + \frac{1}{q} = 1\)</span>. We want toshow that</p><p><span class="math display">\[\sum_{i=1}^{n} a_i b_i \leq \left( \sum_{i=1}^{n} a_i^p\right)^{\frac{1}{p}} \left( \sum_{i=1}^{n} b_i^q \right)^{\frac{1}{q}}.\]</span></p><p>Define the sequences <span class="math inline">\(A_i\)</span> and<span class="math inline">\(B_i\)</span> as follows:</p><p><span class="math display">\[A_i = \frac{a_i}{\left( \sum_{i=1}^{n} a_i^p \right)^{\frac{1}{p}}},\quad B_i = \frac{b_i}{\left( \sum_{i=1}^{n} b_i^q\right)^{\frac{1}{q}}}, \quad i=1,2,...,n.\]</span></p><p>From Young's inequality, we have <span class="math inline">\(a_i b_i\leq \frac{1}{p} a_i^p + \frac{1}{q} b_i^q\)</span>, or in terms of<span class="math inline">\(A_i\)</span> and <spanclass="math inline">\(B_i\)</span>:</p><p><span class="math display">\[A_i B_i \leq \frac{1}{p} A_i^p + \frac{1}{q} B_i^q, \quad i=1,2,...,n.\]</span></p><p>Summing over all <span class="math inline">\(i\)</span>, we get</p><p><span class="math display">\[\sum_{i=1}^{n} A_i B_i \leq \sum_{i=1}^{n} \left( \frac{1}{p} A_i^p +\frac{1}{q} B_i^q \right) = \frac{1}{p} \sum_{i=1}^{n} A_i^p +\frac{1}{q} \sum_{i=1}^{n} B_i^q.\]</span></p><p>Since the right-hand side equals <spanclass="math inline">\(\frac{1}{p} + \frac{1}{q} = 1\)</span>, wehave</p><p><span class="math display">\[\sum_{i=1}^{n} a_i b_i = \left( \sum_{i=1}^{n} a_i^p\right)^{\frac{1}{p}} \left( \sum_{i=1}^{n} b_i^q \right)^{\frac{1}{q}}\sum_{i=1}^{n} A_i B_i \leq \left( \sum_{i=1}^{n} a_i^p\right)^{\frac{1}{p}} \left( \sum_{i=1}^{n} b_i^q \right)^{\frac{1}{q}}.\]</span></p><p>This concludes the proof of Hölder's inequality in its discreteform.</p><h2 id="connection-to-the-cauchy-schwarz-inequality">Connection to theCauchy-Schwarz Inequality</h2><p>Note that for <span class="math inline">\(p = q = 2\)</span>,Hölder's inequality reduces to the well-known Cauchy-Schwarzinequality:</p><p><span class="math display">\[(a, b)^2 \leq (a, a)(b, b) \Rightarrow (a, b) \leq \sqrt{(a, a)(b, b)}.\]</span></p><p>The discrete version of Hölder's inequality is thus a generalizationof the Cauchy-Schwarz inequality to <spanclass="math inline">\(\Bbb{R}^n\)</span>.</p><h1 id="proof-of-minkowski-inequality">Proof of <ahref="https://en.wikipedia.org/wiki/Minkowski_inequality">Minkowskiinequality</a></h1><h2 id="minkowski-inequality-continuous"><ahref="https://en.wikipedia.org/wiki/Minkowski_inequality">Minkowskiinequality</a> (continuous)</h2><p>Let <span class="math inline">\(f, g\)</span> be functions on theinterval <span class="math inline">\([a, b]\)</span>, and let <spanclass="math inline">\(p &gt; 1\)</span>. Minkowski's inequality statesthat</p><p><span class="math display">\[\left( \int_{a}^{b} |f(x) + g(x)|^p dx \right)^{\frac{1}{p}} \leq \left(\int_{a}^{b} |f(x)|^p dx \right)^{\frac{1}{p}} + \left( \int_{a}^{b}|g(x)|^p dx \right)^{\frac{1}{p}}.\]</span></p><p>where <span class="math inline">\(p&gt;1\)</span>. Equality holds iffthere exist <span class="math inline">\(\lambda ≥ 0\)</span> such that<span class="math inline">\(f = \lambda g\)</span> or <spanclass="math inline">\(g = \lambda f\)</span></p><h2 id="proof-of-minkowski-inequality-continuous-form">Proof of <ahref="https://en.wikipedia.org/wiki/Minkowski_inequality">Minkowskiinequality</a> (continuous form)</h2><p>The proof begins with the triangle inequality:</p><p><span class="math display">\[\begin{aligned}\int_{a}^{b} |f(x) + g(x)|^p dx &amp;= \int_{a}^{b} |f(x) +g(x)|^{p-1}|f(x) + g(x)| dx\\&amp;\leq \int_{a}^{b} |f(x) + g(x)|^{p-1}|f(x)| dx + \int_{a}^{b} |f(x)+ g(x)|^{p-1}|g(x)| dx\end{aligned}\]</span></p><p>Apply Hölder's inequality to the right-hand side:</p><p>One of them is</p><p><span class="math display">\[\int_{a}^{b} |f(x) + g(x)|^{p-1}|f(x)| dx \leq \left[\int_{a}^{b} |f(x)+ g(x)|^p dx \right]^{\frac{p-1}{p}} \left\{\int_{a}^{b}|f(x)|^{p}dx\right\}^{\frac{1}{p}}\]</span></p><p>Thus</p><p><span class="math display">\[\int_{a}^{b} |f(x) + g(x)|^{p-1}|f(x)| dx + \int_{a}^{b} |f(x) +g(x)|^{p-1}|g(x)| dx \\\leq \left[\int_{a}^{b} |f(x) + g(x)|^p dx \right]^{\frac{p-1}{p}}\left\{\left[\int_{a}^{b} |f(x)|^{p}dx\right]^{\frac{1}{p}} +\left[\int_{a}^{b} |g(x)|^{p}dx\right]^{\frac{1}{p}}\right\}\]</span></p><p>Divide <span class="math inline">\(\left[\int_{a}^{b} |f(x) + g(x)|^pdx \right]\)</span>to both side of the equation, we got</p><p><span class="math display">\[\left( \int_{a}^{b} |f(x) + g(x)|^p dx \right)^{\frac{1}{p}} \leq \left(\int_{a}^{b} |f(x)|^p dx \right)^{\frac{1}{p}} + \left( \int_{a}^{b}|g(x)|^p dx \right)^{\frac{1}{p}}.\]</span></p><p>This completes the proof of Minkowski's inequality.</p><h2 id="minkowski-inequality-discrete"><ahref="https://en.wikipedia.org/wiki/Minkowski_inequality">Minkowskiinequality</a> (discrete)</h2><p>For sequences <span class="math inline">\(\mathbf{a} = (a_1, a_2,..., a_n)\)</span> and <span class="math inline">\(\mathbf{b} = (b_1,b_2, ..., b_n)\)</span> with <span class="math inline">\(p &gt;1\)</span>, Minkowski's inequality can be expressed as:</p><p><span class="math display">\[\left( \sum_{i=1}^{n} |a_i + b_i|^p \right)^{\frac{1}{p}} \leq \left(\sum_{i=1}^{n} |a_i|^p \right)^{\frac{1}{p}} + \left( \sum_{i=1}^{n}|b_i|^p \right)^{\frac{1}{p}}.\]</span></p><p>where <span class="math inline">\(p&gt;1\)</span>. Equality holds iffthere exist <span class="math inline">\(\lambda ≥ 0\)</span> such that<span class="math inline">\(\mathbf{a} = \lambda \mathbf{b}\)</span> or<span class="math inline">\(\mathbf{b} = \lambda \mathbf{a}\)</span></p><h2 id="proof-of-minkowski-inequality-discrete-form">Proof of <ahref="https://en.wikipedia.org/wiki/Minkowski_inequality">Minkowskiinequality</a> (discrete form)</h2><p><span class="math display">\[\left( \sum_{i=1}^{n} |a_i + b_i|^p \right)^{\frac{1}{p}} \leq \left(\sum_{i=1}^{n} |a_i|^p \right)^{\frac{1}{p}} + \left( \sum_{i=1}^{n}|b_i|^p \right)^{\frac{1}{p}}.\]</span></p><p>The proof utilizes the triangle inequality in the following way:</p><p><span class="math display">\[\sum_{i=1}^{n} |a_i + b_i|^p = \sum_{i=1}^{n} |a_i + b_i|^{p-1}|a_i +b_i|.\]</span></p><p>By applying the triangle inequality, of</p><p><span class="math display">\[|a_i + b_i|^{p-1}|a_i + b_i| \leq |a_i + b_i|^{p-1}|a_i| + |a_i +b_i|^{p-1}|b_i|.\]</span></p><p>We get</p><p><span class="math display">\[\sum_{i=1}^{n} |a_i + b_i|^p = \sum_{i=1}^{n} |a_i + b_i|^{p-1}|a_i +b_i| \leq \sum_{i=1}^{n} |a_i + b_i|^{p-1}|a_i| + \sum_{i=1}^{n} |a_i +b_i|^{p-1}|b_i|\]</span></p><p>From Hölder's inequality we get</p><p><span class="math display">\[\sum_{i=1}^{n} |a_i + b_i|^{p-1}|a_i| + \sum_{i=1}^{n} |a_i +b_i|^{p-1}|b_i| \leq \left(\sum_{i=1}^{n} |a_i +b_i|^{p}\right)^{\frac{p-1}{p}} \left[ \left(\sum_{i=1}^{n}|a_i|^p\right)^{\frac{1}{p}} + \left(\sum_{i=1}^{n}|b_i|^p\right)^{\frac{1}{p}}\right]\]</span></p><p>Dividing both sides by <span class="math inline">\(\left(\sum_{i=1}^{n} |a_i + b_i|^{p} \right)^{\frac{p-1}{p}}\)</span>, wearrive at Minkowski's inequality:</p><p><span class="math display">\[\left( \sum_{i=1}^{n} |a_i + b_i|^p \right)^{\frac{1}{p}} \leq \left(\sum_{i=1}^{n} |a_i|^p \right)^{\frac{1}{p}} + \left( \sum_{i=1}^{n}|b_i|^p \right)^{\frac{1}{p}}.\]</span></p><p>This concludes the proof of the discrete form of Minkowski'sinequality.</p>]]></content>
     
     
+    <categories>
+      
+      <category>Daily Logs</category>
+      
+      <category>Math</category>
+      
+      <category>Analysis</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Math</tag>
+      
+      <tag>Analysis</tag>
+      
+      <tag>Real Analysis</tag>
+      
+      <tag>Metric</tag>
+      
+      <tag>Functional Space</tag>
+      
+    </tags>
     
   </entry>
   
@@ -52,13 +246,13 @@
     
     <tags>
       
-      <tag>Real Analysis</tag>
-      
-      <tag>Rudin</tag>
+      <tag>Math</tag>
       
       <tag>Analysis</tag>
       
-      <tag>Math</tag>
+      <tag>Real Analysis</tag>
+      
+      <tag>Rudin</tag>
       
       <tag>Countablility</tag>
       
@@ -184,13 +378,13 @@
       
       <tag>LEAN</tag>
       
-      <tag>elan</tag>
-      
       <tag>automated theorem proving</tag>
       
       <tag>Programming Tips</tag>
       
       <tag>arm based system</tag>
+      
+      <tag>elan</tag>
       
     </tags>
     
@@ -223,11 +417,11 @@
       
       <tag>automated theorem proving</tag>
       
+      <tag>Homebrew</tag>
+      
       <tag>Programming Tips</tag>
       
       <tag>arm based system</tag>
-      
-      <tag>Homebrew</tag>
       
     </tags>
     
@@ -260,11 +454,11 @@
       
       <tag>automated theorem proving</tag>
       
+      <tag>Homebrew</tag>
+      
       <tag>Programming Tips</tag>
       
       <tag>arm based system</tag>
-      
-      <tag>Homebrew</tag>
       
     </tags>
     
@@ -399,13 +593,13 @@
       
       <tag>Python Grammar</tag>
       
-      <tag>Command Line</tag>
-      
       <tag>Tech</tag>
       
       <tag>Machine Learning</tag>
       
       <tag>Python Version Problem</tag>
+      
+      <tag>Command Line</tag>
       
       <tag>ChatGPT fun fact</tag>
       
@@ -491,11 +685,11 @@
       
       <tag>Python Grammar</tag>
       
+      <tag>Tech</tag>
+      
       <tag>Terminal</tag>
       
       <tag>Terminal Command</tag>
-      
-      <tag>Tech</tag>
       
       <tag>Shell Script Grammar</tag>
       
@@ -546,17 +740,17 @@
       
       <tag>Python Grammar</tag>
       
-      <tag>Command Line</tag>
-      
-      <tag>PyCharm Professional</tag>
-      
       <tag>Tech</tag>
+      
+      <tag>Command Line</tag>
       
       <tag>I/O</tag>
       
       <tag>Error Explanation</tag>
       
       <tag>RESTful API</tag>
+      
+      <tag>PyCharm Professional</tag>
       
       <tag>URL</tag>
       
@@ -599,7 +793,7 @@
       
       <tag>Python Grammar</tag>
       
-      <tag>PyCharm</tag>
+      <tag>Tech</tag>
       
       <tag>PyCharm Professional</tag>
       
@@ -607,7 +801,7 @@
       
       <tag>Terminal Command</tag>
       
-      <tag>Tech</tag>
+      <tag>PyCharm</tag>
       
       <tag>Decentralized Exchange</tag>
       
@@ -654,7 +848,7 @@
       
       <tag>Python Grammar</tag>
       
-      <tag>PyCharm</tag>
+      <tag>Tech</tag>
       
       <tag>PyCharm Professional</tag>
       
@@ -662,11 +856,11 @@
       
       <tag>Terminal Command</tag>
       
+      <tag>PyCharm</tag>
+      
       <tag>Hexo</tag>
       
       <tag>HTML</tag>
-      
-      <tag>Tech</tag>
       
     </tags>
     
@@ -707,11 +901,11 @@
       
       <tag>Python Grammar</tag>
       
+      <tag>Tech</tag>
+      
       <tag>Terminal</tag>
       
       <tag>Terminal Command</tag>
-      
-      <tag>Tech</tag>
       
       <tag>Git</tag>
       
