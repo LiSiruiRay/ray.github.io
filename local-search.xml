@@ -4,6 +4,32 @@
   
   
   <entry>
+    <title>ARM Mac execute x86 command</title>
+    <link href="/2024/01/10/ARM-Mac-execute-x86-command/"/>
+    <url>/2024/01/10/ARM-Mac-execute-x86-command/</url>
+    
+    <content type="html"><![CDATA[<h1id="how-can-i-make-my-mac-m1-pro-chip-to-execute-command-under-x86">Howcan I make my mac (M1 Pro chip) to execute command under x86?</h1><p>To run x86 commands or applications on a Mac with an M1 Pro chip,which uses Apple's ARM-based architecture, you can use the Rosetta 2translation environment. Rosetta 2 enables apps built for Intel x86architecture to run on Apple Silicon Macs. Here's how you can set thisup and use it:</p><ol type="1"><li><p><strong>Install Rosetta 2 (if not alreadyinstalled):</strong></p><ul><li>Open Terminal.</li><li>Type<code>/usr/sbin/softwareupdate --install-rosetta --agree-to-license</code>and hit Enter.</li><li>This command will download and install Rosetta 2 on your Mac.</li></ul></li><li><p><strong>Run x86 Terminal Applications:</strong></p><ul><li>For one-time use of an x86 command, precede your command with<code>arch -x86_64</code>. For example:<code>arch -x86_64 &lt;command&gt;</code>.</li><li>This tells the system to run the command using the x86_64architecture.</li></ul></li><li><p><strong>Set Up an x86 Terminal Environment:</strong></p><ul><li>If you regularly use x86 applications, you can duplicate theTerminal app and set the duplicate to always open in Rosetta mode.</li><li>To do this, find Terminal in Finder (usually in the Utilities folderwithin Applications), right-click, and choose<code>Duplicate</code>.</li><li>Right-click on the duplicate, choose <code>Get Info</code>, and thenselect the <code>Open using Rosetta</code> checkbox.</li><li>Now, whenever you open this duplicated Terminal app, it will run inx86 mode by default.</li></ul></li><li><p><strong>Installing x86 Versions of Software:</strong></p><ul><li>Some software might require you to specifically download the x86version. This is typically noted on the software's download page.</li><li>Install the software as usual. Rosetta 2 will automatically handlethe translation.</li></ul></li><li><p><strong>Limitations:</strong></p><ul><li>While Rosetta 2 is quite powerful, there might be some performanceoverhead compared to running natively on Apple Silicon.</li><li>Not all x86 applications are guaranteed to work flawlessly underRosetta 2.</li></ul></li><li><p><strong>Updates and Software Management:</strong></p><ul><li>Keep your macOS and apps updated for optimal performance andcompatibility.</li><li>Some applications have been updated with native Apple Siliconsupport, so it's a good idea to check for these versions for betterperformance.</li></ul></li></ol><p>Remember that Rosetta 2 is a stopgap solution while developerstransition their software to native Apple Silicon support. Over time,the need to use Rosetta 2 should diminish as more applications offernative ARM support.</p><h1id="what-about-i-want-to-enter-a-state-that-all-the-rest-of-the-command-should-be-executed-under-x86">Whatabout I want to enter a state that all the rest of the command should beexecuted under x86?</h1><p>To enter a state where all subsequent commands in a terminal sessionare executed under the x86 architecture on your M1 Pro Mac, you canstart a Rosetta 2 translated shell. This will allow you to run aterminal session entirely under the x86_64 architecture, ensuring thatall commands and applications launched from that session are treated asx86.</p><p>Here's how you can do it:</p><ol type="1"><li><p><strong>Open Terminal.</strong></p></li><li><p><strong>Start a Rosetta 2 translated shell by executing thefollowing command:</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">arch</span> -x86_64 /bin/zsh<br></code></pre></td></tr></table></figure><ul><li>This command starts a new instance of the Zsh shell (the defaultshell on macOS) under the x86_64 architecture. If you prefer to use Bashor another shell, you can replace <code>/bin/zsh</code> with the path toyour preferred shell, like <code>/bin/bash</code>.</li></ul></li><li><p><strong>Verify the Architecture (Optional):</strong></p><ul><li>To confirm that you're running under the x86_64 architecture, youcan use the <code>arch</code> command: <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">arch</span><br></code></pre></td></tr></table></figure></li><li>This should return <code>i386</code>, indicating that you are in anx86_64 emulation environment (Rosetta 2 translates x86_64 to i386 forcompatibility).</li></ul></li><li><p><strong>Run Commands:</strong></p><ul><li>Now, any command you execute in this shell will automatically rununder the x86_64 architecture.</li></ul></li><li><p><strong>Exit x86 Mode:</strong></p><ul><li>When you're done and want to return to the native ARM architecture,simply type <code>exit</code> or close the Terminal window. This willend the x86_64 emulation session.</li></ul></li></ol><p>Remember, running commands and applications under Rosetta 2 mighthave some performance overhead compared to running them natively on yourM1 Pro chip. Also, not all x86 applications and commands may workperfectly under Rosetta 2, but most should function as expected.</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Check Which System is the Python based on</title>
+    <link href="/2024/01/10/Check-Which-System-is-the-Python-based-on/"/>
+    <url>/2024/01/10/Check-Which-System-is-the-Python-based-on/</url>
+    
+    <content type="html"><![CDATA[<p>When installing some libraries in Python, I sometimes encounter theproblem of mis installing the version of python. Sometimes I need alibrary on my M1 Pro chip but my conda installed x86 version. Here aresome method to check which python you installed.</p><h1 id="check-if-the-python-installed-is-x86-or-arm">Check if the pythoninstalled is x86 or arm</h1><p>To determine whether the Python installation on your system is x86(32-bit or 64-bit Intel architecture) or ARM (architecture used in manymodern mobile devices and the Apple M1/M2 chips), you can use Pythonitself to check. Follow these steps:</p><ol type="1"><li><p><strong>Open Python Interpreter</strong>: Open a terminal orcommand prompt and type <code>python</code> or <code>python3</code>,then press Enter. This will open the Python interpreter.</p></li><li><p><strong>Check System Architecture</strong>: In the Pythoninterpreter, enter the following commands:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> platform<br><span class="hljs-built_in">print</span>(platform.machine())<br></code></pre></td></tr></table></figure></li></ol><p>This command will output the architecture type of your Pythoninstallation. Here's what the outputs generally mean:</p><ul><li><strong>Outputs like 'x86', 'x86_64', 'AMD64'</strong>: Theseindicate an x86 architecture (32-bit or 64-bit Intel or AMDprocessors).</li><li><strong>Outputs like 'arm64', 'aarch64'</strong>: These indicate anARM architecture (common in modern mobile devices, and Apple's M1/M2series chips).</li></ul><p>Let's run this code in the current Python environment todemonstrate.</p><p>The output from the Python environment here is <code>'x86_64'</code>,which indicates that this Python installation is running on an x86architecture, specifically a 64-bit Intel or AMD processor.</p><p>You can use the same method on your system to check whether yourPython installation is x86 or ARM.</p><h1 id="is-there-a-command-line-version">Is there a command lineversion?</h1><p>Yes, there is a command-line method to check the architecture of thePython installation without entering the Python interpreter. You can usethe following command in your terminal or command prompt:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python -c <span class="hljs-string">&quot;import platform; print(platform.machine())&quot;</span><br></code></pre></td></tr></table></figure><p>or</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python3 -c <span class="hljs-string">&quot;import platform; print(platform.machine())&quot;</span><br></code></pre></td></tr></table></figure><p>This command executes a short Python script directly from the commandline. It imports the <code>platform</code> module and prints out themachine type, which indicates the architecture.</p><ul><li>If the output is something like <code>'x86'</code>,<code>'x86_64'</code>, or <code>'AMD64'</code>, it's an x86architecture.</li><li>If it says <code>'arm64'</code>, <code>'aarch64'</code>, or similar,it's an ARM architecture.</li></ul><p>You should choose <code>python</code> or <code>python3</code> basedon how Python is installed on your system. Some systems may use<code>python</code> for Python 2 and <code>python3</code> for Python 3,while others might only have Python 3 installed as<code>python</code>.</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Some Comparing lemmas in analysis (epsilon delta language)</title>
     <link href="/2023/12/18/Some-Comparing-lemmas-in-analysis-epsilon-delta-language/"/>
     <url>/2023/12/18/Some-Comparing-lemmas-in-analysis-epsilon-delta-language/</url>
@@ -744,13 +770,13 @@
       
       <tag>Command Line</tag>
       
+      <tag>PyCharm Professional</tag>
+      
       <tag>I/O</tag>
       
       <tag>Error Explanation</tag>
       
       <tag>RESTful API</tag>
-      
-      <tag>PyCharm Professional</tag>
       
       <tag>URL</tag>
       
@@ -795,13 +821,13 @@
       
       <tag>Tech</tag>
       
+      <tag>PyCharm</tag>
+      
       <tag>PyCharm Professional</tag>
       
       <tag>Terminal</tag>
       
       <tag>Terminal Command</tag>
-      
-      <tag>PyCharm</tag>
       
       <tag>Decentralized Exchange</tag>
       
@@ -850,13 +876,13 @@
       
       <tag>Tech</tag>
       
+      <tag>PyCharm</tag>
+      
       <tag>PyCharm Professional</tag>
       
       <tag>Terminal</tag>
       
       <tag>Terminal Command</tag>
-      
-      <tag>PyCharm</tag>
       
       <tag>Hexo</tag>
       
