@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>An Elementary Approach to Proving a Continuous Function with All Zero Fourier Coefficients is Identically Zero</title>
+    <link href="/2024/03/02/An-Elementary-Approach-to-Proving-a-Continuous-Function-with-All-Zero-Fourier-Coefficients-is-Identically-Zero/"/>
+    <url>/2024/03/02/An-Elementary-Approach-to-Proving-a-Continuous-Function-with-All-Zero-Fourier-Coefficients-is-Identically-Zero/</url>
+    
+    <content type="html"><![CDATA[<p>When delving into the fascinating world of Fourier series and theirconvergence properties for functions within the $ C^N $ space, weencounter a fundamental question: Can a continuous function, which hasall its Fourier coefficients equal to zero, be anything other thanidentically zero? This question not only probes the nature of Fourieranalysis but also tests our understanding of function representation andorthogonality. In this blog post, we explore an elementary approach toproving that a periodic $ C^1 $ function with all its Fouriercoefficients set to zero is indeed identically zero.</p><h3 id="the-context-of-the-proof">The Context of the Proof</h3><p>The importance of this proof arises while proving the convergence ofFourier series for $ C^N $ functions. The Fourier series allows us torepresent periodic functions as the sum of sines and cosines, which areelemental to various fields of physics and engineering, particularlywhere waveforms and oscillations come into play.</p><h3 id="simplifying-the-problem">Simplifying the Problem</h3><p>To prove our theorem, it suffices to consider the case where $ h(0)&gt; 0 $. Why? Because any point on a periodic function can be shiftedto the origin through a phase shift, and if $ h(0) &lt; 0 $, we cansimply consider <span class="math inline">\(-h(x)\)</span> instead. Thisreduces our problem to a standard form, focusing our attention on thebehavior of the function at a single, crucial point.</p><h3 id="strategy-for-the-proof">Strategy for the Proof</h3><p>Our general approach to proving the theorem is by contradiction. Weassume that there exists a continuous periodic function $ h $ with allits Fourier coefficients equal to zero, yet $ h $ is not identicallyzero. To navigate this proof, we introduce a special function $ P_n(x)$, constructed to aid in our analysis.</p><h3 id="crafting-the-function-p_nx">Crafting the Function $ P_n(x)$</h3><p>The function $ P_n(x) $ is defined as:</p><p><span class="math inline">\(P_n(x) = (1 + cos(2\pi x) - cos(2\pi\delta))^n\)</span></p><p>This function is particularly chosen for its Fourier seriesproperties and its behavior within and outside a certain interval.</p><h3 id="key-properties-of-p_nx">Key Properties of $ P_n(x) $</h3><p>$ P_n(x) $ possesses several critical properties that are pivotal inour proof:</p><ol type="1"><li>It is composed entirely of Fourier basis functions.</li><li>Within the interval <span class="math inline">\(|x| \leq\delta\)</span>, $P_n(x) &gt; 1 $, ensuring that it amplifies the valueof $ h(x) $ within this region.</li><li>Outside this interval, but within <span class="math inline">\(|x|\leq \frac{1}{2}\)</span>, $ P_n(x) &lt; 1 $, which diminishes theimpact of $ h(x) $.</li><li>As $ n $, $ P_n(x) $ approaches zero for <spanclass="math inline">\(|x| &gt; \delta\)</span>, aligning with theproperties of the Dirac delta function.</li></ol><h3 id="the-contradiction">The Contradiction</h3><p>Using these properties, we integrate $ h(x)P_n(x) $ over one periodand find that the integral must be zero since $ h(x) $ has zero Fouriercoefficients. However, due to the properties of $ P_n(x) $, particularlywithin the <span class="math inline">\(\delta\)</span> interval, we areguaranteed a non-zero contribution to the integral from $ h(0) &gt; 0 $,leading to a contradiction unless $ h $ is zero everywhere.</p><h3 id="detailed-proof-steps">Detailed Proof Steps</h3><p><strong>Theorem</strong>: Let $ h $ be a $ C^1 $ periodic functionwith period $ L $. If all the Fourier coefficients of $ h $ are zero,then $ h(x) $ is identically zero for all $ x $.</p><p><strong>Proof</strong>:</p><ol type="1"><li><strong>Assumption</strong>: Assume $ h $ is not identically zero,but all its Fourier coefficients are zero. Without loss of generality,let us assume <span class="math inline">\(h(0) = \alpha &gt; 0\)</span>.By continuity of $ h $, there exists a <spanclass="math inline">\(\delta &gt; 0\)</span> such that <spanclass="math inline">\(h(x) \geq \frac{\alpha}{2}\)</span> for <spanclass="math inline">\(|x| \leq \delta\)</span>.</li><li><strong>Constructing $ P_n(x) $</strong>: Define $ P_n(x) $ as $P_n(x) = (1 + cos(2x) - cos(2))^n $. $ P_n(x) $ is constructed to havethe following properties:<ul><li>$P_n(x) $ for <span class="math inline">\(|x| \leq\delta\)</span></li><li>$P_n(x) &lt; 1 $ for <span class="math inline">\(\delta &lt; |x|\leq \frac{1}{2}\)</span> - $ P_n(x) $ for <spanclass="math inline">\(\delta &lt; |x| \leq \frac{1}{2}\)</span> as <spanclass="math inline">\(n \to \inf\)</span></li></ul></li><li><strong>Application of $ P_n(x) $</strong>: Multiply $ h(x) $ by$P_n(x) $ and integrate over one period from <spanclass="math inline">\(-\frac{L}{2}\)</span> to <spanclass="math inline">\(\frac{L}{2}\)</span>: <spanclass="math display">\[0 = \int_{-\frac{L}{2}}^{\frac{L}{2}} h(x)P_n(x) dx\]</span> This is because the Fourier coefficients of $ h(x) $ are zero,implying that $ h(x) $ is orthogonal to all the basis functions in theFourier series, and hence the integral of the product is zero.</li><li><strong>Splitting the Integral</strong>: Divide the integral intotwo parts: one over the interval where <span class="math inline">\(|x|\leq \delta\)</span> and the other where<span class="math inline">\(|x|&gt; \delta\)</span>: <span class="math display">\[0 = \int_{|x| \leq \delta} h(x)P_n(x) dx + \int_{\delta &lt; |x| \leq\frac{L}{2}} h(x)P_n(x) dx\]</span></li><li><strong>Contradiction</strong>: As <span class="math inline">\(n \to\infty\)</span>, the second integral tends to zero because $ P_n(x) $for <span class="math inline">\(\delta &lt; |x| \leq\frac{1}{2}\)</span>. However, in the first integral, since <spanclass="math inline">\(h(x) \geq \frac{\alpha}{2}\)</span>for <spanclass="math inline">\(|x| \leq \delta\)</span> and <spanclass="math inline">\(P_n(x) \geq 1\)</span>, the integral is boundedbelow by <span class="math inline">\(\frac{\alpha}{2}\)</span> times themeasure of the interval <span class="math inline">\(|x| \leq\delta\)</span>, which is a positive number. This leads to acontradiction because the sum of a positive number and a number tendingto zero cannot be zero.</li><li><strong>Conclusion</strong>: Since assuming that $ h $ is notidentically zero leads to a contradiction, we conclude that $ h(x) $must be identically zero for all $ x $. Thus, any $ C^1 $ periodicfunction with all zero Fourier coefficients is identically zero.</li></ol><p>This completes the proof. It demonstrates the power of Fourier seriesand the orthogonality of trigonometric functions, providing an elegantmethod to prove that a function with no frequency components (i.e., allzero Fourier coefficients) must be a flat, zero function.</p><h3 id="summarizing-the-proof">Summarizing the Proof</h3><p>The most critical step in our proof is the introduction of $ P_n(x)$, which serves as a magnifying glass at the origin, ensuring that if $h(x) $ is non-zero at $ x = 0 $, it will contribute to the integraldespite the zero Fourier coefficients elsewhere. This clever use of $P_n(x) $'s properties allows us to</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>ARM Mac execute x86 command</title>
     <link href="/2024/01/10/ARM-Mac-execute-x86-command/"/>
     <url>/2024/01/10/ARM-Mac-execute-x86-command/</url>
@@ -404,13 +417,13 @@
       
       <tag>LEAN</tag>
       
+      <tag>elan</tag>
+      
       <tag>automated theorem proving</tag>
       
       <tag>Programming Tips</tag>
       
       <tag>arm based system</tag>
-      
-      <tag>elan</tag>
       
     </tags>
     
@@ -443,11 +456,11 @@
       
       <tag>automated theorem proving</tag>
       
-      <tag>Homebrew</tag>
-      
       <tag>Programming Tips</tag>
       
       <tag>arm based system</tag>
+      
+      <tag>Homebrew</tag>
       
     </tags>
     
@@ -480,11 +493,11 @@
       
       <tag>automated theorem proving</tag>
       
-      <tag>Homebrew</tag>
-      
       <tag>Programming Tips</tag>
       
       <tag>arm based system</tag>
+      
+      <tag>Homebrew</tag>
       
     </tags>
     
@@ -1061,6 +1074,19 @@
   
   
   <entry>
+    <title>Hello World</title>
+    <link href="/2023/01/11/hello-world/"/>
+    <url>/2023/01/11/hello-world/</url>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://blog.slray.com">Ray's website</a>! Thisis my very first post!</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>How does this website come into place?</title>
     <link href="/2023/01/10/How-does-this-website-come-into-place/"/>
     <url>/2023/01/10/How-does-this-website-come-into-place/</url>
@@ -1096,19 +1122,6 @@
       <tag>Building website</tag>
       
     </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="/2023/01/10/hello-world/"/>
-    <url>/2023/01/10/hello-world/</url>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://blog.slray.com">Ray's website</a>! Thisis my very first post!</p>]]></content>
-    
-    
     
   </entry>
   

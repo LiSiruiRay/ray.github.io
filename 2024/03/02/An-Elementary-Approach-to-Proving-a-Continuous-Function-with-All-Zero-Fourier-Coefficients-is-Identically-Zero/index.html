@@ -16,15 +16,15 @@
   <meta name="author" content="Sirui Ray Li">
   <meta name="keywords" content="testing3">
   
-    <meta name="description" content="Check whether your python is x86 or arm">
+    <meta name="description" content="When delving into the fascinating world of Fourier series and their convergence properties for functions within the $ C^N $ space, we encounter a fundamental question: Can a continuous function, which">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Check Which System is the Python based on">
-<meta property="og:url" content="http://blog.slray.com/2024/01/10/Check-Which-System-is-the-Python-based-on/index.html">
+<meta property="og:title" content="An Elementary Approach to Proving a Continuous Function with All Zero Fourier Coefficients is Identically Zero">
+<meta property="og:url" content="http://blog.slray.com/2024/03/02/An-Elementary-Approach-to-Proving-a-Continuous-Function-with-All-Zero-Fourier-Coefficients-is-Identically-Zero/index.html">
 <meta property="og:site_name" content="Ray&#39;s website">
-<meta property="og:description" content="Check whether your python is x86 or arm">
+<meta property="og:description" content="When delving into the fascinating world of Fourier series and their convergence properties for functions within the $ C^N $ space, we encounter a fundamental question: Can a continuous function, which">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-01-10T13:11:17.000Z">
-<meta property="article:modified_time" content="2024-01-10T22:14:15.212Z">
+<meta property="article:published_time" content="2024-03-02T16:36:18.000Z">
+<meta property="article:modified_time" content="2024-03-02T18:32:44.030Z">
 <meta property="article:author" content="Sirui Ray Li">
 <meta property="article:tag" content="testing3">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,7 +33,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Check Which System is the Python based on - Ray&#39;s website</title>
+  <title>An Elementary Approach to Proving a Continuous Function with All Zero Fourier Coefficients is Identically Zero - Ray&#39;s website</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Check Which System is the Python based on"></span>
+            <span id="subtitle" data-typed-text="An Elementary Approach to Proving a Continuous Function with All Zero Fourier Coefficients is Identically Zero"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-10 17:11" pubdate>
-          Wednesday, January 10th 2024, 5:11 pm
+        <time datetime="2024-03-02 20:36" pubdate>
+          Saturday, March 2nd 2024, 8:36 pm
         </time>
       </span>
     
@@ -223,7 +223,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          2.1k words
+          4.7k words
         
       </span>
     
@@ -235,7 +235,7 @@
         
         
           <!-- compatible with older versions-->
-          18 minutes
+          39 minutes
         
       </span>
     
@@ -281,69 +281,135 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Check Which System is the Python based on</h1>
+            <h1 style="display: none">An Elementary Approach to Proving a Continuous Function with All Zero Fourier Coefficients is Identically Zero</h1>
             
             
               <div class="markdown-body">
                 
-                <p>When installing some libraries in Python, I sometimes encounter the
-problem of mis installing the version of python. Sometimes I need a
-library on my M1 Pro chip but my conda installed x86 version. Here are
-some method to check which python you installed.</p>
-<h1 id="check-if-the-python-installed-is-x86-or-arm">Check if the python
-installed is x86 or arm</h1>
-<p>To determine whether the Python installation on your system is x86
-(32-bit or 64-bit Intel architecture) or ARM (architecture used in many
-modern mobile devices and the Apple M1/M2 chips), you can use Python
-itself to check. Follow these steps:</p>
+                <p>When delving into the fascinating world of Fourier series and their
+convergence properties for functions within the $ C^N $ space, we
+encounter a fundamental question: Can a continuous function, which has
+all its Fourier coefficients equal to zero, be anything other than
+identically zero? This question not only probes the nature of Fourier
+analysis but also tests our understanding of function representation and
+orthogonality. In this blog post, we explore an elementary approach to
+proving that a periodic $ C^1 $ function with all its Fourier
+coefficients set to zero is indeed identically zero.</p>
+<h3 id="the-context-of-the-proof">The Context of the Proof</h3>
+<p>The importance of this proof arises while proving the convergence of
+Fourier series for $ C^N $ functions. The Fourier series allows us to
+represent periodic functions as the sum of sines and cosines, which are
+elemental to various fields of physics and engineering, particularly
+where waveforms and oscillations come into play.</p>
+<h3 id="simplifying-the-problem">Simplifying the Problem</h3>
+<p>To prove our theorem, it suffices to consider the case where $ h(0)
+&gt; 0 $. Why? Because any point on a periodic function can be shifted
+to the origin through a phase shift, and if $ h(0) &lt; 0 $, we can
+simply consider <span class="math inline">\(-h(x)\)</span> instead. This
+reduces our problem to a standard form, focusing our attention on the
+behavior of the function at a single, crucial point.</p>
+<h3 id="strategy-for-the-proof">Strategy for the Proof</h3>
+<p>Our general approach to proving the theorem is by contradiction. We
+assume that there exists a continuous periodic function $ h $ with all
+its Fourier coefficients equal to zero, yet $ h $ is not identically
+zero. To navigate this proof, we introduce a special function $ P_n(x)
+$, constructed to aid in our analysis.</p>
+<h3 id="crafting-the-function-p_nx">Crafting the Function $ P_n(x)
+$</h3>
+<p>The function $ P_n(x) $ is defined as:</p>
+<p><span class="math inline">\(P_n(x) = (1 + cos(2\pi x) - cos(2\pi
+\delta))^n\)</span></p>
+<p>This function is particularly chosen for its Fourier series
+properties and its behavior within and outside a certain interval.</p>
+<h3 id="key-properties-of-p_nx">Key Properties of $ P_n(x) $</h3>
+<p>$ P_n(x) $ possesses several critical properties that are pivotal in
+our proof:</p>
 <ol type="1">
-<li><p><strong>Open Python Interpreter</strong>: Open a terminal or
-command prompt and type <code>python</code> or <code>python3</code>,
-then press Enter. This will open the Python interpreter.</p></li>
-<li><p><strong>Check System Architecture</strong>: In the Python
-interpreter, enter the following commands:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> platform<br><span class="hljs-built_in">print</span>(platform.machine())<br></code></pre></td></tr></table></figure></li>
+<li>It is composed entirely of Fourier basis functions.</li>
+<li>Within the interval <span class="math inline">\(|x| \leq
+\delta\)</span>, $P_n(x) &gt; 1 $, ensuring that it amplifies the value
+of $ h(x) $ within this region.</li>
+<li>Outside this interval, but within <span class="math inline">\(|x|
+\leq \frac{1}{2}\)</span>, $ P_n(x) &lt; 1 $, which diminishes the
+impact of $ h(x) $.</li>
+<li>As $ n $, $ P_n(x) $ approaches zero for <span
+class="math inline">\(|x| &gt; \delta\)</span>, aligning with the
+properties of the Dirac delta function.</li>
 </ol>
-<p>This command will output the architecture type of your Python
-installation. Here's what the outputs generally mean:</p>
+<h3 id="the-contradiction">The Contradiction</h3>
+<p>Using these properties, we integrate $ h(x)P_n(x) $ over one period
+and find that the integral must be zero since $ h(x) $ has zero Fourier
+coefficients. However, due to the properties of $ P_n(x) $, particularly
+within the <span class="math inline">\(\delta\)</span> interval, we are
+guaranteed a non-zero contribution to the integral from $ h(0) &gt; 0 $,
+leading to a contradiction unless $ h $ is zero everywhere.</p>
+<h3 id="detailed-proof-steps">Detailed Proof Steps</h3>
+<p><strong>Theorem</strong>: Let $ h $ be a $ C^1 $ periodic function
+with period $ L $. If all the Fourier coefficients of $ h $ are zero,
+then $ h(x) $ is identically zero for all $ x $.</p>
+<p><strong>Proof</strong>:</p>
+<ol type="1">
+<li><strong>Assumption</strong>: Assume $ h $ is not identically zero,
+but all its Fourier coefficients are zero. Without loss of generality,
+let us assume <span class="math inline">\(h(0) = \alpha &gt; 0\)</span>.
+By continuity of $ h $, there exists a <span
+class="math inline">\(\delta &gt; 0\)</span> such that <span
+class="math inline">\(h(x) \geq \frac{\alpha}{2}\)</span> for <span
+class="math inline">\(|x| \leq \delta\)</span>.</li>
+<li><strong>Constructing $ P_n(x) $</strong>: Define $ P_n(x) $ as $
+P_n(x) = (1 + cos(2x) - cos(2))^n $. $ P_n(x) $ is constructed to have
+the following properties:
 <ul>
-<li><strong>Outputs like 'x86', 'x86_64', 'AMD64'</strong>: These
-indicate an x86 architecture (32-bit or 64-bit Intel or AMD
-processors).</li>
-<li><strong>Outputs like 'arm64', 'aarch64'</strong>: These indicate an
-ARM architecture (common in modern mobile devices, and Apple's M1/M2
-series chips).</li>
-</ul>
-<p>Let's run this code in the current Python environment to
-demonstrate.</p>
-<p>The output from the Python environment here is <code>'x86_64'</code>,
-which indicates that this Python installation is running on an x86
-architecture, specifically a 64-bit Intel or AMD processor.</p>
-<p>You can use the same method on your system to check whether your
-Python installation is x86 or ARM.</p>
-<h1 id="is-there-a-command-line-version">Is there a command line
-version?</h1>
-<p>Yes, there is a command-line method to check the architecture of the
-Python installation without entering the Python interpreter. You can use
-the following command in your terminal or command prompt:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python -c <span class="hljs-string">&quot;import platform; print(platform.machine())&quot;</span><br></code></pre></td></tr></table></figure>
-<p>or</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python3 -c <span class="hljs-string">&quot;import platform; print(platform.machine())&quot;</span><br></code></pre></td></tr></table></figure>
-<p>This command executes a short Python script directly from the command
-line. It imports the <code>platform</code> module and prints out the
-machine type, which indicates the architecture.</p>
-<ul>
-<li>If the output is something like <code>'x86'</code>,
-<code>'x86_64'</code>, or <code>'AMD64'</code>, it's an x86
-architecture.</li>
-<li>If it says <code>'arm64'</code>, <code>'aarch64'</code>, or similar,
-it's an ARM architecture.</li>
-</ul>
-<p>You should choose <code>python</code> or <code>python3</code> based
-on how Python is installed on your system. Some systems may use
-<code>python</code> for Python 2 and <code>python3</code> for Python 3,
-while others might only have Python 3 installed as
-<code>python</code>.</p>
+<li>$P_n(x) $ for <span class="math inline">\(|x| \leq
+\delta\)</span></li>
+<li>$P_n(x) &lt; 1 $ for <span class="math inline">\(\delta &lt; |x|
+\leq \frac{1}{2}\)</span> - $ P_n(x) $ for <span
+class="math inline">\(\delta &lt; |x| \leq \frac{1}{2}\)</span> as <span
+class="math inline">\(n \to \inf\)</span></li>
+</ul></li>
+<li><strong>Application of $ P_n(x) $</strong>: Multiply $ h(x) $ by
+$P_n(x) $ and integrate over one period from <span
+class="math inline">\(-\frac{L}{2}\)</span> to <span
+class="math inline">\(\frac{L}{2}\)</span>: <span
+class="math display">\[
+0 = \int_{-\frac{L}{2}}^{\frac{L}{2}} h(x)P_n(x) dx
+\]</span> This is because the Fourier coefficients of $ h(x) $ are zero,
+implying that $ h(x) $ is orthogonal to all the basis functions in the
+Fourier series, and hence the integral of the product is zero.</li>
+<li><strong>Splitting the Integral</strong>: Divide the integral into
+two parts: one over the interval where <span class="math inline">\(|x|
+\leq \delta\)</span> and the other where<span class="math inline">\(|x|
+&gt; \delta\)</span>: <span class="math display">\[
+0 = \int_{|x| \leq \delta} h(x)P_n(x) dx + \int_{\delta &lt; |x| \leq
+\frac{L}{2}} h(x)P_n(x) dx
+\]</span></li>
+<li><strong>Contradiction</strong>: As <span class="math inline">\(n \to
+\infty\)</span>, the second integral tends to zero because $ P_n(x) $
+for <span class="math inline">\(\delta &lt; |x| \leq
+\frac{1}{2}\)</span>. However, in the first integral, since <span
+class="math inline">\(h(x) \geq \frac{\alpha}{2}\)</span>for <span
+class="math inline">\(|x| \leq \delta\)</span> and <span
+class="math inline">\(P_n(x) \geq 1\)</span>, the integral is bounded
+below by <span class="math inline">\(\frac{\alpha}{2}\)</span> times the
+measure of the interval <span class="math inline">\(|x| \leq
+\delta\)</span>, which is a positive number. This leads to a
+contradiction because the sum of a positive number and a number tending
+to zero cannot be zero.</li>
+<li><strong>Conclusion</strong>: Since assuming that $ h $ is not
+identically zero leads to a contradiction, we conclude that $ h(x) $
+must be identically zero for all $ x $. Thus, any $ C^1 $ periodic
+function with all zero Fourier coefficients is identically zero.</li>
+</ol>
+<p>This completes the proof. It demonstrates the power of Fourier series
+and the orthogonality of trigonometric functions, providing an elegant
+method to prove that a function with no frequency components (i.e., all
+zero Fourier coefficients) must be a flat, zero function.</p>
+<h3 id="summarizing-the-proof">Summarizing the Proof</h3>
+<p>The most critical step in our proof is the introduction of $ P_n(x)
+$, which serves as a magnifying glass at the origin, ensuring that if $
+h(x) $ is non-zero at $ x = 0 $, it will contribute to the integral
+despite the zero Fourier coefficients elsewhere. This clever use of $
+P_n(x) $'s properties allows us to</p>
 
                 
               </div>
@@ -361,8 +427,8 @@ while others might only have Python 3 installed as
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Check Which System is the Python based on</div>
-      <div>http://blog.slray.com/2024/01/10/Check-Which-System-is-the-Python-based-on/</div>
+      <div>An Elementary Approach to Proving a Continuous Function with All Zero Fourier Coefficients is Identically Zero</div>
+      <div>http://blog.slray.com/2024/03/02/An-Elementary-Approach-to-Proving-a-Continuous-Function-with-All-Zero-Fourier-Coefficients-is-Identically-Zero/</div>
     </div>
     <div class="license-meta">
       
@@ -374,7 +440,7 @@ while others might only have Python 3 installed as
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>January 10, 2024</div>
+          <div>March 2, 2024</div>
         </div>
       
       
@@ -406,18 +472,12 @@ while others might only have Python 3 installed as
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/10/ARM-Mac-execute-x86-command/" title="ARM Mac execute x86 command">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">ARM Mac execute x86 command</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/18/Some-Comparing-lemmas-in-analysis-epsilon-delta-language/" title="Some Comparing lemmas in analysis (epsilon delta language)">
-                        <span class="hidden-mobile">Some Comparing lemmas in analysis (epsilon delta language)</span>
+                      <a href="/2024/01/10/ARM-Mac-execute-x86-command/" title="ARM Mac execute x86 command">
+                        <span class="hidden-mobile">ARM Mac execute x86 command</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -474,6 +534,12 @@ while others might only have Python 3 installed as
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -691,6 +757,49 @@ while others might only have Python 3 installed as
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
