@@ -4,6 +4,39 @@
   
   
   <entry>
+    <title>resources for automated therom proving</title>
+    <link href="/2024/04/21/resources-for-automated-therom-proving/"/>
+    <url>/2024/04/21/resources-for-automated-therom-proving/</url>
+    
+    <content type="html"><![CDATA[<p>Next semester I will be taking <em>CSCI-UA 480 Special Topics:Principles of Programming Languages</em> by Professor <ahref="https://cs.nyu.edu/~wies/">Thomas Wies</a>.</p><p>This course will be important for me to take further steps inautomated thereom proving.</p><p>Here are some resources Prof Wies introduced.</p><ul><li>A series of books for introduction of functional programming: <ahref="https://softwarefoundations.cis.upenn.edu/">Software FoundationSeries</a></li><li>Book written by Prof Wies' Team <ahref="https://link.springer.com/book/10.1007/978-3-031-01806-0">AutomatedVerification of Concurrent Search Structures</a></li></ul><p>Here are some more video-type resource I found:</p><ul><li><ahref="https://www.fun-mooc.fr/en/courses/introduction-functional-programming-ocaml/">Introductionto Functional Programming in OCaml</a> (This course is archieved, buttheir video is on YouTube). <ahref="https://www.youtube.com/watch?v=o9-K0X2710Y&amp;list=PLGC2in6hSHQcmT_cz4t7ePeQtTCkNkvll&amp;index=4&amp;ab_channel=Roshan%2a">YouTubeLink</a><ul><li>I also found the <ahref="https://github.com/bugczw/Introduction-to-Functional-Programming-in-OCaml">GitHubRepo of the hw</a>, <a href="https://github.com/uds-psl/Prog">Textbookand Project</a>, and <ahref="https://github.com/philsaxton/OCamlMOOC">Solution to thehw</a>.</li></ul></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Daily Logs</category>
+      
+      <category>Resources Share</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Resource Share</tag>
+      
+      <tag>Functional Programming</tag>
+      
+      <tag>Coq</tag>
+      
+      <tag>Automated Therom Proving</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Introduction to Quotient Spaces in Topology</title>
     <link href="/2024/04/09/Introduction-to-Quotient-Spaces-in-Topology/"/>
     <url>/2024/04/09/Introduction-to-Quotient-Spaces-in-Topology/</url>
@@ -667,13 +700,13 @@
       
       <tag>Python Grammar</tag>
       
+      <tag>Command Line</tag>
+      
       <tag>Tech</tag>
       
       <tag>Machine Learning</tag>
       
       <tag>Python Version Problem</tag>
-      
-      <tag>Command Line</tag>
       
       <tag>ChatGPT fun fact</tag>
       
@@ -814,9 +847,9 @@
       
       <tag>Python Grammar</tag>
       
-      <tag>Tech</tag>
-      
       <tag>Command Line</tag>
+      
+      <tag>Tech</tag>
       
       <tag>PyCharm Professional</tag>
       
