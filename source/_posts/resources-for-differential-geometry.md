@@ -68,3 +68,7 @@ categories:
 - [Real Projective Space, n = 1](https://www.youtube.com/watch?v=2ottRuDA5WA&t=5s&ab_channel=MathForLife) and [Real Projective Space, n=2](https://www.youtube.com/watch?v=TDtwgpQfJlc&t=474s&ab_channel=MathForLife). Really intuitive and clear introduction to projective space.
 - [Vector Bundles and Char Classes](https://www.youtube.com/watch?v=sVFWrMCfje8&list=PLCgncMh0TrCmrkvT7zW0x32flMJLuYMT5&ab_channel=HarpreetBedi). Very good series, the book [Vector Bundles & K-Theory](https://pi.math.cornell.edu/~hatcher/VBKT/VBpage.html) is recommanded here.
 - [Manifolds](https://www.youtube.com/playlist?list=PLBh2i93oe2qvRGAtgkTszX7szZDVd6jh1). Video from _The Bright Side of Mathematics_, very good YouTuber on Math. This video series introduces manifold from topological perspective, while I learned from calculus and linear algebra perspective.
+
+# Course Resources
+
+- [Berkeley Math 214: Math 214: Differentiable manifolds](https://www.ocf.berkeley.edu/~pengzhou/courses/math214/home). This couse has homework with solution, a good resource for self study.
