@@ -16,30 +16,29 @@
   <meta name="author" content="Sirui Ray Li">
   <meta name="keywords" content="testing3">
   
-    <meta name="description" content="Some resources for differential geometry">
+    <meta name="description" content="Source of the problem Basic Complex Analysis 3rd Edition by Jerrold E. Marsden and Michael J. Hoffman (1999). Exercise #11 on page 236.  Solution To find the Laurent series expansion of \(\frac{1}{e^z">
 <meta property="og:type" content="article">
-<meta property="og:title" content="resources for differential geometry">
-<meta property="og:url" content="http://blog.slray.com/2024/04/21/resources-for-differential-geometry/index.html">
+<meta property="og:title" content="Laurent Series for 1&#x2F;(e^z - 1)">
+<meta property="og:url" content="http://blog.slray.com/2024/04/29/Laurent-series-for-1-e-z-1/index.html">
 <meta property="og:site_name" content="Ray&#39;s website">
-<meta property="og:description" content="Some resources for differential geometry">
+<meta property="og:description" content="Source of the problem Basic Complex Analysis 3rd Edition by Jerrold E. Marsden and Michael J. Hoffman (1999). Exercise #11 on page 236.  Solution To find the Laurent series expansion of \(\frac{1}{e^z">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-04-21T18:20:49.000Z">
-<meta property="article:modified_time" content="2024-04-21T18:20:49.000Z">
+<meta property="og:image" content="http://blog.slray.com/2024/04/29/Laurent-series-for-1-e-z-1/Question.png">
+<meta property="article:published_time" content="2024-04-29T13:03:01.000Z">
+<meta property="article:modified_time" content="2024-04-29T13:03:01.000Z">
 <meta property="article:author" content="Sirui Ray Li">
 <meta property="article:tag" content="Math">
-<meta property="article:tag" content="Resource Share">
-<meta property="article:tag" content="differential geometry">
-<meta property="article:tag" content="Practice Problem">
-<meta property="article:tag" content="Vector Bundle">
-<meta property="article:tag" content="Notes">
-<meta property="article:tag" content="Public Courses">
+<meta property="article:tag" content="Analysis">
+<meta property="article:tag" content="Complex Analysis">
+<meta property="article:tag" content="Laurent Series">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://blog.slray.com/2024/04/29/Laurent-series-for-1-e-z-1/Question.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>resources for differential geometry - Ray&#39;s website</title>
+  <title>Laurent Series for 1/(e^z - 1) - Ray&#39;s website</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -205,7 +204,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="resources for differential geometry"></span>
+            <span id="subtitle" data-typed-text="Laurent Series for 1/(e^z - 1)"></span>
           
         </div>
 
@@ -216,8 +215,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-04-21 22:20" pubdate>
-          Sunday, April 21st 2024, 10:20 pm
+        <time datetime="2024-04-29 17:03" pubdate>
+          Monday, April 29th 2024, 5:03 pm
         </time>
       </span>
     
@@ -229,7 +228,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          2.2k words
+          1.2k words
         
       </span>
     
@@ -241,7 +240,7 @@
         
         
           <!-- compatible with older versions-->
-          18 minutes
+          10 minutes
         
       </span>
     
@@ -287,140 +286,68 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">resources for differential geometry</h1>
+            <h1 style="display: none">Laurent Series for 1/(e^z - 1)</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="textbook">Textbook</h1>
-<h2
-id="textbook-i-used-for-differential-geometry-class-at-new-york-university-abu-dhabi">TextBook
-I used for <a
-target="_blank" rel="noopener" href="https://bulletins.nyu.edu/courses/math_uh/">Differential
-Geometry</a> class at New York University, Abu Dhabi</h2>
+                <h1 id="source-of-the-problem">Source of the problem</h1>
+<p><em>Basic Complex Analysis</em> 3rd Edition by Jerrold E. Marsden and
+Michael J. Hoffman (1999). Exercise #11 on page 236.</p>
+<img src="/2024/04/29/Laurent-series-for-1-e-z-1/Question.png" srcset="/img/loading.gif" lazyload class="" title="Question on the book">
+<h1 id="solution">Solution</h1>
+<p>To find the Laurent series expansion of <span
+class="math inline">\(\frac{1}{e^z - 1}\)</span> around <span
+class="math inline">\(z = 0\)</span>, we start by expressing <span
+class="math inline">\(e^z - 1\)</span> as a power series. We know
+that:</p>
+<p><span class="math inline">\(e^z - 1 = \sum_{n=1}^{\infty}
+\frac{z^n}{n!}\)</span></p>
+<p>The Laurent series for <span class="math inline">\(\frac{1}{e^z -
+1}\)</span> with undetermined coefficients is:</p>
+<p><span class="math inline">\(\frac{1}{e^z - 1} = \frac{b_1}{z} + a_0 +
+a_1z + a_2z^2 + \ldots\)</span></p>
+<p>To find the coefficients, we multiply the two series and set the
+product equal to 1:</p>
+<p><span class="math display">\[\begin{align*}
+\frac{1}{e^z - 1} \cdot (e^z - 1) &amp;= \left( \frac{b*1}{z} + a_0 +
+a_1z + a_2z^2 + \ldots \right) \left( \sum*{n=1}^{\infty} \frac{z^n}{n!}
+\right)
+\\ &amp;=
+b_1 + (\frac{b_1}{2} + a_0)z + (\frac{b_1}{6} + \frac{a_0}{2} + a_1)z^2
++ \ldots
+\\ &amp;=
+1
+\end{align*}\]</span></p>
+<p>By equating the coefficients of the powers of <span
+class="math inline">\(z\)</span> on both sides of the equation, we get a
+system of equations:</p>
 <ul>
-<li><a
-target="_blank" rel="noopener" href="https://link.springer.com/book/10.1007/978-1-4614-7732-7">First
-Steps in Differential Geometry</a> by <em>Riemannian, Contact,
-Symplectic</em>. Part of <a
-target="_blank" rel="noopener" href="https://www.springer.com/series/0666">UTM</a> Series</li>
-<li><a
-target="_blank" rel="noopener" href="https://link.springer.com/book/10.1007/978-1-4419-7400-6">An
-Introduction to Manifolds</a> by <em><a
-target="_blank" rel="noopener" href="https://link.springer.com/search?dc.creator=Loring+W.+Tu">Loring
-W. Tu</a></em></li>
+<li>The coefficient of <span class="math inline">\(\frac{1}{z}\)</span>
+gives us <span class="math inline">\(b_1 = 1\)</span>.</li>
+<li>The constant term gives us <span class="math inline">\(\frac{b_1}{2}
++ a_0 = 0\)</span>.</li>
+<li>And so on for the higher powers of <span
+class="math inline">\(z\)</span>.</li>
 </ul>
-<h2 id="more-readings-i-found">More Readings I found</h2>
+<p>Solving these equations sequentially will give us the values of <span
+class="math inline">\(b_1\)</span>, <span
+class="math inline">\(a_0\)</span>, <span
+class="math inline">\(a_1\)</span>, etc.</p>
+<p>For example:</p>
+<p><span class="math inline">\(b_1 = 1\)</span></p>
+<p><span class="math inline">\(\frac{b_1}{2} + a_0 = 0 \implies a_0 =
+-\frac{1}{2}\)</span></p>
+<p>And you would continue this process to solve for <span
+class="math inline">\(a_1\)</span>, <span
+class="math inline">\(a_2\)</span>, and so on.</p>
+<h1 id="more-resources">More resources</h1>
 <ul>
 <li><a
-target="_blank" rel="noopener" href="https://link.springer.com/book/10.1007/978-1-4419-9982-5">Introduction
-to Smooth Manifolds</a> by <em>John M. Lee</em></li>
+target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=t47BufNTLvg&amp;ab_channel=pentagramprime">A
+YouTube Video</a></li>
 <li><a
-target="_blank" rel="noopener" href="https://link.springer.com/book/10.1007/978-3-319-04150-6">Introduction
-to Matrix Analysis and Applications</a> by <em>Fumio Hiai , Dénes
-Petz</em></li>
-<li><a
-target="_blank" rel="noopener" href="https://link.springer.com/book/10.1007/978-1-4612-1126-6">Lie
-Groups, Lie Algebras, and Their Representations</a> by <em>V. S.
-Varadarajan</em>. <a target="_blank" rel="noopener" href="https://www.springer.com/series/0136">GTM
-102</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://link.springer.com/book/10.1007/978-1-4613-9425-9">Multilinear
-Algebra</a> by <em>Werner Greub</em>. Part of <a
-target="_blank" rel="noopener" href="https://www.springer.com/series/0223">UTX</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://link.springer.com/book/10.1007/978-0-387-29403-2">Riemannian
-Geometry</a> by <em>Peter Petersen</em></li>
-<li><em>Differential Geometry of Curves and Surfaces</em> by
-<em>Manfredo P. do Carmo</em></li>
-</ul>
-<h1 id="passages-i-read">Passages I read</h1>
-<h2 id="tensor">Tensor</h2>
-<h3 id="in-chinese">In Chinese</h3>
-<ul>
-<li>"看完本文, 彻底理解张量" 系列： <a
-target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/508715535">看完本文,
-彻底理解张量(上)</a>, <a
-target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/508715717">看完本文,
-彻底理解张量(下)</a>, and <a
-target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/565588180">矢量算符是啥?
-复内积怎么升降指标? 「彻底理解张量」拓展篇</a>. I only read the first
-one (several time), cuz this is enough for my course. This is a really
-good series.</li>
-</ul>
-<h2 id="manifold">Manifold</h2>
-<h3 id="in-chinese-1">In Chinese</h3>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/622263134">几何学中最伟大的发明之一——流形，其背后的几何直觉与数学方法</a></li>
-</ul>
-<h2 id="vector-bundle-in-english">Vector Bundle (In English)</h2>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://pi.math.cornell.edu/~hatcher/VBKT/VBpage.html">Vector
-Bundles &amp; K-Theory</a> pdf can be found in the link. Very good book
-on introducing vector bundle.</li>
-</ul>
-<h1 id="videos">Videos</h1>
-<h1 id="in-chinese-2">In Chinese</h1>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1JH4y177KC/?spm_id_from=333.788&amp;vd_source=d84085799dfdb99d199a04d156250394">北京某高校《李群和李代数》</a>.
-Still updating. This is a graduate level couse, I only watched the first
-three videos. But those are enough for providing a more abstract,
-deeper, and more concise understanding of what I am learning now.</li>
-<li><a
-target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1PK4y1Q7BU/?spm_id_from=333.337.search-card.all.click&amp;vd_source=d84085799dfdb99d199a04d156250394">最美数学系列
-— 什么是微分流形</a>. Very intuitive introduction to manifold, tangent
-space, etc. The tangent space part is really helpful for me.</li>
-<li><a
-target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1o341197jS/?spm_id_from=333.337.search-card.all.click&amp;vd_source=d84085799dfdb99d199a04d156250394">Ayumu
-谈谈商空间、商映射、商拓扑</a>. Very clean, detailed, easy-to-understand
-approach for understand Quotient space, my blog <a
-href="https://blog.slray.com/2024/04/09/Introduction-to-Quotient-Spaces-in-Topology/">Introduction
-to Quotient Spaces in Topology</a> is translated from this video.</li>
-</ul>
-<h1 id="in-english-youtube">In English, YouTube</h1>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=8ptMTLzV4-I&amp;list=PLJHszsWbB6hrkmmq57lX8BV-o-YIOFsiG&amp;ab_channel=eigenchris">Tensors
-For Beginners</a>. The Best video introducing tensors I've seen so far.
-I watched this several times on airplane. Really helpful.</li>
-<li><a
-target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=ABQ0w08nTBQ&amp;t=14s&amp;ab_channel=FermionPhysics">Manifolds
-Explained in 5 Levels of Difficulty</a>. A general introduction to
-manifold.</li>
-<li><a
-target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=zIjBArHTPZ4&amp;ab_channel=GeometryForPhysicists">What
-is a manifold?</a>. A general introduction to manifold. Very intuitive
-introduction.</li>
-<li><a
-target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=CEXSSz0gZI4&amp;list=PLRlVmXqzHjUQHEx63ZFxV-0Ortgf-rpJo&amp;ab_channel=XylyXylyX">What
-is a Manifold?</a>. Longer, more regious introduction.</li>
-<li><a
-target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=2ottRuDA5WA&amp;t=5s&amp;ab_channel=MathForLife">Real
-Projective Space, n = 1</a> and <a
-target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=TDtwgpQfJlc&amp;t=474s&amp;ab_channel=MathForLife">Real
-Projective Space, n=2</a>. Really intuitive and clear introduction to
-projective space.</li>
-<li><a
-target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=sVFWrMCfje8&amp;list=PLCgncMh0TrCmrkvT7zW0x32flMJLuYMT5&amp;ab_channel=HarpreetBedi">Vector
-Bundles and Char Classes</a>. Very good series, the book <a
-target="_blank" rel="noopener" href="https://pi.math.cornell.edu/~hatcher/VBKT/VBpage.html">Vector
-Bundles &amp; K-Theory</a> is recommanded here.</li>
-<li><a
-target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLBh2i93oe2qvRGAtgkTszX7szZDVd6jh1">Manifolds</a>.
-Video from <em>The Bright Side of Mathematics</em>, very good YouTuber
-on Math. This video series introduces manifold from topological
-perspective, while I learned from calculus and linear algebra
-perspective.</li>
-</ul>
-<h1 id="course-resources">Course Resources</h1>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://www.ocf.berkeley.edu/~pengzhou/courses/math214/home">Berkeley
-Math 214: Math 214: Differentiable manifolds</a>. This couse has
-homework with solution, a good resource for self study.</li>
+target="_blank" rel="noopener" href="https://math.stackexchange.com/questions/1006615/laurent-series-expansion-of-1-ez-1">math.stackexchang</a></li>
 </ul>
 
                 
@@ -445,8 +372,22 @@ homework with solution, a good resource for self study.</li>
   
     <span>></span>
     
-  <a href="/categories/Daily-Logs/Resources-Share/" class="category-chain-item">Resources Share</a>
+  <a href="/categories/Daily-Logs/Math/" class="category-chain-item">Math</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/Daily-Logs/Math/Analysis/" class="category-chain-item">Analysis</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Daily-Logs/Math/Analysis/Complex-Analysis/" class="category-chain-item">Complex Analysis</a>
+  
+  
+
+  
+
   
 
   
@@ -464,17 +405,11 @@ homework with solution, a good resource for self study.</li>
       
         <a href="/tags/Math/">#Math</a>
       
-        <a href="/tags/Resource-Share/">#Resource Share</a>
+        <a href="/tags/Analysis/">#Analysis</a>
       
-        <a href="/tags/differential-geometry/">#differential geometry</a>
+        <a href="/tags/Complex-Analysis/">#Complex Analysis</a>
       
-        <a href="/tags/Practice-Problem/">#Practice Problem</a>
-      
-        <a href="/tags/Vector-Bundle/">#Vector Bundle</a>
-      
-        <a href="/tags/Notes/">#Notes</a>
-      
-        <a href="/tags/Public-Courses/">#Public Courses</a>
+        <a href="/tags/Laurent-Series/">#Laurent Series</a>
       
     </div>
   
@@ -486,8 +421,8 @@ homework with solution, a good resource for self study.</li>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>resources for differential geometry</div>
-      <div>http://blog.slray.com/2024/04/21/resources-for-differential-geometry/</div>
+      <div>Laurent Series for 1/(e^z - 1)</div>
+      <div>http://blog.slray.com/2024/04/29/Laurent-series-for-1-e-z-1/</div>
     </div>
     <div class="license-meta">
       
@@ -499,7 +434,7 @@ homework with solution, a good resource for self study.</li>
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>April 21, 2024</div>
+          <div>April 29, 2024</div>
         </div>
       
       
@@ -531,18 +466,12 @@ homework with solution, a good resource for self study.</li>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/04/29/Laurent-series-for-1-e-z-1/" title="Laurent Series for 1/(e^z - 1)">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Laurent Series for 1/(e^z - 1)</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/04/21/resources-for-automated-therom-proving/" title="resources for automated therom proving">
-                        <span class="hidden-mobile">resources for automated therom proving</span>
+                      <a href="/2024/04/21/resources-for-differential-geometry/" title="resources for differential geometry">
+                        <span class="hidden-mobile">resources for differential geometry</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -599,6 +528,12 @@ homework with solution, a good resource for self study.</li>
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -816,6 +751,49 @@ homework with solution, a good resource for self study.</li>
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

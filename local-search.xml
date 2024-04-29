@@ -4,6 +4,43 @@
   
   
   <entry>
+    <title>Laurent Series for 1/(e^z - 1)</title>
+    <link href="/2024/04/29/Laurent-series-for-1-e-z-1/"/>
+    <url>/2024/04/29/Laurent-series-for-1-e-z-1/</url>
+    
+    <content type="html"><![CDATA[<h1 id="source-of-the-problem">Source of the problem</h1><p><em>Basic Complex Analysis</em> 3rd Edition by Jerrold E. Marsden andMichael J. Hoffman (1999). Exercise #11 on page 236.</p><img src="/2024/04/29/Laurent-series-for-1-e-z-1/Question.png" class="" title="Question on the book"><h1 id="solution">Solution</h1><p>To find the Laurent series expansion of <spanclass="math inline">\(\frac{1}{e^z - 1}\)</span> around <spanclass="math inline">\(z = 0\)</span>, we start by expressing <spanclass="math inline">\(e^z - 1\)</span> as a power series. We knowthat:</p><p><span class="math inline">\(e^z - 1 = \sum_{n=1}^{\infty}\frac{z^n}{n!}\)</span></p><p>The Laurent series for <span class="math inline">\(\frac{1}{e^z -1}\)</span> with undetermined coefficients is:</p><p><span class="math inline">\(\frac{1}{e^z - 1} = \frac{b_1}{z} + a_0 +a_1z + a_2z^2 + \ldots\)</span></p><p>To find the coefficients, we multiply the two series and set theproduct equal to 1:</p><p><span class="math display">\[\begin{align*}\frac{1}{e^z - 1} \cdot (e^z - 1) &amp;= \left( \frac{b*1}{z} + a_0 +a_1z + a_2z^2 + \ldots \right) \left( \sum*{n=1}^{\infty} \frac{z^n}{n!}\right)\\ &amp;=b_1 + (\frac{b_1}{2} + a_0)z + (\frac{b_1}{6} + \frac{a_0}{2} + a_1)z^2+ \ldots\\ &amp;=1\end{align*}\]</span></p><p>By equating the coefficients of the powers of <spanclass="math inline">\(z\)</span> on both sides of the equation, we get asystem of equations:</p><ul><li>The coefficient of <span class="math inline">\(\frac{1}{z}\)</span>gives us <span class="math inline">\(b_1 = 1\)</span>.</li><li>The constant term gives us <span class="math inline">\(\frac{b_1}{2}+ a_0 = 0\)</span>.</li><li>And so on for the higher powers of <spanclass="math inline">\(z\)</span>.</li></ul><p>Solving these equations sequentially will give us the values of <spanclass="math inline">\(b_1\)</span>, <spanclass="math inline">\(a_0\)</span>, <spanclass="math inline">\(a_1\)</span>, etc.</p><p>For example:</p><p><span class="math inline">\(b_1 = 1\)</span></p><p><span class="math inline">\(\frac{b_1}{2} + a_0 = 0 \implies a_0 =-\frac{1}{2}\)</span></p><p>And you would continue this process to solve for <spanclass="math inline">\(a_1\)</span>, <spanclass="math inline">\(a_2\)</span>, and so on.</p><h1 id="more-resources">More resources</h1><ul><li><ahref="https://www.youtube.com/watch?v=t47BufNTLvg&amp;ab_channel=pentagramprime">AYouTube Video</a></li><li><ahref="https://math.stackexchange.com/questions/1006615/laurent-series-expansion-of-1-ez-1">math.stackexchang</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Daily Logs</category>
+      
+      <category>Math</category>
+      
+      <category>Analysis</category>
+      
+      <category>Complex Analysis</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Math</tag>
+      
+      <tag>Analysis</tag>
+      
+      <tag>Complex Analysis</tag>
+      
+      <tag>Laurent Series</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>resources for differential geometry</title>
     <link href="/2024/04/21/resources-for-differential-geometry/"/>
     <url>/2024/04/21/resources-for-differential-geometry/</url>
@@ -739,13 +776,13 @@
       
       <tag>Python Grammar</tag>
       
+      <tag>Command Line</tag>
+      
       <tag>Tech</tag>
       
       <tag>Machine Learning</tag>
       
       <tag>Python Version Problem</tag>
-      
-      <tag>Command Line</tag>
       
       <tag>ChatGPT fun fact</tag>
       
@@ -886,9 +923,9 @@
       
       <tag>Python Grammar</tag>
       
-      <tag>Tech</tag>
-      
       <tag>Command Line</tag>
+      
+      <tag>Tech</tag>
       
       <tag>PyCharm Professional</tag>
       
