@@ -4,6 +4,43 @@
   
   
   <entry>
+    <title>Filling Gaps in Time Series</title>
+    <link href="/2024/05/07/Filling-Gaps-in-Time-Series/"/>
+    <url>/2024/05/07/Filling-Gaps-in-Time-Series/</url>
+    
+    <content type="html"><![CDATA[<p>I implemented this algorithm for filling gaps in a time series data.The full Repository is here: <ahref="https://github.com/LiSiruiRay/Filling-gaps-in-chaotic-time-series">Repo</a>,where you can check the paper my Professor Paparella published, based onwhich this algorithm is implemented.</p><p>Here is a good-looking demo.</p><p>see <a href="filling_gap_implement_demo.html">this</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Daily Logs</category>
+      
+      <category>Math</category>
+      
+      <category>Numerical Method</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Math</tag>
+      
+      <tag>Numerical Method</tag>
+      
+      <tag>Applied Math</tag>
+      
+      <tag>Time Series</tag>
+      
+      <tag>Algorithms</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Laurent Series for 1/(e^z - 1)</title>
     <link href="/2024/04/29/Laurent-series-for-1-e-z-1/"/>
     <url>/2024/04/29/Laurent-series-for-1-e-z-1/</url>
@@ -776,13 +813,13 @@
       
       <tag>Python Grammar</tag>
       
-      <tag>Command Line</tag>
-      
       <tag>Tech</tag>
       
       <tag>Machine Learning</tag>
       
       <tag>Python Version Problem</tag>
+      
+      <tag>Command Line</tag>
       
       <tag>ChatGPT fun fact</tag>
       
@@ -923,9 +960,9 @@
       
       <tag>Python Grammar</tag>
       
-      <tag>Command Line</tag>
-      
       <tag>Tech</tag>
+      
+      <tag>Command Line</tag>
       
       <tag>PyCharm Professional</tag>
       
