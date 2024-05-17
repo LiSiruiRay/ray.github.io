@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>Comments on Differential Geometry Class</title>
+    <link href="/2024/05/17/Comments-on-Differential-Geometry-Class/"/>
+    <url>/2024/05/17/Comments-on-Differential-Geometry-Class/</url>
+    
+    <content type="html"><![CDATA[<p>In the semester of 2024 Spring, I took <ahref="https://bulletins.nyu.edu/courses/math_uh/">DifferentialGeometry</a> by Professor Hisham Sati.</p><p>The course is undoubtedly intense and covers a broad range ofadvanced topics. Professor Sati has designed it with the rigor of agraduate-level course, as he himself mentioned.</p><p>Professor Sati is both personable and generous in his gradingapproach. However, I sometimes feel that the course could be betterprepared. His method of teaching primarily involves transcribing notesdirectly from his materials to the board. Interestingly, my peers havenoted that his approach in topology was more engaging.</p><p>All course notes are handwritten, which was unexpected. It's apparentthat Professor Sati invests considerable effort into preparing thesenotes, though they occasionally contain typos and may not be as polishedas published textbooks. Nevertheless, his handwriting is clear, and hisexamples are easy to understand. The direct transcription of notes tothe board can be challenging to follow at times, which sometimes affectsmy ability to stay engaged. Additionally, while the notes are concise,they are not always conducive to independent study. This prompted me tocreate several blogs specifically to discuss and clarify concepts indifferential geometry. <ahref="https://blog.slray.com/2024/04/21/resources-for-differential-geometry/">Resources</a>,<ahref="https://blog.slray.com/2024/04/09/Introduction-to-Quotient-Spaces-in-Topology/">QuotienSpace</a>, etc.</p><p>Professor Sati tailored the course content to be accessible byintegrating elements of linear algebra and multivariable calculus.However, despite not requiring algebra, category theory, or topology asprerequisites, these topics are frequently referenced, which can beconfusing. For instance, terms like 'homeomorphism' and 'isomorphism'still puzzle me.</p><p>The course structure includes:</p><ul><li>Review of linear algebra and calculus 3</li><li>Implicit function theorem</li><li>Extension of multivariable calculus to matrix functions, coveringgeneral linear, orthogonal, and special orthogonal groups, amongothers</li><li>Multilinear algebra and tensors</li><li>Manifolds: from extrinsic to intrinsic concepts</li><li>Differential maps between manifolds</li><li>Tangent spaces</li><li>Immersions, submersions, and submanifolds</li><li>Vector bundles, including fiber bundles and vector fields onmanifolds</li><li>Differential forms</li><li>Riemannian geometry</li><li>Riemannian functionals and general relativity</li></ul><p>This structure reflects the complexity and depth of the topicscovered in the course.</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Daily Logs</category>
+      
+      <category>Courses Review</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Courses Comments</tag>
+      
+      <tag>Courses Review</tag>
+      
+      <tag>differential geometry</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Filling Gaps in Time Series</title>
     <link href="/2024/05/07/Filling-Gaps-in-Time-Series/"/>
     <url>/2024/05/07/Filling-Gaps-in-Time-Series/</url>
@@ -98,9 +129,9 @@
       
       <tag>Math</tag>
       
-      <tag>Resource Share</tag>
-      
       <tag>differential geometry</tag>
+      
+      <tag>Resource Share</tag>
       
       <tag>Practice Problem</tag>
       
