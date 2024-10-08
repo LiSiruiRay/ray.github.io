@@ -4,6 +4,41 @@
   
   
   <entry>
+    <title>resources for graduate real variable</title>
+    <link href="/2024/10/08/resources-for-graduate-real-variable/"/>
+    <url>/2024/10/08/resources-for-graduate-real-variable/</url>
+    
+    <content type="html"><![CDATA[<p>I am taking the MATH-GA.2430-001 Real Variables I, by TristanBuckmaster, 2024 Fall.</p><p>The textbook we used is "Real Analysis Measure Theory, Integrationand Hilbert Spaces (Elias M. Stein, Rami Shakarchi)".</p><p>Here are some good complementary materials:</p><ul><li>MIT's functional analysis: <ahref="https://ocw.mit.edu/courses/18-102-introduction-to-functional-analysis-spring-2021/pages/syllabus/">FunctionalAnalysis</a></li><li>I also added some comments on the notes, based on MIT's course,which is also open sourced: <ahref="https://github.com/LiSiruiRay/functional_analysis/blob/main/main.pdf">Mynotes</a></li></ul><h1 id="detailed-resources">Detailed resources</h1><ul><li>If you can understand Chinese, here is a good video introducingmeasure according to stein: <ahref="https://www.bilibili.com/video/BV1Nc41157FB/?spm_id_from=333.337.search-card.all.click&amp;vd_source=d84085799dfdb99d199a04d156250394">MeasureTheory</a></li><li>While learning "Littlewood’s three principles" (Page 33 of Stein), Iwatched <ahref="https://www.youtube.com/watch?v=-KPgRzsnG5k&amp;ab_channel=Problemathic">thisvideo</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Daily Logs</category>
+      
+      <category>Resources Share</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Math</tag>
+      
+      <tag>Analysis</tag>
+      
+      <tag>Real Analysis</tag>
+      
+      <tag>Functional Analysis</tag>
+      
+      <tag>Measure Theory</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Comments on Differential Geometry Class</title>
     <link href="/2024/05/17/Comments-on-Differential-Geometry-Class/"/>
     <url>/2024/05/17/Comments-on-Differential-Geometry-Class/</url>
@@ -629,13 +664,13 @@
       
       <tag>LEAN</tag>
       
-      <tag>elan</tag>
-      
       <tag>automated theorem proving</tag>
       
       <tag>Programming Tips</tag>
       
       <tag>arm based system</tag>
+      
+      <tag>elan</tag>
       
     </tags>
     
@@ -668,11 +703,11 @@
       
       <tag>automated theorem proving</tag>
       
+      <tag>Homebrew</tag>
+      
       <tag>Programming Tips</tag>
       
       <tag>arm based system</tag>
-      
-      <tag>Homebrew</tag>
       
     </tags>
     
@@ -705,11 +740,11 @@
       
       <tag>automated theorem proving</tag>
       
+      <tag>Homebrew</tag>
+      
       <tag>Programming Tips</tag>
       
       <tag>arm based system</tag>
-      
-      <tag>Homebrew</tag>
       
     </tags>
     
