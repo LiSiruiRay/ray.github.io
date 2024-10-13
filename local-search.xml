@@ -8,7 +8,7 @@
     <link href="/2024/10/13/deploy-with-v0-dev/"/>
     <url>/2024/10/13/deploy-with-v0-dev/</url>
     
-    <content type="html"><![CDATA[<p>I am recently attending hackathon at Harvard. I was doing a projecton personal assistant called <ahref="https://github.com/LiSiruiRay/moodeng">moodeng</a>, in the processI was trying to use AI tools as much as possible.</p><p>I started trying <a href="https://www.cursor.com/">cursor</a> buthaven't get chance to delve deep.</p><p>I used a lot of <a href="https://v0.dev/">v0.dev</a> since I suck atfront end, and this really took me a while to debug and deploy. The toolitself is powerful but it require you to read the correct reources andfix some subtle bug: - Don't ask ChatGPT. Their knowledge is too old. Itried doing this for several days but it won't work. Yet O1 somehowindeed provided some <ahref="https://chatgpt.com/share/6709f8d2-b314-8013-be0d-aedeeffb7c4d">usefulguidence</a>.</p><p>If you have no clue where to go. You never deployed any react app,then I suggest you to ask GPT cuz it caters every level of developer.Yet if you have some general idea of Javascript and have a touch onreact app before, I recommend you to read those: -https://v0.dev/docs#adding-v0-components -https://ui.shadcn.com/docs/installation/manual -https://ui.shadcn.com/docs/cli -https://ui.shadcn.com/docs/components/toast</p>]]></content>
+    <content type="html"><![CDATA[<p>I am recently attending hackathon at Harvard. I was doing a projecton personal assistant called <ahref="https://github.com/LiSiruiRay/moodeng">moodeng</a>, in the processI was trying to use AI tools as much as possible.</p><p>I started trying <a href="https://www.cursor.com/">cursor</a> buthaven't get chance to delve deep.</p><p>I used a lot of <a href="https://v0.dev/">v0.dev</a> since I suck atfront end, and this really took me a while to debug and deploy. The toolitself is powerful but it require you to read the correct reources andfix some subtle bug: - Don't ask ChatGPT. Their knowledge is too old. Itried doing this for several days but it won't work. Yet O1 somehowindeed provided some <ahref="https://chatgpt.com/share/6709f8d2-b314-8013-be0d-aedeeffb7c4d">usefulguidence</a>.</p><p>If you have no clue where to go. You never deployed any react app,then I suggest you to ask GPT cuz it caters every level of developer.Yet if you have some general idea of Javascript and have a touch onreact app before, I recommend you to read those:</p><ul><li><a href="https://v0.dev/docs#adding-v0-components">docs</a></li><li><a href="https://ui.shadcn.com/docs/installation/manual">shadcn:installation</a></li><li><a href="https://ui.shadcn.com/docs/cli">shadcn: cli</a></li><li><a href="https://ui.shadcn.com/docs/components/toast">shadcn:toast</a></li></ul><p>Also, remember sometimes v0 generate the code like <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">import</span> &#123; useState &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span><br><span class="hljs-keyword">import</span> &#123; format, addDays, isSameDay, parseISO &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;date-fns&#x27;</span><br><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">Button</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@/components/ui/button&quot;</span><br><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">ScrollArea</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@/components/ui/scroll-area&quot;</span><br><span class="hljs-keyword">import</span> &#123; toast &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@/components/ui/use-toast&quot;</span><br></code></pre></td></tr></table></figure></p><p>For the code like these, you need to do the <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npx shadcn@latest add scroll-area  use-toast<br></code></pre></td></tr></table></figure> and<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npx shadcn@latest add toast<br></code></pre></td></tr></table></figure></p><p>Don't trust ChatGPT's suggest for doing<code>npx shadcn-ui@latest init</code>!!</p><p>After that, you need to change the line <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">import</span> &#123; toast &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@/components/ui/use-toast&quot;</span><br></code></pre></td></tr></table></figure> to<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">import</span> &#123; toast &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@/hooks/use-toast&quot;</span>;<br><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">Toaster</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@/components/ui/toaster&quot;</span>;<br></code></pre></td></tr></table></figure></p>]]></content>
     
     
     
@@ -675,13 +675,13 @@
       
       <tag>Learning Log</tag>
       
-      <tag>Programming Tips</tag>
-      
       <tag>LEAN</tag>
       
       <tag>elan</tag>
       
       <tag>automated theorem proving</tag>
+      
+      <tag>Programming Tips</tag>
       
       <tag>arm based system</tag>
       
@@ -712,11 +712,11 @@
       
       <tag>Learning Log</tag>
       
-      <tag>Programming Tips</tag>
-      
       <tag>LEAN</tag>
       
       <tag>automated theorem proving</tag>
+      
+      <tag>Programming Tips</tag>
       
       <tag>arm based system</tag>
       
@@ -749,11 +749,11 @@
       
       <tag>Learning Log</tag>
       
-      <tag>Programming Tips</tag>
-      
       <tag>LEAN</tag>
       
       <tag>automated theorem proving</tag>
+      
+      <tag>Programming Tips</tag>
       
       <tag>arm based system</tag>
       
@@ -786,19 +786,19 @@
     
     <tags>
       
+      <tag>Learning Log</tag>
+      
+      <tag>Programming Tips</tag>
+      
       <tag>Intern</tag>
       
       <tag>Intern Log</tag>
-      
-      <tag>Learning Log</tag>
       
       <tag>Intern At 300K</tag>
       
       <tag>Python</tag>
       
       <tag>Python Grammar</tag>
-      
-      <tag>Programming Tips</tag>
       
       <tag>UnitTest</tag>
       
@@ -835,11 +835,13 @@
     
     <tags>
       
+      <tag>Learning Log</tag>
+      
+      <tag>Programming Tips</tag>
+      
       <tag>Intern</tag>
       
       <tag>Intern Log</tag>
-      
-      <tag>Learning Log</tag>
       
       <tag>Intern At 300K</tag>
       
@@ -848,8 +850,6 @@
       <tag>Python Grammar</tag>
       
       <tag>Command Line</tag>
-      
-      <tag>Programming Tips</tag>
       
     </tags>
     
@@ -878,11 +878,13 @@
     
     <tags>
       
+      <tag>Learning Log</tag>
+      
+      <tag>Programming Tips</tag>
+      
       <tag>Intern</tag>
       
       <tag>Intern Log</tag>
-      
-      <tag>Learning Log</tag>
       
       <tag>Intern At 300K</tag>
       
@@ -897,8 +899,6 @@
       <tag>Python Version Problem</tag>
       
       <tag>Command Line</tag>
-      
-      <tag>Programming Tips</tag>
       
       <tag>ChatGPT fun fact</tag>
       
@@ -929,11 +929,11 @@
     
     <tags>
       
+      <tag>Learning Log</tag>
+      
       <tag>Intern</tag>
       
       <tag>Intern Log</tag>
-      
-      <tag>Learning Log</tag>
       
       <tag>Intern At 300K</tag>
       
@@ -972,11 +972,11 @@
     
     <tags>
       
+      <tag>Learning Log</tag>
+      
       <tag>Intern</tag>
       
       <tag>Intern Log</tag>
-      
-      <tag>Learning Log</tag>
       
       <tag>Intern At 300K</tag>
       
@@ -1025,11 +1025,13 @@
     
     <tags>
       
+      <tag>Learning Log</tag>
+      
+      <tag>Programming Tips</tag>
+      
       <tag>Intern</tag>
       
       <tag>Intern Log</tag>
-      
-      <tag>Learning Log</tag>
       
       <tag>Intern At 300K</tag>
       
@@ -1040,8 +1042,6 @@
       <tag>Tech</tag>
       
       <tag>Command Line</tag>
-      
-      <tag>Programming Tips</tag>
       
       <tag>PyCharm Professional</tag>
       
@@ -1080,11 +1080,11 @@
     
     <tags>
       
+      <tag>Learning Log</tag>
+      
       <tag>Intern</tag>
       
       <tag>Intern Log</tag>
-      
-      <tag>Learning Log</tag>
       
       <tag>Intern At 300K</tag>
       
@@ -1135,11 +1135,11 @@
     
     <tags>
       
+      <tag>Learning Log</tag>
+      
       <tag>Intern</tag>
       
       <tag>Intern Log</tag>
-      
-      <tag>Learning Log</tag>
       
       <tag>Intern At 300K</tag>
       
@@ -1188,11 +1188,11 @@
     
     <tags>
       
+      <tag>Learning Log</tag>
+      
       <tag>Intern</tag>
       
       <tag>Intern Log</tag>
-      
-      <tag>Learning Log</tag>
       
       <tag>Intern At 300K</tag>
       

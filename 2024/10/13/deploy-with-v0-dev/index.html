@@ -223,7 +223,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          848 words
+          1.5k words
         
       </span>
     
@@ -235,7 +235,7 @@
         
         
           <!-- compatible with older versions-->
-          8 minutes
+          13 minutes
         
       </span>
     
@@ -303,11 +303,22 @@ guidence</a>.</p>
 <p>If you have no clue where to go. You never deployed any react app,
 then I suggest you to ask GPT cuz it caters every level of developer.
 Yet if you have some general idea of Javascript and have a touch on
-react app before, I recommend you to read those: -
-https://v0.dev/docs#adding-v0-components -
-https://ui.shadcn.com/docs/installation/manual -
-https://ui.shadcn.com/docs/cli -
-https://ui.shadcn.com/docs/components/toast</p>
+react app before, I recommend you to read those:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://v0.dev/docs#adding-v0-components">docs</a></li>
+<li><a target="_blank" rel="noopener" href="https://ui.shadcn.com/docs/installation/manual">shadcn:
+installation</a></li>
+<li><a target="_blank" rel="noopener" href="https://ui.shadcn.com/docs/cli">shadcn: cli</a></li>
+<li><a target="_blank" rel="noopener" href="https://ui.shadcn.com/docs/components/toast">shadcn:
+toast</a></li>
+</ul>
+<p>Also, remember sometimes v0 generate the code like <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">import</span> &#123; useState &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span><br><span class="hljs-keyword">import</span> &#123; format, addDays, isSameDay, parseISO &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;date-fns&#x27;</span><br><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">Button</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@/components/ui/button&quot;</span><br><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">ScrollArea</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@/components/ui/scroll-area&quot;</span><br><span class="hljs-keyword">import</span> &#123; toast &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@/components/ui/use-toast&quot;</span><br></code></pre></td></tr></table></figure></p>
+<p>For the code like these, you need to do the <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npx shadcn@latest add scroll-area  use-toast<br></code></pre></td></tr></table></figure> and
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npx shadcn@latest add toast<br></code></pre></td></tr></table></figure></p>
+<p>Don't trust ChatGPT's suggest for doing
+<code>npx shadcn-ui@latest init</code>!!</p>
+<p>After that, you need to change the line <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">import</span> &#123; toast &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@/components/ui/use-toast&quot;</span><br></code></pre></td></tr></table></figure> to
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">import</span> &#123; toast &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@/hooks/use-toast&quot;</span>;<br><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">Toaster</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@/components/ui/toaster&quot;</span>;<br></code></pre></td></tr></table></figure></p>
 
                 
               </div>
