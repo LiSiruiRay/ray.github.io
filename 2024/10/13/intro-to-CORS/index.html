@@ -1,0 +1,887 @@
+
+
+<!DOCTYPE html>
+<html lang="en,zh-CN,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/ray.jpg">
+  <link rel="icon" href="/ray.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Sirui Ray Li">
+  <meta name="keywords" content="testing3">
+  
+    <meta name="description" content="I met a prolem with CORS while developing the frontend. Here is how I step by step get deeper and deeper understanding of CORS.  Understanding CORS: A Developer&#39;s Journey from Confusion to Clarity As">
+<meta property="og:type" content="article">
+<meta property="og:title" content="intro to CORS (Cross-Origin Resource Sharing)">
+<meta property="og:url" content="http://blog.slray.com/2024/10/13/intro-to-CORS/index.html">
+<meta property="og:site_name" content="Ray&#39;s website">
+<meta property="og:description" content="I met a prolem with CORS while developing the frontend. Here is how I step by step get deeper and deeper understanding of CORS.  Understanding CORS: A Developer&#39;s Journey from Confusion to Clarity As">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-10-13T05:55:55.000Z">
+<meta property="article:modified_time" content="2024-10-13T05:55:55.000Z">
+<meta property="article:author" content="Sirui Ray Li">
+<meta property="article:tag" content="testing3">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>intro to CORS (Cross-Origin Resource Sharing) - Ray&#39;s website</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.slray.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ray&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="intro to CORS (Cross-Origin Resource Sharing)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-10-13 01:55" pubdate>
+          Sunday, October 13th 2024, 1:55 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          7.8k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          65 minutes
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          visit: <span id="busuanzi_value_page_pv"></span> times
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">intro to CORS (Cross-Origin Resource Sharing)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <blockquote>
+<p>I met a prolem with CORS while developing the frontend. Here is how I
+step by step get deeper and deeper understanding of CORS.</p>
+</blockquote>
+<h1
+id="understanding-cors-a-developers-journey-from-confusion-to-clarity">Understanding
+CORS: A Developer's Journey from Confusion to Clarity</h1>
+<p>As web developers, we often encounter perplexing issues that
+challenge our understanding of how web technologies interact. One such
+topic that frequently causes confusion is <strong>CORS (Cross-Origin
+Resource Sharing)</strong>. In this blog post, we'll explore CORS
+through a real-world conversation between a developer (let's call him
+Alex) and an experienced mentor. This dialogue will help demystify CORS,
+explain why it's essential, and provide practical solutions to common
+problems.</p>
+<hr />
+<h2 id="the-initial-challenge-fetching-data-in-a-react-app">The Initial
+Challenge: Fetching Data in a React App</h2>
+<p><strong>Alex:</strong> <em>"I'm building a simple React app that
+fetches data from <code>https://planner.slray.com/test_summarize</code>
+and displays it. However, I'm running into CORS issues. It works fine
+when I use Python's <code>requests</code> library, but I get errors in
+my React app. What is CORS, and why is this happening?"</em></p>
+<p><strong>Mentor:</strong> <em>"Great question! CORS is a security
+feature implemented by browsers to control how web pages make requests
+to a different domain than the one that served the web page. Let's dive
+into why you're experiencing this issue in your React app but not when
+using Python's <code>requests</code> library."</em></p>
+<hr />
+<h2 id="what-is-cors">What is CORS?</h2>
+<p>CORS stands for <strong>Cross-Origin Resource Sharing</strong>. It's
+a security mechanism enforced by web browsers to restrict web pages from
+making requests to a different domain (origin) than the one that served
+the web page unless explicitly allowed.</p>
+<ul>
+<li><strong>Origin Definition:</strong> An origin is defined by the
+<strong>protocol</strong> (http or https), <strong>domain</strong>, and
+<strong>port</strong> of a URL.</li>
+<li><strong>Same-Origin Policy:</strong> By default, browsers implement
+the same-origin policy, which restricts scripts running on one origin
+from accessing data from a different origin.</li>
+</ul>
+<hr />
+<h2 id="why-does-cors-affect-react-apps-but-not-python-scripts">Why Does
+CORS Affect React Apps but Not Python Scripts?</h2>
+<p><strong>Alex:</strong> <em>"So why does the browser block my React
+app but not the Python script?"</em></p>
+<p><strong>Mentor:</strong> <em>"That's because the browser enforces the
+same-origin policy, while Python's <code>requests</code> library
+doesn't. Let's break it down."</em></p>
+<h3 id="browser-environment-react-app">Browser Environment (React
+App)</h3>
+<ul>
+<li><strong>Your React App Origin:</strong>
+<code>http://localhost:3000</code></li>
+<li><strong>API Origin:</strong>
+<code>https://planner.slray.com</code></li>
+<li><strong>Issue:</strong> Since these are different origins, the
+browser blocks the request unless the server allows it via CORS
+headers.</li>
+</ul>
+<h3 id="python-environment">Python Environment</h3>
+<ul>
+<li><strong>Python Scripts:</strong> Run outside the browser, so they're
+not subject to the same-origin policy.</li>
+<li><strong>Result:</strong> Python can successfully make requests to
+any domain without restrictions.</li>
+</ul>
+<hr />
+<h2 id="understanding-the-cors-error">Understanding the CORS Error</h2>
+<p>When your React app tries to fetch data, you might see an error
+like:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">Access</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">fetch</span> at <span class="hljs-string">&#x27;https://planner.slray.com/test_summarize&#x27;</span> <span class="hljs-keyword">from</span> origin <span class="hljs-string">&#x27;http://localhost:3000&#x27;</span> has been blocked <span class="hljs-keyword">by</span> CORS <span class="hljs-keyword">policy</span>: <span class="hljs-keyword">No</span> <span class="hljs-string">&#x27;Access-Control-Allow-Origin&#x27;</span> <span class="hljs-keyword">header</span> <span class="hljs-keyword">is</span> present <span class="hljs-keyword">on</span> the requested resource.<br></code></pre></td></tr></table></figure>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li><strong>Browser Blocks the Request:</strong> Due to security
+policies.</li>
+<li><strong>No CORS Headers:</strong> The server doesn't include headers
+to allow cross-origin requests.</li>
+</ul>
+<hr />
+<h2 id="solving-the-cors-issue">Solving the CORS Issue</h2>
+<p><strong>Alex:</strong> <em>"I see. So how can I fix this? Do I need
+to change the backend code?"</em></p>
+<p><strong>Mentor:</strong> <em>"Exactly. You need to configure the
+server to include the necessary CORS headers in its responses. This
+tells the browser it's okay to accept requests from your React
+app."</em></p>
+<h3 id="modifying-the-flask-backend">Modifying the Flask Backend</h3>
+<p><strong>Your Flask Server Code:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask<br><span class="hljs-keyword">from</span> flask_cors <span class="hljs-keyword">import</span> CORS<br><br>app = Flask(__name__)<br>CORS(app)  <span class="hljs-comment"># Enable CORS</span><br><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/test_summarize&#x27;</span></span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test_summarize</span>():<br>    data = &#123;<br>        <span class="hljs-string">&#x27;message&#x27;</span>: <span class="hljs-string">&#x27;Hello from the server!&#x27;</span>,<br>        <span class="hljs-comment"># Include your actual data here</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> jsonify(data)  <span class="hljs-comment"># Ensure the response is in JSON format</span><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    app.run()<br></code></pre></td></tr></table></figure>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li><strong>CORS(app):</strong> Enables CORS for all routes, allowing
+your React app to access the API.</li>
+<li><strong>jsonify:</strong> Ensures the data is properly formatted as
+JSON.</li>
+</ul>
+<h3 id="testing-the-fix">Testing the Fix</h3>
+<ol type="1">
+<li><strong>Restart Your Flask Server:</strong> Apply the changes.</li>
+<li><strong>Refresh Your React App:</strong> The CORS error should be
+resolved.</li>
+<li><strong>Check Browser Console:</strong> Ensure no CORS errors are
+present.</li>
+</ol>
+<hr />
+<h2 id="understanding-why-browsers-enforce-cors">Understanding Why
+Browsers Enforce CORS</h2>
+<p><strong>Alex:</strong> <em>"Why do browsers enforce CORS? What's the
+harm if they don't?"</em></p>
+<p><strong>Mentor:</strong> <em>"Great question. Let's explore what
+could go wrong without CORS."</em></p>
+<h3 id="potential-security-risks-without-cors">Potential Security Risks
+Without CORS</h3>
+<h4 id="cross-site-request-forgery-csrf">Cross-Site Request Forgery
+(CSRF)</h4>
+<ul>
+<li><strong>Scenario:</strong>
+<ul>
+<li>You're logged into your bank account
+(<code>https://mybank.com</code>).</li>
+<li>You visit a malicious site (<code>http://evil.com</code>).</li>
+</ul></li>
+<li><strong>Risk:</strong>
+<ul>
+<li><code>evil.com</code> could send requests to <code>mybank.com</code>
+using your credentials, performing unauthorized actions like
+transferring money.</li>
+</ul></li>
+<li><strong>CORS Protection:</strong>
+<ul>
+<li>The browser blocks these cross-origin requests unless
+<code>mybank.com</code> explicitly allows them via CORS headers.</li>
+</ul></li>
+</ul>
+<h4 id="accessing-sensitive-data">Accessing Sensitive Data</h4>
+<ul>
+<li><strong>Scenario:</strong>
+<ul>
+<li>You're logged into a private service (e.g., email).</li>
+<li>A malicious site tries to fetch your emails.</li>
+</ul></li>
+<li><strong>CORS Protection:</strong>
+<ul>
+<li>The browser prevents the malicious script from accessing your
+data.</li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="alternative-solutions-to-cors-issues">Alternative Solutions to
+CORS Issues</h2>
+<p><strong>Alex:</strong> <em>"If modifying the backend isn't an option,
+are there other ways to solve the CORS problem?"</em></p>
+<p><strong>Mentor:</strong> <em>"Yes, you can use a proxy server or
+serve your React app from the same origin as your API."</em></p>
+<h3 id="using-a-proxy-server">Using a Proxy Server</h3>
+<p><strong>Set Up a Proxy:</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// server.js</span><br><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express&#x27;</span>);<br><span class="hljs-keyword">const</span> request = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;request&#x27;</span>);<br><span class="hljs-keyword">const</span> app = <span class="hljs-title function_">express</span>();<br><br>app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/api/test_summarize&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;<br>  <span class="hljs-title function_">request</span>(<br>    &#123; <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://planner.slray.com/test_summarize&#x27;</span> &#125;,<br>    <span class="hljs-function">(<span class="hljs-params">error, response, body</span>) =&gt;</span> &#123;<br>      <span class="hljs-keyword">if</span> (error) &#123;<br>        res.<span class="hljs-title function_">status</span>(<span class="hljs-number">500</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&#x27;Error occurred&#x27;</span>);<br>      &#125; <span class="hljs-keyword">else</span> &#123;<br>        res.<span class="hljs-title function_">send</span>(body);<br>      &#125;<br>    &#125;<br>  );<br>&#125;);<br><br>app.<span class="hljs-title function_">listen</span>(<span class="hljs-number">5000</span>, <span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Proxy server running on port 5000&#x27;</span>));<br></code></pre></td></tr></table></figure>
+<p><strong>Update React App:</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;/api/test_summarize&#x27;</span>)<br>    .<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">response</span>) =&gt;</span> response.<span class="hljs-title function_">json</span>())<br>    .<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">data</span>) =&gt;</span> <span class="hljs-title function_">setData</span>(data))<br>    .<span class="hljs-title function_">catch</span>(<span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> <span class="hljs-title function_">setError</span>(error));<br>&#125;, []);<br></code></pre></td></tr></table></figure>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li><strong>Proxy Server:</strong> Acts as an intermediary, bypassing
+CORS since the browser now communicates with a same-origin server.</li>
+<li><strong>Browser Security:</strong> Since the proxy is on the same
+origin, the browser allows the request.</li>
+</ul>
+<h3 id="serving-react-and-api-from-the-same-origin">Serving React and
+API from the Same Origin</h3>
+<p><strong>Modify Flask App:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask, jsonify, send_from_directory<br><span class="hljs-keyword">from</span> flask_cors <span class="hljs-keyword">import</span> CORS<br><span class="hljs-keyword">import</span> os<br><br>app = Flask(__name__, static_folder=<span class="hljs-string">&#x27;build&#x27;</span>, static_url_path=<span class="hljs-string">&#x27;/&#x27;</span>)<br>CORS(app)<br><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/test_summarize&#x27;</span></span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test_summarize</span>():<br>    data = &#123;<span class="hljs-string">&#x27;message&#x27;</span>: <span class="hljs-string">&#x27;Hello from the server!&#x27;</span>&#125;<br>    <span class="hljs-keyword">return</span> jsonify(data)<br><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/&#x27;</span></span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">serve</span>():<br>    <span class="hljs-keyword">return</span> send_from_directory(app.static_folder, <span class="hljs-string">&#x27;index.html&#x27;</span>)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    app.run()<br></code></pre></td></tr></table></figure>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li><strong>Same Origin:</strong> By serving both the React app and API
+from <code>https://planner.slray.com</code>, the browser treats them as
+the same origin, eliminating CORS issues.</li>
+</ul>
+<hr />
+<h2 id="deepening-the-understanding-of-cors">Deepening the Understanding
+of CORS</h2>
+<p><strong>Alex:</strong> <em>"I think I'm starting to understand. Is
+CORS like making certain class members private in Java, where you
+control access through getters and setters to prevent misuse?"</em></p>
+<p><strong>Mentor:</strong> <em>"That's a good analogy. CORS controls
+access between different domains in a similar way, preventing
+unauthorized interactions while allowing legitimate ones through proper
+channels."</em></p>
+<h3 id="why-cors-is-essential">Why CORS is Essential</h3>
+<ul>
+<li><strong>User Protection:</strong> Prevents malicious sites from
+accessing sensitive data or performing actions on behalf of users
+without consent.</li>
+<li><strong>Controlled Access:</strong> Servers can specify which
+origins are allowed, similar to how getters and setters control access
+to private variables.</li>
+</ul>
+<h3 id="what-could-go-wrong-without-cors">What Could Go Wrong Without
+CORS?</h3>
+<ul>
+<li><strong>Unauthorized Actions:</strong> Malicious scripts could
+perform actions like transferring funds, accessing personal data, or
+manipulating content.</li>
+<li><strong>Data Theft:</strong> Sensitive information could be exposed
+to unauthorized parties.</li>
+</ul>
+<hr />
+<h2 id="final-thoughts">Final Thoughts</h2>
+<p>CORS might seem like an obstacle, but it's a crucial security feature
+that protects users from malicious activities. Understanding how it
+works and how to configure it empowers developers to build secure and
+efficient web applications.</p>
+<p><strong>Key Takeaways:</strong></p>
+<ul>
+<li><strong>CORS is Enforced by Browsers:</strong> It's a client-side
+protection mechanism.</li>
+<li><strong>Servers Indicate Permissions:</strong> Through CORS headers
+like <code>Access-Control-Allow-Origin</code>.</li>
+<li><strong>Common Developer Challenge:</strong> Many developers face
+CORS issues; it's part of building modern web apps.</li>
+<li><strong>Solutions Exist:</strong> Modifying server configurations,
+using proxies, or serving apps from the same origin can resolve CORS
+problems.</li>
+</ul>
+<hr />
+<p><strong>Alex:</strong> <em>"Thanks for the explanation! I now
+understand why CORS is important and how to handle it in my
+projects."</em></p>
+<p><strong>Mentor:</strong> <em>"You're welcome! Remember, understanding
+the 'why' behind these mechanisms helps you become a better
+developer."</em></p>
+<hr />
+<p>By following this journey from confusion to clarity, we hope you've
+gained a better understanding of CORS and its significance in web
+development. Whether you're building a simple app or a complex web
+application, knowing how to navigate CORS issues is an invaluable
+skill.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>intro to CORS (Cross-Origin Resource Sharing)</div>
+      <div>http://blog.slray.com/2024/10/13/intro-to-CORS/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Sirui Ray Li</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>October 13, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/10/13/deploy-with-v0-dev/" title="deploy with v0.dev">
+                        <span class="hidden-mobile">deploy with v0.dev</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        aggregate visit: 
+        <span id="busuanzi_value_site_pv"></span>
+         times
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        , 
+        <span id="busuanzi_value_site_uv"></span>
+         people
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
