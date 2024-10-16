@@ -6,6 +6,7 @@ tags: [Resource Share, Functional Programming, Coq, Automated Therom Proving]
 categories:
   - Daily Logs
   - Resources Share
+update: 2024-10-16 19:41:59
 ---
 
 Next semester I will be taking _CSCI-UA 480 Special Topics: Principles of Programming Languages_ by Professor [Thomas Wies](https://cs.nyu.edu/~wies/).
@@ -21,6 +22,12 @@ Here are some more video-type resource I found:
 
 - [Introduction to Functional Programming in OCaml](https://www.fun-mooc.fr/en/courses/introduction-functional-programming-ocaml/) (This course is archieved, but their video is on YouTube). [YouTube Link](https://www.youtube.com/watch?v=o9-K0X2710Y&list=PLGC2in6hSHQcmT_cz4t7ePeQtTCkNkvll&index=4&ab_channel=Roshan%2a)
   - I also found the [GitHub Repo of the hw](https://github.com/bugczw/Introduction-to-Functional-Programming-in-OCaml), [Textbook and Project](https://github.com/uds-psl/Prog), and [Solution to the hw](https://github.com/philsaxton/OCamlMOOC).
+
+---
+Upate on *2024-10-16 19:41:59*
+The class is cancelled and I am instead doing a undergraduate research with Professor Wies.
+
+I will upload my solution to the book: [*The Formal Semantics of Programming Languages: An Introduction* Book by *Glynn Winskel*](https://www.cin.ufpe.br/~if721/intranet/TheFormalSemanticsofProgrammingLanguages.pdf). My [Github Repo](https://github.com/LiSiruiRay/ATP_note) is [here](https://github.com/LiSiruiRay/ATP_note)
 
 # Books
 - About concrete algorithms, recommanded by Prof Wies
