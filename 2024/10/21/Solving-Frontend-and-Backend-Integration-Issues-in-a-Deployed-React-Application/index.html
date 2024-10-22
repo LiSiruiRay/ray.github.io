@@ -1,0 +1,859 @@
+
+
+<!DOCTYPE html>
+<html lang="en,zh-CN,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/ray.jpg">
+  <link rel="icon" href="/ray.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Sirui Ray Li">
+  <meta name="keywords" content="testing3">
+  
+    <meta name="description" content="When building modern web applications with frameworks like React and Next.js, integrating the frontend with the backend can sometimes lead to unexpected issues, especially during deployment. In this b">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Solving Frontend and Backend Integration Issues in a Deployed React Application">
+<meta property="og:url" content="http://blog.slray.com/2024/10/21/Solving-Frontend-and-Backend-Integration-Issues-in-a-Deployed-React-Application/index.html">
+<meta property="og:site_name" content="Ray&#39;s website">
+<meta property="og:description" content="When building modern web applications with frameworks like React and Next.js, integrating the frontend with the backend can sometimes lead to unexpected issues, especially during deployment. In this b">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-10-22T03:52:01.000Z">
+<meta property="article:modified_time" content="2024-10-22T03:52:01.000Z">
+<meta property="article:author" content="Sirui Ray Li">
+<meta property="article:tag" content="testing3">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Solving Frontend and Backend Integration Issues in a Deployed React Application - Ray&#39;s website</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.slray.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ray&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Solving Frontend and Backend Integration Issues in a Deployed React Application"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-10-21 23:52" pubdate>
+          Monday, October 21st 2024, 11:52 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          8.4k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          70 minutes
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          visit: <span id="busuanzi_value_page_pv"></span> times
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Solving Frontend and Backend Integration Issues in a Deployed React Application</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>When building modern web applications with frameworks like React and
+Next.js, integrating the frontend with the backend can sometimes lead to
+unexpected issues, especially during deployment. In this blog post,
+we'll explore a common problem developers face when deploying their
+applications, understand why it happens, and discuss how to resolve it
+effectively.</p>
+<h2 id="the-problem"><strong>The Problem</strong></h2>
+<p>After deploying a React frontend application to a server (e.g., an
+AWS EC2 instance), you might encounter the following error in the
+browser console:</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lasso">Failed <span class="hljs-keyword">to</span> load resource: net<span class="hljs-type">::ERR_CONNECTION_REFUSED</span><br><br></code></pre></td></tr></table></figure>
+<p>This error suggests that the application is trying to access a
+resource on <code>localhost</code>, which isn't available in the
+production environment. You might wonder:</p>
+<ul>
+<li><strong>Why is my frontend, deployed on a server, still trying to
+access <code>localhost</code>?</strong></li>
+<li><strong>Is the frontend code running on the server or in the
+browser?</strong></li>
+<li><strong>How can I secure my API endpoints if they are exposed in the
+frontend code?</strong></li>
+<li><strong>Can I use relative paths in API calls when my frontend and
+backend are running on different ports?</strong></li>
+</ul>
+<p>Let's dive into these questions and explore how to solve the
+underlying issues.</p>
+<h2
+id="understanding-the-frontend-execution-environment"><strong>Understanding
+the Frontend Execution Environment</strong></h2>
+<p>First, it's crucial to understand where your frontend code runs. Even
+though you've deployed your React application to a server, the
+JavaScript code runs <strong>in the user's browser</strong>, not on your
+server. When a user accesses your website, the server serves the static
+files (HTML, CSS, JavaScript) to the user's browser, which then executes
+the JavaScript code.</p>
+<h3 id="why-is-this-important"><strong>Why Is This
+Important?</strong></h3>
+<ul>
+<li><strong>API Calls from the Browser:</strong> Any API calls made in
+your frontend code are executed from the user's browser.</li>
+<li><strong><code>localhost</code> in the Browser Context:</strong> When
+your frontend code tries to access <code>http://localhost:8081</code>,
+it's referring to <code>localhost</code> on the user's machine, not your
+server.</li>
+<li><strong>Resulting Error:</strong> Since the user's machine isn't
+running your backend server on port <code>8081</code>, the browser
+cannot establish a connection, leading to the
+<code>ERR_CONNECTION_REFUSED</code> error.</li>
+</ul>
+<h2 id="the-misconfigured-api-endpoint"><strong>The Misconfigured API
+Endpoint</strong></h2>
+<p>Consider the following simplified code snippet from your frontend
+application:</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;&lt;http://localhost:8081/api/users_data/login&gt;&#x27;</span>, &#123;<br>  <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;POST&#x27;</span>,<br>  <span class="hljs-attr">headers</span>: &#123;<br>    <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>,<br>  &#125;,<br>  <span class="hljs-attr">body</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(&#123; email, password &#125;),<br>&#125;);<br><br></code></pre></td></tr></table></figure>
+<p>This code works fine during local development because both the
+frontend and backend servers are running on your local machine. However,
+in production, <code>localhost</code> doesn't refer to your server but
+to the client's machine.</p>
+<h3 id="solution-update-the-api-endpoint"><strong>Solution: Update the
+API Endpoint</strong></h3>
+<p>You need to update the API endpoint in your frontend code to point to
+the backend server's public address or domain name. For example:</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;&lt;https://your-backend-domain.com/api/users_data/login&gt;&#x27;</span>, &#123;<br>  <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;POST&#x27;</span>,<br>  <span class="hljs-attr">headers</span>: &#123;<br>    <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>,<br>  &#125;,<br>  <span class="hljs-attr">body</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(&#123; email, password &#125;),<br>&#125;);<br><br></code></pre></td></tr></table></figure>
+<p>Alternatively, you can use environment variables to manage different
+configurations for development and production environments.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-comment">// In your .env file</span><br><span class="hljs-variable constant_">REACT_APP_API_BASE_URL</span>=<span class="hljs-attr">https</span>:<span class="hljs-comment">//your-backend-domain.com</span><br><br><span class="hljs-comment">// In your code</span><br><span class="hljs-keyword">const</span> <span class="hljs-variable constant_">API_BASE_URL</span> = process.<span class="hljs-property">env</span>.<span class="hljs-property">REACT_APP_API_BASE_URL</span>;<br><br><span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">`<span class="hljs-subst">$&#123;API_BASE_URL&#125;</span>/api/users_data/login`</span>, &#123;<br>  <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;POST&#x27;</span>,<br>  <span class="hljs-attr">headers</span>: &#123;<br>    <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>,<br>  &#125;,<br>  <span class="hljs-attr">body</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(&#123; email, password &#125;),<br>&#125;);<br><br></code></pre></td></tr></table></figure>
+<h2 id="security-concerns-with-exposed-api-endpoints"><strong>Security
+Concerns with Exposed API Endpoints</strong></h2>
+<p>You might be concerned that exposing your API endpoints in the
+frontend code makes your application vulnerable to attacks. Here's what
+you need to know:</p>
+<h3 id="api-endpoint-exposure-is-normal"><strong>API Endpoint Exposure
+Is Normal</strong></h3>
+<ul>
+<li><strong>Necessary for Communication:</strong> The frontend needs to
+know where to send API requests. Therefore, the API endpoints must be
+accessible in the frontend code.</li>
+<li><strong>Not Inherently Dangerous:</strong> Knowing an API endpoint
+doesn't provide an attacker with the means to exploit it if proper
+security measures are in place.</li>
+</ul>
+<h3 id="securing-your-api"><strong>Securing Your API</strong></h3>
+<p>To ensure your API remains secure:</p>
+<ul>
+<li><strong>Implement Authentication:</strong> Use tokens like JSON Web
+Tokens (JWT) to authenticate requests.</li>
+<li><strong>Use HTTPS:</strong> Serve your API over HTTPS to encrypt
+data in transit.</li>
+<li><strong>Validate Inputs:</strong> Always validate and sanitize
+inputs on the server side.</li>
+<li><strong>Set Up CORS Properly:</strong> Configure Cross-Origin
+Resource Sharing (CORS) to control which origins can access your
+API.</li>
+</ul>
+<h2 id="implementing-jwt-authentication"><strong>Implementing JWT
+Authentication</strong></h2>
+<p>Using JWT is a common practice to secure APIs. Here's how you can
+implement it:</p>
+<h3 id="backend-changes"><strong>Backend Changes</strong></h3>
+<ul>
+<li><strong>Issue JWTs on Authentication:</strong> When a user logs in,
+generate a JWT and send it to the client.</li>
+<li><strong>Protect Endpoints:</strong> Require a valid JWT for
+accessing protected API endpoints.</li>
+<li><strong>Token Verification:</strong> Verify the JWT on each request
+to ensure it's valid and not expired.</li>
+</ul>
+<h3 id="frontend-changes"><strong>Frontend Changes</strong></h3>
+<ul>
+<li><strong>Store the JWT Securely:</strong> Store the token in a secure
+manner, such as in <code>localStorage</code> or an HTTP-only
+cookie.</li>
+<li><strong>Include JWT in Requests:</strong> Attach the JWT to the
+<code>Authorization</code> header in API requests.</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-comment">// After login</span><br><span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-string">&#x27;token&#x27;</span>, data.<span class="hljs-property">token</span>);<br><br><span class="hljs-comment">// When making API calls</span><br><span class="hljs-keyword">const</span> token = <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&#x27;token&#x27;</span>);<br><br><span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">`<span class="hljs-subst">$&#123;API_BASE_URL&#125;</span>/api/protected-route`</span>, &#123;<br>  <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;GET&#x27;</span>,<br>  <span class="hljs-attr">headers</span>: &#123;<br>    <span class="hljs-string">&#x27;Authorization&#x27;</span>: <span class="hljs-string">`Bearer <span class="hljs-subst">$&#123;token&#125;</span>`</span>,<br>    <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>,<br>  &#125;,<br>&#125;);<br><br></code></pre></td></tr></table></figure>
+<h3 id="example-secure-login-function"><strong>Example: Secure Login
+Function</strong></h3>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">const</span> <span class="hljs-title function_">handleSubmit</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params">e</span>) =&gt; &#123;<br>  e.<span class="hljs-title function_">preventDefault</span>();<br><br>  <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">`<span class="hljs-subst">$&#123;API_BASE_URL&#125;</span>/api/users_data/login`</span>, &#123;<br>    <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;POST&#x27;</span>,<br>    <span class="hljs-attr">headers</span>: &#123;<br>      <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>,<br>    &#125;,<br>    <span class="hljs-attr">body</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(&#123; email, password &#125;),<br>  &#125;);<br><br>  <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">json</span>();<br><br>  <span class="hljs-keyword">if</span> (response.<span class="hljs-property">ok</span>) &#123;<br>    <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-string">&#x27;token&#x27;</span>, data.<span class="hljs-property">token</span>);<br>    <span class="hljs-comment">// Redirect or update UI accordingly</span><br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-comment">// Handle errors</span><br>  &#125;<br>&#125;;<br><br></code></pre></td></tr></table></figure>
+<h2 id="using-relative-paths-with-different-ports"><strong>Using
+Relative Paths with Different Ports</strong></h2>
+<p>You might also wonder if you can use relative paths in your API calls
+when your frontend and backend are running on different ports (e.g.,
+frontend on port <code>3000</code>, backend on port
+<code>8081</code>).</p>
+<h3 id="the-challenge"><strong>The Challenge</strong></h3>
+<ul>
+<li><strong>Same-Origin Policy:</strong> Browsers enforce a security
+policy that restricts scripts from interacting with resources from a
+different origin (scheme, domain, or port).</li>
+<li><strong>CORS Issues:</strong> If you try to use relative paths, the
+browser will attempt to access the backend on the same origin and port
+as the frontend, which won't work if the backend is on a different
+port.</li>
+</ul>
+<h3 id="solution-configure-a-proxy"><strong>Solution: Configure a
+Proxy</strong></h3>
+<p>During development, you can configure a proxy to route API requests
+to the backend server.</p>
+<h3 id="for-create-react-app"><strong>For Create React App</strong></h3>
+<p>In your <code>package.json</code>, add:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;proxy&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&lt;http://localhost:8081&gt;&quot;</span><br><br></code></pre></td></tr></table></figure>
+<p>Then, you can use relative paths in your API calls:</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;/api/users_data/login&#x27;</span>, &#123;<br>  <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;POST&#x27;</span>,<br>  <span class="hljs-attr">headers</span>: &#123;<br>    <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>,<br>  &#125;,<br>  <span class="hljs-attr">body</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(&#123; email, password &#125;),<br>&#125;);<br><br></code></pre></td></tr></table></figure>
+<h3 id="for-next.js"><strong>For Next.js</strong></h3>
+<p>In your <code>next.config.js</code>:</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>  <span class="hljs-keyword">async</span> <span class="hljs-title function_">rewrites</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> [<br>      &#123;<br>        <span class="hljs-attr">source</span>: <span class="hljs-string">&#x27;/api/:path*&#x27;</span>,<br>        <span class="hljs-attr">destination</span>: <span class="hljs-string">&#x27;&lt;http://localhost:8081/api/:path*&gt;&#x27;</span>,<br>      &#125;,<br>    ];<br>  &#125;,<br>&#125;;<br><br></code></pre></td></tr></table></figure>
+<h3 id="in-production"><strong>In Production</strong></h3>
+<p>In production, you can use a reverse proxy like Nginx to serve both
+your frontend and backend from the same domain, allowing you to use
+relative paths without CORS issues.</p>
+<h2 id="configuring-cors"><strong>Configuring CORS</strong></h2>
+<p>If your frontend and backend are on different domains or ports in
+production, you need to configure CORS on your backend.</p>
+<h3 id="example-with-express.js"><strong>Example with
+Express.js</strong></h3>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express&#x27;</span>);<br><span class="hljs-keyword">const</span> cors = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;cors&#x27;</span>);<br><span class="hljs-keyword">const</span> app = <span class="hljs-title function_">express</span>();<br><br>app.<span class="hljs-title function_">use</span>(<span class="hljs-title function_">cors</span>(&#123;<br>  <span class="hljs-attr">origin</span>: <span class="hljs-string">&#x27;&lt;https://your-frontend-domain.com&gt;&#x27;</span>,<br>  <span class="hljs-attr">credentials</span>: <span class="hljs-literal">true</span>,<br>&#125;));<br><br></code></pre></td></tr></table></figure>
+<h3 id="security-considerations"><strong>Security
+Considerations</strong></h3>
+<ul>
+<li><strong>Specify Allowed Origins:</strong> Only allow your frontend
+domain to access your API.</li>
+<li><strong>Avoid Using Wildcards in Production:</strong> Do not set
+<code>origin: '*'</code> in production environments.</li>
+</ul>
+<h2 id="conclusion"><strong>Conclusion</strong></h2>
+<p>Deploying a React frontend application and integrating it with a
+backend server requires careful consideration of how the frontend code
+executes and how API calls are handled. By understanding that the
+frontend code runs in the user's browser and adjusting your API
+endpoints accordingly, you can avoid common pitfalls.</p>
+<h3 id="key-takeaways"><strong>Key Takeaways</strong></h3>
+<ul>
+<li><strong>Frontend Code Runs in the Browser:</strong> Even when
+deployed on a server, the JavaScript code is executed in the user's
+browser.</li>
+<li><strong>Avoid Using <code>localhost</code> in API Calls:</strong>
+Update API endpoints to point to your backend server's public domain or
+IP address.</li>
+<li><strong>Secure Your API Endpoints:</strong> Use authentication
+methods like JWT to protect your API.</li>
+<li><strong>Configure Proxies for Development:</strong> Use proxies to
+handle cross-origin requests during development.</li>
+<li><strong>Properly Configure CORS:</strong> Ensure your backend is set
+up to handle requests from your frontend domain.</li>
+</ul>
+<p>By following these practices, you can build a secure and reliable web
+application that works seamlessly in both development and production
+environments.</p>
+<h2 id="additional-resources"><strong>Additional Resources</strong></h2>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">Understanding
+CORS</a></li>
+<li><a target="_blank" rel="noopener" href="https://jwt.io/introduction/">Using JWT for
+Authentication</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://create-react-app.dev/docs/proxying-api-requests-in-development/">Create
+React App Proxying API Requests</a></li>
+<li><a target="_blank" rel="noopener" href="https://nextjs.org/docs/api-routes/introduction">Next.js
+API Routes</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/helmet">Securing Node.js
+Applications</a></li>
+</ul>
+<hr />
+<p><strong>Note:</strong> Always ensure you're following best security
+practices when handling user data and authentication. Regularly update
+your dependencies and stay informed about security vulnerabilities in
+the tools and libraries you use.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Solving Frontend and Backend Integration Issues in a Deployed React Application</div>
+      <div>http://blog.slray.com/2024/10/21/Solving-Frontend-and-Backend-Integration-Issues-in-a-Deployed-React-Application/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Sirui Ray Li</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>October 21, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/10/13/intro-to-CORS/" title="intro to CORS (Cross-Origin Resource Sharing)">
+                        <span class="hidden-mobile">intro to CORS (Cross-Origin Resource Sharing)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        aggregate visit: 
+        <span id="busuanzi_value_site_pv"></span>
+         times
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        , 
+        <span id="busuanzi_value_site_uv"></span>
+         people
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
