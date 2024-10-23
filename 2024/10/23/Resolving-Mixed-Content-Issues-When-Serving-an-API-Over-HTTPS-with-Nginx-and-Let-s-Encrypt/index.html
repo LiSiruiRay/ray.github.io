@@ -1,0 +1,868 @@
+
+
+<!DOCTYPE html>
+<html lang="en,zh-CN,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/ray.jpg">
+  <link rel="icon" href="/ray.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Sirui Ray Li">
+  <meta name="keywords" content="testing3">
+  
+    <meta name="description" content="Resolving Mixed Content Issues When Serving an API Over HTTPS with Nginx and Let&#39;s Encrypt Introduction While developing a web application, I encountered a Mixed Content error when my frontend, served">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Resolving Mixed Content Issues When Serving an API Over HTTPS with Nginx and Let&#39;s Encrypt">
+<meta property="og:url" content="http://blog.slray.com/2024/10/23/Resolving-Mixed-Content-Issues-When-Serving-an-API-Over-HTTPS-with-Nginx-and-Let-s-Encrypt/index.html">
+<meta property="og:site_name" content="Ray&#39;s website">
+<meta property="og:description" content="Resolving Mixed Content Issues When Serving an API Over HTTPS with Nginx and Let&#39;s Encrypt Introduction While developing a web application, I encountered a Mixed Content error when my frontend, served">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-10-23T14:41:55.000Z">
+<meta property="article:modified_time" content="2024-10-23T14:41:55.000Z">
+<meta property="article:author" content="Sirui Ray Li">
+<meta property="article:tag" content="Debug">
+<meta property="article:tag" content="Tech">
+<meta property="article:tag" content="Tutorial">
+<meta property="article:tag" content="Http">
+<meta property="article:tag" content="Https">
+<meta property="article:tag" content="Web Development">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Resolving Mixed Content Issues When Serving an API Over HTTPS with Nginx and Let&#39;s Encrypt - Ray&#39;s website</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.slray.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ray&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Resolving Mixed Content Issues When Serving an API Over HTTPS with Nginx and Let&#39;s Encrypt"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-10-23 10:41" pubdate>
+          Wednesday, October 23rd 2024, 10:41 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          6.5k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          55 minutes
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          visit: <span id="busuanzi_value_page_pv"></span> times
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Resolving Mixed Content Issues When Serving an API Over HTTPS with Nginx and Let&#39;s Encrypt</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1
+id="resolving-mixed-content-issues-when-serving-an-api-over-https-with-nginx-and-lets-encrypt">Resolving
+Mixed Content Issues When Serving an API Over HTTPS with Nginx and Let's
+Encrypt</h1>
+<h2 id="introduction">Introduction</h2>
+<p>While developing a web application, I encountered a <strong>Mixed
+Content</strong> error when my frontend, served over HTTPS, tried to
+make API requests to a backend served over HTTP. This is a common issue
+that arises due to modern browsers blocking insecure content loaded over
+HTTP from an HTTPS page, as a security measure.</p>
+<p>In this blog post, I'll walk through the steps I took to resolve this
+issue by configuring Nginx to proxy API requests over HTTPS using Let's
+Encrypt SSL certificates. I'll also cover some challenges I faced along
+the way and how I overcame them.</p>
+<hr />
+<h2 id="the-problem-mixed-content-error">The Problem: Mixed Content
+Error</h2>
+<p>When I tried to make API calls from my frontend application, which is
+served over HTTPS, to my backend API served over HTTP, I received the
+following error in the browser console:</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">Mixed Content: The page <span class="hljs-built_in">at</span> <span class="hljs-string">&#x27;&lt;https://example.com/&gt;&#x27;</span> was loaded over HTTPS, <span class="hljs-keyword">but </span>requested an <span class="hljs-keyword">insecure </span>resource <span class="hljs-string">&#x27;&lt;http://api.example.com/login&gt;&#x27;</span>. This request has <span class="hljs-keyword">been </span><span class="hljs-keyword">blocked; </span>the content must <span class="hljs-keyword">be </span>served over HTTPS.<br><br></code></pre></td></tr></table></figure>
+<p>This error occurs because browsers enforce a security policy called
+<strong>Mixed Content Blocking</strong>, which prevents secure HTTPS
+pages from loading resources over an insecure HTTP connection.</p>
+<hr />
+<h2 id="initial-setup">Initial Setup</h2>
+<h3 id="existing-nginx-configuration">Existing Nginx Configuration</h3>
+<p>I already had an Nginx server configured with SSL certificates from
+Let's Encrypt for my domain <code>example.com</code>. The Nginx
+configuration looked something like this:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs awk">server &#123;<br>    server_name example.com;<br><br>    location / &#123;<br>        proxy_pass &lt;http:<span class="hljs-regexp">//</span>localhost:<span class="hljs-number">3000</span>&gt;;<br>        <span class="hljs-comment"># Additional proxy settings...</span><br>    &#125;<br><br>    listen <span class="hljs-number">443</span> ssl;<br>    ssl_certificate <span class="hljs-regexp">/etc/</span>letsencrypt<span class="hljs-regexp">/live/</span>example.com/fullchain.pem;<br>    ssl_certificate_key <span class="hljs-regexp">/etc/</span>letsencrypt<span class="hljs-regexp">/live/</span>example.com/privkey.pem;<br>    <span class="hljs-comment"># Additional SSL settings...</span><br>&#125;<br><br>server &#123;<br>    listen <span class="hljs-number">80</span>;<br>    server_name example.com;<br>    return <span class="hljs-number">301</span> https:<span class="hljs-regexp">//</span><span class="hljs-variable">$host</span><span class="hljs-variable">$request_uri</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>This configuration was set up to serve the frontend application over
+HTTPS and redirect all HTTP traffic to HTTPS.</p>
+<hr />
+<h2 id="attempting-to-fix-the-mixed-content-error">Attempting to Fix the
+Mixed Content Error</h2>
+<h3 id="understanding-the-cause">Understanding the Cause</h3>
+<p>To resolve the Mixed Content error, I needed to ensure that all
+resources loaded by my HTTPS page were also served over HTTPS. This
+meant serving the backend API over HTTPS as well.</p>
+<h3 id="considering-options">Considering Options</h3>
+<p>There were a few ways to achieve this:</p>
+<ol type="1">
+<li><strong>Enable HTTPS on the Backend API Server</strong>: Configure
+the backend server to handle HTTPS requests directly.</li>
+<li><strong>Use Nginx as a Reverse Proxy</strong>: Configure Nginx to
+proxy API requests over HTTPS to the backend server, which continues to
+run over HTTP.</li>
+</ol>
+<p>I chose the second option since it's a common practice to use Nginx
+as a reverse proxy, handling SSL termination and forwarding requests to
+backend services.</p>
+<hr />
+<h2 id="modifying-the-nginx-configuration">Modifying the Nginx
+Configuration</h2>
+<h3 id="adding-a-proxy-for-the-api">Adding a Proxy for the API</h3>
+<p>I updated the Nginx configuration to include a <code>location</code>
+block for the API endpoints. Here's the modified configuration:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs awk">server &#123;<br>    server_name example.com;<br><br>    listen <span class="hljs-number">443</span> ssl;<br>    ssl_certificate <span class="hljs-regexp">/etc/</span>letsencrypt<span class="hljs-regexp">/live/</span>example.com/fullchain.pem;<br>    ssl_certificate_key <span class="hljs-regexp">/etc/</span>letsencrypt<span class="hljs-regexp">/live/</span>example.com/privkey.pem;<br>    <span class="hljs-comment"># Additional SSL settings...</span><br><br>    <span class="hljs-comment"># Frontend application</span><br>    location / &#123;<br>        proxy_pass &lt;http:<span class="hljs-regexp">//</span>localhost:<span class="hljs-number">3000</span>&gt;;<br>        <span class="hljs-comment"># Additional proxy settings...</span><br>    &#125;<br><br>    <span class="hljs-comment"># Backend API</span><br>    location <span class="hljs-regexp">/api/</span> &#123;<br>        proxy_pass &lt;http:<span class="hljs-regexp">//</span>localhost:<span class="hljs-number">8081</span><span class="hljs-regexp">/api/</span>&gt;;<br>        proxy_set_header Host <span class="hljs-variable">$host</span>;<br>        proxy_set_header X-Real-IP <span class="hljs-variable">$remote_addr</span>;<br>        proxy_set_header X-Forwarded-For <span class="hljs-variable">$proxy_add_x_forwarded_for</span>;<br>    &#125;<br>&#125;<br><br>server &#123;<br>    listen <span class="hljs-number">80</span>;<br>    server_name example.com;<br>    return <span class="hljs-number">301</span> https:<span class="hljs-regexp">//</span><span class="hljs-variable">$host</span><span class="hljs-variable">$request_uri</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h3 id="explanation">Explanation:</h3>
+<ul>
+<li><strong>location /api/</strong>: This block captures all requests
+starting with <code>/api/</code>.</li>
+<li>*proxy_pass http://localhost:8081/api/**: Proxies these requests to
+the backend API server running on <code>localhost</code> port
+<code>8081</code>.</li>
+<li><strong>SSL Termination</strong>: Nginx handles the HTTPS
+connections, decrypting the data and forwarding the requests to the
+backend over HTTP.</li>
+</ul>
+<h3 id="testing-the-configuration">Testing the Configuration</h3>
+<p>After saving the changes, I tested the Nginx configuration:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo nginx -t<br><br></code></pre></td></tr></table></figure>
+<p>Since there were no errors, I reloaded Nginx:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo systemctl reload nginx<br><br></code></pre></td></tr></table></figure>
+<hr />
+<h2 id="updating-the-frontend-application">Updating the Frontend
+Application</h2>
+<p>To ensure that the frontend makes API requests over HTTPS, I updated
+the API endpoints in the frontend code to use relative paths:</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">const</span> apiUrl = <span class="hljs-string">&#x27;/api/login&#x27;</span>;<br><br></code></pre></td></tr></table></figure>
+<p>By using relative paths, the frontend will automatically use the same
+protocol and domain as the page it's running on, ensuring that all
+requests are made over HTTPS.</p>
+<hr />
+<h2 id="encountering-a-new-problem">Encountering a New Problem</h2>
+<h3 id="testing-the-api-directly-over-https">Testing the API Directly
+Over HTTPS</h3>
+<p>Out of curiosity, I tried accessing the backend API directly over
+HTTPS on port <code>8081</code>:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">&lt;https:<span class="hljs-regexp">//</span>api.example.com:<span class="hljs-number">8081</span><span class="hljs-regexp">/api/</span>test&gt;<br><br></code></pre></td></tr></table></figure>
+<p>This resulted in an error, and the backend server logs showed a
+traceback indicating that it couldn't handle the request.</p>
+<h3 id="backend-error-log">Backend Error Log:</h3>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;...&quot;</span>, line ..., <span class="hljs-keyword">in</span> handle<br>    req = next(parser)<br>  File <span class="hljs-string">&quot;...&quot;</span>, line ..., <span class="hljs-keyword">in</span> __next__<br>    self.mesg = self.mesg<span class="hljs-constructor">_class(<span class="hljs-params">self</span>.<span class="hljs-params">cfg</span>, <span class="hljs-params">self</span>.<span class="hljs-params">unreader</span>, <span class="hljs-params">self</span>.<span class="hljs-params">source_addr</span>, <span class="hljs-params">self</span>.<span class="hljs-params">req_count</span>)</span><br>  # Additional traceback details...<br><br></code></pre></td></tr></table></figure>
+<h3 id="understanding-the-issue">Understanding the Issue</h3>
+<p>The backend server wasn't configured to handle HTTPS connections.
+When I tried to access it over HTTPS, it received encrypted data that it
+couldn't decrypt, leading to the error.</p>
+<hr />
+<h2 id="resolving-the-new-problem">Resolving the New Problem</h2>
+<h3 id="correct-way-to-access-the-api">Correct Way to Access the
+API</h3>
+<p>I realized that I shouldn't be accessing the backend API directly
+over HTTPS on port <code>8081</code>. Instead, I should access it
+through Nginx over HTTPS:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">&lt;https:<span class="hljs-regexp">//</span>example.com<span class="hljs-regexp">/api/</span>test&gt;<br><br></code></pre></td></tr></table></figure>
+<h3 id="explanation-1">Explanation</h3>
+<ul>
+<li><strong>Nginx Handles HTTPS</strong>: Nginx is configured with SSL
+certificates and listens on port <code>443</code> for HTTPS
+connections.</li>
+<li><strong>Backend Communicates Over HTTP</strong>: The backend server
+communicates over HTTP with Nginx, and since both are on the same server
+(or trusted network), this is acceptable.</li>
+<li><strong>Avoiding Direct Backend Access</strong>: Directly accessing
+the backend over HTTPS bypasses Nginx and attempts to use a protocol the
+backend isn't configured for.</li>
+</ul>
+<h3 id="testing-the-api-via-nginx">Testing the API via Nginx</h3>
+<p>I used Postman and my browser to test the API endpoint:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">&lt;https:<span class="hljs-regexp">//</span>example.com<span class="hljs-regexp">/api/</span>test&gt;<br></code></pre></td></tr></table></figure>
+<p>The API responded as expected, and there were no errors in the
+backend logs.</p>
+<hr />
+<h2 id="conclusion">Conclusion</h2>
+<p>By configuring Nginx to proxy API requests over HTTPS and ensuring
+that the frontend application uses the correct API endpoints, I
+successfully resolved the Mixed Content error. Additionally, I learned
+the importance of not attempting to access backend services directly
+over protocols they're not configured to handle.</p>
+<hr />
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li><strong>Mixed Content Errors</strong>: Occur when an HTTPS page
+loads resources over HTTP. To fix this, ensure all resources are loaded
+over HTTPS.</li>
+<li><strong>Using Nginx as a Reverse Proxy</strong>: Allows you to
+handle SSL termination at Nginx and proxy requests to backend services
+over HTTP.</li>
+<li><strong>Avoid Direct Backend Access Over HTTPS</strong>: If the
+backend isn't configured for HTTPS, accessing it directly over HTTPS
+will cause errors.</li>
+<li><strong>Update Frontend API Endpoints</strong>: Use relative paths
+or ensure that all API endpoints use HTTPS to avoid Mixed Content
+errors.</li>
+</ul>
+<hr />
+<h2 id="additional-notes">Additional Notes</h2>
+<ul>
+<li><strong>Security Considerations</strong>: While it's acceptable for
+Nginx to communicate with backend services over HTTP when they're on the
+same server or trusted network, always assess your security
+requirements.</li>
+<li><strong>SSL Certificate Renewal</strong>: Let's Encrypt certificates
+expire every 90 days. Ensure you have a cron job or systemd timer set up
+to renew them automatically.</li>
+</ul>
+<hr />
+<h2 id="references">References</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://nginx.org/en/docs/">Nginx Documentation</a></li>
+<li><a target="_blank" rel="noopener" href="https://letsencrypt.org/getting-started/">Let's Encrypt
+Documentation</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content">Mixed
+Content - Web Security | MDN</a></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Daily-Logs/" class="category-chain-item">Daily Logs</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Daily-Logs/Debug-Logs/" class="category-chain-item">Debug Logs</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Debug/">#Debug</a>
+      
+        <a href="/tags/Tech/">#Tech</a>
+      
+        <a href="/tags/Tutorial/">#Tutorial</a>
+      
+        <a href="/tags/Http/">#Http</a>
+      
+        <a href="/tags/Https/">#Https</a>
+      
+        <a href="/tags/Web-Development/">#Web Development</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Resolving Mixed Content Issues When Serving an API Over HTTPS with Nginx and Let&#39;s Encrypt</div>
+      <div>http://blog.slray.com/2024/10/23/Resolving-Mixed-Content-Issues-When-Serving-an-API-Over-HTTPS-with-Nginx-and-Let-s-Encrypt/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Sirui Ray Li</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>October 23, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/10/22/Environment-Error/" title="Generating requirements.txt in PyCharm and Solving the &#34;Externally Managed Environment&#34; Error">
+                        <span class="hidden-mobile">Generating requirements.txt in PyCharm and Solving the &#34;Externally Managed Environment&#34; Error</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        aggregate visit: 
+        <span id="busuanzi_value_site_pv"></span>
+         times
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        , 
+        <span id="busuanzi_value_site_uv"></span>
+         people
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
