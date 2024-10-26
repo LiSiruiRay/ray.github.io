@@ -1,7 +1,11 @@
 ---
 title: intro to CORS (Cross-Origin Resource Sharing)
 date: 2024-10-13 01:55:55
-tags:
+tags: [Debug, React, JavaScript, Tech, Tutorial, TypeScript, Frontend, Full Stack Development, CORS]
+
+categories:
+- Daily Logs
+- Learning Logs
 ---
 > I met a prolem with CORS while developing the frontend. Here is how I step by step get deeper and deeper understanding of CORS.
 

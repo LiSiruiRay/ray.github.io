@@ -3,7 +3,12 @@ title:
   Solving Frontend and Backend Integration Issues in a Deployed React
   Application
 date: 2024-10-21 23:52:01
-tags:
+tags: [Debug, React, JavaScript, Tech, Tutorial, TypeScript, Frontend]
+categories:
+- Daily Logs
+- Debug Logs
+
+excerpt: This is a blog about what annotation in java is.
 ---
 When building modern web applications with frameworks like React and Next.js, integrating the frontend with the backend can sometimes lead to unexpected issues, especially during deployment. In this blog post, we'll explore a common problem developers face when deploying their applications, understand why it happens, and discuss how to resolve it effectively.
 
