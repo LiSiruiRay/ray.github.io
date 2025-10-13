@@ -12,9 +12,9 @@ categories:
 
 # What is happenning?
 
-While I was developing the market analysis part of [EQUO](https://tryequo.com/), I met a problem that the current existing clustering algorithm does work good enough. I tried k-means and hierarchical clustering, with OpenAI's embedding model [TODO: check model]. The problem is that, always, the unrelated news are clustered as one event.
+While I was developing the market analysis part of [EQUO](https://tryequo.com/), I met a problem that the current existing clustering algorithm does work good enough. I tried k-means and hierarchical clustering, with OpenAI's embedding model `text-embedding-3-small`. The problem is that, always, the unrelated news are clustered as one event.
 
-[TODO: add pictures]
+{% asset_img wrong_news.PNG wrong news %}
 
 I met the following problem:
 
