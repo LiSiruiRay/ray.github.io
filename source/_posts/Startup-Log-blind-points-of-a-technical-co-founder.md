@@ -44,5 +44,9 @@ As founders we need to be modest and confident. But not defensive. Being defensi
 
 Always stand in user's shoes. See from their perspective. Understand what they need.
 
+>I started that chat wanting to prove our product.
+
+>I ended it realizing the best sales pitch is silence — and listening.
+
 
 {% asset_img conv.png conversation screenshot %}
