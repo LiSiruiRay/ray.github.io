@@ -7,7 +7,7 @@ tags: [AI orientated coding, Vibe Coding, Cursor]
 categories:
   - Project Logs
   - Start Up Logs
-  - Lessons
+  - Lessons Learned
 ---
 
 What exactly does LLMs change? Under this new era, where should a developer go?
