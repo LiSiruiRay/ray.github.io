@@ -1,0 +1,1014 @@
+
+
+<!DOCTYPE html>
+<html lang="en,zh-CN,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Sirui Ray Li">
+  <meta name="keywords" content="testing3">
+  
+    <meta name="description" content="Secured tool calling with token propagation -- debugging tour">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Product Update: secure financial tool calling">
+<meta property="og:url" content="http://blog.slray.com/2025/10/24/Product-Update-secure-financial-tool-calling/index.html">
+<meta property="og:site_name" content="Ray&#39;s website">
+<meta property="og:description" content="Secured tool calling with token propagation -- debugging tour">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-10-25T01:22:20.000Z">
+<meta property="article:modified_time" content="2025-10-25T01:22:20.000Z">
+<meta property="article:author" content="Sirui Ray Li">
+<meta property="article:tag" content="Startup">
+<meta property="article:tag" content="JWT">
+<meta property="article:tag" content="EQUO">
+<meta property="article:tag" content="AI Agent">
+<meta property="article:tag" content="Tool">
+<meta property="article:tag" content="Security">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Product Update: secure financial tool calling - Ray&#39;s website</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.slray.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ray&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Product Update: secure financial tool calling"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-10-24 21:22" pubdate>
+          Friday, October 24th 2025, 9:22 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          17k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          139 minutes
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          visit: <span id="busuanzi_value_page_pv"></span> times
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Product Update: secure financial tool calling</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="the-token-propagation-debugging-journey-technical-deep-dive">The
+Token Propagation Debugging Journey: Technical Deep-Dive</h1>
+<h2 id="context-post-implementation"><strong>Context:
+Post-Implementation</strong></h2>
+<p><strong>Status</strong>: We had successfully implemented 5 secure
+tools and all unit tests were passing</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># Unit test (PASSING)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test_get_user_spending_analysis_secure_tool_with_real_token</span>(<span class="hljs-params">self</span>):<br>    mock_config = &#123;<br>        <span class="hljs-string">&quot;configurable&quot;</span>: &#123;<span class="hljs-string">&quot;thread_id&quot;</span>: <span class="hljs-string">&quot;test-thread&quot;</span>, <span class="hljs-string">&quot;auth_token&quot;</span>: self.test_token&#125;<br>    &#125;<br>    result = get_user_spending_analysis_secure_tool(days=<span class="hljs-number">30</span>, config=mock_config)<br>    <span class="hljs-keyword">assert</span> <span class="hljs-string">&quot;Spending Analysis&quot;</span> <span class="hljs-keyword">in</span> result  <span class="hljs-comment"># ✅ PASSED</span><br></code></pre></td></tr></table></figure>
+<p><strong>But when the agent tried to use the tools...</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Agent Log</span><br>ERROR - No authentication token found <span class="hljs-keyword">in</span> context<br></code></pre></td></tr></table></figure>
+<p><strong>The Mystery</strong>: Why did direct calls work but agent
+calls fail?</p>
+<hr />
+<h2 id="attempt-1-contextvar-thread-local-context"><strong>Attempt 1:
+ContextVar (Thread-local Context)</strong></h2>
+<h3 id="the-theory"><strong>The Theory</strong></h3>
+<p>Python's <code>contextvars</code> provides thread-safe, async-aware
+storage. Perfect for passing data through call stacks!</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># token_context.py</span><br><span class="hljs-keyword">from</span> contextvars <span class="hljs-keyword">import</span> ContextVar<br><br>_auth_token: ContextVar[<span class="hljs-built_in">str</span>] = ContextVar(<span class="hljs-string">&quot;auth_token&quot;</span>, default=<span class="hljs-literal">None</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">set_auth_token</span>(<span class="hljs-params">token: <span class="hljs-built_in">str</span>, conversation_id: <span class="hljs-type">Optional</span>[<span class="hljs-built_in">str</span>] = <span class="hljs-literal">None</span></span>) -&gt; <span class="hljs-literal">None</span>:<br>    _auth_token.<span class="hljs-built_in">set</span>(token)  <span class="hljs-comment"># Store in current context</span><br>    logger.info(<span class="hljs-string">&quot;Set authentication token in context&quot;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_auth_token</span>(<span class="hljs-params">conversation_id: <span class="hljs-type">Optional</span>[<span class="hljs-built_in">str</span>] = <span class="hljs-literal">None</span></span>) -&gt; <span class="hljs-built_in">str</span>:<br>    token = _auth_token.get()  <span class="hljs-comment"># Retrieve from current context</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> token:<br>        <span class="hljs-keyword">raise</span> UserContextError(<span class="hljs-string">&quot;No authentication token set&quot;</span>)<br>    <span class="hljs-keyword">return</span> token<br></code></pre></td></tr></table></figure>
+<h3 id="the-implementation"><strong>The Implementation</strong></h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># financial_routes.py (Entry point)</span><br><span class="hljs-meta">@routes.post(<span class="hljs-params"><span class="hljs-string">&quot;/api/v1/financial/chat-messages&quot;</span></span>)</span><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">financial_chat_streaming</span>(<span class="hljs-params">chat_request: ChatRequest</span>):<br>    token = request.headers.get(<span class="hljs-string">&quot;Authorization&quot;</span>).split(<span class="hljs-string">&quot; &quot;</span>)[<span class="hljs-number">1</span>]<br>    <br>    <span class="hljs-comment"># Set token in context</span><br>    <span class="hljs-keyword">if</span> chat_request.conversation_id:<br>        set_auth_token(token, chat_request.conversation_id)<br>        logger.info(<span class="hljs-string">&quot; Set auth token in context&quot;</span>)<br>    <br>    <span class="hljs-keyword">async</span> <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> financial_manager.process_streaming_message(...):<br>        <span class="hljs-keyword">yield</span> event<br></code></pre></td></tr></table></figure>
+<h3 id="the-tool"><strong>The Tool</strong></h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># secure_personal_tools.py</span><br><span class="hljs-meta">@requires_auth_token  </span><span class="hljs-comment"># Decorator that calls get_auth_token()</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_user_spending_analysis_secure_tool</span>(<span class="hljs-params">days: <span class="hljs-built_in">int</span> = <span class="hljs-number">30</span></span>) -&gt; <span class="hljs-built_in">str</span>:<br>    <span class="hljs-comment"># This should automatically get token from context</span><br>    response = _make_authenticated_request(...)<br></code></pre></td></tr></table></figure>
+<h3 id="the-error"><strong>The Error</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Logs when agent called the tool</span><br>2025-10-24 06:27:07,526 - token_context - INFO - ✅ Set auth token <span class="hljs-keyword">in</span> context<br>2025-10-24 06:27:18,788 - secure_personal_tools - INFO - get_user_spending_analysis_secure_tool called<br>2025-10-24 06:27:18,788 - token_context - ERROR - ❌ No authentication token found <span class="hljs-keyword">in</span> context<br></code></pre></td></tr></table></figure>
+<p><strong>Timeline</strong>: 11 seconds passed between setting and
+getting!</p>
+<h3 id="why-it-failed"><strong>Why It Failed</strong></h3>
+<p><strong>ContextVar scope</strong>: <code>ContextVar</code> is tied to
+the <strong>execution context</strong> (async task/thread). When
+LangGraph creates worker nodes:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># What LangGraph does internally (simplified)</span><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">invoke_tool</span>(<span class="hljs-params">tool, args</span>):<br>    <span class="hljs-comment"># This might run in a NEW async context</span><br>    result = <span class="hljs-keyword">await</span> tool(**args)<br>    <span class="hljs-keyword">return</span> result<br></code></pre></td></tr></table></figure>
+<p>Each new async context has its own <code>ContextVar</code> storage.
+The token we set in the Flask request context doesn't automatically
+propagate to the LangGraph worker context.</p>
+<p><strong>Technical Issue</strong>: <strong>Context boundary
+crossing</strong> - <code>ContextVar</code> doesn't propagate across
+<code>asyncio.create_task()</code> or executor boundaries without
+explicit copying.</p>
+<hr />
+<h2
+id="attempt-2-global-dictionary-with-conversation-id"><strong>Attempt 2:
+Global Dictionary with Conversation ID</strong></h2>
+<h3 id="the-theory-1"><strong>The Theory</strong></h3>
+<p>"If context doesn't work, let's use a global dictionary! Everyone can
+access global state."</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># token_context.py</span><br>_token_by_conversation: <span class="hljs-type">Dict</span>[<span class="hljs-built_in">str</span>, <span class="hljs-built_in">str</span>] = &#123;&#125;  <span class="hljs-comment"># Global dictionary</span><br>_token_lock = threading.Lock()  <span class="hljs-comment"># Thread-safe access</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">set_auth_token</span>(<span class="hljs-params">token: <span class="hljs-built_in">str</span>, conversation_id: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-literal">None</span>:<br>    <span class="hljs-keyword">with</span> _token_lock:<br>        _token_by_conversation[conversation_id] = token<br>        logger.info(<span class="hljs-string">f&quot;✅ Stored token for conversation <span class="hljs-subst">&#123;conversation_id&#125;</span>&quot;</span>)<br>        logger.info(<span class="hljs-string">f&quot;📋 Dictionary now has keys: <span class="hljs-subst">&#123;<span class="hljs-built_in">list</span>(_token_by_conversation.keys())&#125;</span>&quot;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_auth_token</span>(<span class="hljs-params">conversation_id: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">str</span>:<br>    <span class="hljs-keyword">with</span> _token_lock:<br>        logger.info(<span class="hljs-string">f&quot;📋 Dictionary has keys: <span class="hljs-subst">&#123;<span class="hljs-built_in">list</span>(_token_by_conversation.keys())&#125;</span>&quot;</span>)<br>        token = _token_by_conversation.get(conversation_id)<br>    <br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> token:<br>        <span class="hljs-keyword">raise</span> UserContextError(<span class="hljs-string">f&quot;No token for conversation <span class="hljs-subst">&#123;conversation_id&#125;</span>&quot;</span>)<br>    <span class="hljs-keyword">return</span> token<br></code></pre></td></tr></table></figure>
+<h3 id="the-implementation-1"><strong>The Implementation</strong></h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># secure_personal_tools.py</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_user_spending_analysis_secure_tool</span>(<span class="hljs-params">days: <span class="hljs-built_in">int</span> = <span class="hljs-number">30</span></span>) -&gt; <span class="hljs-built_in">str</span>:<br>    <span class="hljs-comment"># Get conversation_id somehow and look up token</span><br>    conversation_id = _conversation_id.get()  <span class="hljs-comment"># From ContextVar</span><br>    auth_token = get_auth_token(conversation_id)<br>    ...<br></code></pre></td></tr></table></figure>
+<h3 id="the-error---round-1"><strong>The Error - Round 1</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Logs</span><br>2025-10-24 06:27:07,526 - token_context - INFO - ✅ Stored token <span class="hljs-keyword">for</span> conversation abc-123<br>2025-10-24 06:27:07,526 - token_context - INFO - 📋 Dictionary now has keys: [<span class="hljs-string">&#x27;abc-123&#x27;</span>]<br><br><span class="hljs-comment"># 11 seconds later in the tool</span><br>2025-10-24 06:27:18,788 - token_context - INFO - 📋 Dictionary has keys: []<br>2025-10-24 06:27:18,788 - token_context - ERROR - ❌ No token <span class="hljs-keyword">for</span> conversation abc-123<br></code></pre></td></tr></table></figure>
+<p><strong>Wait, what?!</strong> The dictionary was populated but now
+it's empty?</p>
+<h3 id="adding-diagnostic-logging"><strong>Adding Diagnostic
+Logging</strong></h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">set_auth_token</span>(<span class="hljs-params">token: <span class="hljs-built_in">str</span>, conversation_id: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-literal">None</span>:<br>    <span class="hljs-keyword">import</span> os<br>    current_pid = os.getpid()<br>    current_thread = threading.current_thread().ident<br>    <br>    logger.info(<span class="hljs-string">f&quot;🔐 set_auth_token called from PID:<span class="hljs-subst">&#123;current_pid&#125;</span> thread:<span class="hljs-subst">&#123;current_thread&#125;</span>&quot;</span>)<br>    logger.info(<span class="hljs-string">f&quot;🔍 Module dict ID: <span class="hljs-subst">&#123;<span class="hljs-built_in">id</span>(_token_by_conversation)&#125;</span>&quot;</span>)  <span class="hljs-comment"># Memory address!</span><br>    <br>    <span class="hljs-keyword">with</span> _token_lock:<br>        _token_by_conversation[conversation_id] = token<br>        logger.info(<span class="hljs-string">f&quot;✅ Stored token&quot;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_auth_token</span>(<span class="hljs-params">conversation_id: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">str</span>:<br>    <span class="hljs-keyword">import</span> os<br>    current_pid = os.getpid()<br>    current_thread = threading.current_thread().ident<br>    <br>    logger.info(<span class="hljs-string">f&quot;🔍 get_auth_token called from PID:<span class="hljs-subst">&#123;current_pid&#125;</span> thread:<span class="hljs-subst">&#123;current_thread&#125;</span>&quot;</span>)<br>    logger.info(<span class="hljs-string">f&quot;🔍 Module dict ID: <span class="hljs-subst">&#123;<span class="hljs-built_in">id</span>(_token_by_conversation)&#125;</span>&quot;</span>)<br>    <br>    <span class="hljs-keyword">with</span> _token_lock:<br>        logger.info(<span class="hljs-string">f&quot;📋 Dictionary has keys: <span class="hljs-subst">&#123;<span class="hljs-built_in">list</span>(_token_by_conversation.keys())&#125;</span>&quot;</span>)<br>        token = _token_by_conversation.get(conversation_id)<br>    ...<br></code></pre></td></tr></table></figure>
+<h3 id="the-smoking-gun"><strong>The Smoking Gun</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Set phase</span><br>2025-10-24 06:27:07,526 - INFO - 🔐 set_auth_token called from PID:66990 thread:6127906816<br>2025-10-24 06:27:07,526 - INFO - 🔍 Module dict ID: 4672419072  ⬅️ Memory address<br>2025-10-24 06:27:07,526 - INFO - ✅ Stored token<br>2025-10-24 06:27:07,526 - INFO - 📋 Dictionary now has keys: [<span class="hljs-string">&#x27;abc-123&#x27;</span>]<br><br><span class="hljs-comment"># Get phase (in tool execution)</span><br>2025-10-24 06:27:18,788 - INFO - 🔍 get_auth_token called from PID:66990 thread:8234567890<br>2025-10-24 06:27:18,788 - INFO - 🔍 Module dict ID: 4689234176  ⬅️ DIFFERENT ADDRESS!!<br>2025-10-24 06:27:18,788 - INFO - 📋 Dictionary has keys: []<br></code></pre></td></tr></table></figure>
+<h3 id="the-discovery"><strong>The Discovery</strong></h3>
+<p><strong>The dictionaries have different memory addresses!</strong>
+This means the Python module <code>token_context.py</code> was
+<strong>imported twice</strong>, creating two separate instances of
+<code>_token_by_conversation</code>!</p>
+<p><strong>Why This Happens</strong>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># Scenario 1: Flask main process</span><br><span class="hljs-keyword">from</span> equo_agent.utils.token_context <span class="hljs-keyword">import</span> set_auth_token<br><span class="hljs-comment"># Creates: _token_by_conversation @ memory address 4672419072</span><br><br><span class="hljs-comment"># Scenario 2: LangGraph worker (could be subprocess, thread pool, or fork)</span><br><span class="hljs-keyword">from</span> equo_agent.utils.token_context <span class="hljs-keyword">import</span> get_auth_token<br><span class="hljs-comment"># Creates: NEW _token_by_conversation @ memory address 4689234176</span><br></code></pre></td></tr></table></figure>
+<p><strong>Root Cause</strong>: - <strong>Flask's reloader</strong>
+creates multiple processes - <strong>LangGraph's execution
+model</strong> may use thread pools or separate execution contexts -
+Each execution context gets its own import of the module - Python's
+module system creates separate instances in different
+processes/contexts</p>
+<p><strong>Technical Term</strong>: <strong>Module Singleton
+Anti-pattern</strong> - Global dictionaries in modules are only "global"
+within that process/import context.</p>
+<hr />
+<h2 id="attempt-3-thread-id-mapping"><strong>Attempt 3: Thread ID
+Mapping</strong></h2>
+<h3 id="the-theory-2"><strong>The Theory</strong></h3>
+<p>"If <code>conversation_id</code> lookup doesn't work across contexts,
+let's map thread IDs to conversation IDs!"</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># token_context.py</span><br>_token_by_conversation: <span class="hljs-type">Dict</span>[<span class="hljs-built_in">str</span>, <span class="hljs-built_in">str</span>] = &#123;&#125;<br>_thread_to_conversation: <span class="hljs-type">Dict</span>[<span class="hljs-built_in">int</span>, <span class="hljs-built_in">str</span>] = &#123;&#125;  <span class="hljs-comment"># New: thread ID → conversation ID</span><br>_token_lock = threading.Lock()<br>_thread_lock = threading.Lock()<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">set_auth_token</span>(<span class="hljs-params">token: <span class="hljs-built_in">str</span>, conversation_id: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-literal">None</span>:<br>    <span class="hljs-comment"># Store by conversation ID</span><br>    <span class="hljs-keyword">with</span> _token_lock:<br>        _token_by_conversation[conversation_id] = token<br>    <br>    <span class="hljs-comment"># Map current thread to conversation</span><br>    thread_id = threading.current_thread().ident<br>    <span class="hljs-keyword">if</span> thread_id:<br>        <span class="hljs-keyword">with</span> _thread_lock:<br>            _thread_to_conversation[thread_id] = conversation_id<br>            logger.info(<span class="hljs-string">f&quot;🔗 Mapped thread <span class="hljs-subst">&#123;thread_id&#125;</span> to conversation <span class="hljs-subst">&#123;conversation_id&#125;</span>&quot;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_auth_token</span>(<span class="hljs-params">conversation_id: <span class="hljs-type">Optional</span>[<span class="hljs-built_in">str</span>] = <span class="hljs-literal">None</span></span>) -&gt; <span class="hljs-built_in">str</span>:<br>    current_thread_id = threading.current_thread().ident<br>    <br>    <span class="hljs-comment"># If no conversation_id provided, look it up from thread mapping</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> conversation_id:<br>        <span class="hljs-keyword">with</span> _thread_lock:<br>            conversation_id = _thread_to_conversation.get(current_thread_id)<br>            logger.info(<span class="hljs-string">f&quot;🔍 Retrieved conversation_id <span class="hljs-subst">&#123;conversation_id&#125;</span> from thread <span class="hljs-subst">&#123;current_thread_id&#125;</span>&quot;</span>)<br>    <br>    <span class="hljs-keyword">if</span> conversation_id:<br>        <span class="hljs-keyword">with</span> _token_lock:<br>            token = _token_by_conversation.get(conversation_id)<br>            <span class="hljs-keyword">if</span> token:<br>                <span class="hljs-keyword">return</span> token<br>    <br>    <span class="hljs-keyword">raise</span> UserContextError(<span class="hljs-string">&quot;No authentication token found&quot;</span>)<br></code></pre></td></tr></table></figure>
+<h3 id="the-error-1"><strong>The Error</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Set phase</span><br>2025-10-24 06:27:07,526 - INFO - 🔗 Mapped thread 6127906816 to conversation abc-123<br>2025-10-24 06:27:07,526 - INFO - 📋 _thread_to_conversation: &#123;6127906816: <span class="hljs-string">&#x27;abc-123&#x27;</span>&#125;<br><br><span class="hljs-comment"># Get phase (different thread)</span><br>2025-10-24 06:27:18,788 - INFO - 🔍 get_auth_token called from thread:8234567890<br>2025-10-24 06:27:18,788 - INFO - 📋 Available thread mappings: &#123;6127906816: <span class="hljs-string">&#x27;abc-123&#x27;</span>&#125;<br>2025-10-24 06:27:18,788 - INFO - ❌ No conversation_id found <span class="hljs-keyword">for</span> thread 8234567890<br></code></pre></td></tr></table></figure>
+<h3 id="why-it-failed-1"><strong>Why It Failed</strong></h3>
+<p><strong>Thread pool behavior</strong>: LangGraph uses different
+threads for: - Flask request handling (thread A) - LangGraph graph
+execution (thread B)<br />
+- Tool execution within react agents (thread C)</p>
+<p>Even if we mapped thread A → conversation, thread C doesn't know
+about this mapping (and again, might be looking at a different copy of
+the dictionary!).</p>
+<p><strong>Technical Issue</strong>: <strong>Thread affinity
+assumption</strong> - We assumed thread-local storage would persist, but
+async systems routinely switch threads.</p>
+<hr />
+<h2 id="attempt-4-state-based-propagation-first-try"><strong>Attempt 4:
+State-Based Propagation (First Try)</strong></h2>
+<h3 id="the-theory-3"><strong>The Theory</strong></h3>
+<p>"LangGraph has a state system! Let's add the token to the state!"</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># financial_manager.py</span><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">_run_real_financial_analysis_streaming</span>(<span class="hljs-params"></span><br><span class="hljs-params">    self, query, user_id, conversation_id, ..., auth_token</span><br><span class="hljs-params"></span>):<br>    initial_state = &#123;<br>        <span class="hljs-string">&quot;messages&quot;</span>: messages,<br>        <span class="hljs-string">&quot;user_id&quot;</span>: user_id,<br>        <span class="hljs-string">&quot;auth_token&quot;</span>: auth_token,  <span class="hljs-comment"># ✅ Add token to state!</span><br>        <span class="hljs-string">&quot;current_step&quot;</span>: <span class="hljs-string">&quot;world&quot;</span>,<br>        <span class="hljs-comment"># ...</span><br>    &#125;<br>    <br>    <span class="hljs-keyword">async</span> <span class="hljs-keyword">for</span> stream_data <span class="hljs-keyword">in</span> graph.astream(initial_state, config):<br>        <span class="hljs-keyword">yield</span> stream_data<br></code></pre></td></tr></table></figure>
+<h3 id="using-injectedstate"><strong>Using InjectedState</strong></h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># secure_personal_tools.py</span><br><span class="hljs-keyword">from</span> langgraph.prebuilt <span class="hljs-keyword">import</span> InjectedState<br><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> Annotated<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_user_spending_analysis_secure_tool</span>(<span class="hljs-params"></span><br><span class="hljs-params">    days: <span class="hljs-built_in">int</span> = <span class="hljs-number">30</span>,</span><br><span class="hljs-params">    state: Annotated[<span class="hljs-built_in">dict</span>, InjectedState] = <span class="hljs-literal">None</span>,  <span class="hljs-comment"># Inject state</span></span><br><span class="hljs-params"></span>) -&gt; <span class="hljs-built_in">str</span>:<br>    <span class="hljs-comment"># Get token from state</span><br>    auth_token = <span class="hljs-literal">None</span><br>    <span class="hljs-keyword">if</span> state:<br>        auth_token = state.get(<span class="hljs-string">&quot;auth_token&quot;</span>)<br>        logger.info(<span class="hljs-string">f&quot;🔑 Retrieved auth_token from state: <span class="hljs-subst">&#123;<span class="hljs-built_in">bool</span>(auth_token)&#125;</span>&quot;</span>)<br>    <br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> auth_token:<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Authentication failed: No authentication token available&quot;</span><br>    <br>    <span class="hljs-comment"># Use token...</span><br></code></pre></td></tr></table></figure>
+<h3 id="the-error---first-discovery"><strong>The Error - First
+Discovery</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Agent log</span><br>2025-10-24 06:27:18,788 - secure_personal_tools - INFO - get_user_spending_analysis_secure_tool called<br>2025-10-24 06:27:18,788 - secure_personal_tools - INFO - 🔍 State keys: [<span class="hljs-string">&#x27;messages&#x27;</span>, <span class="hljs-string">&#x27;is_last_step&#x27;</span>, <span class="hljs-string">&#x27;remaining_steps&#x27;</span>]<br>2025-10-24 06:27:18,788 - secure_personal_tools - INFO - 🔑 Retrieved auth_token from state: False<br>2025-10-24 06:27:18,788 - secure_personal_tools - ERROR - ❌ No auth_token found <span class="hljs-keyword">in</span> state<br></code></pre></td></tr></table></figure>
+<p><strong>The state exists but <code>auth_token</code> is NOT in
+it!</strong></p>
+<h3 id="why-it-failed-2"><strong>Why It Failed</strong></h3>
+<p><strong>LangGraph's <code>create_react_agent</code> uses a fixed
+state schema</strong>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># What create_react_agent does internally (simplified)</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MessagesState</span>(<span class="hljs-title class_ inherited__">TypedDict</span>):<br>    messages: Annotated[<span class="hljs-type">Sequence</span>[BaseMessage], add_messages]<br>    is_last_step: <span class="hljs-built_in">bool</span><br>    remaining_steps: <span class="hljs-built_in">int</span><br>    <span class="hljs-comment"># That&#x27;s it! No custom fields allowed!</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">create_react_agent</span>(<span class="hljs-params">llm, tools</span>):<br>    <span class="hljs-comment"># Creates a graph with MessagesState</span><br>    graph = StateGraph(MessagesState)<br>    <span class="hljs-comment"># ... agent logic</span><br>    <span class="hljs-keyword">return</span> graph.<span class="hljs-built_in">compile</span>()<br></code></pre></td></tr></table></figure>
+<p>Our <code>auth_token</code> in the main supervisor graph's state
+<strong>doesn't propagate</strong> to the react agent sub-graphs
+because:</p>
+<ol type="1">
+<li><strong>Supervisor graph</strong> has custom state:
+<code>&#123;"messages": ..., "auth_token": "xyz", ...&#125;</code></li>
+<li><strong>React agent sub-graph</strong> only accepts
+<code>MessagesState</code> fields</li>
+<li>The <code>auth_token</code> is <strong>dropped</strong> when
+entering the react agent!</li>
+</ol>
+<p><strong>Technical Issue</strong>: <strong>State schema
+mismatch</strong> - Nested graphs with different state schemas don't
+automatically merge custom fields.</p>
+<hr />
+<h2 id="attempt-5-bad-import-error"><strong>Attempt 5: Bad Import
+Error</strong></h2>
+<h3 id="the-confusion"><strong>The Confusion</strong></h3>
+<p>After reading LangGraph docs, we tried:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># secure_personal_tools.py (WRONG IMPORT)</span><br><span class="hljs-keyword">from</span> langgraph.prebuilt.chat_agent_executor <span class="hljs-keyword">import</span> InjectedState  <span class="hljs-comment"># ❌ Wrong!</span><br></code></pre></td></tr></table></figure>
+<h3 id="the-error-2"><strong>The Error</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Agent completely stuck - no logs!</span><br>2025-10-24 06:27:07 - INFO - Created supervisor graph<br><span class="hljs-comment"># ... silence ...</span><br><span class="hljs-comment"># (Agent never starts processing)</span><br></code></pre></td></tr></table></figure>
+<p><strong>Why</strong>: The wrong import caused an initialization error
+that prevented the entire agent from starting.</p>
+<h3 id="the-fix"><strong>The Fix</strong></h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> langgraph.prebuilt <span class="hljs-keyword">import</span> InjectedState  <span class="hljs-comment"># ✅ Correct import</span><br></code></pre></td></tr></table></figure>
+<p>But then we tried:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_user_spending_analysis_secure_tool</span>(<span class="hljs-params"></span><br><span class="hljs-params">    days: <span class="hljs-built_in">int</span> = <span class="hljs-number">30</span>,</span><br><span class="hljs-params">    config: RunnableConfig = <span class="hljs-literal">None</span>,  <span class="hljs-comment"># ❌ Still not injected properly</span></span><br><span class="hljs-params"></span>) -&gt; <span class="hljs-built_in">str</span>:<br>    ...<br></code></pre></td></tr></table></figure>
+<p>Without <code>InjectedState</code>, the <code>config</code> parameter
+wasn't being injected by LangGraph - it was just <code>None</code>!</p>
+<hr />
+<h2 id="the-final-solution-runnableconfig-the-right-way"><strong>The
+Final Solution: RunnableConfig (The Right Way)</strong></h2>
+<h3 id="the-breakthrough"><strong>The Breakthrough</strong></h3>
+<p>Reading LangGraph documentation more carefully:</p>
+<blockquote>
+<p><strong>RunnableConfig</strong> is the standard way to pass
+configuration to all runnables, tools, and nodes in a graph. It's
+guaranteed to propagate through all execution layers.</p>
+</blockquote>
+<h3 id="the-implementation-2"><strong>The Implementation</strong></h3>
+<h4 id="step-1-pass-token-in-config"><strong>Step 1: Pass Token in
+Config</strong></h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># financial_manager.py</span><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">_run_real_financial_analysis_streaming</span>(<span class="hljs-params">..., auth_token</span>):<br>    <span class="hljs-comment"># Don&#x27;t put token in state - put it in CONFIG!</span><br>    config = &#123;<br>        <span class="hljs-string">&quot;configurable&quot;</span>: &#123;<br>            <span class="hljs-string">&quot;thread_id&quot;</span>: conversation_id,<br>            <span class="hljs-string">&quot;auth_token&quot;</span>: auth_token,  <span class="hljs-comment"># ✅ In config, not state</span><br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-keyword">async</span> <span class="hljs-keyword">for</span> stream_data <span class="hljs-keyword">in</span> graph.astream(initial_state, config):<br>        <span class="hljs-keyword">yield</span> stream_data<br></code></pre></td></tr></table></figure>
+<h4 id="step-2-tools-receive-config-automatically"><strong>Step 2: Tools
+Receive Config Automatically</strong></h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># secure_personal_tools.py</span><br><span class="hljs-keyword">from</span> langchain_core.runnables <span class="hljs-keyword">import</span> RunnableConfig<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_user_spending_analysis_secure_tool</span>(<span class="hljs-params"></span><br><span class="hljs-params">    days: <span class="hljs-built_in">int</span> = <span class="hljs-number">30</span>,</span><br><span class="hljs-params">    config: RunnableConfig = <span class="hljs-literal">None</span>,  <span class="hljs-comment"># LangGraph injects this automatically!</span></span><br><span class="hljs-params"></span>) -&gt; <span class="hljs-built_in">str</span>:<br>    logger.info(<span class="hljs-string">f&quot;🔍 Config keys: <span class="hljs-subst">&#123;<span class="hljs-built_in">list</span>(config.get(<span class="hljs-string">&#x27;configurable&#x27;</span>, &#123;&#125;</span>).keys())&#125;&quot;</span>)<br>    <br>    <span class="hljs-comment"># Get token from config</span><br>    auth_token = <span class="hljs-literal">None</span><br>    <span class="hljs-keyword">if</span> config <span class="hljs-keyword">and</span> <span class="hljs-string">&quot;configurable&quot;</span> <span class="hljs-keyword">in</span> config:<br>        auth_token = config[<span class="hljs-string">&quot;configurable&quot;</span>].get(<span class="hljs-string">&quot;auth_token&quot;</span>)<br>        logger.info(<span class="hljs-string">f&quot;🔑 Retrieved auth_token from config: <span class="hljs-subst">&#123;<span class="hljs-built_in">bool</span>(auth_token)&#125;</span>&quot;</span>)<br>    <br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> auth_token:<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Authentication failed: No authentication token available&quot;</span><br>    <br>    <span class="hljs-comment"># Make authenticated request</span><br>    response_data = _make_authenticated_request(<br>        endpoint=<span class="hljs-string">&quot;/api/financial-agent/get-spending-analysis&quot;</span>,<br>        auth_token=auth_token,<br>    )<br>    <span class="hljs-keyword">return</span> format_response(response_data)<br></code></pre></td></tr></table></figure>
+<h3 id="the-success"><strong>The Success</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Agent log - IT WORKS!</span><br>2025-10-24 06:34:35,315 - secure_personal_tools - INFO - get_user_spending_analysis_secure_tool called<br>2025-10-24 06:34:35,315 - secure_personal_tools - INFO - 🔍 Config keys: [<span class="hljs-string">&#x27;thread_id&#x27;</span>, <span class="hljs-string">&#x27;auth_token&#x27;</span>, <span class="hljs-string">&#x27;__pregel_task_id&#x27;</span>, <span class="hljs-string">&#x27;__pregel_send&#x27;</span>, ...]<br>2025-10-24 06:34:35,315 - secure_personal_tools - INFO - 🔑 Retrieved auth_token from config: True<br>2025-10-24 06:34:35,315 - secure_personal_tools - INFO - Making authenticated POST request to /api/financial-agent/get-spending-analysis<br>2025-10-24 06:34:37,551 - secure_personal_tools - INFO - ✅ Successfully received response<br></code></pre></td></tr></table></figure>
+<h3 id="why-this-works"><strong>Why This Works</strong></h3>
+<p><strong>RunnableConfig propagation path</strong>:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs routeros">financial_routes.py (config created)<br>    ↓<span class="hljs-built_in"> config </span>passed <span class="hljs-keyword">to</span> astream()<br>financial_manager.py (graph.astream)<br>    ↓<span class="hljs-built_in"> config </span>flows through graph<br>supervisor (receives config)<br>    ↓<span class="hljs-built_in"> config </span>passed <span class="hljs-keyword">to</span> worker<br>personal_agent (react agent, receives config)<br>    ↓<span class="hljs-built_in"> config </span>passed <span class="hljs-keyword">to</span><span class="hljs-built_in"> tool </span>invocation<br>get_user_spending_analysis_secure_tool (receives config)<br>    ↓<span class="hljs-built_in"> tool </span>extracts auth_token<br>    ✅ SUCCESS<br></code></pre></td></tr></table></figure>
+<p><strong>Key Properties of RunnableConfig</strong>: 1.
+<strong>Guaranteed propagation</strong>: LangGraph's core design ensures
+config reaches all layers 2. <strong>Works across boundaries</strong>:
+Crosses async contexts, thread pools, and subgraph boundaries 3.
+<strong>Schema-agnostic</strong>: Doesn't depend on state schema - it's
+a separate channel 4. <strong>Standard pattern</strong>: This is how
+LangGraph is designed to pass cross-cutting concerns</p>
+<p><strong>Technical Explanation</strong>:</p>
+<p>LangGraph's execution model uses a <strong>config parameter</strong>
+that's explicitly threaded through every execution layer:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># LangGraph internal flow (simplified)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">invoke_node</span>(<span class="hljs-params">node, state, config</span>):  <span class="hljs-comment"># config is always passed</span><br>    <span class="hljs-keyword">return</span> node.invoke(state, config=config)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">invoke_tool</span>(<span class="hljs-params">tool, args, config</span>):  <span class="hljs-comment"># config is always passed</span><br>    <span class="hljs-keyword">return</span> tool(**args, config=config)<br></code></pre></td></tr></table></figure>
+<p>Unlike state (which can be schema-restricted) or module globals
+(which suffer from import isolation), the <code>config</code> parameter
+is <strong>explicitly passed</strong> through the call chain, making it
+reliable across all execution contexts.</p>
+<hr />
+<h2 id="summary-technical-comparison"><strong>Summary: Technical
+Comparison</strong></h2>
+<table>
+
+<thead>
+<tr class="header">
+<th>Approach</th>
+<th>Technical Issue</th>
+<th>Why It Failed</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>ContextVar</strong></td>
+<td>Context boundary crossing</td>
+<td>Doesn't propagate across <code>asyncio.create_task()</code>
+boundaries</td>
+</tr>
+<tr class="even">
+<td><strong>Global Dict</strong></td>
+<td>Module import isolation</td>
+<td>Multiple imports created separate dictionary instances</td>
+</tr>
+<tr class="odd">
+<td><strong>Thread Mapping</strong></td>
+<td>Thread affinity assumption</td>
+<td>Thread pools switch threads; mapping becomes stale</td>
+</tr>
+<tr class="even">
+<td><strong>State (InjectedState)</strong></td>
+<td>State schema mismatch</td>
+<td>React agents use fixed <code>MessagesState</code> schema</td>
+</tr>
+<tr class="odd">
+<td><strong>RunnableConfig</strong> ✅</td>
+<td>None - correct approach</td>
+<td>Explicitly propagated through all layers by design</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="key-technical-learnings"><strong>Key Technical
+Learnings</strong></h2>
+<ol type="1">
+<li><strong>Async contexts are isolated</strong>:
+<code>ContextVar</code> and thread-local storage don't automatically
+propagate across async boundaries</li>
+<li><strong>Module globals aren't truly global</strong>: In
+multi-process/multi-import scenarios, each context gets its own module
+instance</li>
+<li><strong>State schemas are enforced</strong>: LangGraph's nested
+graphs enforce their own state schemas</li>
+<li><strong>Use the framework's patterns</strong>: LangGraph designed
+<code>RunnableConfig</code> specifically for cross-cutting concerns like
+authentication</li>
+<li><strong>Diagnostic logging is crucial</strong>: Memory addresses
+(<code>id()</code>) and thread IDs helped identify the root cause</li>
+</ol>
+<hr />
+<h2 id="the-debug-workflow"><strong>The Debug Workflow</strong></h2>
+<p>Each round followed this pattern:</p>
+<ol type="1">
+<li><strong>Hypothesis</strong>: "Maybe X will work..."</li>
+<li><strong>Implementation</strong>: Write the code</li>
+<li><strong>Test</strong>: Restart server, invoke agent</li>
+<li><strong>Log Analysis</strong>: Read diagnostic logs</li>
+<li><strong>Discovery</strong>: "Oh! The memory addresses are
+different!"</li>
+<li><strong>New Hypothesis</strong>: "That means..."</li>
+<li><strong>Repeat</strong>: 20 times</li>
+</ol>
+<p>The key breakthrough was <strong>adding diagnostic logging</strong>
+(memory addresses, thread IDs) that revealed the underlying execution
+model's behavior.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Project-Logs/" class="category-chain-item">Project Logs</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Project-Logs/Start-Up-Logs/" class="category-chain-item">Start Up Logs</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Project-Logs/Start-Up-Logs/Product-Update/" class="category-chain-item">Product Update</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Startup/">#Startup</a>
+      
+        <a href="/tags/JWT/">#JWT</a>
+      
+        <a href="/tags/EQUO/">#EQUO</a>
+      
+        <a href="/tags/AI-Agent/">#AI Agent</a>
+      
+        <a href="/tags/Tool/">#Tool</a>
+      
+        <a href="/tags/Security/">#Security</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Product Update: secure financial tool calling</div>
+      <div>http://blog.slray.com/2025/10/24/Product-Update-secure-financial-tool-calling/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Sirui Ray Li</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>October 24, 2025</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/02/02/hello-world/" title="Hello World">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/10/22/Startup-Log-Upgrading-to-Secure-Tool-Call/" title="Startup Log: Upgrading to Secure Tool Call">
+                        <span class="hidden-mobile">Startup Log: Upgrading to Secure Tool Call</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        aggregate visit: 
+        <span id="busuanzi_value_site_pv"></span>
+         times
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        , 
+        <span id="busuanzi_value_site_uv"></span>
+         people
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

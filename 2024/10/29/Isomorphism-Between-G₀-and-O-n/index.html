@@ -1,0 +1,1185 @@
+
+
+<!DOCTYPE html>
+<html lang="en,zh-CN,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Sirui Ray Li">
+  <meta name="keywords" content="testing3">
+  
+    <meta name="description" content="Exploring the Isomorphism Between G₀ and O(n) In the realm of linear algebra and group theory, understanding the structure and relationships between different groups of transformations is fundamental.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Isomorphism Between G₀ and O(n)">
+<meta property="og:url" content="http://blog.slray.com/2024/10/29/Isomorphism-Between-G%E2%82%80-and-O-n/index.html">
+<meta property="og:site_name" content="Ray&#39;s website">
+<meta property="og:description" content="Exploring the Isomorphism Between G₀ and O(n) In the realm of linear algebra and group theory, understanding the structure and relationships between different groups of transformations is fundamental.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-10-30T01:14:59.000Z">
+<meta property="article:modified_time" content="2024-10-30T01:14:59.000Z">
+<meta property="article:author" content="Sirui Ray Li">
+<meta property="article:tag" content="Math">
+<meta property="article:tag" content="Abstract Algebra">
+<meta property="article:tag" content="Vector Space">
+<meta property="article:tag" content="Metric">
+<meta property="article:tag" content="Inner Product">
+<meta property="article:tag" content="Motion">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Isomorphism Between G₀ and O(n) - Ray&#39;s website</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.slray.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ray&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Isomorphism Between G₀ and O(n)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-10-29 21:14" pubdate>
+          Tuesday, October 29th 2024, 9:14 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          10k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          85 minutes
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          visit: <span id="busuanzi_value_page_pv"></span> times
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Isomorphism Between G₀ and O(n)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="exploring-the-isomorphism-between-g₀-and-on">Exploring the
+Isomorphism Between G₀ and O(n)</h1>
+<p>In the realm of linear algebra and group theory, understanding the
+structure and relationships between different groups of transformations
+is fundamental. One such intriguing relationship is the isomorphism
+between the group <span class="math inline">\(G_0\)</span> of motions
+preserving distance and the origin in <span
+class="math inline">\(\Bbb{R}^n\)</span>, and the orthogonal group <span
+class="math inline">\(O(n)\)</span>. In this blog post, we'll delve deep
+into the proof that establishes this isomorphism, ensuring clarity and
+consistency in our notation throughout.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol type="1">
+<li><a href="#introduction">Introduction to <span
+class="math inline">\(O(n)\)</span> and <span
+class="math inline">\(G_0\)</span></a></li>
+<li><a href="#definitions">Definitions and Equivalent Conditions for
+<span class="math inline">\(O(n)\)</span></a></li>
+<li><a href="#g0">Understanding <span
+class="math inline">\(G_0\)</span>: Motions Preserving Distance and the
+Origin</a></li>
+<li><a href="#isomorphism">Establishing the Isomorphism <span
+class="math inline">\(G_0 \cong O(n)\)</span></a></li>
+<li><a href="#lemma">Lemma: Uniqueness of Vectors Under Norm
+Preservation</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#references">References</a></li>
+</ol>
+<!-- <a name="introduction"></a> -->
+<h2 id="introduction-to-on-and-g_0">1. Introduction to <span
+class="math inline">\(O(n)\)</span> and <span
+class="math inline">\(G_0\)</span></h2>
+<p>Orthogonal groups and isometry groups play a pivotal role in various
+branches of mathematics and physics. The orthogonal group <span
+class="math inline">\(O(n)\)</span> consists of all <span
+class="math inline">\(n \times n\)</span> real matrices that preserve
+the Euclidean inner product. On the other hand, <span
+class="math inline">\(G_0\)</span> represents the group of motions
+(transformations) in <span class="math inline">\(\Bbb{R}^n\)</span> that
+preserve distances between points and fix the origin.</p>
+<p>Establishing an isomorphism between <span
+class="math inline">\(G_0\)</span> and <span
+class="math inline">\(O(n)\)</span> not only deepens our understanding
+of these groups but also bridges the gap between linear transformations
+and geometric motions.</p>
+<!-- <a name="definitions"></a> -->
+<h2 id="definitions-and-equivalent-conditions-for-on">2. Definitions and
+Equivalent Conditions for <span class="math inline">\(O(n)\)</span></h2>
+<p>Before diving into the isomorphism, let's meticulously define <span
+class="math inline">\(O(n)\)</span> and explore its equivalent
+characterizations. Understanding these equivalencies is crucial for
+appreciating the structure of <span class="math inline">\(O(n)\)</span>
+and its relation to <span class="math inline">\(G_0\)</span>.</p>
+<h3 id="definition-of-on">Definition of <span
+class="math inline">\(O(n)\)</span></h3>
+<p>The <strong>orthogonal group</strong> <span
+class="math inline">\(O(n)\)</span> is defined as the set of all <span
+class="math inline">\(n \times n\)</span> real matrices <span
+class="math inline">\(A\)</span> that satisfy the following equivalent
+conditions:</p>
+<ol type="1">
+<li><p><strong>Preservation of the Inner Product:</strong></p>
+<p><span class="math display">\[
+\langle Av, Aw \rangle = \langle v, w \rangle \quad \text{for all } v, w
+\in \Bbb{R}^n
+\]</span></p>
+<p>UnderstandingThis means that <span class="math inline">\(A\)</span>
+preserves the inner product (dot product) between any two vectors in
+<span class="math inline">\(\Bbb{R}^n\)</span>.</p></li>
+<li><p><strong>Orthogonality Condition:</strong></p>
+<p><span class="math display">\[
+A A^\top = I
+\]</span></p>
+<p>Here, <span class="math inline">\(A^\top\)</span> denotes the
+transpose of <span class="math inline">\(A\)</span>, and <span
+class="math inline">\(I\)</span> is the identity matrix. This condition
+implies that the inverse of <span class="math inline">\(A\)</span>
+exists and is equal to its transpose, i.e., <span
+class="math inline">\(A^{-1} = A^\top\)</span>.</p></li>
+<li><p><strong>Determinant Condition:</strong></p>
+<p><span class="math display">\[
+\det(A) = \pm 1
+\]</span></p>
+<p>This condition signifies that <span
+class="math inline">\(O(n)\)</span> is a subgroup of the general linear
+group <span class="math inline">\(GL(n)\)</span>, consisting of
+invertible matrices.</p></li>
+</ol>
+<h3 id="equivalence-of-definitions">Equivalence of Definitions</h3>
+<p>These definitions are equivalent in the context of real orthogonal
+matrices:</p>
+<ul>
+<li><p><strong>Inner Product Preservation Implies
+Orthogonality:</strong></p>
+<p>If <span class="math inline">\(A\)</span> preserves the inner
+product, then for any vectors <span class="math inline">\(v\)</span> and
+<span class="math inline">\(w\)</span>:</p>
+<p><span class="math display">\[
+\langle Av, Aw \rangle = v^\top A^\top A w = \langle v, w \rangle
+\]</span></p>
+<p>For this to hold for all <span class="math inline">\(v, w\)</span>,
+it must be that <span class="math inline">\(A^\top A = I\)</span>, hence
+<span class="math inline">\(A\)</span> is orthogonal.</p></li>
+<li><p><strong>Orthogonality Implies Determinant Condition:</strong></p>
+<p>Taking determinants on both sides of <span class="math inline">\(A
+A^\top = I\)</span>:</p>
+<p><span class="math display">\[
+\det(A) \det(A^\top) = \det(I) \Rightarrow (\det(A))^2 = 1 \Rightarrow
+\det(A) = \pm 1
+\]</span></p>
+<p>Thus, orthogonal matrices have determinants <span
+class="math inline">\(\pm 1\)</span>.</p></li>
+<li><p><strong>Determinant Condition with Orthogonality:</strong></p>
+<p>While the determinant condition alone doesn't imply orthogonality,
+when combined with the invertibility (from being in <span
+class="math inline">\(GL(n)\)</span>), it aligns with the properties of
+orthogonal matrices.</p></li>
+</ul>
+<p>Understanding these equivalent conditions provides a robust
+foundation for exploring the relationship between <span
+class="math inline">\(O(n)\)</span> and <span
+class="math inline">\(G_0\)</span>.</p>
+<!-- <a name="g0"></a> -->
+<h2 id="understanding-g_0-motions-preserving-distance-and-the-origin">3.
+Understanding <span class="math inline">\(G_0\)</span>: Motions
+Preserving Distance and the Origin</h2>
+<p>Now, let's define the group <span class="math inline">\(G_0\)</span>
+and comprehend its properties.</p>
+<h3 id="definition-of-g_0">Definition of <span
+class="math inline">\(G_0\)</span></h3>
+<p>The group <span class="math inline">\(G_0\)</span> consists of all
+motions <span class="math inline">\(m: \Bbb{R}^n \to \Bbb{R}^n\)</span>
+that satisfy the following conditions:</p>
+<ol type="1">
+<li><p><strong>Distance Preservation:</strong></p>
+<p><span class="math display">\[
+\| m(v) - m(w) \| = \| v - w \| \quad \text{for all } v, w \in \Bbb{R}^n
+\]</span></p>
+<p>This ensures that the transformation <span
+class="math inline">\(m\)</span> preserves the Euclidean distance
+between any two points in <span
+class="math inline">\(\Bbb{R}^n\)</span>.</p></li>
+<li><p><strong>Origin Preservation:</strong></p>
+<p><span class="math display">\[
+m(0) = 0
+\]</span></p>
+<p>This condition fixes the origin.</p></li>
+</ol>
+<h3 id="geometric-interpretation">Geometric Interpretation</h3>
+<p>Geometrically, <span class="math inline">\(G_0\)</span> represents
+all transformations that <strong>rigidly</strong> move points in space
+without altering their relative distances or shifting the origin. Such
+transformations include rotations and reflections, which are precisely
+the elements of <span class="math inline">\(O(n)\)</span>.</p>
+<h3 id="initial-inclusion-on-subseteq-g_0">Initial Inclusion: <span
+class="math inline">\(O(n) \subseteq G_0\)</span></h3>
+<p>It's straightforward to observe that every orthogonal matrix <span
+class="math inline">\(A \in O(n)\)</span> induces a motion <span
+class="math inline">\(m_A\)</span> defined by: <span
+class="math display">\[
+m_A(v) = Av
+\]</span> Since <span class="math inline">\(A\)</span> preserves inner
+products and distances (as per the equivalent conditions for <span
+class="math inline">\(O(n)\)</span>), it naturally belongs to <span
+class="math inline">\(G_0\)</span>. Hence, we have: <span
+class="math display">\[
+O(n) \subseteq G_0
+\]</span></p>
+<p>However, to establish an <strong>isomorphism</strong>, we need to
+show that every element in <span class="math inline">\(G_0\)</span>
+corresponds uniquely to an element in <span
+class="math inline">\(O(n)\)</span>, and vice versa.</p>
+<!-- <a name="isomorphism"></a> -->
+<h2 id="establishing-the-isomorphism-g_0-cong-on">4. Establishing the
+Isomorphism <span class="math inline">\(G_0 \cong O(n)\)</span></h2>
+<p>To prove that <span class="math inline">\(G_0\)</span> is isomorphic
+to <span class="math inline">\(O(n)\)</span>, denoted as <span
+class="math inline">\(G_0 \cong O(n)\)</span>, we need to demonstrate a
+<strong>bijective homomorphism</strong> between these two groups.
+Essentially, every motion in <span class="math inline">\(G_0\)</span>
+should correspond to a unique orthogonal matrix in <span
+class="math inline">\(O(n)\)</span>, and the group operations should
+align accordingly.</p>
+<h3 id="step-by-step-proof">Step-by-Step Proof</h3>
+<p>Let's break down the proof into detailed steps, ensuring each
+transition is logically sound and well-explained.</p>
+<h4 id="step-1-understanding-the-transformation-in-g_0"><strong>Step 1:
+Understanding the Transformation in <span
+class="math inline">\(G_0\)</span></strong></h4>
+<p>Consider a motion <span class="math inline">\(m \in G_0\)</span>. By
+definition: <span class="math display">\[
+\| m(v) - m(w) \| = \| v - w \| \quad \text{and} \quad m(0) = 0
+\]</span> This implies that <span class="math inline">\(m\)</span>
+preserves distances and fixes the origin.</p>
+<h4 id="step-2-simplifying-the-transformation"><strong>Step 2:
+Simplifying the Transformation</strong></h4>
+<p>Since <span class="math inline">\(m\)</span> fixes the origin (<span
+class="math inline">\(m(0) = 0\)</span>), we can express <span
+class="math inline">\(m(v)\)</span> as: <span class="math display">\[
+m(v) = m(v) - m(0)
+\]</span> This representation emphasizes that <span
+class="math inline">\(m\)</span> is a <strong>linear
+transformation</strong> because it preserves the origin and distances,
+properties typically associated with linear maps like rotations and
+reflections.</p>
+<h4 id="step-3-norm-preservation"><strong>Step 3: Norm
+Preservation</strong></h4>
+<p>One of the key properties of <span class="math inline">\(m\)</span>
+is the preservation of norms: <span class="math display">\[
+\| m(v) \| = \| v \|
+\]</span> This follows directly from setting <span
+class="math inline">\(w = 0\)</span> in the distance preservation
+condition: <span class="math display">\[
+\| m(v) - m(0) \| = \| v - 0 \| \Rightarrow \| m(v) \| = \| v \|
+\]</span> This property ensures that <span
+class="math inline">\(m\)</span> preserves the length of every vector in
+<span class="math inline">\(\Bbb{R}^n\)</span>.</p>
+<h4 id="step-4-handling-negative-vectors"><strong>Step 4: Handling
+Negative Vectors</strong></h4>
+<p>Using the norm preservation, we analyze the behavior of <span
+class="math inline">\(m\)</span> on negative vectors: <span
+class="math display">\[
+\| m(-v) \| = \| -v \| = \| v \| = \| m(v) \|
+\]</span> Additionally, since <span class="math inline">\(\| m(-v) \| =
+\| m(v) \|\)</span>, we have: <span class="math display">\[
+\| -m(v) \| = \| m(v) \|
+\]</span>. Also, by that <span class="math display">\[
+||X - Y|| = ||m(X) - m(Y)||
+\]</span> , We have <span class="math display">\[
+||-m(-v) + m(v)|| = ||-(m(-v) - m(0)) + (m(v) - m(0))|| = ||m(v) -
+m(-v)|| = ||v - (-v)|| = 2||v||
+\]</span>. With the above condition, we get <span
+class="math display">\[
+||-m(-v) + m(v)|| = 2||v|| = 2||m(v)|| = ||m(v) + m(v)||
+\]</span> that: <span class="math display">\[
+m(-v) = -m(v)
+\]</span> The reasoning is rooted in the <strong>uniqueness of
+vectors</strong> under norm preservation, which we'll formalize in our
+lemma.</p>
+<h4 id="step-5-preserving-vector-addition"><strong>Step 5: Preserving
+Vector Addition</strong></h4>
+<p>Next, we have <span class="math display">\[
+||u + v|| = ||(u - 0) + (v - 0)|| = ||u - (-v)|| = ||m(u) - m(-v)||
+\]</span> Thus <span class="math display">\[
+= ||(m(u) - m(0)) - (m(-v) - m(0))|| = ||m(u) - m(-v)|| = ||m(u) +
+m(v)||
+\]</span></p>
+<p>Thus, we have <span class="math display">\[
+\| m(u + v) \| = \| u + v \|
+\]</span> Similarly, since <span class="math inline">\(m\)</span>
+preserves norms of individual vectors: <span class="math display">\[
+\| m(u) + m(v) \|^2 = \| m(u) \|^2 + 2 \langle m(u), m(v) \rangle + \|
+m(v) \|^2 = \| u \|^2 + 2 \langle m(u), m(v) \rangle + \| v \|^2
+\]</span> But also: <span class="math display">\[
+\| u + v \|^2 = \| u \|^2 + 2 \langle u, v \rangle + \| v \|^2
+\]</span> Since <span class="math inline">\(\| m(u + v) \| = \| u + v
+\|\)</span> and <span class="math inline">\(\| m(u) + m(v) \| = \| u + v
+\|\)</span>, we equate the two expressions: <span
+class="math display">\[
+\| u \|^2 + 2 \langle u, v \rangle + \| v \|^2 = \| u \|^2 + 2 \langle
+m(u), m(v) \rangle + \| v \|^2
+\]</span> Simplifying, we find: <span class="math display">\[
+\langle u, v \rangle = \langle m(u), m(v) \rangle
+\]</span> This crucial equality shows that <span
+class="math inline">\(m\)</span> preserves the <strong>inner
+product</strong> between any two vectors in <span
+class="math inline">\(\Bbb{R}^n\)</span>.</p>
+<h4 id="step-6-linearity"><strong>Step 6: Linearity</strong></h4>
+<p>For this part, check out <a
+href="/2024/10/29/Equivalent-Definitions-of-O-n-and-Proof-of-Membership/">this
+blog</a>. Or you can also watch the <a
+target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=5iNwFTZYH2k&amp;list=PLelIK3uylPMGzHBuR3hLMHrYfMqWWsmx5&amp;index=15&amp;ab_channel=It%27ssoblatant">video
+by Harvard</a></p>
+<h4 id="step-7-injectivity-and-surjectivity"><strong>Step 7: Injectivity
+and Surjectivity</strong></h4>
+<p>To confirm that this mapping is indeed an isomorphism, we must ensure
+that it is both <strong>injective</strong> (one-to-one) and
+<strong>surjective</strong> (onto):</p>
+<ul>
+<li><p><strong>Injectivity:</strong> Suppose <span
+class="math inline">\(m_1, m_2 \in G_0\)</span> such that <span
+class="math inline">\(m_1 = m_2\)</span>. Then, their corresponding
+matrices <span class="math inline">\(A_1, A_2 \in O(n)\)</span> satisfy
+<span class="math inline">\(A_1 v = A_2 v\)</span> for all <span
+class="math inline">\(v \in \Bbb{R}^n\)</span>, implying <span
+class="math inline">\(A_1 = A_2\)</span>. Hence, the mapping is
+injective.</p></li>
+<li><p><strong>Surjectivity:</strong> For every <span
+class="math inline">\(A \in O(n)\)</span>, the motion <span
+class="math inline">\(m_A(v) = Av\)</span> belongs to <span
+class="math inline">\(G_0\)</span> because <span
+class="math inline">\(A\)</span> preserves distances and fixes the
+origin. Thus, every element of <span class="math inline">\(O(n)\)</span>
+is the image of some element in <span
+class="math inline">\(G_0\)</span>, making the mapping
+surjective.</p></li>
+</ul>
+<h4 id="step-8-homomorphism-property"><strong>Step 8: Homomorphism
+Property</strong></h4>
+<p>Finally, we verify that the mapping preserves the group operation
+(composition):</p>
+<p><span class="math display">\[
+m_1 \circ m_2(v) = m_1(m_2(v)) = A_1 (A_2 v) = (A_1 A_2) v = A_3 v =
+m_3(v)
+\]</span> where <span class="math inline">\(A_3 = A_1 A_2 \in
+O(n)\)</span>.</p>
+<p>Since the composition of motions corresponds to the multiplication of
+their corresponding matrices in <span
+class="math inline">\(O(n)\)</span>, the homomorphism property
+holds.</p>
+<h3 id="conclusion-of-the-proof"><strong>Conclusion of the
+Proof</strong></h3>
+<p>Combining all these steps, we've established a <strong>bijective
+homomorphism</strong> between <span class="math inline">\(G_0\)</span>
+and <span class="math inline">\(O(n)\)</span>. Therefore, these two
+groups are <strong>isomorphic</strong>, denoted as: <span
+class="math display">\[
+G_0 \cong O(n)
+\]</span></p>
+<p>This isomorphism reveals that the group of motions preserving
+distance and the origin in <span
+class="math inline">\(\Bbb{R}^n\)</span> is structurally identical to
+the orthogonal group <span class="math inline">\(O(n)\)</span>,
+highlighting the deep interplay between linear transformations and
+geometric motions.</p>
+<!-- <a name="lemma"></a> -->
+<h2 id="lemma-uniqueness-of-vectors-under-norm-preservation">5. Lemma:
+Uniqueness of Vectors Under Norm Preservation</h2>
+<p>A crucial component in our proof was the assertion that: <span
+class="math display">\[
+m(-v) = -m(v)
+\]</span> To substantiate this, we rely on the following lemma:</p>
+<p><strong>Lemma:</strong> If <span class="math inline">\(\| a + v \| =
+\| b + v \|\)</span> for all <span class="math inline">\(v \in
+\Bbb{R}^n\)</span>, then <span class="math inline">\(a = b\)</span>.</p>
+<h3 id="proof-of-the-lemma"><strong>Proof of the Lemma</strong></h3>
+<h4 id="step-1-expanding-the-norms-using-the-inner-product"><strong>Step
+1: Expanding the Norms Using the Inner Product</strong></h4>
+<p>Recall that the square of the Euclidean norm of a vector <span
+class="math inline">\(u\)</span> is given by the inner product: <span
+class="math display">\[
+\| u \|^2 = \langle u, u \rangle
+\]</span> Thus, expanding the norms: <span class="math display">\[
+\| a + v \|^2 = \langle a + v, a + v \rangle = \| a \|^2 + 2 \langle a,
+v \rangle + \| v \|^2
+\]</span> <span class="math display">\[
+\| b + v \|^2 = \langle b + v, b + v \rangle = \| b \|^2 + 2 \langle b,
+v \rangle + \| v \|^2
+\]</span></p>
+<h4 id="step-2-equating-the-expanded-norms"><strong>Step 2: Equating the
+Expanded Norms</strong></h4>
+<p>Given that <span class="math inline">\(\| a + v \| = \| b + v
+\|\)</span> for all <span class="math inline">\(v\)</span>, their
+squares are also equal: <span class="math display">\[
+\| a \|^2 + 2 \langle a, v \rangle + \| v \|^2 = \| b \|^2 + 2 \langle
+b, v \rangle + \| v \|^2
+\]</span> Subtracting <span class="math inline">\(\| v \|^2\)</span>
+from both sides: <span class="math display">\[
+\| a \|^2 + 2 \langle a, v \rangle = \| b \|^2 + 2 \langle b, v \rangle
+\]</span> Rearranging terms: <span class="math display">\[
+2 \langle a - b, v \rangle = \| b \|^2 - \| a \|^2
+\]</span></p>
+<h4 id="step-3-analyzing-for-all-v-in-bbbrn"><strong>Step 3: Analyzing
+for All <span class="math inline">\(v \in
+\Bbb{R}^n\)</span></strong></h4>
+<p>The equation above must hold for all vectors <span
+class="math inline">\(v\)</span>. Observe that:</p>
+<ul>
+<li>The left-hand side, <span class="math inline">\(2 \langle a - b, v
+\rangle\)</span>, is a <strong>linear function</strong> of <span
+class="math inline">\(v\)</span>.</li>
+<li>The right-hand side, <span class="math inline">\(\| b \|^2 - \| a
+\|^2\)</span>, is a <strong>constant</strong>.</li>
+</ul>
+<p>For these two to be equal for all <span
+class="math inline">\(v\)</span>, the only possibility is:</p>
+<ol type="1">
+<li><p>The coefficient of <span class="math inline">\(v\)</span> must be
+zero:</p>
+<p><span class="math display">\[
+a - b = 0 \Rightarrow a = b
+\]</span></p></li>
+<li><p>The constant term must also be zero:</p>
+<p><span class="math display">\[
+\| b \|^2 - \| a \|^2 = 0
+\]</span></p>
+<p>Which is automatically satisfied since <span class="math inline">\(a
+= b\)</span>.</p></li>
+</ol>
+<h4 id="conclusion-of-the-lemma"><strong>Conclusion of the
+Lemma</strong></h4>
+<p>Thus, the only solution that satisfies the equality for all <span
+class="math inline">\(v\)</span> is <span class="math inline">\(a =
+b\)</span>. This confirms the lemma and solidifies our earlier assertion
+that <span class="math inline">\(m(-v) = -m(v)\)</span>.</p>
+<!-- <a name="conclusion"></a> -->
+<h2 id="conclusion">6. Conclusion</h2>
+<p>Through meticulous examination and logical progression, we've
+established that the group <span class="math inline">\(G_0\)</span> of
+motions preserving distance and the origin in <span
+class="math inline">\(\Bbb{R}^n\)</span> is isomorphic to the orthogonal
+group <span class="math inline">\(O(n)\)</span>. This isomorphism not
+only underscores the intrinsic connection between linear transformations
+and geometric motions but also paves the way for further explorations
+into the symmetry and structure of mathematical and physical
+systems.</p>
+<p>Understanding such isomorphisms enhances our grasp of how different
+mathematical constructs relate and interact, providing a cohesive
+framework for various applications across disciplines.</p>
+<!-- <a name="references"></a> -->
+<h2 id="references">7. References</h2>
+<ol type="1">
+<li><p><strong>Math Stack Exchange:</strong> <a
+target="_blank" rel="noopener" href="https://math.stackexchange.com/questions/3028186/why-preserving-norm-is-equivalent-to-preserving-inner-product-in-rigid-body-tran">Why
+preserving norm is equivalent to preserving inner product in rigid body
+transformations?</a></p></li>
+<li><p><strong>YouTube:</strong> <a
+target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=5iNwFTZYH2k&amp;list=PLelIK3uylPMGzHBuR3hLMHrYfMqWWsmx5&amp;index=15&amp;ab_channel=It%27ssoblatant">Rigid
+Body Transformations and Orthogonal Groups</a></p></li>
+</ol>
+<p>These resources provide valuable insights and supplementary
+explanations that underpin the concepts and proofs discussed in this
+blog.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Daily-Logs/" class="category-chain-item">Daily Logs</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Daily-Logs/Math/" class="category-chain-item">Math</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Daily-Logs/Math/Algebra/" class="category-chain-item">Algebra</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Math/">#Math</a>
+      
+        <a href="/tags/Abstract-Algebra/">#Abstract Algebra</a>
+      
+        <a href="/tags/Vector-Space/">#Vector Space</a>
+      
+        <a href="/tags/Metric/">#Metric</a>
+      
+        <a href="/tags/Inner-Product/">#Inner Product</a>
+      
+        <a href="/tags/Motion/">#Motion</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Isomorphism Between G₀ and O(n)</div>
+      <div>http://blog.slray.com/2024/10/29/Isomorphism-Between-G₀-and-O-n/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Sirui Ray Li</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>October 29, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/10/29/Equivalent-Definitions-of-O-n-and-Proof-of-Membership/" title="Equivalent Definitions of O(n) and Proof of Membership">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Equivalent Definitions of O(n) and Proof of Membership</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/10/27/Handling-OAuth2-Flow-and-JWT-Authentication-in-a-React-Flask-Application/" title="Handling OAuth2 Flow and JWT Authentication in a React + Flask Application">
+                        <span class="hidden-mobile">Handling OAuth2 Flow and JWT Authentication in a React + Flask Application</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        aggregate visit: 
+        <span id="busuanzi_value_site_pv"></span>
+         times
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        , 
+        <span id="busuanzi_value_site_uv"></span>
+         people
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

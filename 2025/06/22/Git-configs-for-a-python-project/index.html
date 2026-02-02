@@ -1,0 +1,839 @@
+
+
+<!DOCTYPE html>
+<html lang="en,zh-CN,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Sirui Ray Li">
+  <meta name="keywords" content="testing3">
+  
+    <meta name="description" content="Description: Meta-documentation for project workflow, Git setup, and code quality tools Meta Documentation - Project Workflow &amp; Git Setup This document describes the complete development workflow,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git configs for a python project">
+<meta property="og:url" content="http://blog.slray.com/2025/06/22/Git-configs-for-a-python-project/index.html">
+<meta property="og:site_name" content="Ray&#39;s website">
+<meta property="og:description" content="Description: Meta-documentation for project workflow, Git setup, and code quality tools Meta Documentation - Project Workflow &amp; Git Setup This document describes the complete development workflow,">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-06-23T00:30:56.000Z">
+<meta property="article:modified_time" content="2025-06-23T00:30:56.000Z">
+<meta property="article:author" content="Sirui Ray Li">
+<meta property="article:tag" content="testing3">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Git configs for a python project - Ray&#39;s website</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.slray.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ray&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Git configs for a python project"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-06-22 20:30" pubdate>
+          Sunday, June 22nd 2025, 8:30 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          9.1k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          76 minutes
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          visit: <span id="busuanzi_value_page_pv"></span> times
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Git configs for a python project</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>Description: Meta-documentation for project workflow, Git setup, and
+code quality tools</p>
+<h1 id="meta-documentation---project-workflow-git-setup">Meta
+Documentation - Project Workflow &amp; Git Setup</h1>
+<p>This document describes the complete development workflow, Git
+configuration, and code quality tools used in the EQUO project. Use this
+as a blueprint for setting up similar Python projects with UV package
+management.</p>
+<h2 id="technology-stack">🛠️ Technology Stack</h2>
+<h3 id="core-tools">Core Tools</h3>
+<ul>
+<li><strong>Python</strong>: 3.11+</li>
+<li><strong>Package Manager</strong>: <a
+target="_blank" rel="noopener" href="https://github.com/astral-sh/uv">UV</a> - Fast Python dependency
+management</li>
+<li><strong>Web Framework</strong>: Flask 3.0+</li>
+<li><strong>AI Framework</strong>: LangGraph + LangChain + OpenAI</li>
+<li><strong>Data Validation</strong>: Pydantic</li>
+<li><strong>Testing</strong>: Pytest with coverage</li>
+</ul>
+<h3 id="code-quality-tools">Code Quality Tools</h3>
+<ul>
+<li><strong>Formatter</strong>: Black (code formatting)</li>
+<li><strong>Import Sorter</strong>: isort (import organization)</li>
+<li><strong>Linter</strong>: flake8 (code style and error checking)</li>
+<li><strong>Type Checker</strong>: mypy (static type analysis) -
+currently disabled</li>
+<li><strong>Pre-commit</strong>: Automated quality checks before
+commits</li>
+</ul>
+<h2 id="configuration-files">📁 Configuration Files</h2>
+<h3 id="flake8---linting-configuration"><code>.flake8</code> - Linting
+Configuration</h3>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[flake8]</span><br><span class="hljs-attr">max-line-length</span> = <span class="hljs-number">120</span><br><span class="hljs-attr">extend-ignore</span> = E203, W503<br></code></pre></td></tr></table></figure>
+<p><strong>Key Settings</strong>: - <strong>Line Length</strong>: 120
+characters (compatible with Black's default 88 + buffer) -
+<strong>Ignored Rules</strong>: - <code>E203</code>: Whitespace before
+':' (conflicts with Black) - <code>W503</code>: Line break before binary
+operator (conflicts with Black)</p>
+<h3
+id="pre-commit-config.yaml---pre-commit-hooks"><code>.pre-commit-config.yaml</code>
+- Pre-commit Hooks</h3>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">repos:</span><br>  <span class="hljs-comment"># Standard hooks for file quality</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-attr">repo:</span> <span class="hljs-string">https://github.com/pre-commit/pre-commit-hooks</span><br>    <span class="hljs-attr">rev:</span> <span class="hljs-string">v4.5.0</span><br>    <span class="hljs-attr">hooks:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">trailing-whitespace</span>      <span class="hljs-comment"># Remove trailing spaces</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">end-of-file-fixer</span>       <span class="hljs-comment"># Ensure files end with newline</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">check-yaml</span>              <span class="hljs-comment"># Validate YAML files</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">check-added-large-files</span> <span class="hljs-comment"># Prevent large file commits</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">check-json</span>              <span class="hljs-comment"># Validate JSON files</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">check-toml</span>              <span class="hljs-comment"># Validate TOML files</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">check-merge-conflict</span>    <span class="hljs-comment"># Detect merge conflict markers</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">debug-statements</span>        <span class="hljs-comment"># Detect debug print statements</span><br><br>  <span class="hljs-comment"># Code formatting</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-attr">repo:</span> <span class="hljs-string">https://github.com/psf/black</span><br>    <span class="hljs-attr">rev:</span> <span class="hljs-number">23.12</span><span class="hljs-number">.1</span><br>    <span class="hljs-attr">hooks:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">black</span><br>        <span class="hljs-attr">language_version:</span> <span class="hljs-string">python3</span><br><br>  <span class="hljs-comment"># Import sorting</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-attr">repo:</span> <span class="hljs-string">https://github.com/pycqa/isort</span><br>    <span class="hljs-attr">rev:</span> <span class="hljs-number">5.13</span><span class="hljs-number">.2</span><br>    <span class="hljs-attr">hooks:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">isort</span><br><br>  <span class="hljs-comment"># Linting</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-attr">repo:</span> <span class="hljs-string">https://github.com/pycqa/flake8</span><br>    <span class="hljs-attr">rev:</span> <span class="hljs-number">7.0</span><span class="hljs-number">.0</span><br>    <span class="hljs-attr">hooks:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">flake8</span><br>        <span class="hljs-attr">args:</span> [<span class="hljs-string">&quot;--max-line-length=120&quot;</span>, <span class="hljs-string">&quot;--extend-ignore=E203,W503&quot;</span>]<br><br>  <span class="hljs-comment"># Custom local hooks</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-attr">repo:</span> <span class="hljs-string">local</span><br>    <span class="hljs-attr">hooks:</span><br>      <span class="hljs-comment"># Run tests before commit</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">pytest</span><br>        <span class="hljs-attr">name:</span> <span class="hljs-string">pytest</span><br>        <span class="hljs-attr">entry:</span> <span class="hljs-string">uv</span> <span class="hljs-string">run</span> <span class="hljs-string">pytest</span><br>        <span class="hljs-attr">language:</span> <span class="hljs-string">system</span><br>        <span class="hljs-attr">pass_filenames:</span> <span class="hljs-literal">false</span><br>        <span class="hljs-attr">always_run:</span> <span class="hljs-literal">true</span><br>        <span class="hljs-attr">stages:</span> [<span class="hljs-string">pre-commit</span>]<br><br>      <span class="hljs-comment"># Enforce conventional commit messages</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">commit-msg-format</span><br>        <span class="hljs-attr">name:</span> <span class="hljs-string">Conventional</span> <span class="hljs-string">Commit</span> <span class="hljs-string">Format</span><br>        <span class="hljs-attr">entry:</span> <span class="hljs-string">python</span><br>        <span class="hljs-attr">language:</span> <span class="hljs-string">system</span><br>        <span class="hljs-attr">args:</span><br>          <span class="hljs-bullet">-</span> <span class="hljs-string">-c</span><br>          <span class="hljs-bullet">-</span> <span class="hljs-string">|</span><br><span class="hljs-string">            import re</span><br><span class="hljs-string">            import sys</span><br><span class="hljs-string">            if len(sys.argv) &lt; 2:</span><br><span class="hljs-string">                sys.exit(0)</span><br><span class="hljs-string">            with open(sys.argv[1], &#x27;r&#x27;) as f:</span><br><span class="hljs-string">                commit_msg = f.read().strip()</span><br><span class="hljs-string">            pattern = r&quot;^(feat|fix|chore|docs|style|refactor|test|perf|ci|build|revert)(\(.+\))?: .+&quot;</span><br><span class="hljs-string">            if not re.match(pattern, commit_msg):</span><br><span class="hljs-string">                print(f&quot;❌ Commit message format is invalid!&quot;)</span><br><span class="hljs-string">                print(f&quot;📋 Current message: &#123;commit_msg&#125;&quot;)</span><br><span class="hljs-string">                print(f&quot;✅ Expected format: type(scope): description&quot;)</span><br><span class="hljs-string">                print(f&quot;📝 Valid types: feat, fix, chore, docs, style, refactor, test, perf, ci, build, revert&quot;)</span><br><span class="hljs-string">                print(f&quot;📝 Examples:&quot;)</span><br><span class="hljs-string">                print(f&quot;   feat: add user authentication&quot;)</span><br><span class="hljs-string">                print(f&quot;   fix(api): resolve login endpoint error&quot;)</span><br><span class="hljs-string">                print(f&quot;   docs: update README.md&quot;)</span><br><span class="hljs-string">                sys.exit(1)</span><br><span class="hljs-string"></span>        <span class="hljs-attr">stages:</span> [<span class="hljs-string">commit-msg</span>]<br>        <span class="hljs-attr">pass_filenames:</span> <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+<h2 id="development-workflow">🔄 Development Workflow</h2>
+<h3 id="initial-project-setup">Initial Project Setup</h3>
+<ol type="1">
+<li><p><strong>Create project structure</strong>: <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> new-project &amp;&amp; <span class="hljs-built_in">cd</span> new-project<br>git init<br></code></pre></td></tr></table></figure></p></li>
+<li><p><strong>Set up UV and dependencies</strong>:
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Initialize UV project</span><br>uv init --package<br><br><span class="hljs-comment"># Add core dependencies</span><br>uv add flask pydantic pytest pytest-cov<br><br><span class="hljs-comment"># Add development dependencies</span><br>uv add --dev black isort flake8 pre-commit mypy<br></code></pre></td></tr></table></figure></p></li>
+<li><p><strong>Copy configuration files</strong>: <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Copy these files from EQUO project</span><br><span class="hljs-built_in">cp</span> .flake8 .pre-commit-config.yaml new-project/<br></code></pre></td></tr></table></figure></p></li>
+<li><p><strong>Install pre-commit hooks</strong>: <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">uv run pre-commit install<br>uv run pre-commit install --hook-type commit-msg<br></code></pre></td></tr></table></figure></p></li>
+</ol>
+<h3 id="daily-development-commands">Daily Development Commands</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Install/update dependencies</span><br>uv <span class="hljs-built_in">sync</span> --dev<br><br><span class="hljs-comment"># Run tests</span><br>uv run pytest<br>uv run pytest --cov=src --cov-report=html<br><br><span class="hljs-comment"># Code quality checks</span><br>uv run black .<br>uv run isort .<br>uv run flake8 src tests<br>uv run pre-commit run --all-files<br><br><span class="hljs-comment"># Development server</span><br>uv run python -m src.your_package.api.app<br></code></pre></td></tr></table></figure>
+<h3 id="git-workflow">Git Workflow</h3>
+<h4 id="conventional-commit-format">Conventional Commit Format</h4>
+<p>All commits must follow the conventional commit format:</p>
+<p><strong>Pattern</strong>: <code>type(scope): description</code></p>
+<p><strong>Valid Types</strong>: - <code>feat</code>: New feature -
+<code>fix</code>: Bug fix - <code>docs</code>: Documentation changes -
+<code>style</code>: Code style changes (formatting, no logic change) -
+<code>refactor</code>: Code refactoring - <code>test</code>: Adding or
+updating tests - <code>chore</code>: Maintenance tasks -
+<code>perf</code>: Performance improvements - <code>ci</code>: CI/CD
+changes - <code>build</code>: Build system changes -
+<code>revert</code>: Reverting previous commits</p>
+<p><strong>Examples</strong>: <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">git commit -m <span class="hljs-string">&quot;feat: add user authentication&quot;</span><br>git commit -m <span class="hljs-string">&quot;fix(api): resolve login endpoint error&quot;</span><br>git commit -m <span class="hljs-string">&quot;docs: update README.md&quot;</span><br>git commit -m <span class="hljs-string">&quot;test: add unit tests for user service&quot;</span><br>git commit -m <span class="hljs-string">&quot;refactor(agent): improve error handling&quot;</span><br></code></pre></td></tr></table></figure></p>
+<h4 id="pre-commit-workflow">Pre-commit Workflow</h4>
+<p>Every commit automatically runs:</p>
+<ol type="1">
+<li><strong>File Quality Checks</strong>:
+<ul>
+<li>Remove trailing whitespace</li>
+<li>Fix end-of-file formatting</li>
+<li>Validate YAML/JSON/TOML files</li>
+<li>Check for large files and merge conflicts</li>
+</ul></li>
+<li><strong>Code Quality</strong>:
+<ul>
+<li>Black formatting</li>
+<li>isort import sorting</li>
+<li>flake8 linting</li>
+</ul></li>
+<li><strong>Testing</strong>:
+<ul>
+<li>Full pytest suite must pass</li>
+</ul></li>
+<li><strong>Commit Message</strong>:
+<ul>
+<li>Validates conventional commit format</li>
+</ul></li>
+</ol>
+<p><strong>Example commit process</strong>: <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Make changes</span><br>git add .<br><br><span class="hljs-comment"># Commit (triggers all pre-commit hooks)</span><br>git commit -m <span class="hljs-string">&quot;feat: add new financial analysis feature&quot;</span><br><br><span class="hljs-comment"># If any hooks fail, fix issues and recommit</span><br><span class="hljs-comment"># Hooks run automatically on every commit attempt</span><br></code></pre></td></tr></table></figure></p>
+<h2 id="testing-configuration">🧪 Testing Configuration</h2>
+<h3 id="pytest-setup">Pytest Setup</h3>
+<p><strong>File</strong>: <code>pyproject.toml</code> <figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs toml"><span class="hljs-section">[tool.pytest.ini_options]</span><br><span class="hljs-attr">testpaths</span> = [<span class="hljs-string">&quot;tests&quot;</span>]<br><span class="hljs-attr">python_files</span> = [<span class="hljs-string">&quot;test_*.py&quot;</span>]<br><span class="hljs-attr">python_classes</span> = [<span class="hljs-string">&quot;Test*&quot;</span>]<br><span class="hljs-attr">python_functions</span> = [<span class="hljs-string">&quot;test_*&quot;</span>]<br><span class="hljs-attr">addopts</span> = [<br>    <span class="hljs-string">&quot;--strict-markers&quot;</span>,<br>    <span class="hljs-string">&quot;--strict-config&quot;</span>,<br>    <span class="hljs-string">&quot;--verbose&quot;</span>,<br>]<br></code></pre></td></tr></table></figure></p>
+<h3 id="coverage-configuration">Coverage Configuration</h3>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs toml"><span class="hljs-section">[tool.coverage.run]</span><br><span class="hljs-attr">source</span> = [<span class="hljs-string">&quot;src&quot;</span>]<br><span class="hljs-attr">omit</span> = [<br>    <span class="hljs-string">&quot;*/tests/*&quot;</span>,<br>    <span class="hljs-string">&quot;*/test_*&quot;</span>,<br>    <span class="hljs-string">&quot;*/__pycache__/*&quot;</span>,<br>    <span class="hljs-string">&quot;*/site-packages/*&quot;</span>,<br>]<br><br><span class="hljs-section">[tool.coverage.report]</span><br><span class="hljs-attr">exclude_lines</span> = [<br>    <span class="hljs-string">&quot;pragma: no cover&quot;</span>,<br>    <span class="hljs-string">&quot;def __repr__&quot;</span>,<br>    <span class="hljs-string">&quot;raise AssertionError&quot;</span>,<br>    <span class="hljs-string">&quot;raise NotImplementedError&quot;</span>,<br>]<br></code></pre></td></tr></table></figure>
+<h2 id="package-management-with-uv">📦 Package Management with UV</h2>
+<h3 id="core-uv-commands">Core UV Commands</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Project initialization</span><br>uv init --package                    <span class="hljs-comment"># Create new package project</span><br>uv init                             <span class="hljs-comment"># Create application project</span><br><br><span class="hljs-comment"># Dependency management</span><br>uv add package-name                 <span class="hljs-comment"># Add production dependency</span><br>uv add --dev package-name           <span class="hljs-comment"># Add development dependency</span><br>uv remove package-name              <span class="hljs-comment"># Remove dependency</span><br>uv <span class="hljs-built_in">sync</span>                             <span class="hljs-comment"># Install all dependencies</span><br>uv <span class="hljs-built_in">sync</span> --dev                       <span class="hljs-comment"># Install with dev dependencies</span><br><br><span class="hljs-comment"># Environment management</span><br>uv venv                             <span class="hljs-comment"># Create virtual environment</span><br>uv pip list                         <span class="hljs-comment"># List installed packages</span><br>uv pip show package-name            <span class="hljs-comment"># Show package info</span><br><br><span class="hljs-comment"># Running commands</span><br>uv run python script.py             <span class="hljs-comment"># Run Python script</span><br>uv run pytest                       <span class="hljs-comment"># Run tests</span><br>uv run black .                      <span class="hljs-comment"># Run formatter</span><br></code></pre></td></tr></table></figure>
+<h3 id="uv-project-structure">UV Project Structure</h3>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs toml"><span class="hljs-comment"># pyproject.toml</span><br><span class="hljs-section">[project]</span><br><span class="hljs-attr">name</span> = <span class="hljs-string">&quot;your-project&quot;</span><br><span class="hljs-attr">version</span> = <span class="hljs-string">&quot;0.1.0&quot;</span><br><span class="hljs-attr">description</span> = <span class="hljs-string">&quot;Project description&quot;</span><br><span class="hljs-attr">authors</span> = [&#123;name = <span class="hljs-string">&quot;Your Name&quot;</span>, email = <span class="hljs-string">&quot;you@example.com&quot;</span>&#125;]<br><span class="hljs-attr">requires-python</span> = <span class="hljs-string">&quot;&gt;=3.11&quot;</span><br><span class="hljs-attr">dependencies</span> = [<br>    <span class="hljs-string">&quot;flask&gt;=3.0.0&quot;</span>,<br>    <span class="hljs-string">&quot;pydantic&gt;=2.0.0&quot;</span>,<br>]<br><br><span class="hljs-section">[project.optional-dependencies]</span><br><span class="hljs-attr">dev</span> = [<br>    <span class="hljs-string">&quot;pytest&gt;=7.0.0&quot;</span>,<br>    <span class="hljs-string">&quot;pytest-cov&gt;=4.0.0&quot;</span>,<br>    <span class="hljs-string">&quot;black&gt;=23.0.0&quot;</span>,<br>    <span class="hljs-string">&quot;isort&gt;=5.12.0&quot;</span>,<br>    <span class="hljs-string">&quot;flake8&gt;=6.0.0&quot;</span>,<br>    <span class="hljs-string">&quot;pre-commit&gt;=3.0.0&quot;</span>,<br>]<br><br><span class="hljs-section">[build-system]</span><br><span class="hljs-attr">requires</span> = [<span class="hljs-string">&quot;hatchling&quot;</span>]<br><span class="hljs-attr">build-backend</span> = <span class="hljs-string">&quot;hatchling.build&quot;</span><br><br><span class="hljs-section">[tool.black]</span><br><span class="hljs-attr">line-length</span> = <span class="hljs-number">88</span><br><span class="hljs-attr">target-version</span> = [<span class="hljs-string">&#x27;py311&#x27;</span>]<br><br><span class="hljs-section">[tool.isort]</span><br><span class="hljs-attr">profile</span> = <span class="hljs-string">&quot;black&quot;</span><br></code></pre></td></tr></table></figure>
+<h2 id="project-template-checklist">🚀 Project Template Checklist</h2>
+<p>To replicate this workflow in a new project:</p>
+<h3 id="essential-files-to-copy">✅ Essential Files to Copy</h3>
+<ul class="task-list">
+<li><input type="checkbox" /><code>.flake8</code> - Linting
+configuration</li>
+<li><input type="checkbox" /><code>.pre-commit-config.yaml</code> -
+Pre-commit hooks</li>
+<li><input type="checkbox" /><code>pyproject.toml</code> sections for
+tools (black, isort, pytest, coverage)</li>
+</ul>
+<h3 id="setup-commands">✅ Setup Commands</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1. Initialize project</span><br>uv init --package<br><span class="hljs-built_in">cd</span> your-project<br><br><span class="hljs-comment"># 2. Copy configuration files</span><br><span class="hljs-built_in">cp</span> /path/to/equo/.flake8 .<br><span class="hljs-built_in">cp</span> /path/to/equo/.pre-commit-config.yaml .<br><br><span class="hljs-comment"># 3. Install dependencies</span><br>uv add flask pydantic<br>uv add --dev pytest pytest-cov black isort flake8 pre-commit<br><br><span class="hljs-comment"># 4. Set up pre-commit</span><br>uv run pre-commit install<br>uv run pre-commit install --hook-type commit-msg<br><br><span class="hljs-comment"># 5. Test the workflow</span><br>uv run pre-commit run --all-files<br></code></pre></td></tr></table></figure>
+<h3 id="development-environment">✅ Development Environment</h3>
+<ul class="task-list">
+<li><input type="checkbox" />Python 3.11+</li>
+<li><input type="checkbox" />UV installed</li>
+<li><input type="checkbox" />Git repository initialized</li>
+<li><input type="checkbox" />OpenAI API key (if using AI features)</li>
+<li><input type="checkbox" />Environment file created from template</li>
+</ul>
+<h2 id="troubleshooting">🔧 Troubleshooting</h2>
+<h3 id="common-issues">Common Issues</h3>
+<h4 id="pre-commit-hook-failures"><strong>Pre-commit Hook
+Failures</strong></h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># If hooks fail, fix issues and recommit</span><br>git add .<br>git commit -m <span class="hljs-string">&quot;fix: resolve code quality issues&quot;</span><br><br><span class="hljs-comment"># Skip hooks in emergency (not recommended)</span><br>git commit --no-verify -m <span class="hljs-string">&quot;emergency: skip pre-commit hooks&quot;</span><br></code></pre></td></tr></table></figure>
+<h4 id="flake8-line-length-issues"><strong>Flake8 Line Length
+Issues</strong></h4>
+<ul>
+<li><strong>Solution</strong>: Use Black formatting (88 chars) + flake8
+config (120 chars max)</li>
+<li><strong>Fix</strong>: Run <code>uv run black .</code> before
+committing</li>
+</ul>
+<h4 id="import-sorting-issues"><strong>Import Sorting
+Issues</strong></h4>
+<ul>
+<li><strong>Solution</strong>: Run <code>uv run isort .</code> to fix
+import order</li>
+<li><strong>Configuration</strong>: isort uses "black" profile for
+compatibility</li>
+</ul>
+<h4 id="test-failures"><strong>Test Failures</strong></h4>
+<ul>
+<li><strong>Solution</strong>: Fix failing tests before committing</li>
+<li><strong>Bypass</strong>: Use <code>--no-verify</code> flag (not
+recommended)</li>
+</ul>
+<h3 id="environment-issues">Environment Issues</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Recreate UV environment</span><br>uv venv --force<br>uv <span class="hljs-built_in">sync</span> --dev<br><br><span class="hljs-comment"># Update all dependencies</span><br>uv <span class="hljs-built_in">sync</span> --upgrade<br><br><span class="hljs-comment"># Check environment</span><br>uv pip list<br></code></pre></td></tr></table></figure>
+<h2 id="quality-standards">📋 Quality Standards</h2>
+<p>This workflow enforces:</p>
+<ul>
+<li><strong>Code Formatting</strong>: Consistent style with Black</li>
+<li><strong>Import Organization</strong>: Clean imports with isort</li>
+<li><strong>Code Quality</strong>: Linting with flake8</li>
+<li><strong>Type Safety</strong>: Type hints required (mypy ready)</li>
+<li><strong>Test Coverage</strong>: All tests must pass before
+commit</li>
+<li><strong>Commit Messages</strong>: Conventional commit format</li>
+<li><strong>File Quality</strong>: No trailing whitespace, proper line
+endings</li>
+</ul>
+<h2 id="related-tools">🔗 Related Tools</h2>
+<ul>
+<li><strong><a target="_blank" rel="noopener" href="https://github.com/astral-sh/uv">UV
+Documentation</a></strong> - Fast Python package manager</li>
+<li><strong><a target="_blank" rel="noopener" href="https://pre-commit.com/">Pre-commit</a></strong> -
+Git hooks framework</li>
+<li><strong><a target="_blank" rel="noopener" href="https://black.readthedocs.io/">Black</a></strong> -
+Python code formatter</li>
+<li><strong><a target="_blank" rel="noopener" href="https://flake8.pycqa.org/">flake8</a></strong> -
+Python linter</li>
+<li><strong><a target="_blank" rel="noopener" href="https://www.conventionalcommits.org/">Conventional
+Commits</a></strong> - Commit message standard</li>
+</ul>
+<hr />
+<p><strong>🎯 Result</strong>: A robust, consistent development workflow
+that enforces code quality, testing, and proper Git practices across all
+team members and projects.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Git configs for a python project</div>
+      <div>http://blog.slray.com/2025/06/22/Git-configs-for-a-python-project/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Sirui Ray Li</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>June 22, 2025</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/06/29/abc-abstract-interface-for-python/" title="abc -- abstract interface for python">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">abc -- abstract interface for python</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/05/22/set-up-new-Mac/" title="Set Up a New Mac">
+                        <span class="hidden-mobile">Set Up a New Mac</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        aggregate visit: 
+        <span id="busuanzi_value_site_pv"></span>
+         times
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        , 
+        <span id="busuanzi_value_site_uv"></span>
+         people
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

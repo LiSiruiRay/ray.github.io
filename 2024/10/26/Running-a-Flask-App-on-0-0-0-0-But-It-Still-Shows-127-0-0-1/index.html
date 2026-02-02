@@ -1,0 +1,831 @@
+
+
+<!DOCTYPE html>
+<html lang="en,zh-CN,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Sirui Ray Li">
+  <meta name="keywords" content="testing3">
+  
+    <meta name="description" content="While working on a Flask application, I encountered a perplexing issue. I wanted to make my app accessible externally by running it on 0.0.0.0, but despite setting the host accordingly, the server sti">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Running a Flask App on 0.0.0.0 But It Still Shows 127.0.0.1">
+<meta property="og:url" content="http://blog.slray.com/2024/10/26/Running-a-Flask-App-on-0-0-0-0-But-It-Still-Shows-127-0-0-1/index.html">
+<meta property="og:site_name" content="Ray&#39;s website">
+<meta property="og:description" content="While working on a Flask application, I encountered a perplexing issue. I wanted to make my app accessible externally by running it on 0.0.0.0, but despite setting the host accordingly, the server sti">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-10-26T23:50:53.000Z">
+<meta property="article:modified_time" content="2024-10-26T23:50:53.000Z">
+<meta property="article:author" content="Sirui Ray Li">
+<meta property="article:tag" content="Debug">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Tech">
+<meta property="article:tag" content="Tutorial">
+<meta property="article:tag" content="Flask">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Running a Flask App on 0.0.0.0 But It Still Shows 127.0.0.1 - Ray&#39;s website</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.slray.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ray&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Running a Flask App on 0.0.0.0 But It Still Shows 127.0.0.1"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-10-26 19:50" pubdate>
+          Saturday, October 26th 2024, 7:50 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          4.4k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          37 minutes
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          visit: <span id="busuanzi_value_page_pv"></span> times
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Running a Flask App on 0.0.0.0 But It Still Shows 127.0.0.1</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>While working on a Flask application, I encountered a perplexing
+issue. I wanted to make my app accessible externally by running it on
+<code>0.0.0.0</code>, but despite setting the host accordingly, the
+server still displayed that it was running on
+<code>http://127.0.0.1:8081</code>. In this blog post, I'll walk through
+the problem, the steps I took to solve it, and explain why this behavior
+occurs.</p>
+<h2 id="the-problem">The Problem</h2>
+<p>I had a Flask application that I wanted to run on all available
+network interfaces so that it could be accessed from other devices on
+the network. To do this, I set the <code>host</code> parameter in the
+<code>app.run()</code> method to <code>0.0.0.0</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    app.run(port=<span class="hljs-number">8081</span>, debug=<span class="hljs-literal">True</span>, host=<span class="hljs-string">&quot;0.0.0.0&quot;</span>)<br></code></pre></td></tr></table></figure>
+<p>After running the application, I expected it to indicate that it was
+running on <code>http://0.0.0.0:8081</code>. However, the console output
+was as follows:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">* Running on all addresses (0.0.0.0)<br>* Running on &lt;http://127.0.0.1:8081&gt;<br>* Running on http://&lt;my_server_ip&gt;:8081<br></code></pre></td></tr></table></figure>
+<p>This was confusing because it seemed like the server was still bound
+to <code>127.0.0.1</code> (localhost), and I wasn't sure if it was
+accessible externally.</p>
+<h2 id="investigating-the-issue">Investigating the Issue</h2>
+<p>To understand what was happening, I needed to dive deeper into how
+Flask's development server works and what the console messages actually
+mean.</p>
+<h3 id="understanding-flasks-console-output">Understanding Flask's
+Console Output</h3>
+<p>When you run a Flask app with <code>app.run(host='0.0.0.0')</code>,
+Flask binds the server to all available network interfaces. This means
+the app is accessible via any IP address assigned to the machine.</p>
+<p>The console output includes helpful messages:</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs lasso">* Running <span class="hljs-keyword">on</span> <span class="hljs-literal">all</span> addresses (<span class="hljs-number">0.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span>)<br>* Running <span class="hljs-keyword">on</span> &lt;http:<span class="hljs-comment">//127.0.0.1:8081&gt;</span><br>* Running <span class="hljs-keyword">on</span> http:<span class="hljs-comment">//&lt;my_server_ip&gt;:8081</span><br><br></code></pre></td></tr></table></figure>
+<p>Here, <code>http://127.0.0.1:8081</code> is provided as a
+convenience, indicating that the app is accessible on the local machine.
+The key line is:</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs gams"><span class="hljs-comment">* Running on all addresses (0.0.0.0)</span><br><br></code></pre></td></tr></table></figure>
+<p>This line confirms that the server is listening on all
+interfaces.</p>
+<h3 id="testing-external-access">Testing External Access</h3>
+<p>To verify that the app was indeed accessible externally, I tried
+accessing it from another device on the same network using the server's
+IP address:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">http:<span class="hljs-regexp">//</span>&lt;my_server_ip&gt;:<span class="hljs-number">8081</span><br><br></code></pre></td></tr></table></figure>
+<p>Sure enough, the app was accessible, confirming that it was running
+on <code>0.0.0.0</code> despite the console output emphasizing
+<code>127.0.0.1</code>.</p>
+<h2 id="understanding-0.0.0.0-vs.-127.0.0.1">Understanding
+<code>0.0.0.0</code> vs. <code>127.0.0.1</code></h2>
+<ul>
+<li><strong><code>0.0.0.0</code></strong>: This is a special IP address
+that tells the server to listen on all available network
+interfaces.</li>
+<li><strong><code>127.0.0.1</code></strong>: This is the loopback
+address (localhost), which is only accessible from the local
+machine.</li>
+</ul>
+<p>When you set <code>host='0.0.0.0'</code>, Flask's development server
+binds to all interfaces, but it still includes <code>127.0.0.1</code> in
+the console output for convenience.</p>
+<h2 id="the-solution">The Solution</h2>
+<p>The key realization was that the Flask development server was indeed
+running on all interfaces, even though the console output might suggest
+otherwise. Here's what I did to confirm and resolve the issue:</p>
+<ol type="1">
+<li><strong>Verified the Server Binding</strong>: Ensured that
+<code>app.run(host='0.0.0.0', port=8081)</code> was correctly set.</li>
+<li><strong>Ignored the <code>127.0.0.1</code> Message</strong>:
+Understood that the console output includes <code>127.0.0.1</code> for
+convenience and does not mean the server is restricted to
+localhost.</li>
+<li><strong>Tested External Access</strong>: Accessed the app from
+another device using the server's IP address to confirm external
+accessibility.</li>
+<li><strong>Used a Production Server (Optional)</strong>: For a
+production environment, it's recommended to use a WSGI server like
+Gunicorn. This wasn't necessary to solve the immediate issue, but it's a
+good practice for deployment.</li>
+</ol>
+<h3 id="updated-code">Updated Code</h3>
+<p>Here's the simplified code:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask<br><br>app = Flask(__name__)<br><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/&#x27;</span></span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">hello</span>():<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Hello, World!&quot;</span><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    app.run(port=<span class="hljs-number">8081</span>, debug=<span class="hljs-literal">True</span>, host=<span class="hljs-string">&quot;0.0.0.0&quot;</span>)<br><br></code></pre></td></tr></table></figure>
+<h2 id="additional-considerations">Additional Considerations</h2>
+<h3 id="using-a-production-wsgi-server">Using a Production WSGI
+Server</h3>
+<p>While the Flask development server is suitable for testing and
+development, it's not designed for production use. For deploying your
+application, consider using a production-grade WSGI server like
+Gunicorn:</p>
+<ol type="1">
+<li><p><strong>Install Gunicorn</strong>:</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install gunicorn<br><br></code></pre></td></tr></table></figure></p></li>
+<li><p><strong>Run Your App with Gunicorn</strong>:</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">gunicorn -w 4 -b 0.0.0.0:8081 app:app<br><br></code></pre></td></tr></table></figure></p>
+<ul>
+<li><code>w 4</code> specifies the number of worker processes.</li>
+<li><code>app:app</code> refers to your application module and Flask app
+object.</li>
+</ul></li>
+</ol>
+<p>This approach ensures better performance and security for production
+environments.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>The confusion arose from misinterpreting the console output when
+running the Flask development server. Even though the output emphasizes
+<code>127.0.0.1</code>, the server is bound to all interfaces when
+<code>host='0.0.0.0'</code> is set. By testing external access, I
+confirmed that the app was accessible from other devices.</p>
+<h3 id="key-takeaways">Key Takeaways</h3>
+<ul>
+<li><strong>Setting <code>host='0.0.0.0'</code></strong>: This allows
+your Flask app to be accessible on all network interfaces.</li>
+<li><strong>Console Output</strong>: The inclusion of
+<code>127.0.0.1</code> in the console messages does not limit the server
+to localhost.</li>
+<li><strong>Testing External Access</strong>: Always verify by accessing
+the app from an external device.</li>
+<li><strong>Consider Using a Production Server</strong>: For deployment,
+use a WSGI server like Gunicorn for better performance and
+security.</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://flask.palletsprojects.com/en/2.3.x/quickstart/#a-minimal-application">Flask
+Documentation: Running the Development Server</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://flask.palletsprojects.com/en/2.3.x/deploying/gunicorn/">Working
+with Gunicorn</a></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Daily-Logs/" class="category-chain-item">Daily Logs</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Daily-Logs/Debug-Logs/" class="category-chain-item">Debug Logs</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Debug/">#Debug</a>
+      
+        <a href="/tags/Python/">#Python</a>
+      
+        <a href="/tags/Tech/">#Tech</a>
+      
+        <a href="/tags/Tutorial/">#Tutorial</a>
+      
+        <a href="/tags/Flask/">#Flask</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Running a Flask App on 0.0.0.0 But It Still Shows 127.0.0.1</div>
+      <div>http://blog.slray.com/2024/10/26/Running-a-Flask-App-on-0-0-0-0-But-It-Still-Shows-127-0-0-1/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Sirui Ray Li</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>October 26, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/10/27/Handling-OAuth2-Flow-and-JWT-Authentication-in-a-React-Flask-Application/" title="Handling OAuth2 Flow and JWT Authentication in a React + Flask Application">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Handling OAuth2 Flow and JWT Authentication in a React + Flask Application</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/10/23/Resolving-Mixed-Content-Issues-When-Serving-an-API-Over-HTTPS-with-Nginx-and-Let-s-Encrypt/" title="Resolving Mixed Content Issues When Serving an API Over HTTPS with Nginx and Let&#39;s Encrypt">
+                        <span class="hidden-mobile">Resolving Mixed Content Issues When Serving an API Over HTTPS with Nginx and Let&#39;s Encrypt</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        aggregate visit: 
+        <span id="busuanzi_value_site_pv"></span>
+         times
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        , 
+        <span id="busuanzi_value_site_uv"></span>
+         people
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
